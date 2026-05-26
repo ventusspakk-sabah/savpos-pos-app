@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .signature-pad {
+            cursor: crosshair;
+            background-image: radial-gradient(#d8dadc 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-container": "#00b47d",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary-container": "#7089b3",
+                        "outline-variant": "#c4c6cf",
+                        "primary": "#00091b",
+                        "on-error-container": "#93000a",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-primary-fixed": "#001b3c",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#000b05",
+                        "surface-variant": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-container": "#00477f",
+                        "primary-container": "#002045",
+                        "surface-tint": "#465f87",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary": "#ffffff",
+                        "inverse-primary": "#aec7f5",
+                        "secondary-container": "#7db6ff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "tertiary-container": "#002617",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#44474e",
+                        "on-secondary-fixed": "#001c38",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "secondary-fixed": "#d3e4ff",
+                        "surface": "#f7f9fb",
+                        "secondary": "#1960a3",
+                        "on-background": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "error": "#ba1a1a",
+                        "outline": "#74777f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "lg": "24px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "md": "16px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-price": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky bg-surface shadow-sm flex justify-between items-center px-lg h-touch-target-min z-50">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Cashier Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a spa technician with a warm, welcoming expression. She is dressed in a clean, minimalist white uniform within a brightly lit, high-end boutique environment. The lighting is soft and clinical yet inviting, reflecting a premium service atmosphere with neutral tones and soft blurred background textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXJsEJU9umynhPvkZCtOn46J6O0VXC4FhcApKh4Fl0YkJQownnr8VwOz1YOFPwvWh7_IGfmpl89vo-GXhbbo4DzFrMSVP_hHINU_DOt6OE5gY8ag1cxRCSRJKBE2HAxJi30TmA8SwfOpRUgA-a3iIrKa8vFLH94L4njs_XSrlneXMK0zZ21U6Yf-krkwDcmX08Nb27qaGm6vwJHC6fxlwjqZW-EpliVc355MXG45Y09qvBEdD4iNWKzGYqWUWe8TgD8EOHBQT2ul8"/>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-variant/50 transition-colors p-xs rounded-full" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="max-w-4xl mx-auto p-md md:p-lg pb-32">
+<!-- Header -->
+<div class="mb-lg">
+<h1 class="font-headline-lg text-headline-lg text-primary mb-xs">Service Summary</h1>
+<p class="text-on-surface-variant font-body-md">Review details and capture signature to finalize commission.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Left Column: Service & Add-ons -->
+<div class="md:col-span-7 space-y-lg">
+<!-- Main Service Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg border border-outline-variant/30">
+<div class="flex justify-between items-start mb-md">
+<div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container bg-tertiary-fixed-dim/30 px-xs py-1 rounded-full uppercase tracking-wider">Completed</span>
+<h2 class="font-headline-md text-headline-md text-primary mt-xs">Deep Tissue Therapeutic Massage</h2>
+</div>
+<div class="text-right">
+<p class="font-display-price text-display-price text-primary">$145.00</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">90 Minutes</p>
+</div>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant border-t border-outline-variant/20 pt-md">
+<span class="material-symbols-outlined text-[20px]" data-icon="person">person</span>
+<span class="font-body-md">Customer: Isabella Sterling</span>
+</div>
+</section>
+<!-- Add-ons/Consumables Check -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg border border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md text-primary mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                        Add-ons &amp; Consumables
+                    </h3>
+<div class="space-y-sm">
+<!-- Add-on Item 1 -->
+<label class="flex items-center justify-between p-md bg-surface-container-low rounded-lg border border-transparent hover:border-secondary-container transition-all cursor-pointer group">
+<div class="flex items-center gap-md">
+<input checked="" class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox"/>
+<div>
+<p class="font-body-md font-semibold text-primary">Essential Oil Upgrade</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Organic Eucalyptus &amp; Lavender</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-secondary-container bg-secondary-container/20 px-xs py-1 rounded">+$15.00</span>
+</label>
+<!-- Add-on Item 2 -->
+<label class="flex items-center justify-between p-md bg-surface-container-low rounded-lg border border-transparent hover:border-secondary-container transition-all cursor-pointer group">
+<div class="flex items-center gap-md">
+<input class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox"/>
+<div>
+<p class="font-body-md font-semibold text-primary">Extra Towel Set</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Heated Microfiber</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-variant px-xs py-1 rounded">+$5.00</span>
+</label>
+<!-- Add-on Item 3 -->
+<label class="flex items-center justify-between p-md bg-surface-container-low rounded-lg border border-transparent hover:border-secondary-container transition-all cursor-pointer group">
+<div class="flex items-center gap-md">
+<input class="w-5 h-5 rounded border-outline text-secondary focus:ring-secondary" type="checkbox"/>
+<div>
+<p class="font-body-md font-semibold text-primary">CBD Infusion Balm</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Localized relief treatment</p>
+</div>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant bg-surface-variant px-xs py-1 rounded">+$25.00</span>
+</label>
+</div>
+<button class="w-full mt-md py-sm border-2 border-dashed border-outline-variant text-on-surface-variant rounded-lg font-label-md hover:bg-surface-variant/30 transition-all">
+                        + Add Custom Item
+                    </button>
+</section>
+</div>
+<!-- Right Column: Signature & Confirmation -->
+<div class="md:col-span-5">
+<div class="sticky top-24 space-y-lg">
+<!-- Signature Pad Area -->
+<section class="bg-surface-container-low rounded-xl shadow-md border border-outline-variant/30 p-lg">
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Customer Signature</h3>
+<p class="text-on-surface-variant font-label-sm mb-md">I confirm the services listed above were performed to my satisfaction.</p>
+<div class="relative w-full aspect-[4/3] bg-surface-container-lowest rounded-lg border-2 border-outline-variant/50 signature-pad flex items-center justify-center overflow-hidden">
+<canvas class="absolute inset-0 w-full h-full" id="signatureCanvas"></canvas>
+<span class="text-outline/40 font-label-md pointer-events-none" id="signaturePlaceholder">Sign here</span>
+<button class="absolute bottom-xs right-xs bg-surface-variant text-on-surface-variant p-xs rounded-full hover:bg-surface-dim transition-colors" onclick="clearSignature()">
+<span class="material-symbols-outlined text-[18px]" data-icon="refresh">refresh</span>
+</button>
+</div>
+</section>
+<!-- Summary & Submit -->
+<section class="bg-primary-container text-on-primary-fixed rounded-xl p-lg shadow-lg">
+<div class="flex justify-between items-center mb-sm">
+<span class="font-body-md">Subtotal</span>
+<span class="font-label-md">$145.00</span>
+</div>
+<div class="flex justify-between items-center mb-md">
+<span class="font-body-md">Add-ons Selected</span>
+<span class="font-label-md">$15.00</span>
+</div>
+<div class="border-t border-on-primary-container/30 pt-md mb-lg">
+<div class="flex justify-between items-end">
+<span class="font-headline-md">Total Price</span>
+<span class="font-display-price text-[32px] text-on-primary">$160.00</span>
+</div>
+</div>
+<button class="w-full py-md bg-secondary-container text-on-secondary-container rounded-full font-headline-md flex items-center justify-center gap-md active:scale-95 transition-transform shadow-md group" id="submitBtn">
+<span>Confirm &amp; Submit</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="text-center font-label-sm text-on-primary-container/70 mt-md">Commission Estimate: $48.00</p>
+</section>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-md py-xs bg-surface border-t border-outline-variant/30 shadow-lg z-50 rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</div>
+</nav>
+<script>
+        // Simple signature pad logic
+        const canvas = document.getElementById('signatureCanvas');
+        const ctx = canvas.getContext('2d');
+        const placeholder = document.getElementById('signaturePlaceholder');
+        let drawing = false;
+
+        function resizeCanvas() {
+            const rect = canvas.parentNode.getBoundingClientRect();
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        function startPosition(e) {
+            drawing = true;
+            placeholder.style.display = 'none';
+            draw(e);
+        }
+
+        function finishedPosition() {
+            drawing = false;
+            ctx.beginPath();
+        }
+
+        function draw(e) {
+            if (!drawing) return;
+            ctx.lineWidth = 3;
+            ctx.lineCap = 'round';
+            ctx.strokeStyle = '#00091b';
+
+            const rect = canvas.getBoundingClientRect();
+            const x = (e.clientX || e.touches[0].clientX) - rect.left;
+            const y = (e.clientY || e.touches[0].clientY) - rect.top;
+
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+        }
+
+        canvas.addEventListener('mousedown', startPosition);
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); startPosition(e); });
+        canvas.addEventListener('mouseup', finishedPosition);
+        canvas.addEventListener('touchend', finishedPosition);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); draw(e); });
+
+        function clearSignature() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            placeholder.style.display = 'block';
+        }
+
+        // Simple button interaction
+        document.getElementById('submitBtn').addEventListener('click', function() {
+            this.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> <span>Processing...</span>';
+            setTimeout(() => {
+                alert('Service confirmed and commission submitted successfully!');
+                window.location.reload();
+            }, 1500);
+        });
+    </script>
+</body></html>

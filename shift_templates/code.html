@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos Professional - 班次模板管理</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed-dim": "#aec7f5",
+                        "secondary": "#1960a3",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "surface-container-high": "#e6e8ea",
+                        "primary": "#00091b",
+                        "outline-variant": "#c4c6cf",
+                        "on-background": "#191c1e",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#eceef0",
+                        "secondary-container": "#7db6ff",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-container": "#002617",
+                        "on-primary-fixed": "#001b3c",
+                        "primary-container": "#002045",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-tint": "#465f87",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#44474e",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "on-error-container": "#93000a",
+                        "on-surface": "#191c1e",
+                        "tertiary": "#000b05",
+                        "inverse-on-surface": "#eff1f3",
+                        "outline": "#74777f",
+                        "on-tertiary-container": "#5d9377",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "surface-variant": "#e0e3e5",
+                        "secondary-fixed": "#d3e4ff",
+                        "surface": "#f7f9fb",
+                        "on-primary-container": "#7089b3",
+                        "inverse-primary": "#aec7f5",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "background": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-container": "#00477f",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "touch-target-min": "44px",
+                        "md": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "display-price": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c4c6cf; border-radius: 10px; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest dark:bg-surface-container shadow-sm flex justify-between items-center px-md py-xs w-full top-0 sticky z-40">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-variant/50 transition-colors p-2 rounded-full active:scale-95 duration-200">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary-fixed">Sav.pos Professional</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="hidden md:flex gap-sm">
+<button class="text-on-surface-variant hover:bg-surface-variant/50 px-4 py-2 rounded-full transition-colors font-label-md text-label-md">Dashboard</button>
+<button class="text-secondary font-bold px-4 py-2 rounded-full bg-secondary-container/20 transition-colors font-label-md text-label-md">Inventory</button>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Staff Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a sophisticated spa manager in a minimalist, modern office environment. The lighting is soft and high-key, emphasizing a clean and high-end aesthetic. The background features subtle textures of light wood and glass, maintaining a professional corporate atmosphere consistent with a premium service brand. The colors are muted neutrals with soft blue accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCraRWb-hhZGWeQnjCLg5GIsmkuoLleM5EbPGU5Fv92xhaoWcPjP2JzkMIlQfTDV8GFZAjy6w_8k-5umC_zRoL9gAqiQein1O0TE75kd3R0Ope8MsbrkQMDgqtivekPDyr4vqz039FQJOhw-j64uRN9wDW216_LR7we4PWfxJU7jmOwLsrgFc9lMUzVUvRwlro8tbLUGkeZECBQX3_a18CYMqG85xQijw54pCODl1cQOWKhLc6GgcduQ6cWkuCmw-AE7NDakJNzhuk"/>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- Sidebar Drawer (Hidden on Mobile) -->
+<aside class="hidden md:block h-full w-80 bg-surface-container-low dark:bg-inverse-surface shadow-lg overflow-y-auto">
+<div class="p-lg flex flex-col gap-xs">
+<div class="flex items-center gap-4 mb-lg px-2">
+<div class="w-12 h-12 rounded-xl bg-secondary text-on-secondary flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md font-bold text-secondary">Manager</p>
+<p class="text-on-surface-variant text-label-sm">Professional Edition</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-transform active:scale-95 shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="font-body-md text-body-md font-semibold">班次模板管理</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-body-md text-body-md">Staff</span>
+</a>
+<div class="my-4 border-t border-outline-variant mx-4"></div>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</nav>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto p-md md:p-lg lg:p-xl bg-surface">
+<div class="max-w-6xl mx-auto">
+<!-- Page Header -->
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-xl gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-1">班次模板管理 (Shift Templates)</h2>
+<p class="text-on-surface-variant font-body-md">管理您的標準工作班次，以便在排班時快速選取。</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-secondary text-on-secondary font-bold px-lg py-3 rounded-full shadow-md hover:bg-opacity-90 active:scale-95 transition-all w-full md:w-auto" onclick="openModal()">
+<span class="material-symbols-outlined">add</span>
+<span>新增班次模板</span>
+</button>
+</div>
+<!-- Template Grid / Bento Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Template Card 1 -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-transparent hover:border-secondary transition-all hover:shadow-md cursor-pointer">
+<div class="flex justify-between items-start mb-md">
+<div class="p-2 bg-tertiary-fixed rounded-lg text-on-tertiary-fixed">
+<span class="material-symbols-outlined">wb_sunny</span>
+</div>
+<div class="flex gap-1">
+<button class="p-2 hover:bg-surface-variant rounded-full text-outline"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-error-container/20 rounded-full text-error"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">早班 (Morning Shift)</h3>
+<div class="flex items-center gap-2 text-secondary font-display-price mb-xs">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-headline-lg">10:00 - 18:00</span>
+</div>
+<div class="flex items-center gap-2 mb-md">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm">8 小時</span>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm">休息 1 小時</span>
+</div>
+<div class="flex -space-x-2">
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-primary-fixed flex items-center justify-center text-[10px] font-bold">JD</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-secondary-fixed flex items-center justify-center text-[10px] font-bold">AL</div>
+<div class="w-8 h-8 rounded-full border-2 border-surface-container-lowest bg-tertiary-fixed flex items-center justify-center text-[10px] font-bold">+5</div>
+</div>
+</div>
+<!-- Template Card 2 -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-transparent hover:border-secondary transition-all hover:shadow-md cursor-pointer">
+<div class="flex justify-between items-start mb-md">
+<div class="p-2 bg-secondary-fixed rounded-lg text-on-secondary-fixed">
+<span class="material-symbols-outlined">wb_twilight</span>
+</div>
+<div class="flex gap-1">
+<button class="p-2 hover:bg-surface-variant rounded-full text-outline"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-error-container/20 rounded-full text-error"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">中班 (Mid Shift)</h3>
+<div class="flex items-center gap-2 text-secondary font-display-price mb-xs">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-headline-lg">12:00 - 20:00</span>
+</div>
+<div class="flex items-center gap-2 mb-md">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm">8 小時</span>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm">休息 1 小時</span>
+</div>
+</div>
+<!-- Template Card 3 -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-transparent hover:border-secondary transition-all hover:shadow-md cursor-pointer">
+<div class="flex justify-between items-start mb-md">
+<div class="p-2 bg-primary-fixed rounded-lg text-on-primary-fixed">
+<span class="material-symbols-outlined">bedtime</span>
+</div>
+<div class="flex gap-1">
+<button class="p-2 hover:bg-surface-variant rounded-full text-outline"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-error-container/20 rounded-full text-error"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">全日班 (Full Day)</h3>
+<div class="flex items-center gap-2 text-secondary font-display-price mb-xs">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-headline-lg">10:00 - 22:00</span>
+</div>
+<div class="flex items-center gap-2 mb-md">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm">12 小時</span>
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm">休息 2 小時</span>
+</div>
+</div>
+<!-- Template Card 4 -->
+<div class="group relative bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-transparent hover:border-secondary transition-all hover:shadow-md cursor-pointer">
+<div class="flex justify-between items-start mb-md">
+<div class="p-2 bg-error-container/20 rounded-lg text-error">
+<span class="material-symbols-outlined">star</span>
+</div>
+<div class="flex gap-1">
+<button class="p-2 hover:bg-surface-variant rounded-full text-outline"><span class="material-symbols-outlined text-[20px]">edit</span></button>
+<button class="p-2 hover:bg-error-container/20 rounded-full text-error"><span class="material-symbols-outlined text-[20px]">delete</span></button>
+</div>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">週末特班 (Weekend Special)</h3>
+<div class="flex items-center gap-2 text-secondary font-display-price mb-xs">
+<span class="material-symbols-outlined">schedule</span>
+<span class="text-headline-lg">11:00 - 21:00</span>
+</div>
+<div class="flex items-center gap-2 mb-md">
+<span class="bg-surface-container-high px-3 py-1 rounded-full text-label-sm font-label-sm">10 小時</span>
+</div>
+</div>
+<!-- Add New Placeholder Card -->
+<div class="group flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-outline-variant hover:border-secondary bg-transparent p-lg transition-all cursor-pointer hover:bg-surface-container-low min-h-[240px]" onclick="openModal()">
+<div class="w-16 h-16 rounded-full bg-surface-variant flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-outline text-[32px]">add_circle</span>
+</div>
+<p class="font-headline-md text-outline group-hover:text-secondary">建立新模板</p>
+</div>
+</div>
+<!-- Decorative Asset -->
+<div class="mt-xl rounded-2xl overflow-hidden h-48 relative shadow-lg">
+<img alt="Office Interior" class="w-full h-full object-cover" data-alt="A wide-angle shot of a high-end, minimalist corporate office lobby at night. The space is illuminated by soft, focused spotlights and glowing architectural lines. The aesthetic is extremely clean and sophisticated, with polished marble floors and dark wood accents. The atmosphere conveys efficiency and premium professional standards in a boutique spa or hospitality setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7AF6e2FWhehSWgtiAzpZiI1Nrok9St8oMRTcwtoKpPxs9A4-i11FqQTmFVLlCFSeqMicS_ihESvvopcZ46F3yMY8uYiR672kkXvwxy1nL55szSlgkR5yxJFCC2GoGOyA3pBrchwK3cTLmIpGfJIk-eH9YNsjnaIzPA4CcT6PYgk8w9FhcKG2WbhS31ssj-IV-HWoULAxnuG3C1ZWHZ2bUNUG6Ii_3xV7inpBkbbvZdQ7cdqH4oOnoEnTIaFB05fDIGZ3PJmaY4i4"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/80 to-transparent flex items-center p-xl">
+<div class="text-white max-w-md">
+<p class="font-headline-md text-headline-md font-bold mb-2">排班效率大幅提升</p>
+<p class="text-body-md opacity-90">使用班次模板，讓您的每週排班作業從小時縮短至分鐘。Sav.pos 為專業團隊打造。</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation Bar (Visible on Mobile) -->
+<nav class="md:hidden bg-surface dark:bg-surface-dim shadow-md fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-xs pt-xs border-t border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-6 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="font-label-sm text-label-sm">Shifts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<!-- Modal for Adding/Editing Shift Template -->
+<div class="fixed inset-0 z-[60] hidden" id="shiftModal">
+<div class="absolute inset-0 bg-primary/40 backdrop-blur-sm" onclick="closeModal()"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-lg p-md">
+<div class="bg-surface-container-lowest rounded-3xl shadow-xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="p-lg border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary">新增班次模板</h3>
+<button class="material-symbols-outlined p-2 hover:bg-surface-variant rounded-full" onclick="closeModal()">close</button>
+</div>
+<div class="p-lg flex flex-col gap-lg">
+<!-- Template Name -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">模板名稱</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary transition-all shadow-sm" placeholder="例如：晚班 (Night Shift)" type="text"/>
+</div>
+<!-- Time Selection -->
+<div class="grid grid-cols-2 gap-md">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">開始時間</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary transition-all shadow-sm" type="time" value="10:00"/>
+</div>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">結束時間</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-secondary transition-all shadow-sm" type="time" value="18:00"/>
+</div>
+</div>
+</div>
+<!-- Color Picker / Category -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-2">模板標籤顏色</label>
+<div class="flex gap-md">
+<button class="w-10 h-10 rounded-full bg-tertiary ring-2 ring-offset-2 ring-secondary transition-all"></button>
+<button class="w-10 h-10 rounded-full bg-secondary transition-all hover:scale-110"></button>
+<button class="w-10 h-10 rounded-full bg-primary-fixed-dim transition-all hover:scale-110"></button>
+<button class="w-10 h-10 rounded-full bg-error transition-all hover:scale-110"></button>
+</div>
+</div>
+</div>
+<div class="p-lg bg-surface-container-low flex gap-md justify-end">
+<button class="px-6 py-2 rounded-full font-label-md text-on-surface-variant hover:bg-surface-variant transition-colors" onclick="closeModal()">取消</button>
+<button class="px-8 py-2 rounded-full font-label-md bg-secondary text-on-secondary shadow-md hover:bg-opacity-90 active:scale-95 transition-all">儲存模板</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function openModal() {
+            const modal = document.getElementById('shiftModal');
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('shiftModal');
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        // Simple animation trigger for list items on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.group');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.4s ease-out';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body></html>

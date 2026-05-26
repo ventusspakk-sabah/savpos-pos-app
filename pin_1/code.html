@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Security Setup</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pin-dot.filled {
+            background-color: #00091b; /* primary */
+            transform: scale(1.2);
+        }
+        .keypad-button:active {
+            transform: scale(0.9);
+            background-color: #e0e3e5; /* surface-variant */
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#74777f",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "primary-container": "#002045",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#191c1e",
+                        "inverse-primary": "#aec7f5",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#465f87",
+                        "on-secondary-fixed-variant": "#004881",
+                        "primary": "#00091b",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-surface-variant": "#44474e",
+                        "surface-bright": "#f7f9fb",
+                        "secondary": "#1960a3",
+                        "secondary-container": "#7db6ff",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary": "#000b05",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary-container": "#00b47d",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-container": "#7089b3",
+                        "inverse-surface": "#2d3133",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed": "#d3e4ff",
+                        "tertiary-container": "#002617",
+                        "surface-dim": "#d8dadc",
+                        "on-error": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "surface": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "background": "#f7f9fb",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-container": "#00477f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "touch-target-min": "44px",
+                        "xs": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "display-price": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md text-body-md min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Transactional Shell - No Global Nav) -->
+<header class="w-full flex items-center justify-between px-lg py-md max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="spa">spa</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</span>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-outline tracking-wider uppercase">Step 3/3</span>
+<span class="font-label-md text-label-md text-primary font-bold">Security</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center px-md pb-xl">
+<div class="w-full max-w-md text-center space-y-xl">
+<!-- Header Section -->
+<div class="space-y-sm">
+<h1 class="font-headline-lg text-headline-lg text-primary">Set Access PIN</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs mx-auto">
+                    Create a 4-digit security code to authorize transactions and access the terminal.
+                </p>
+</div>
+<!-- PIN Display -->
+<div class="flex justify-center gap-lg py-md">
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant transition-all duration-200" id="dot-1"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant transition-all duration-200" id="dot-2"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant transition-all duration-200" id="dot-3"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant transition-all duration-200" id="dot-4"></div>
+</div>
+<!-- Keypad Section -->
+<div class="grid grid-cols-3 gap-y-md gap-x-lg w-fit mx-auto">
+<!-- Row 1 -->
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('1')">1</button>
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('2')">2</button>
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('3')">3</button>
+<!-- Row 2 -->
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('4')">4</button>
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('5')">5</button>
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('6')">6</button>
+<!-- Row 3 -->
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('7')">7</button>
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('8')">8</button>
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('9')">9</button>
+<!-- Row 4 -->
+<div class="w-16 h-16"></div>
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full bg-surface-container-low text-primary font-headline-md text-headline-md transition-transform active:scale-95 shadow-sm" onclick="addDigit('0')">0</button>
+<button class="keypad-button w-touch-target-min h-touch-target-min md:w-16 md:h-16 flex items-center justify-center rounded-full text-on-surface-variant transition-transform active:scale-95" onclick="removeDigit()">
+<span class="material-symbols-outlined" data-icon="backspace">backspace</span>
+</button>
+</div>
+</div>
+</main>
+<!-- Refined Footer -->
+<footer class="w-full flex flex-col items-center justify-center pb-xl pt-md space-y-md">
+<div class="flex items-center gap-xs text-on-surface-variant/60">
+<span class="material-symbols-outlined text-[16px]" data-icon="lock">lock</span>
+<span class="font-label-sm text-label-sm tracking-wide">End-to-end encrypted</span>
+</div>
+<!-- Button container only shown when PIN is complete (simulated here) -->
+<div class="opacity-0 pointer-events-none transition-opacity duration-300" id="submit-container">
+<button class="bg-primary-container text-on-primary-fixed-variant px-xl py-md rounded-full font-headline-md text-headline-md flex items-center gap-sm hover:shadow-lg transition-all active:scale-95">
+                Confirm PIN
+                <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</footer>
+<script>
+        let pin = "";
+        const dots = [
+            document.getElementById('dot-1'),
+            document.getElementById('dot-2'),
+            document.getElementById('dot-3'),
+            document.getElementById('dot-4')
+        ];
+        const submitContainer = document.getElementById('submit-container');
+
+        function addDigit(digit) {
+            if (pin.length < 4) {
+                pin += digit;
+                updateUI();
+            }
+        }
+
+        function removeDigit() {
+            if (pin.length > 0) {
+                pin = pin.slice(0, -1);
+                updateUI();
+            }
+        }
+
+        function updateUI() {
+            dots.forEach((dot, index) => {
+                if (index < pin.length) {
+                    dot.classList.add('filled', 'bg-primary');
+                    dot.classList.remove('border-outline-variant');
+                } else {
+                    dot.classList.remove('filled', 'bg-primary');
+                    dot.classList.add('border-outline-variant');
+                }
+            });
+
+            if (pin.length === 4) {
+                submitContainer.classList.remove('opacity-0', 'pointer-events-none');
+            } else {
+                submitContainer.classList.add('opacity-0', 'pointer-events-none');
+            }
+        }
+    </script>
+</body></html>

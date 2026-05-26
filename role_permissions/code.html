@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Suite | Permissions Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#6ffbbe",
+                      "primary": "#00091b",
+                      "tertiary-fixed-dim": "#4edea3",
+                      "surface": "#f8f9ff",
+                      "inverse-surface": "#213145",
+                      "tertiary-container": "#002617",
+                      "secondary-fixed-dim": "#acc7ff",
+                      "on-secondary-container": "#003370",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "on-error-container": "#93000a",
+                      "on-secondary": "#ffffff",
+                      "primary-fixed-dim": "#aec7f5",
+                      "on-primary-container": "#7089b3",
+                      "on-primary-fixed": "#001b3c",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#dce9ff",
+                      "secondary": "#115cb9",
+                      "error-container": "#ffdad6",
+                      "on-secondary-fixed-variant": "#004491",
+                      "secondary-container": "#659dfe",
+                      "tertiary": "#000b05",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#eaf1ff",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#d6e3ff",
+                      "outline-variant": "#c4c6cf",
+                      "on-tertiary-container": "#009b6b",
+                      "on-surface-variant": "#44474e",
+                      "background": "#f8f9ff",
+                      "surface-container-low": "#eff4ff",
+                      "on-secondary-fixed": "#001a40",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#d3e4fe",
+                      "surface-dim": "#cbdbf5",
+                      "inverse-primary": "#aec7f5",
+                      "secondary-fixed": "#d7e2ff",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-fixed": "#002113",
+                      "error": "#ba1a1a",
+                      "outline": "#74777f",
+                      "surface-container": "#e5eeff",
+                      "on-surface": "#0b1c30",
+                      "on-tertiary-fixed-variant": "#005236",
+                      "surface-tint": "#465f87",
+                      "on-background": "#0b1c30",
+                      "surface-bright": "#f8f9ff",
+                      "primary-container": "#002045"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "xs": "4px",
+                      "sm": "8px",
+                      "gutter": "24px",
+                      "margin-desktop": "32px",
+                      "lg": "24px",
+                      "xl": "32px",
+                      "base": "4px",
+                      "xxl": "48px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "headline-sm": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "data-mono": ["JetBrains Mono"]
+              },
+              "fontSize": {
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                      "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .sidebar-active { position: relative; }
+        .sidebar-active::after { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; background: currentColor; border-radius: 0 4px 4px 0; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-secondary-container">
+<!-- Desktop Navigation Drawer -->
+<aside class="hidden md:flex h-full w-72 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex-col py-xl px-md space-y-xs z-40">
+<div class="px-md mb-xl">
+<span class="font-headline-sm text-headline-sm font-black text-primary">Admin Suite</span>
+</div>
+<nav class="flex-1 space-y-1">
+<div class="flex items-center space-x-3 px-4 py-3 cursor-pointer text-on-surface-variant hover:bg-surface-container-high transition-all active:opacity-80">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-lg text-body-lg">Dashboard</span>
+</div>
+<div class="flex items-center space-x-3 px-4 py-3 cursor-pointer text-on-surface-variant hover:bg-surface-container-high transition-all active:opacity-80">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-body-lg text-body-lg">Staff</span>
+</div>
+<div class="flex items-center space-x-3 px-4 py-3 cursor-pointer text-on-surface-variant hover:bg-surface-container-high transition-all active:opacity-80">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-lg text-body-lg">Catalog</span>
+</div>
+<div class="flex items-center space-x-3 px-4 py-3 cursor-pointer bg-secondary-container text-on-secondary-container font-bold rounded-full transition-all active:opacity-80">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-lg text-body-lg">Settings</span>
+</div>
+</nav>
+<div class="mt-auto p-md bg-surface-container rounded-lg flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center text-white overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5utDRD8p7sOOSIF7CBt--2gSZKPSvEMSOrmDQzPb3lgDeyywETXl8Wzbfr-3gqdxYyAY136_Lp5l-jnl-QA9P9wAeroce6igSjjNJojgy5ho1Elaklx8vjbcpiQbK2MKrK3OFjLtMkK8vpTTu5xeHN3qwnci20PiTyENO1hJz-mxw1BkfJhgvCCfsJfg4B_73judH66IcTb930nF37vH29s132gAsaxFJYLn-cLmYfS7FDTc7ELBL2l9KLPlXp58xTbeB116FfnE"/>
+</div>
+<div class="flex-1 overflow-hidden">
+<p class="font-label-md text-label-md truncate text-on-surface">Operations Lead</p>
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant">POS Terminal Alpha</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:ml-72 min-h-screen pb-24 md:pb-0">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-30 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md">
+<div class="flex items-center space-x-3">
+<span class="material-symbols-outlined text-primary">admin_panel_settings</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Settings</h1>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors cursor-pointer active:scale-95">notifications</button>
+<div class="hidden md:block h-6 w-px bg-outline-variant"></div>
+<div class="hidden md:flex items-center space-x-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Last sync: 2m ago</span>
+</div>
+</div>
+</header>
+<section class="p-margin-mobile md:p-margin-desktop max-w-[1200px] mx-auto">
+<div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Roles &amp; Permissions</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl">Define what actions your staff can perform. Access is controlled through hierarchical roles that inherit base permissions.</p>
+</div>
+<button class="flex items-center justify-center gap-2 bg-primary text-white px-lg py-sm rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[20px]">add</span>
+                    Create New Role
+                </button>
+</div>
+<!-- Bento Grid Layout for Roles -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mb-xxl">
+<!-- Left: Role Selection Rail -->
+<div class="lg:col-span-4 space-y-md">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest px-xs">System Roles</h3>
+<!-- Active Role Card -->
+<div class="bg-surface-container-lowest border-2 border-primary rounded-xl p-md shadow-sm cursor-pointer transition-all">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-headline-sm text-headline-sm text-primary">Store Manager</span>
+<span class="bg-tertiary-fixed text-on-tertiary-fixed text-[10px] px-2 py-0.5 rounded-full font-bold">DEFAULT</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Full access to reports, inventory, and staff management.</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Staff" class="w-7 h-7 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlOZknb1UZLL-jIG_cMVb_rTvtzmXJqSrMXG9CcpDfs4LwE0_-iBlIavbnrx5fizu2h3aEGfz9Un6LJ3g26ihfij1kaQp3TxbRAKK5GiU6JOrHNlJ8MxFVypDfRZCH-zVyd7QYKADDaWjA15YZ-SD0nJBSo95pGNMO3yuEtoCeWY5gCBuvrMVdEG22IU0Qu04eVEpQZU8gmEWt0PiuOp_DOQOrqBxCpxEGXs__OBtFz6lDUEVPZ05u-lkTcZD4qkVDPmAGnxG3ZEU"/>
+<img alt="Staff" class="w-7 h-7 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbz-cPHGo5Nqai7EgBzS0uaXyrQF-H8IIkxL7xRGjkzP30R3HKrx1BqL9nMhZBPjRorrNR3lZZQSWpW-RaR5um6EX7Zcs-NzezrpGycjXTVyEiswyFF751gaxNMpiheZ9zNy4OpMdjjtG0TJKpZX-LkAm_ACD4BOftg2R95yge4gXwMxlRsVg7g59BZgdh0PsjseLpYlJ4qHLsYC8YLPPt7WFAfiXq6q3KzCqNPEbwGXEUwx-xeoD4tqGgFSCZurgbylqjAUW5YOU"/>
+<div class="w-7 h-7 rounded-full border-2 border-white bg-surface-container flex items-center justify-center text-[10px] font-bold">+4</div>
+</div>
+<span class="font-label-md text-label-md text-primary">6 Users</span>
+</div>
+</div>
+<!-- Inactive Role Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Senior Cashier</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Handle transactions, returns, and daily closing procedures.</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Staff" class="w-7 h-7 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_fVsZzP3ifjPd0N7MlkU-3v9UXiY1oCDusffhqwsMIhHeAg3pUWnbdxfXQqMNgt140Rgu4NsIL4ApwAVTsQtAMpzukg0wPw9NL-XAGKN8dtTFgXHObFhCroHkABRu4vMxPp0_kgaAxPEJ_Ivph-gyM-VenQg7-wtl_mC73vQ_zTdk-DY6d5oIfbnt0JyBO694BqCNzgGkHS1yNT8jpJwLvOh3Gq6QEE8kdLPbbPa3lbDphTTkeq1caoIned1LX_5LZH4vWF4lqLw"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">12 Users</span>
+</div>
+</div>
+<!-- Inactive Role Card -->
+<div class="bg-white border border-outline-variant rounded-xl p-md hover:border-secondary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-secondary transition-colors">Inventory Clerk</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Restock tracking, supplier communication, and audits.</p>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="Staff" class="w-7 h-7 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVCDySNeIbU6rDOK2Bh6Qdfmf4Hmcm3hEYK6U98fgp5EOC4dipuQALp62SH7WcrY_7HTlAzbk1wKwmzQAICxZpXiLTYgiVqHc32of72JRmFSseQIArJg40qX8XZ9kkMEvimpbwD7-U6pBakYi4G_4JxCn5DCq5DavqLfOiFeKGGAvTR3b4RRmt5hx4wTc-6RnPEOSgRYQNNlFamBBXH6bfEffmxqOkQXCsr4u32QrQbQqaG1QPnzKEuwctb3oDjEuS7GIDC3tFkT0"/>
+<img alt="Staff" class="w-7 h-7 rounded-full border-2 border-white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBR4-szxBladFGdrcU3rxJjAtxYTQd7F70_p1RGKkWlmnzrtI21W-z_IxP5KRHbBeo8o_aLdUGU57PkSkDiKl3t1reldVCkHuya2tEyKVlI_8y34LZ32N7b-Rde9cvnfOyVR1g6Xfni1t3N4q4cMrS_nmeZvvbiaK6Za8pDCEp8G-7xOUl62d3N2OeIlfT02Vm__jAjNe_I6ouCXBnmxE01YR4seTjkRhU0ne95Q23Kwva3mNW0kDRnHBBsuMtYwlWGovtv0J7XlHs"/>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant">2 Users</span>
+</div>
+</div>
+</div>
+<!-- Right: Permissions Matrix -->
+<div class="lg:col-span-8">
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="bg-surface-container p-md border-b border-outline-variant flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 bg-primary text-white flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<div>
+<h4 class="font-headline-sm text-headline-sm text-primary">Store Manager Matrix</h4>
+<p class="text-[12px] text-on-surface-variant font-medium">92 Permissions Enabled</p>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<button class="px-md py-1.5 border border-primary text-primary font-label-md text-label-md rounded hover:bg-surface-container-high transition-colors">Discard</button>
+<button class="px-md py-1.5 bg-primary text-white font-label-md text-label-md rounded hover:opacity-90 transition-opacity">Save Changes</button>
+</div>
+</div>
+<!-- Sectional Form -->
+<div class="p-lg space-y-xl h-[600px] overflow-y-auto custom-scrollbar">
+<!-- Financial & Transaction Module -->
+<div class="space-y-md">
+<div class="flex items-center space-x-2 border-l-4 border-secondary pl-3 py-1">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Financial &amp; Transactions</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md bg-surface-container-low rounded-lg border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Void Transactions</p>
+<p class="text-[12px] text-on-surface-variant">Allow user to delete line items</p>
+</div>
+<div class="relative inline-block w-10 h-5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-full h-full bg-outline-variant rounded-full peer-checked:bg-secondary transition-colors cursor-pointer"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+</div>
+</div>
+<div class="p-md bg-surface-container-low rounded-lg border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Apply Manual Discounts</p>
+<p class="text-[12px] text-on-surface-variant">Permission to override set prices</p>
+</div>
+<div class="relative inline-block w-10 h-5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-full h-full bg-outline-variant rounded-full peer-checked:bg-secondary transition-colors cursor-pointer"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+</div>
+</div>
+<div class="p-md bg-surface-container-low rounded-lg border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Cash Drawer Access</p>
+<p class="text-[12px] text-on-surface-variant">Open drawer without transaction</p>
+</div>
+<div class="relative inline-block w-10 h-5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-full h-full bg-outline-variant rounded-full peer-checked:bg-secondary transition-colors cursor-pointer"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+</div>
+</div>
+<div class="p-md bg-surface-container-low rounded-lg border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Refund Processing</p>
+<p class="text-[12px] text-on-surface-variant">Issue money back to customers</p>
+</div>
+<div class="relative inline-block w-10 h-5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-full h-full bg-outline-variant rounded-full peer-checked:bg-secondary transition-colors cursor-pointer"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Inventory Management Module -->
+<div class="space-y-md">
+<div class="flex items-center space-x-2 border-l-4 border-tertiary-fixed-dim pl-3 py-1">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Inventory Control</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md bg-white rounded-lg border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Modify Stock Counts</p>
+<p class="text-[12px] text-on-surface-variant">Manually adjust inventory numbers</p>
+</div>
+<div class="relative inline-block w-10 h-5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-full h-full bg-outline-variant rounded-full peer-checked:bg-secondary transition-colors cursor-pointer"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+</div>
+</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Manage Suppliers</p>
+<p class="text-[12px] text-on-surface-variant">Add or edit supplier contact info</p>
+</div>
+<div class="relative inline-block w-10 h-5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-full h-full bg-outline-variant rounded-full peer-checked:bg-secondary transition-colors cursor-pointer"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Staff & Reporting Module -->
+<div class="space-y-md">
+<div class="flex items-center space-x-2 border-l-4 border-primary pl-3 py-1">
+<span class="font-label-md text-label-md text-on-surface uppercase tracking-widest">Staff &amp; Analytics</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md bg-white rounded-lg border border-outline-variant flex items-center justify-between opacity-60">
+<div>
+<p class="font-label-md text-label-md text-on-surface">View Payroll Data</p>
+<p class="text-[12px] text-on-surface-variant">Access sensitive employee pay rates</p>
+</div>
+<div class="relative inline-block w-10 h-5">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-full h-full bg-outline-variant rounded-full peer-checked:bg-secondary transition-colors cursor-pointer"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+</div>
+</div>
+<div class="p-md bg-white rounded-lg border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface">Generate End-of-Day</p>
+<p class="text-[12px] text-on-surface-variant">Run daily sales and reconciliations</p>
+</div>
+<div class="relative inline-block w-10 h-5">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-full h-full bg-outline-variant rounded-full peer-checked:bg-secondary transition-colors cursor-pointer"></div>
+<div class="absolute left-1 top-1 w-3 h-3 bg-white rounded-full transition-transform peer-checked:translate-x-5"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Management Section Info -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-full mb-md text-primary">
+<span class="material-symbols-outlined">history</span>
+</div>
+<h5 class="font-headline-sm text-headline-sm mb-xs">Audit Logs</h5>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Every permission change is tracked for compliance and security auditing.</p>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">View History <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-full mb-md text-primary">
+<span class="material-symbols-outlined">sync_alt</span>
+</div>
+<h5 class="font-headline-sm text-headline-sm mb-xs">Role Sync</h5>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Changes to 'Store Manager' will automatically propagate to all 6 assigned users.</p>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">Manage Syncing <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+<div class="bg-white p-lg border border-outline-variant rounded-xl flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-full mb-md text-primary">
+<span class="material-symbols-outlined">safety_check</span>
+</div>
+<h5 class="font-headline-sm text-headline-sm mb-xs">Policy Lock</h5>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Critical system permissions are locked by global administrator policy.</p>
+<a class="text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline" href="#">Policy Details <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+</div>
+</div>
+</section>
+</main>
+<!-- Mobile Bottom Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant shadow-sm flex justify-around items-center h-16 px-4">
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-150">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for the switches
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const parent = e.target.closest('.p-md');
+                if (e.target.checked) {
+                    parent.style.opacity = '1';
+                } else {
+                    parent.style.opacity = '0.6';
+                }
+            });
+        });
+
+        // Simple scroll indicator for the matrix
+        const scrollContainer = document.querySelector('.custom-scrollbar');
+        if (scrollContainer) {
+            scrollContainer.addEventListener('scroll', () => {
+                // Potential logic for adding a shadow at top/bottom when scrolling
+            });
+        }
+    </script>
+</body></html>

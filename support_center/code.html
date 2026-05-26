@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sav.pos - Support Center</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001c38",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary-container": "#00b47d",
+                        "on-surface-variant": "#44474e",
+                        "tertiary": "#000b05",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-background": "#191c1e",
+                        "surface-container": "#eceef0",
+                        "on-tertiary-fixed": "#002113",
+                        "secondary-fixed": "#d3e4ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "primary": "#00091b",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary": "#1960a3",
+                        "error-container": "#ffdad6",
+                        "surface-dim": "#d8dadc",
+                        "inverse-primary": "#aec7f5",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "outline-variant": "#c4c6cf",
+                        "background": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#465f87",
+                        "surface-bright": "#f7f9fb",
+                        "primary-container": "#002045",
+                        "on-surface": "#191c1e",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "error": "#ba1a1a",
+                        "outline": "#74777f",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-primary-container": "#7089b3",
+                        "on-primary-fixed": "#001b3c",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "on-error-container": "#93000a",
+                        "tertiary-container": "#002617",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-secondary-container": "#00477f",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#7db6ff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
+                        "headline-lg": ["30px", { "lineHeight": "36px", "fontWeight": "600" }],
+                        "display-price": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["18px", { "lineHeight": "26px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .active-pill {
+            view-transition-name: active-pill;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-50 w-full bg-surface dark:bg-primary shadow-sm border-b border-outline-variant/10">
+<div class="flex items-center justify-between px-md py-xs w-full max-w-7xl mx-auto h-16">
+<div class="flex items-center gap-md">
+<button aria-label="Menu" class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-high dark:hover:bg-primary-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">menu</span>
+</button>
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed font-bold text-headline-md" style="font-variation-settings: 'FILL' 1;">spa</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed tracking-tight">Sav.pos</h1>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button aria-label="Search" class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-high dark:hover:bg-primary-container transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<div class="w-10 h-10 rounded-full border-2 border-primary-container overflow-hidden active:scale-95 transition-transform cursor-pointer">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a corporate executive woman in a high-end office environment. She is wearing a sharp, dark navy blazer that complements the premium Sav.pos brand colors. The background is softly blurred, showing a modern, glass-walled office with warm, sophisticated architectural lighting. The overall mood is confident, clean, and representative of elite hospitality management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoCg5zfy-l7qVxzXtI-KKOT6k3E6rIARGcLfqKNK2Y0NqSKoPFjJwY_vWQJsw2TndFxXzhJ1h4_fKsgdo-9tu8NjzVu7sJG9_Bv86AnC3Yh4TXXkC5T-ZwnxL0RTE8RsSDH11MfQGMwaOtQzWnjMca-iPDV4S5rG0-FjVB728BEawsRv__1f4I0wIy1ulj974gz6BBlbGBJKfowGTFCZ-gLNPToSm_6cn7X-C01skbov6KO_rNJ5n89UyHfy_mYNyHe2jsRkqZAQ8"/>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-grow w-full max-w-md mx-auto px-md py-lg space-y-xl animate-in fade-in slide-in-from-bottom-4 duration-700">
+<!-- Hero Section -->
+<section class="space-y-sm text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary tracking-tight">How can we help you?</h2>
+<p class="text-on-surface-variant font-body-md px-md">Our support team is available 24/7 to ensure your hospitality business runs without a hitch.</p>
+</section>
+<!-- Search Bar -->
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-14 pl-12 pr-4 rounded-xl border-none bg-surface-container-lowest shadow-sm ring-1 ring-outline-variant/30 focus:ring-2 focus:ring-primary transition-all font-body-md" placeholder="Search for help articles..." type="text"/>
+</div>
+<!-- Support Channels (Bento Style) -->
+<section class="grid grid-cols-2 gap-md">
+<!-- Live Chat -->
+<button class="col-span-2 flex items-center justify-between p-lg rounded-2xl bg-primary-container text-on-primary shadow-md active:scale-95 transition-all group overflow-hidden relative">
+<div class="z-10 text-left">
+<h3 class="font-headline-md text-on-primary-fixed mb-1">Live Chat</h3>
+<p class="text-on-primary-container text-label-md font-label-md">Typical reply: &lt; 2 mins</p>
+</div>
+<div class="z-10 w-12 h-12 bg-on-primary-fixed-variant/20 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+<div class="absolute -right-4 -bottom-4 w-32 h-32 bg-on-primary-fixed-variant/10 rounded-full blur-3xl group-hover:scale-150 transition-transform duration-500"></div>
+</button>
+<!-- Email Support -->
+<button class="flex flex-col gap-sm p-lg rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/20 active:scale-95 transition-all text-left">
+<div class="w-10 h-10 bg-secondary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">mail</span>
+</div>
+<div>
+<h3 class="font-headline-md text-primary">Email</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm">In-depth support</p>
+</div>
+</button>
+<!-- Community -->
+<button class="flex flex-col gap-sm p-lg rounded-2xl bg-surface-container-lowest shadow-sm border border-outline-variant/20 active:scale-95 transition-all text-left">
+<div class="w-10 h-10 bg-tertiary-fixed/30 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant">groups</span>
+</div>
+<div>
+<h3 class="font-headline-md text-primary">Forum</h3>
+<p class="text-on-surface-variant text-label-sm font-label-sm">Expert community</p>
+</div>
+</button>
+</section>
+<!-- FAQ Section -->
+<section class="space-y-md pb-24">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-primary">FAQ Categories</h3>
+<button class="text-secondary font-label-md text-label-md hover:underline transition-all">View all</button>
+</div>
+<div class="space-y-sm">
+<!-- FAQ Item: Booking -->
+<div class="p-md rounded-xl bg-surface-container-low border border-outline-variant/10 flex items-center gap-md cursor-pointer hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 flex-shrink-0 bg-white rounded-lg shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">event_available</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md font-semibold text-primary">Booking Issues</h4>
+<p class="text-on-surface-variant text-label-sm font-label-sm">Cancellations, rescheduling, sync</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- FAQ Item: Payments -->
+<div class="p-md rounded-xl bg-surface-container-low border border-outline-variant/10 flex items-center gap-md cursor-pointer hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 flex-shrink-0 bg-white rounded-lg shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">payments</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md font-semibold text-primary">Payments</h4>
+<p class="text-on-surface-variant text-label-sm font-label-sm">Refunds, invoicing, terminals</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+<!-- FAQ Item: Membership -->
+<div class="p-md rounded-xl bg-surface-container-low border border-outline-variant/10 flex items-center gap-md cursor-pointer hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 flex-shrink-0 bg-white rounded-lg shadow-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">star</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-body-md font-semibold text-primary">Membership</h4>
+<p class="text-on-surface-variant text-label-sm font-label-sm">Tier benefits, loyalty points</p>
+</div>
+<span class="material-symbols-outlined text-outline">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-sm pb-safe bg-surface-container-low dark:bg-primary-container shadow-lg rounded-t-xl md:hidden">
+<!-- Help Tab (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 transition-transform scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">help_outline</span>
+<span class="font-label-md text-label-md">Help</span>
+</a>
+<!-- Contact Support Tab (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container/70 hover:bg-surface-variant dark:hover:bg-on-primary-fixed-variant transition-all scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic for accordion-like feel or smooth entry
+        document.addEventListener('DOMContentLoaded', () => {
+            const faqItems = document.querySelectorAll('.cursor-pointer');
+            faqItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    item.classList.add('scale-98');
+                    setTimeout(() => item.classList.remove('scale-98'), 100);
+                });
+            });
+        });
+    </script>
+</body></html>

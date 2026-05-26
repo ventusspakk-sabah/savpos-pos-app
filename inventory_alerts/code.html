@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#003e28",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-secondary-container": "#00477f",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-container": "#00b47d",
+                        "on-secondary-fixed": "#001c38",
+                        "primary-container": "#1a365d",
+                        "surface-tint": "#455f88",
+                        "on-primary-fixed": "#001b3c",
+                        "on-surface-variant": "#43474e",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-dim": "#d8dadc",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "background": "#f7f9fb",
+                        "outline": "#74777f",
+                        "on-surface": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#002617",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-primary-container": "#86a0cd",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "primary": "#002045",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#1960a3",
+                        "inverse-primary": "#adc7f7",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed-variant": "#004881"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- Top App Bar -->
+<header class="bg-surface dark:bg-background shadow-sm docked full-width top-0 sticky z-50">
+<div class="flex justify-between items-center px-md h-touch-target-min w-full max-w-full">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary dark:text-inverse-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex items-center justify-center w-touch-target-min h-touch-target-min rounded-full hover:bg-surface-container-low transition-transform active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</div>
+</div>
+</header>
+<main class="px-md mt-md space-y-md">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">庫存管理</h2>
+<p class="text-on-surface-variant text-label-md font-label-md">124 Items in catalog</p>
+</div>
+<button class="mr-xs border border-outline text-on-surface px-md h-touch-target-min rounded-lg flex items-center gap-xs font-semibold active:scale-95 transition-all"><span class="material-symbols-outlined" data-icon="edit_square">edit_square</span><span>Bulk Actions</span></button><button class="bg-[#10b981] text-white px-md h-touch-target-min rounded-lg flex items-center gap-xs font-semibold shadow-sm active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+<span>Add New</span>
+</button>
+</div>
+<!-- Controls -->
+<div class="flex gap-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="w-full h-touch-target-min pl-xl pr-md bg-surface-container-lowest border border-outline-variant rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all" placeholder="Search products or SKU..." type="text"/>
+<button class="absolute right-sm top-1/2 -translate-y-1/2 text-primary"><span class="material-symbols-outlined bg-primary text-white p-1 rounded-md text-[20px]" data-icon="barcode_scanner">barcode_scanner</span></button>
+</div>
+<button class="w-touch-target-min h-touch-target-min flex items-center justify-center bg-surface-container-lowest border border-outline-variant rounded-xl active:scale-95 transition-all">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+<!-- Inventory List -->
+<div class="space-y-sm">
+<!-- Item 1: Low Stock Warning -->
+<div class="bg-surface-container-lowest rounded-xl p-sm shadow-sm border-l-4 border-error flex gap-md items-center flex-col sm:flex-row">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A professional studio product photograph of a bright red athletic sneaker against a clean, minimalist white background. The lighting is soft and even, highlighting the texture of the mesh and the sleek curves of the sole. The image is crisp and modern, fitting a high-end corporate retail application with a clean blue and white aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdn5mvgNqWIyPIVpg8mMwvGkKGqggSYYqzPy07ezEvgfS1b-P-QPfX1crVMzD4L5Zp6wBum9yV3JwbJKo5iY8OsIvnhgQDO90WqnS7GTZXfbWwCkJ-NC2xBarN_C9DQ_s1GDEeMoly5-lk-y3Ay1KY9FsiAfkW9is-45MAhZtZlBWWOoLt_gfsp2Is8l3mHiNyM5DByaloyVW4u5yH2MPXjgWFU_M4gs_OBeCixrdWYJ9qfpZXSsLMxxlhttzuRbjc7uDKEOBqIKo"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md truncate">Air Zoom Max</h3>
+<span class="font-label-md text-label-md text-primary font-bold">$129.00</span>
+</div>
+<p class="text-label-sm font-label-sm text-outline">SKU: AZM-00912</p>
+<div class="flex items-center gap-xs mt-xs">
+<span class="px-xs py-[2px] bg-error-container text-on-error-container text-[10px] font-bold rounded uppercase">Low Stock</span>
+<span class="text-label-sm font-label-sm text-on-error-container">Only 3 left</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs flex-row w-full justify-end">
+<button class="h-8 px-sm bg-primary text-white rounded text-label-sm font-label-sm active:scale-95 transition-all flex-1">Restock</button>
+<button class="h-8 px-sm border border-outline text-on-surface rounded text-label-sm font-label-sm active:scale-95 transition-all flex-1">Edit</button>
+</div>
+</div>
+<!-- Item 2: Normal Stock -->
+<div class="bg-surface-container-lowest rounded-xl p-sm shadow-sm flex gap-md items-center border-l-4 border-error flex-col sm:flex-row">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A luxury silver wristwatch positioned elegantly on a white marble surface. The lighting is sophisticated, with gentle shadows and highlights that emphasize the metallic finish. The overall mood is one of precision and reliability, consistent with a professional financial management application's visual language." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzzS1rBON_ZZ28aCddMqkq8RBzYNtvk7-q1AzTm_MdPNt8WDrxfDPO5Cf_MMbJ5gDA8Hru48uJlbOvcuT6-3Lai6Q4RYA91k5V309RXwS5eT0kaBWBcKjgJFdokSMi-vLcH-8C6ijXl1jB1gtOkFgJr6t80mb0yxadNlgKtTZjgiiHYbQ0CFwEpjb_2WrwCMzIzkAPTOkxIWq56oJcYr0O1QEzyXNvf1uvMK9lbN6rAY0gvZ8BMWL5TJzxosY7a52lMTLvj1lzk3w"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md truncate">Classic Silver Watch</h3>
+<span class="font-label-md text-label-md text-primary font-bold">$295.00</span>
+</div>
+<p class="text-label-sm font-label-sm text-outline">SKU: CSW-88210</p>
+<div class="flex items-center gap-xs mt-xs">
+<span class="px-xs py-[2px] bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase">In Stock</span>
+<span class="text-label-sm font-label-sm text-outline">42 Units</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs flex-row w-full justify-end">
+<button class="h-8 px-sm border border-outline text-on-surface rounded text-label-sm font-label-sm active:scale-95 transition-all flex-1">Restock</button>
+<button class="h-8 px-sm border border-outline text-on-surface rounded text-label-sm font-label-sm active:scale-95 transition-all flex-1">Edit</button>
+</div>
+</div>
+<!-- Item 3: Moderate Stock -->
+<div class="bg-surface-container-lowest rounded-xl p-sm shadow-sm flex gap-md items-center border-l-4 border-error flex-col sm:flex-row">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Professional over-ear wireless headphones in matte black finish, presented in a sleek digital catalog style. The background is a soft neutral grey, providing high contrast. The image conveys high-tech quality and modern minimalism, maintaining a consistent aesthetic for a high-efficiency retail tool." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm8i3-qF3a3itQjBPMO6k5tokWpMbKvkeFC78qyG_jZto0ahNdNC6v0xQ3UJjiZX30ZC7FIFNuRMAxqvc6mL-W7IDK3gJmuDp558FXrcRD77QQVJw_RwG6Yn2Zi1coHSU9OlpPDOvmIRLYcJ_d0qp_HVO0MNg4tyTF1y9Zpzndo0NjhRIArNvx_rVbeLhdVzrFXINrNn7vk_RspOILCT9fRswH-EzM2945ybW7U_8oxlgPmdKYXUR8v8CXcdwdECUyXzaHL3N2BMI"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md truncate">Studio Headphones</h3>
+<span class="font-label-md text-label-md text-primary font-bold">$189.90</span>
+</div>
+<p class="text-label-sm font-label-sm text-outline">SKU: SHP-44002</p>
+<div class="flex items-center gap-xs mt-xs">
+<span class="px-xs py-[2px] bg-tertiary-container text-tertiary-fixed text-[10px] font-bold rounded uppercase">In Stock</span>
+<span class="text-label-sm font-label-sm text-outline">12 Units</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs flex-row w-full justify-end">
+<button class="h-8 px-sm border border-outline text-on-surface rounded text-label-sm font-label-sm active:scale-95 transition-all flex-1">Restock</button>
+<button class="h-8 px-sm border border-outline text-on-surface rounded text-label-sm font-label-sm active:scale-95 transition-all flex-1">Edit</button>
+</div>
+</div>
+<!-- Item 4: Out of Stock -->
+<div class="bg-surface-container-lowest rounded-xl p-sm shadow-sm border-l-4 border-error opacity-75 flex gap-md items-center flex-col sm:flex-row">
+<div class="w-16 h-16 rounded-lg bg-surface-container overflow-hidden flex-shrink-0 grayscale">
+<img class="w-full h-full object-cover" data-alt="Minimalist ceramic desk lamp with a warm wooden base, shown in a bright contemporary office setting. The lighting is soft morning sunlight coming from a window. The style is clean corporate minimalism with high quality whitespace, emphasizing clarity and order for an inventory management UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCNTEp5qaIgkBTrds4l5zdPthIdtzsrt3QIE_8WDGdAakARh0gCJdl58KUQ1cqvLiT79xUhGgFtEN2HmitH6WM7jHk7DFwxkxsTWvUYt19Zcy8wXW7aKmxAtFqMtnUOEQ6GIn0vvtsWbY-SBaj7rC5TdShlXWgbRg9aLTPDvBiq1RUs5_-Gr5BvuAmON5mpnOC3TFi3xAzUl-NgiVw0qgNelDzKROYLeHbVwCwQtjtM9yUL9I6AYXHikotO0T9R42bfP2eVWxTDiT0"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-headline-md text-headline-md truncate">Eco Desk Lamp</h3>
+<span class="font-label-md text-label-md text-primary font-bold">$54.00</span>
+</div>
+<p class="text-label-sm font-label-sm text-outline">SKU: EDL-11200</p>
+<div class="flex items-center gap-xs mt-xs">
+<span class="px-xs py-[2px] bg-error text-white text-[10px] font-bold rounded uppercase">Out of Stock</span>
+</div>
+</div>
+<div class="flex flex-col gap-xs flex-row w-full justify-end">
+<button class="h-8 px-sm bg-error text-white rounded text-label-sm font-label-sm active:scale-95 transition-all flex-1">Restock</button>
+<button class="h-8 px-sm border border-outline text-on-surface rounded text-label-sm font-label-sm active:scale-95 transition-all flex-1">Edit</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface dark:bg-surface-container-lowest rounded-t-lg shadow-lg">
+<!-- Sale -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-xs hover:text-primary dark:hover:text-inverse-primary transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm">Sale</span>
+</button>
+<!-- Stock (Active) -->
+<button class="flex flex-col items-center justify-center bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-full px-lg py-xs active:scale-95 transition-all">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="text-label-sm font-label-sm">Stock</span>
+</button>
+<!-- Reports -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-xs hover:text-primary dark:hover:text-inverse-primary transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-sm font-label-sm">Reports</span>
+</button>
+<!-- History -->
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-xs hover:text-primary dark:hover:text-inverse-primary transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm">History</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

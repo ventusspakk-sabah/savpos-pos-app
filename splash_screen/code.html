@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#00477f",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary": "#1960a3",
+                        "on-secondary-fixed": "#001c38",
+                        "primary-fixed-dim": "#aec7f5",
+                        "primary-container": "#002045",
+                        "tertiary-container": "#002617",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "on-background": "#191c1e",
+                        "outline-variant": "#c4c6cf",
+                        "on-error-container": "#93000a",
+                        "outline": "#74777f",
+                        "inverse-surface": "#2d3133",
+                        "surface-container": "#eceef0",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "surface-tint": "#465f87",
+                        "surface-dim": "#d8dadc",
+                        "primary": "#00091b",
+                        "on-surface-variant": "#44474e",
+                        "on-primary-container": "#7089b3",
+                        "tertiary-fixed": "#b6efcf",
+                        "tertiary": "#000b05",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "surface-container-high": "#e6e8ea",
+                        "surface": "#f7f9fb",
+                        "background": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "on-tertiary-container": "#00b47d",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "surface-bright": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#e0e3e5",
+                        "on-error": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#aec7f5",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "touch-target-min": "44px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "display-price": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.1); opacity: 0.6; }
+        }
+        .animate-breathe {
+            animation: breathe 3s ease-in-out infinite;
+        }
+        .logo-glow {
+            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.1));
+        }
+        .glass-finish {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 100%);
+            backdrop-filter: blur(10px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-primary-container text-on-primary selection:bg-on-primary-container selection:text-white overflow-hidden">
+<!-- Splash Screen Container -->
+<main class="relative h-screen w-full flex flex-col items-center justify-center overflow-hidden">
+<!-- Background Atmospheric Element -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] bg-on-secondary-container/10 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-on-primary-fixed-variant/10 rounded-full blur-[100px]"></div>
+</div>
+<!-- Center Brand Identity -->
+<div class="relative z-10 flex flex-col items-center gap-xl transition-all duration-1000 ease-out" id="brand-center">
+<!-- Breathing Light Ring behind Logo -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-on-primary/10 animate-breathe"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-on-primary/5 animate-breathe" style="animation-delay: 1s;"></div>
+<!-- Logo Section -->
+<div class="relative group">
+<div class="flex items-center gap-sm logo-glow">
+<div class="w-16 h-16 flex items-center justify-center bg-on-primary rounded-xl shadow-2xl transform transition-transform group-hover:scale-105 duration-500">
+<span class="material-symbols-outlined text-primary-container text-[40px]" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div class="flex flex-col">
+<h1 class="font-headline-md text-headline-md font-black tracking-tighter text-on-primary leading-none">Sav.pos</h1>
+<p class="font-label-sm text-label-sm tracking-widest text-on-primary-container uppercase mt-1">Boutique Intelligence</p>
+</div>
+</div>
+</div>
+<!-- Elegant Loading Indicator -->
+<div class="mt-xl flex flex-col items-center">
+<div class="relative w-12 h-12">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90">
+<circle class="text-white/10" cx="24" cy="24" fill="none" r="20" stroke="currentColor" stroke-width="2"></circle>
+<circle class="text-on-primary-container transition-all duration-1000 ease-linear" cx="24" cy="24" fill="none" id="loading-circle" r="20" stroke="currentColor" stroke-dasharray="126" stroke-dashoffset="126" stroke-width="2"></circle>
+</svg>
+</div>
+</div>
+</div>
+<!-- Bottom Branding -->
+<div class="absolute bottom-xl flex flex-col items-center gap-xs opacity-80" id="footer-branding">
+<span class="font-label-sm text-label-sm text-on-primary-container/80 tracking-widest uppercase">Powered by Sav.pos</span>
+<div class="flex items-center gap-xs text-white/20">
+<div class="w-1 h-1 rounded-full bg-current"></div>
+<div class="w-1 h-1 rounded-full bg-current"></div>
+<div class="w-1 h-1 rounded-full bg-current"></div>
+</div>
+</div>
+<!-- Visual High-End Imagery Background Overlay -->
+<div class="absolute inset-0 z-0 opacity-10 mix-blend-overlay pointer-events-none">
+<img class="w-full h-full object-cover" data-alt="A sophisticated, high-end retail environment captured in soft-focus photography. The scene showcases minimalist luxury boutique interiors with clean lines, high-contrast shadows, and a palette of deep navy blues and pristine whites. Subtle reflections on glass surfaces and elegant architectural lighting create an atmosphere of premium service and technological precision, perfectly aligning with the Sav.pos brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9K2UCtUJ3yo1yyeSS37G-9dwp65lj7Jd6ZjMK6TedcKhdK94v_ApvIvWFXPwo5B_xR5lSmXlAJ_6xogK4Uue1YKkNyd2wFJjlrj9i4v9qwDBmD0w2LHHgezEdyEg_ghLRWonoVOwIGidr1whBiKlUjTgrnb40niAHZuVwyt6t1PcBAwmEQ0fHnRrqzqGblSzDQCs9TewsY6WnoNs-OJyEsup54pTDwJHBAUFWnvZxd306ZxfzuQOPxx64M4p5r0SamSTAcMYnoyw"/>
+</div>
+</main>
+<script>
+        // Simulate loading progress
+        const circle = document.getElementById('loading-circle');
+        const radius = 20;
+        const circumference = 2 * Math.PI * radius;
+        let progress = 0;
+
+        function updateProgress() {
+            if (progress >= 100) {
+                // Flash finish effect
+                circle.classList.add('scale-110', 'opacity-0');
+                setTimeout(() => {
+                    progress = 0;
+                    circle.classList.remove('scale-110', 'opacity-0');
+                    updateProgress();
+                }, 500);
+                return;
+            }
+            
+            progress += Math.random() * 5;
+            if (progress > 100) progress = 100;
+            
+            const offset = circumference - (progress / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+            
+            setTimeout(updateProgress, 100 + Math.random() * 200);
+        }
+
+        // Start loading simulation
+        setTimeout(updateProgress, 500);
+
+        // Entrance animation
+        window.addEventListener('DOMContentLoaded', () => {
+            const center = document.getElementById('brand-center');
+            const footer = document.getElementById('footer-branding');
+            
+            center.style.opacity = '0';
+            center.style.transform = 'translateY(20px)';
+            footer.style.opacity = '0';
+            
+            requestAnimationFrame(() => {
+                center.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+                footer.style.transition = 'opacity 1s ease-out 0.5s';
+                center.style.opacity = '1';
+                center.style.transform = 'translateY(0)';
+                footer.style.opacity = '0.6';
+            });
+        });
+    </script>
+</body></html>

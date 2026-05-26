@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "on-surface-variant": "#44474e",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-secondary-fixed": "#001c38",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#5d9377",
+                        "surface-tint": "#465f87",
+                        "secondary": "#1960a3",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-primary-container": "#7089b3",
+                        "inverse-surface": "#2d3133",
+                        "surface-dim": "#d8dadc",
+                        "surface-container": "#eceef0",
+                        "secondary-container": "#7db6ff",
+                        "primary": "#00091b",
+                        "outline": "#74777f",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-container": "#002617",
+                        "on-secondary-container": "#00477f",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#002045",
+                        "inverse-primary": "#aec7f5",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c4c6cf",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary": "#000b05",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary-fixed": "#001b3c",
+                        "inverse-on-surface": "#eff1f3",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-background": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "lg": "24px",
+                        "sm": "12px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "md": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            font-variation-settings: 'FILL' 1;
+        }
+        .glass-badge {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px theme('colors.primary');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-fixed-dim">
+<!-- Top App Bar (Shared Component) -->
+<header class="w-full top-0 sticky bg-surface dark:bg-background shadow-sm flex justify-between items-center px-lg h-touch-target-min w-full z-40">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="spa">spa</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Vsevice POS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-md py-xs rounded-full text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+<span class="font-label-md text-label-md">Search</span>
+</button>
+<div class="w-touch-target-min h-touch-target-min rounded-full overflow-hidden border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a boutique spa manager in a clean, minimalist studio setting. The lighting is soft and even, highlighting a sophisticated and calm professional demeanor. The color palette is composed of soft whites, neutral greys, and a touch of deep navy blue, reflecting a modern corporate aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLibDzmBliMkg-StqRoKHNbMX7rpEpTPzB_da-iniL7-CcRFhtaJTN_BBaEt5h4j9xFggV4SrMfOJBqIBKp_7WLLBO1YMRZHQYTYZkwI6knysDRL8201hQrf97cA4PhNkaTMH1RXHtcG7PeUHzjOAu3RVmQJAZQ7mKD6tPLFAGg9Lz1ePYOghHWSqXRVqnk4QLPTSw-v-ETtOZSgy9SVSPpwnKNr_ThrwxbZB_EPOEJvhItvCE5ru5Cm5FRONJKcBo3srNqMHrMbQ"/>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-md lg:px-lg py-xl mb-32">
+<!-- Configuration Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<nav class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="font-label-sm text-label-sm">Services</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="chevron_right">chevron_right</span>
+<span class="font-label-sm text-label-sm">Configurations</span>
+</nav>
+<h2 class="font-headline-lg text-headline-lg text-primary">Body Oil Massage</h2>
+<p class="text-on-surface-variant font-body-md">Configure commission distribution rules for this service.</p>
+</div>
+<div class="flex gap-sm">
+<button class="px-lg h-touch-target-min rounded-xl bg-surface-container-high text-on-surface font-label-md hover:bg-surface-variant/70 transition-all active:scale-95">
+                    Discard
+                </button>
+<button class="px-lg h-touch-target-min rounded-xl bg-tertiary-container text-tertiary-fixed font-bold flex items-center gap-xs hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="save">save</span>
+                    Save Configuration
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Rule Selection & Basic Allocation -->
+<div class="lg:col-span-8 space-y-lg">
+<!-- Rule Type Selector -->
+<section class="p-lg bg-surface-container-lowest rounded-xl shadow-sm">
+<h3 class="font-headline-md text-headline-md mb-lg">Rule Type</h3>
+<div class="flex flex-wrap gap-md">
+<button class="flex-1 min-w-[140px] p-md rounded-xl border-2 border-primary-fixed bg-primary-fixed/10 text-primary transition-all flex flex-col items-center gap-sm" id="tab-fixed" onclick="switchTab('fixed')">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-label-md">Fixed Amount</span>
+</button>
+<button class="flex-1 min-w-[140px] p-md rounded-xl border-2 border-transparent bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-all flex flex-col items-center gap-sm" id="tab-percentage" onclick="switchTab('percentage')">
+<span class="material-symbols-outlined" data-icon="percent">percent</span>
+<span class="font-label-md">Percentage</span>
+</button>
+<button class="flex-1 min-w-[140px] p-md rounded-xl border-2 border-transparent bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-all flex flex-col items-center gap-sm" id="tab-tiered" onclick="switchTab('tiered')">
+<span class="material-symbols-outlined" data-icon="layers">layers</span>
+<span class="font-label-md">Tiered Table</span>
+</button>
+</div>
+</section>
+<!-- Role Allocation -->
+<section class="p-lg bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md">Role Allocation</h3>
+<span class="bg-secondary-container text-on-secondary-container px-sm py-base rounded-full font-label-sm" id="allocation-unit">Unit: USD</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-sm">
+<label class="block font-label-md text-on-surface-variant">Technician</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="engineering">engineering</span>
+<input class="w-full h-touch-target-min pl-xl pr-md bg-surface-container-low rounded-lg font-body-md" type="number" value="25.00"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-md text-on-surface-variant">Agent (External)</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="handshake">handshake</span>
+<input class="w-full h-touch-target-min pl-xl pr-md bg-surface-container-low rounded-lg font-body-md" type="number" value="10.00"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-md text-on-surface-variant">Staff / Reception</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="person">person</span>
+<input class="w-full h-touch-target-min pl-xl pr-md bg-surface-container-low rounded-lg font-body-md" type="number" value="5.00"/>
+</div>
+</div>
+<div class="space-y-sm">
+<label class="block font-label-md text-on-surface-variant">Backup Fund</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="account_balance_wallet">account_balance_wallet</span>
+<input class="w-full h-touch-target-min pl-xl pr-md bg-surface-container-low rounded-lg font-body-md" type="number" value="2.50"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Tiered Table (Dynamic) -->
+<section class="hidden p-lg bg-surface-container-lowest rounded-xl shadow-sm border-2 border-tertiary-fixed/30 overflow-hidden" id="tiered-section">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md">Tiered Rate Table</h3>
+<button class="text-secondary font-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span> Add Tier
+                        </button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="text-on-surface-variant font-label-md border-b border-outline-variant">
+<th class="pb-sm px-md">Monthly Volume Range</th>
+<th class="pb-sm px-md">Tech Rate (%)</th>
+<th class="pb-sm px-md">Staff Rate (%)</th>
+<th class="pb-sm px-md">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-md">
+<tr class="border-b border-surface-container">
+<td class="py-md px-md">$0 - $5,000</td>
+<td class="py-md px-md">15%</td>
+<td class="py-md px-md">2%</td>
+<td class="py-md px-md">
+<button class="material-symbols-outlined text-outline hover:text-error transition-colors" data-icon="delete">delete</button>
+</td>
+</tr>
+<tr class="border-b border-surface-container bg-surface-container-low/30">
+<td class="py-md px-md">$5,001 - $10,000</td>
+<td class="py-md px-md">18%</td>
+<td class="py-md px-md">3%</td>
+<td class="py-md px-md">
+<button class="material-symbols-outlined text-outline hover:text-error transition-colors" data-icon="delete">delete</button>
+</td>
+</tr>
+<tr>
+<td class="py-md px-md">$10,001+</td>
+<td class="py-md px-md">22%</td>
+<td class="py-md px-md">5%</td>
+<td class="py-md px-md">
+<button class="material-symbols-outlined text-outline hover:text-error transition-colors" data-icon="delete">delete</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+<!-- Right Column: Summary & Preview -->
+<aside class="lg:col-span-4 space-y-lg">
+<div class="p-lg bg-primary-container text-on-primary-fixed rounded-xl shadow-lg sticky top-28">
+<h3 class="font-headline-md text-headline-md mb-lg">Live Preview</h3>
+<div class="space-y-md">
+<div class="flex justify-between items-center py-sm border-b border-on-primary-fixed-variant/30">
+<span class="font-label-md opacity-80">Service Base Price</span>
+<span class="font-headline-md text-white">$120.00</span>
+</div>
+<div class="space-y-sm pt-md">
+<div class="flex justify-between text-body-md">
+<span>Technician Payout</span>
+<span class="font-bold text-tertiary-fixed">$25.00</span>
+</div>
+<div class="flex justify-between text-body-md">
+<span>Total Commissions</span>
+<span class="font-bold">$42.50</span>
+</div>
+</div>
+<div class="mt-xl p-md bg-white/10 rounded-lg border border-white/5 backdrop-blur-sm">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="trending_up">trending_up</span>
+<span class="font-label-sm">Profit Margin Analysis</span>
+</div>
+<div class="h-2 w-full bg-white/20 rounded-full overflow-hidden">
+<div class="h-full bg-tertiary-fixed w-[65%]"></div>
+</div>
+<div class="flex justify-between mt-sm font-label-sm">
+<span>Net Margin: 64.5%</span>
+<span>$77.50</span>
+</div>
+</div>
+</div>
+<div class="mt-lg rounded-lg overflow-hidden relative group">
+<img class="w-full h-40 object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A luxurious body oil massage setting in a high-end boutique spa. The lighting is low and warm, creating a serene and sophisticated atmosphere. High-quality essential oil bottles sit on a dark wooden tray with fresh towels. The scene is clean, modern, and evokes a premium service experience with a muted color palette of deep browns, soft creams, and golden accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYQuxKoVE82qG-1zZsD7r-Vm4vrW8DXr2KuO4Bk9uxuJqavzZtHHZCIglR8pei15oRMUGx3PYavFQSZ9MIwFuAOkgFHizXiyVcDoryqX3frRwulPXeGdRuQF7AhLvcZWSFBIIMYYRCiSjUzmSnDOcB9YjiWjUAVSVdqmCE-GsaYKvsc2ubO4npdfMTHf-mmue_2bcnULIQ-0SayIIMWYLfpfs4DPK5qhlfceuTJ3EzHLzAqcSsFV-1hNGyVbZir8Ph-QpDSIJGBn4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container to-transparent opacity-60"></div>
+<div class="absolute bottom-md left-md">
+<span class="glass-badge px-sm py-base rounded-full font-label-sm text-primary">Preview Service</span>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Shared Component) -->
+<nav class="fixed bottom-0 left-0 right-0 flex justify-around items-center h-16 px-md pb-safe bg-surface-container-low dark:bg-surface-container-highest shadow-lg rounded-t-xl z-50">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="meeting_room">meeting_room</span>
+<span class="font-label-sm text-label-sm">Rooms</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container dark:bg-secondary dark:text-on-secondary rounded-full px-4 py-1 active:scale-95 duration-200">
+<span class="material-symbols-outlined active-pill" data-icon="engineering">engineering</span>
+<span class="font-label-sm text-label-sm">Techs</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors active:scale-95 duration-200">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</button>
+</nav>
+<script>
+        function switchTab(type) {
+            const tabs = ['fixed', 'percentage', 'tiered'];
+            const tieredSection = document.getElementById('tiered-section');
+            const unitLabel = document.getElementById('allocation-unit');
+
+            tabs.forEach(t => {
+                const el = document.getElementById(`tab-${t}`);
+                const icon = el.querySelector('.material-symbols-outlined');
+                if (t === type) {
+                    el.classList.remove('bg-surface-container-low', 'text-on-surface-variant', 'border-transparent');
+                    el.classList.add('bg-primary-fixed/10', 'text-primary', 'border-primary-fixed');
+                    icon.style.fontVariationSettings = "'FILL' 1";
+                } else {
+                    el.classList.add('bg-surface-container-low', 'text-on-surface-variant', 'border-transparent');
+                    el.classList.remove('bg-primary-fixed/10', 'text-primary', 'border-primary-fixed');
+                    icon.style.fontVariationSettings = "'FILL' 0";
+                }
+            });
+
+            if (type === 'tiered') {
+                tieredSection.classList.remove('hidden');
+                unitLabel.innerText = "Unit: Hybrid %";
+            } else {
+                tieredSection.classList.add('hidden');
+                unitLabel.innerText = type === 'percentage' ? "Unit: %" : "Unit: USD";
+            }
+        }
+    </script>
+</body></html>

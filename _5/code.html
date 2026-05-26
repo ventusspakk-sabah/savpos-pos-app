@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Commission &amp; Financial Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-primary-fixed": "#001b3c",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container": "#e5eeff",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#a9c7ff",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#aec7f5",
+                    "on-tertiary-fixed-variant": "#43474a",
+                    "on-background": "#0b1c30",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "on-secondary": "#ffffff",
+                    "surface": "#f8f9ff",
+                    "surface-container-low": "#eff4ff",
+                    "outline": "#74777f",
+                    "tertiary-fixed": "#e0e3e6",
+                    "on-primary": "#ffffff",
+                    "primary": "#00091b",
+                    "secondary": "#005db6",
+                    "on-secondary-fixed": "#001b3d",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#00468c",
+                    "surface-tint": "#465f87",
+                    "tertiary-container": "#1d2123",
+                    "on-primary-container": "#7089b3",
+                    "surface-variant": "#d3e4fe",
+                    "on-tertiary-fixed": "#181c1e",
+                    "surface-container-high": "#dce9ff",
+                    "on-tertiary-container": "#85888b",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed": "#d6e3ff",
+                    "on-surface-variant": "#44474e",
+                    "secondary-container": "#63a1ff",
+                    "tertiary-fixed-dim": "#c3c7ca",
+                    "primary-container": "#002045",
+                    "background": "#f8f9ff",
+                    "tertiary": "#06090c",
+                    "primary-fixed-dim": "#aec7f5",
+                    "secondary-fixed": "#d6e3ff",
+                    "on-secondary-container": "#00376f",
+                    "outline-variant": "#c4c6cf",
+                    "surface-dim": "#cbdbf5",
+                    "on-surface": "#0b1c30"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "gutter": "12px",
+                    "md": "16px",
+                    "margin-desktop": "24px",
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "xl": "32px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "mono-md": ["JetBrains Mono"],
+                    "headline-sm": ["Inter"]
+            },
+            "fontSize": {
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "600"}],
+                    "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "mono-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body { background-color: #f8f9ff; }
+        .pos-grid-zebra tr:nth-child(even) { background-color: #eff4ff; }
+        .glass-card { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar Navigation Shell -->
+<header class="flex justify-between items-center w-full px-md h-16 fixed top-0 bg-surface z-50">
+<div class="flex items-center gap-md">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-black tracking-tight text-primary">Sav.pos</h1>
+</div>
+<!-- Desktop Nav -->
+<nav class="hidden md:flex items-center gap-xl">
+<a class="text-on-surface-variant hover:bg-surface-container-high px-3 py-1 rounded-full transition-all" href="#">Rooms</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high px-3 py-1 rounded-full transition-all" href="#">Sales</a>
+<a class="text-primary font-bold" href="#">Reports</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high px-3 py-1 rounded-full transition-all" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold overflow-hidden">
+<img alt="Profile" data-alt="Professional corporate headshot of a male manager in a clean, modern studio setting with soft high-key lighting. He wears a tailored navy blue suit and maintains a confident, approachable expression. The visual style is crisp and modern, reflecting an authoritative and systematic brand identity. The lighting is bright and even, consistent with a professional corporate environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoTjRB4LzAINvcQsWLSOccyESCm83xfO8MTHZ6XdPOg-C9lpgUwqpMS2d_0TyA9jpFjMXhGdqoUSYUHjr65M-_isnLxL1qiC-Gayb8R-kzEpg14NdAEY1lZ7QP2ViM28ETGJiQGADvdtD3XxjdNpYyjGCZFaafDVs_dFYvyrFKiZTCFRIa5h4b_bTED6QKgx2SqveGhahhzoWXeixTIl-YKAhyy7EMTK0wBVTiQWrPk014IngsMkRvQT5nxx6TCIq-iZ2I4BARk60"/>
+</div>
+</div>
+</header>
+<main class="pt-20 pb-24 md:pb-8 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<p class="font-label-md text-label-md text-on-primary-container uppercase tracking-widest mb-1">Financial Overview</p>
+<h2 class="font-display-lg text-display-lg text-primary">Commission Hub</h2>
+</div>
+<div class="flex gap-sm">
+<button class="flex items-center gap-xs bg-surface border border-outline-variant text-on-surface px-md py-2 rounded-lg hover:bg-surface-container-high transition-colors active:scale-95 font-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="ios_share">ios_share</span>
+                    Export Reports
+                </button>
+<button class="flex items-center gap-xs bg-secondary text-on-secondary px-md py-2 rounded-lg hover:bg-on-secondary-fixed-variant transition-colors active:scale-95 font-label-md">
+<span class="material-symbols-outlined text-[18px]" data-icon="payments">payments</span>
+                    Bulk Payout
+                </button>
+</div>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-xl">
+<!-- Daily Revenue Card -->
+<div class="bg-surface border border-slate-200 p-lg rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="p-3 bg-secondary-container/30 text-secondary rounded-xl">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</span>
+<span class="text-secondary font-bold font-mono-md">+12.5%</span>
+</div>
+<div class="mt-xl">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Daily Revenue</h3>
+<p class="font-display-lg text-display-lg text-primary">$12,450.00</p>
+</div>
+</div>
+<!-- Pending Commissions Card -->
+<div class="bg-surface border border-slate-200 p-lg rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="p-3 bg-primary-container text-on-primary-container rounded-xl">
+<span class="material-symbols-outlined" data-icon="pending_actions">pending_actions</span>
+</span>
+<span class="text-on-surface-variant font-body-sm">Today's Accrual</span>
+</div>
+<div class="mt-xl">
+<h3 class="font-label-md text-label-md text-on-surface-variant">Pending Commissions</h3>
+<p class="font-display-lg text-display-lg text-primary">$3,280.45</p>
+</div>
+</div>
+<!-- Active Technicians Card -->
+<div class="bg-primary text-white p-lg rounded-xl flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="p-3 bg-white/10 text-white rounded-xl">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+</span>
+<button class="text-white/60 hover:text-white">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<div class="mt-xl">
+<h3 class="font-label-md text-label-md text-white/70">Staff Payout Status</h3>
+<div class="flex items-center gap-sm mt-1">
+<p class="font-display-lg text-display-lg">24 / 28</p>
+<span class="font-body-sm px-2 py-0.5 bg-green-500/20 text-green-400 rounded-full">Ready</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Content Split Screen -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Technician List Area -->
+<div class="lg:col-span-12 xl:col-span-9">
+<div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+<div class="p-md border-b border-slate-100 flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="relative w-full md:w-96 flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-secondary font-body-md" placeholder="Search technicians..." type="text"/>
+</div><button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all active:scale-95" title="Export Options">
+<span class="material-symbols-outlined" data-icon="settings_applications">settings_applications</span>
+</button>
+<div class="flex gap-sm">
+<div class="flex border border-outline-variant rounded-lg overflow-hidden">
+<button class="px-md py-2 bg-secondary text-white font-label-md">All</button>
+<button class="px-md py-2 hover:bg-surface font-label-md">Payable</button>
+<button class="px-md py-2 hover:bg-surface font-label-md">Held</button>
+</div>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left pos-grid-zebra border-collapse">
+<thead>
+<tr class="bg-surface-container-high/50">
+<th class="px-md py-4 font-label-md text-on-surface-variant uppercase tracking-wider border-b border-slate-200">Technician</th>
+<th class="px-md py-4 font-label-md text-on-surface-variant uppercase tracking-wider border-b border-slate-200">Total Earned</th>
+<th class="px-md py-4 font-label-md text-on-surface-variant uppercase tracking-wider border-b border-slate-200">Payable</th>
+<th class="px-md py-4 font-label-md text-on-surface-variant uppercase tracking-wider border-b border-slate-200">Held (30-Day)</th>
+<th class="px-md py-4 font-label-md text-on-surface-variant uppercase tracking-wider border-b border-slate-200 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-on-surface">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-variant/20 transition-colors">
+<td class="px-md py-4">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Staff" data-alt="Close-up portrait of a male professional with a friendly smile, photographed in a sleek office setting. The environment is defined by clean lines, glass surfaces, and cool neutral tones. The lighting is sophisticated and directional, highlighting textures without harsh shadows. The overall aesthetic is one of professional confidence and reliability in a high-density utility focused workplace." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDswSpC6nrdC1YfElJFoLlieye0HFqnW3STW8tZ64SScYoSGdNziLV1uDIDXwxxezBZT4YDoGSflVF0sfSvlWeP7YQD-A2Bw1CD8Qcl39y-QgixM_gR5YINy0rkv_wn6kq6-1UoDQgemU0eR6ozqcoAvFUB8aaVhynhO5klK-kWGbFpOfKKEKa9K6oPTrem8R2zDsZ-rYUNa4GZKZHXdZqKldByI9jyfkKCKB-gufdt6u7BtFjZulQZSFZItpckb_WQ_Qb3Ib610_w"/>
+</div>
+<div>
+<p class="font-bold">Marcus Chen</p>
+<p class="text-body-sm text-on-surface-variant">Senior Specialist</p>
+</div>
+</div>
+</td>
+<td class="px-md py-4 font-mono-md font-bold">$1,450.00</td>
+<td class="px-md py-4">
+<span class="text-green-600 font-mono-md font-bold">$1,100.00</span>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-xs">
+<span class="text-on-surface-variant font-mono-md">$350.00</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="lock">lock</span>
+</div>
+</td>
+<td class="px-md py-4 text-right">
+<button class="bg-primary text-white px-md py-1.5 rounded-lg hover:opacity-90 active:scale-95 transition-all text-body-sm">Settle Now</button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-variant/20 transition-colors">
+<td class="px-md py-4">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Staff" data-alt="Professional headshot of a female technician in a contemporary work environment. She has a focused and precise demeanor, set against a background of organized technical equipment and minimalist industrial design. The color palette features muted greys and navy blue with subtle highlights. The lighting is crisp and functional, evoking a sense of systematic professional expertise and ultra-reliable service." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHZHV_uDcRmWsqgvqS1HNXyN649JzvOGZvDzfQq31nd-hc60CZrbbPQ5bh4NBjkvxAXRQipMSHktrMI6sUtl6xylzlTMYteUhlTGOf7vHJa9urZxLRRqdCwVOUDcAqczRWxOluVXp53-XxiZLAdJ9HqruKz8ZsLUrvw6rzCB7Kewug_tkd0hsSrYJgq2BgEZDmEdnd-cMpO5mTlAJaafxzqBHggIybeM0mGNypIAMc6gHzP0eS8xKScqOdWsUBCx1vspfOHYYZsq8"/>
+</div>
+<div>
+<p class="font-bold">Elena Rodriguez</p>
+<p class="text-body-sm text-on-surface-variant">Service Lead</p>
+</div>
+</div>
+</td>
+<td class="px-md py-4 font-mono-md font-bold">$2,840.10</td>
+<td class="px-md py-4">
+<span class="text-green-600 font-mono-md font-bold">$2,000.00</span>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-xs">
+<span class="text-on-surface-variant font-mono-md">$840.10</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="lock">lock</span>
+</div>
+</td>
+<td class="px-md py-4 text-right">
+<button class="bg-primary text-white px-md py-1.5 rounded-lg hover:opacity-90 active:scale-95 transition-all text-body-sm">Settle Now</button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-variant/20 transition-colors">
+<td class="px-md py-4">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Staff" data-alt="A portrait of a male staff member in a professional, high-end retail or service setting. He is dressed in a smart casual dark-toned uniform. The background shows a blurry but organized workspace with professional lighting installations. The style is modern corporate, emphasizing authority and methodical precision. The lighting is soft and ambient, creating a clean light-mode atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCjZyBngL6w5w_w8Vgs47uMv2gsAdGtbqs1CIFLs_1v8BbHGLQxM18raEArPEbkdRU_sYYEC0lTjIbCJ1ZNVLCSwyysqpaQXatFC3GyvljcLCzf23Ntm0NAh6tRILyLhXl466mAy9V6PqphhPidmvYGFiv2qT1XxgRpQS2KK34CVrldqkrcaQ3RvWpyaWW1IHCqh5d9M7VWMXhDiNXOICd69aPCU-bUXbrZ-34FTRlRZKPNpwTL64vp2fFedSySBe-g8A-gRXv-Gjo"/>
+</div>
+<div>
+<p class="font-bold">David Kim</p>
+<p class="text-body-sm text-on-surface-variant">Technician</p>
+</div>
+</div>
+</td>
+<td class="px-md py-4 font-mono-md font-bold">$920.00</td>
+<td class="px-md py-4">
+<span class="text-green-600 font-mono-md font-bold">$400.00</span>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-xs">
+<span class="text-on-surface-variant font-mono-md">$520.00</span>
+<span class="material-symbols-outlined text-[16px] text-outline" data-icon="lock">lock</span>
+</div>
+</td>
+<td class="px-md py-4 text-right">
+<button class="bg-primary text-white px-md py-1.5 rounded-lg hover:opacity-90 active:scale-95 transition-all text-body-sm">Settle Now</button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="group hover:bg-surface-variant/20 transition-colors">
+<td class="px-md py-4">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Staff" data-alt="Professional studio portrait of a woman with a confident expression, representing a service professional. The background is a solid neutral color with soft light spills. The image uses a high-density utility aesthetic, focusing on clarity and professional presence. Lighting is clean and modern, typical of high-stakes commercial photography. The mood is systematic and reliable." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1bb1qZf0KpU3_ytXJsp6LmXAW7sxb1Ez-GnkZX9M-IsjtHIAo7yL6808IAT9U5MjIygSaQx4hPInQNDKG_GVzl_tUTJoXLGf-h_FCnNPVYWCCssCzPm2-AVyTRV3GyE6riP2KhHXErILPYnKgNhM_M2rOIptOtqi__HBN5m6KBE4V0pVWa1-8aDa0lXMz493BEv_LTSvgwj3BtDLjM-rgqivaN61-jn6XI7p58f9fpRgQxnGRK8A4t9jIPbtUCeOxJsQx7P3Ao0o"/>
+</div>
+<div>
+<p class="font-bold">Sarah Jenkins</p>
+<p class="text-body-sm text-on-surface-variant">Junior Associate</p>
+</div>
+</div>
+</td>
+<td class="px-md py-4 font-mono-md font-bold">$1,120.50</td>
+<td class="px-md py-4">
+<span class="text-green-600 font-mono-md font-bold">$1,120.50</span>
+</td>
+<td class="px-md py-4">
+<div class="flex items-center gap-xs">
+<span class="text-on-surface-variant font-mono-md">$0.00</span>
+</div>
+</td>
+<td class="px-md py-4 text-right">
+<button class="bg-primary text-white px-md py-1.5 rounded-lg hover:opacity-90 active:scale-95 transition-all text-body-sm">Settle Now</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Sidebar Contextual Info (Tablet/Desktop Only) -->
+<div class="hidden xl:block lg:col-span-3">
+<div class="sticky top-20 flex flex-col gap-gutter">
+<!-- Quick Summary Card -->
+<div class="bg-surface-container p-md rounded-xl border border-slate-200">
+<h4 class="font-label-md text-label-md text-primary uppercase mb-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="info">info</span>
+                            Protection Policy
+                        </h4>
+<p class="text-body-sm text-on-surface-variant mb-md">
+                            The 30-day protection hold ensures service quality and covers potential chargebacks or refund requests.
+                        </p>
+<div class="space-y-sm">
+<div class="flex justify-between items-center text-body-sm">
+<span>Currently Held</span>
+<span class="font-mono-md font-bold">$14,200.00</span>
+</div>
+<div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 65%;"></div>
+</div>
+<p class="text-[11px] text-on-tertiary-fixed-variant text-right">65% Maturing in &lt; 7 days</p>
+</div>
+</div>
+<!-- History / Logs -->
+<div class="bg-white p-md rounded-xl border border-slate-200">
+<h4 class="font-label-md text-label-md text-primary uppercase mb-md">Recent Payouts</h4>
+<div class="space-y-md">
+<div class="flex gap-sm">
+<div class="w-2 h-2 rounded-full bg-green-500 mt-2"></div>
+<div>
+<p class="font-label-md">Bulk Payout: 12 Staff</p>
+<p class="text-body-sm text-on-surface-variant">$8,450.00 • Today, 9:00 AM</p>
+</div>
+</div>
+<div class="flex gap-sm">
+<div class="w-2 h-2 rounded-full bg-green-500 mt-2"></div>
+<div>
+<p class="font-label-md">Individual: Elena R.</p>
+<p class="text-body-sm text-on-surface-variant">$2,000.00 • Yesterday</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-sm text-[10px]">Rooms</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-label-sm text-[10px]">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1 scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-[10px]">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-[10px]">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for rows
+        document.querySelectorAll('tr.group').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.add('scale-[0.99]');
+                setTimeout(() => row.classList.remove('scale-[0.99]'), 100);
+            });
+        });
+    </script>
+</body></html>

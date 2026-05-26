@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>My Bookings | Sav.pos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "secondary": "#1960a3",
+                        "on-primary-container": "#7089b3",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed-dim": "#aec7f5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#000b05",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "primary": "#00091b",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#465f87",
+                        "primary-container": "#002045",
+                        "on-tertiary-container": "#00b47d",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-primary": "#aec7f5",
+                        "on-background": "#191c1e",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#002617",
+                        "surface-dim": "#d8dadc",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed": "#001c38",
+                        "on-secondary-container": "#00477f",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001b3c",
+                        "outline": "#74777f",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#7db6ff",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-fixed-variant": "#195039"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "display-price": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .booking-card:hover {
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md flex flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center w-full px-md h-touch-target-min bg-surface sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high rounded-full transition-all active:scale-95">menu</button>
+<h1 class="font-headline-md text-headline-md font-black tracking-tight text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center gap-xs">
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high rounded-full transition-all active:scale-95">search</button>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold overflow-hidden">
+<img alt="User Profile" data-alt="A professional headshot of a sophisticated retail manager in a high-end boutique environment. The lighting is soft and flattering, reflecting a clean and modern corporate aesthetic. The background is a softly blurred interior of a minimalist designer showroom with premium lighting fixtures and neutral architectural tones. The overall mood is approachable yet authoritative." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsnIEckYekXBD1L54d1-Y6dQs_47t9EbxYicwietzEgGEbpNxUP1xuMj-Qt5GniSoN64lw33_G7rF2a4nTnvXTXr3htzk29C2_FPtc_4S70x2SfjUsAHWfYZnDSa8_rVCEmpjqTWj8hzv2zEi5W1qYmA51JciFlpyVn-Q2exDkYe4mRKzxO2S-C1DGYyWnL6mxh1QDf2PJBle74oTClF3md93ymFjepPf7u7rBb4j9OztuZnCscu40fl8K3se6n8Q2mSult29Fg54"/>
+</div>
+</div>
+</header>
+<main class="flex-grow container mx-auto px-md py-lg lg:max-w-6xl pb-24">
+<!-- Header Section -->
+<div class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">My Bookings</h2>
+<p class="text-on-surface-variant font-body-lg">Manage your upcoming visits and view past transactions.</p>
+</div>
+<!-- Filter Tabs -->
+<div class="flex gap-xs mb-lg overflow-x-auto pb-2 scrollbar-hide py-2">
+<button class="px-md py-xs rounded-full bg-primary text-on-primary font-label-md transition-all" style="background-color: #002045;">All</button>
+<button class="px-md py-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-surface-variant transition-all">Upcoming</button>
+<button class="px-md py-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-surface-variant transition-all">Completed</button>
+<button class="px-md py-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-md hover:bg-surface-variant transition-all">Cancelled</button>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg"><!-- Upcoming Section -->
+<div class="col-span-full mb-md">
+<h3 class="font-headline-md text-primary flex items-center gap-2">
+<span class="w-2 h-6 bg-secondary rounded-full"></span>
+        This Month
+    </h3>
+</div>
+<!-- Booking Card: Upcoming #1 -->
+<div class="booking-card bg-surface-container-lowest rounded-xl shadow-md border border-primary/5 flex flex-col overflow-hidden">
+<div class="p-lg">
+<div class="flex justify-between items-start mb-md">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-surface-variant/70 mb-1">ID: #7721</span>
+<h3 class="font-headline-md text-primary">Luxury Watch Service</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-on-tertiary-container/10 text-on-tertiary-container font-label-sm flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,180,125,0.2)]">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+                Upcoming
+            </span>
+</div>
+<div class="space-y-3 mb-lg">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-xl">calendar_today</span>
+<span class="font-body-md">Oct 24, 2023 • 10:30 AM</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-xl">location_on</span>
+<span class="font-body-md">Grand Avenue Boutique, 4th Floor</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full h-12 flex items-center justify-center gap-2 bg-[#002045] text-white rounded-lg font-bold hover:bg-[#001530] transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">directions</span>
+                Get Directions
+            </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="h-11 flex items-center justify-center border border-outline-variant text-primary rounded-lg font-bold hover:bg-surface-container-low transition-all">Reschedule</button>
+<button class="h-11 flex items-center justify-center text-error font-bold hover:bg-error-container/20 rounded-lg transition-all">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Promotional Card / Loyalty (Integrated) -->
+<div class="bg-[#002045] text-white rounded-xl p-lg flex flex-col justify-between shadow-xl relative overflow-hidden ring-1 ring-white/10">
+<div class="relative z-10">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary-fixed">workspace_premium</span>
+<span class="font-label-sm uppercase tracking-wider text-tertiary-fixed">Platinum Member</span>
+</div>
+<p class="font-headline-md leading-tight mb-2">12 loyalty points pending</p>
+<p class="text-sm text-blue-100/70 mb-lg">Unlock your next premium reward in 3 visits.</p>
+</div>
+<div class="relative z-10">
+<div class="w-full bg-white/10 h-2.5 rounded-full mb-2 overflow-hidden">
+<div class="bg-tertiary-fixed h-full rounded-full shadow-[0_0_10px_#6ffbbe]" style="width: 75%"></div>
+</div>
+<span class="text-[10px] font-label-sm opacity-80">Progress to Reward: 75%</span>
+</div>
+<div class="absolute -right-6 -top-6 w-32 h-32 bg-secondary/20 rounded-full blur-3xl"></div>
+</div>
+<!-- Booking Card: Upcoming #2 -->
+<div class="booking-card bg-surface-container-lowest rounded-xl shadow-md border border-primary/5 flex flex-col overflow-hidden">
+<div class="p-lg">
+<div class="flex justify-between items-start mb-md">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm uppercase tracking-widest text-on-surface-variant/70 mb-1">ID: #8112</span>
+<h3 class="font-headline-md text-primary">Leather Fitting</h3>
+</div>
+<span class="px-3 py-1 rounded-full bg-on-tertiary-container/10 text-on-tertiary-container font-label-sm flex items-center gap-1.5 shadow-[0_0_12px_rgba(0,180,125,0.2)]">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+                Upcoming
+            </span>
+</div>
+<div class="space-y-3 mb-lg">
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-xl">calendar_today</span>
+<span class="font-body-md">Nov 02, 2023 • 09:15 AM</span>
+</div>
+<div class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-secondary text-xl">location_on</span>
+<span class="font-body-md">South Plaza Studio</span>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full h-12 flex items-center justify-center gap-2 bg-[#002045] text-white rounded-lg font-bold hover:bg-[#001530] transition-colors shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">directions</span>
+                Get Directions
+            </button>
+<div class="grid grid-cols-2 gap-3">
+<button class="h-11 flex items-center justify-center border border-outline-variant text-primary rounded-lg font-bold hover:bg-surface-container-low transition-all">Reschedule</button>
+<button class="h-11 flex items-center justify-center text-error font-bold hover:bg-error-container/20 rounded-lg transition-all">Cancel</button>
+</div>
+</div>
+</div>
+</div>
+<!-- History Section Header -->
+<div class="col-span-full mt-xl mb-md">
+<h3 class="font-headline-md text-on-surface-variant/70">History</h3>
+</div>
+<!-- Completed Card -->
+<div class="booking-card bg-surface-container-lowest/50 rounded-xl border border-outline-variant/20 flex flex-col overflow-hidden grayscale-[0.3]">
+<div class="p-lg">
+<div class="flex justify-between items-start mb-md">
+<div class="flex flex-col">
+<span class="text-[10px] font-label-sm text-outline mb-1">ID: #6901</span>
+<h3 class="font-headline-md text-primary/70">Bespoke Tailoring</h3>
+</div>
+<span class="px-2 py-1 rounded-full bg-surface-variant text-on-surface-variant text-[10px] font-bold uppercase">
+                Completed
+            </span>
+</div>
+<div class="space-y-2 mb-lg opacity-60">
+<div class="flex items-center gap-2 text-outline">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span class="text-sm">Sep 12, 2023</span>
+</div>
+</div>
+<button class="w-full h-10 flex items-center justify-center gap-2 bg-surface-container-high text-primary rounded-lg text-sm font-bold hover:bg-surface-variant transition-all">
+            View Invoice
+        </button>
+</div>
+</div>
+<!-- Empty State -->
+<div class="border-2 border-dashed border-primary/20 rounded-xl flex flex-col items-center justify-center p-xl text-center group cursor-pointer hover:border-secondary hover:bg-secondary/5 transition-all">
+<div class="w-16 h-16 rounded-full bg-secondary-container flex items-center justify-center mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-3xl">add_circle</span>
+</div>
+<h4 class="font-headline-md text-primary">Book Appointment</h4>
+<p class="text-label-sm text-on-surface-variant mt-2">Ready for your next session?</p>
+</div></div>
+<!-- Pagination / Load More -->
+<div class="mt-xl flex justify-center">
+<button class="flex items-center gap-sm px-xl py-md border border-outline-variant rounded-full text-primary font-bold hover:bg-surface-container transition-all active:scale-95">
+                View Past 12 Months
+                <span class="material-symbols-outlined">arrow_downward</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-lg md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-sm text-label-sm mt-1">Rooms</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm mt-1">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-sm text-label-sm mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</a>
+</nav>
+<!-- Desktop Sidebar Logic Indicator (Hidden on Mobile) -->
+<div class="hidden md:block fixed left-0 top-touch-target-min bottom-0 w-20 bg-primary border-r border-outline/10 flex flex-col items-center py-lg gap-lg">
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest/20 flex items-center justify-center text-on-primary cursor-pointer hover:bg-surface-container-highest/40 transition-all">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-surface-container-highest/20 flex items-center justify-center text-on-primary cursor-pointer hover:bg-surface-container-highest/40 transition-all">
+<span class="material-symbols-outlined">point_of_sale</span>
+</div>
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container cursor-pointer shadow-md active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+</div>
+<div class="mt-auto w-12 h-12 rounded-xl bg-surface-container-highest/20 flex items-center justify-center text-on-primary cursor-pointer hover:bg-surface-container-highest/40 transition-all">
+<span class="material-symbols-outlined">settings</span>
+</div>
+</div>
+<!-- Direction Map Modal (Mock) -->
+<div class="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm flex items-center justify-center p-md hidden" id="map-modal">
+<div class="bg-surface-container-lowest w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
+<div class="flex justify-between items-center p-md border-b border-outline-variant">
+<h3 class="font-headline-md">Location Details</h3>
+<button class="material-symbols-outlined p-2 hover:bg-surface-container-high rounded-full" onclick="toggleModal('map-modal')">close</button>
+</div>
+<div class="aspect-video bg-surface-container overflow-hidden">
+<img alt="Map location" class="w-full h-full object-cover" data-alt="A detailed, modern digital map interface showcasing urban navigation. The map features a minimalist UI with clean lines, soft gray streets, and bright blue navigation paths. Floating over the map is a stylish glassmorphism card containing venue information like address and opening hours. The aesthetic is ultra-modern and high-tech, fitting a premium service platform." data-location="Paris" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2wtw1gdWGHOUjVBkK_S1k9EbaKCy8mjTh2Z0yKLQG7h2XEbjHqFXEooUaq4g8n73VW-xBC6YDCUz32MmuOADc5pQDTeEfdStYAwmLuVLBZ83J5YUg8SWSJU3r5bISDTHjUM27l-sSTYP17ipUiDQIXqRfYUI_KgVgNJ3C_f1mA1hRsfsFw5hz9ABgn459L0v4t5gojErbKuDZLsGO8q0BCP1fdmFT9nDHZnx4wQhn9Xsg76CtHObPhejfDOa7zidukfFYBSTysAA"/>
+</div>
+<div class="p-lg">
+<p class="font-bold text-primary mb-xs">Grand Avenue Boutique</p>
+<p class="text-on-surface-variant font-body-md">4th Floor, Suite 402, Luxury Plaza, Downtown Metropolis</p>
+<div class="mt-lg flex gap-md">
+<button class="flex-grow h-touch-target-min bg-primary text-on-primary rounded-lg font-bold">Open in Apple Maps</button>
+<button class="flex-grow h-touch-target-min bg-secondary text-on-secondary rounded-lg font-bold">Open in Google Maps</button>
+</div>
+</div>
+</div>
+</div>
+<script>
+        function toggleModal(id) {
+            const el = document.getElementById(id);
+            if(el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+                el.classList.add('flex');
+            } else {
+                el.classList.add('hidden');
+                el.classList.remove('flex');
+            }
+        }
+
+        // Attach listeners to "Get Directions" buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.innerText.includes('Get Directions')) {
+                btn.onclick = () => toggleModal('map-modal');
+            }
+        });
+
+        // Simple tab switching interaction
+        const tabs = document.querySelectorAll('.overflow-x-auto button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('bg-primary', 'text-on-primary');
+                    t.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                });
+                tab.classList.add('bg-primary', 'text-on-primary');
+                tab.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

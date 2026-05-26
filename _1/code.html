@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "tertiary-container": "#002617",
+                  "on-secondary": "#ffffff",
+                  "secondary-container": "#7db6ff",
+                  "tertiary-fixed": "#6ffbbe",
+                  "error-container": "#ffdad6",
+                  "on-secondary-container": "#00477f",
+                  "primary-container": "#002045",
+                  "surface-bright": "#f7f9fb",
+                  "surface-container-highest": "#e0e3e5",
+                  "on-error-container": "#93000a",
+                  "error": "#ba1a1a",
+                  "surface-container-lowest": "#ffffff",
+                  "primary-fixed": "#d6e3ff",
+                  "surface-variant": "#e0e3e5",
+                  "tertiary-fixed-dim": "#9bd3b4",
+                  "tertiary": "#000b05",
+                  "on-primary-container": "#7089b3",
+                  "surface": "#f7f9fb",
+                  "primary": "#00091b",
+                  "on-tertiary": "#ffffff",
+                  "surface-container": "#eceef0",
+                  "on-secondary-fixed-variant": "#004881",
+                  "inverse-primary": "#aec7f5",
+                  "secondary-fixed": "#d3e4ff",
+                  "outline-variant": "#c4c6cf",
+                  "on-tertiary-container": "#00b47d",
+                  "on-secondary-fixed": "#001c38",
+                  "surface-tint": "#465f87",
+                  "on-primary-fixed": "#001b3c",
+                  "on-surface-variant": "#44474e",
+                  "on-primary": "#ffffff",
+                  "surface-container-low": "#f2f4f6",
+                  "surface-container-high": "#e6e8ea",
+                  "on-tertiary-fixed-variant": "#195039",
+                  "on-primary-fixed-variant": "#2e476e",
+                  "on-error": "#ffffff",
+                  "primary-fixed-dim": "#aec7f5",
+                  "inverse-on-surface": "#eff1f3",
+                  "on-tertiary-fixed": "#002113",
+                  "surface-dim": "#d8dadc",
+                  "on-background": "#191c1e",
+                  "background": "#f7f9fb",
+                  "outline": "#74777f",
+                  "on-surface": "#191c1e",
+                  "inverse-surface": "#2d3133",
+                  "secondary-fixed-dim": "#a2c9ff",
+                  "secondary": "#1960a3"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "lg": "24px",
+                  "xs": "8px",
+                  "base": "4px",
+                  "sm": "12px",
+                  "touch-target-min": "44px",
+                  "xl": "32px",
+                  "md": "16px"
+          },
+          "fontFamily": {
+                  "label-md": ["JetBrains Mono"],
+                  "headline-lg": ["Inter"],
+                  "headline-lg-mobile": ["Inter"],
+                  "body-md": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "display-price": ["Inter"],
+                  "label-sm": ["JetBrains Mono"]
+          },
+          "fontSize": {
+                  "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                  "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                  "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .check-animation {
+      animation: scaleUp 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes scaleUp {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .fade-in-up {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen selection:bg-secondary-container">
+<!-- TopAppBar Component (Suppressed navigation for focused confirmation) -->
+<header class="bg-surface dark:bg-background shadow-sm docked full-width top-0 z-50">
+<div class="flex justify-between items-center px-md h-touch-target-min w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<span class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary">Sav.pos</span>
+</div>
+<button class="hover:bg-surface-container-low p-xs rounded-full transition-transform active:scale-95 duration-100">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="max-w-xl mx-auto px-md py-xl md:py-32">
+<!-- Success Header -->
+<div class="text-center mb-xl fade-in-up" style="animation-delay: 0.1s;">
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-secondary-container mb-md check-animation">
+<span class="material-symbols-outlined text-on-secondary-container !text-[48px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h1 class="text-headline-lg font-headline-lg text-primary mb-xs">Booking Confirmed</h1>
+<p class="text-on-surface-variant font-body-md">Your appointment has been successfully scheduled.</p>
+</div>
+<!-- Reservation Summary Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden mb-lg fade-in-up border border-surface-container-highest" style="animation-delay: 0.2s;">
+<div class="p-lg">
+<div class="flex items-start justify-between mb-lg">
+<div>
+<span class="text-label-sm font-label-sm text-on-tertiary-fixed-variant bg-tertiary-fixed/20 px-xs py-base rounded-full uppercase tracking-wider mb-xs inline-block">Wellness</span>
+<h2 class="text-headline-md font-headline-md text-primary">Deep Tissue Aromatherapy</h2>
+</div>
+<div class="text-right">
+<span class="text-label-md font-label-md text-on-surface-variant">Reference</span>
+<p class="font-label-md text-primary">#SP-94021</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md border-y border-surface-container py-md mb-md">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Date</p>
+<p class="text-body-md font-medium">Oct 24, 2023</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="schedule">schedule</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Time</p>
+<p class="text-body-md font-medium">2:00 PM</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of Elena Rossi, a spa therapist with a warm and welcoming expression, set against a blurred, high-end minimalist interior background with soft, natural lighting and a clean, luxury professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCEDzNqrgzzda9pqCuvzgPGQmKIAgPqHthEa8gs8ih1XkbtQ2kIYgaW-DHwuhJ8VBp2RPY73Je2KX8DDWaOxv33JDiLN7lPjQAvQTwJ8iDNvf2ZQ-Txo9hSKtW-7K_dd0qJGveN9KlKoHw7Tvro7NFeoheFfGuFHkSEHSoRRnj8s_juXJY1N6d8nthr-R5E1jyaB8iZ2vTV8mrQBAH_scsO16Gi4V_Tj1GeFlKyBZ7gxne0BFRpeF3PSJF3r5y_1bNA74T8fvieFcg"/>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Practitioner</p>
+<p class="text-body-md font-medium">Elena Rossi</p>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-low flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="text-label-sm font-label-sm text-on-surface-variant">Total Paid</p>
+<p class="text-body-md font-medium font-display-price text-[18px]">$145.00</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row gap-sm items-center justify-between mt-sm">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="location_on">location_on</span>
+<p class="text-body-md text-on-surface-variant">1221 Boutique Row, Suite 400, Milan</p>
+</div>
+<button class="flex items-center gap-xs px-md py-xs bg-surface-container-high hover:bg-surface-container-highest transition-colors rounded-full text-label-md font-label-md text-primary active:scale-95">
+<span class="material-symbols-outlined !text-[18px]" data-icon="map">map</span>
+            Open in Maps
+          </button>
+</div>
+</div>
+</section>
+<!-- Map Preview -->
+<div class="w-full h-40 rounded-xl overflow-hidden mb-lg shadow-inner border border-surface-container-highest fade-in-up relative" style="animation-delay: 0.3s;">
+<img alt="A clean, minimalist grayscale map of Milan with a single dark navy location pin marking the appointment location at 1221 Boutique Row." class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7vXUP8pALbbW010Ahoq8X_SsdyCKSDBeCJT7OBS9lgO1rgZUfBDdKd4vGfWgVYkE_uX4dmGwptL7oRCZyiMU9dxpb8TgWk9Yz2FB8QMOWu3NVV2Mmfkui3IUN3ZP9xT1Ym_6Zy8Vk0AvUg7opQo8UM8TI90rk2bR2jT-hjAoCtbcOkClDT8zNicqDcDlexR1tIkjTKbuSThwjoVno5DKtr7g1z77yJQFzkIY2MC2cRU2nxjCovOEWgL_ta7mpQ-BtQ4BCgfmY0yk"/>
+<div class="absolute inset-0 pointer-events-none border border-primary/5 rounded-xl"></div>
+</div>
+<!-- Arrival Tips & Policy -->
+<div class="bg-surface-container-low rounded-xl p-lg mb-xl fade-in-up" style="animation-delay: 0.4s;">
+<div class="flex items-start gap-md mb-md">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" data-icon="info">info</span>
+<div>
+<h3 class="text-body-md font-semibold text-primary mb-base">Arrival Tips</h3>
+<p class="text-body-md text-on-surface-variant">Please arrive 15 minutes prior to your session to enjoy our relaxation lounge and complete your intake form.</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-on-secondary-fixed-variant" data-icon="event_busy">event_busy</span>
+<div>
+<h3 class="text-body-md font-semibold text-primary mb-base">Cancellation Policy</h3>
+<p class="text-body-md text-on-surface-variant">Cancellations must be made at least 24 hours in advance for a full refund. Same-day cancellations may incur a 50% fee.</p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-sm fade-in-up" style="animation-delay: 0.5s;">
+<button class="w-full bg-primary-container text-on-primary-container py-md rounded-xl font-semibold flex items-center justify-center gap-sm hover:opacity-90 transition-all active:scale-[0.98]">
+<span class="material-symbols-outlined" data-icon="calendar_add_on">calendar_add_on</span>
+        Add to Calendar
+      </button>
+<button class="w-full bg-transparent text-primary border-2 border-primary-container/10 py-md rounded-xl font-semibold flex items-center justify-center gap-sm hover:bg-surface-container-low transition-all active:scale-[0.98]" onclick="window.location.reload()">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+        Back to Home
+      </button>
+</div>
+<!-- Share/Support -->
+<div class="mt-xl text-center fade-in-up" style="animation-delay: 0.6s;">
+<p class="text-label-md font-label-md text-on-surface-variant mb-sm">Need help with your booking?</p>
+<div class="flex justify-center gap-lg">
+<button class="flex items-center gap-xs text-primary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined !text-[20px]" data-icon="call">call</span>
+<span class="text-label-md font-label-md">Contact Support</span>
+</button>
+<button class="flex items-center gap-xs text-primary hover:text-secondary transition-colors">
+<span class="material-symbols-outlined !text-[20px]" data-icon="share">share</span>
+<span class="text-label-md font-label-md">Share Receipt</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="py-xl text-center text-on-surface-variant/40">
+<p class="text-label-sm font-label-sm">© 2023 Sav.pos Premium Retail Systems</p>
+</footer>
+<script>
+    // Micro-interactions
+    document.querySelectorAll('button').forEach(button => {
+      button.addEventListener('mousedown', () => {
+        button.style.transform = 'scale(0.96)';
+      });
+      button.addEventListener('mouseup', () => {
+        button.style.transform = '';
+      });
+      button.addEventListener('mouseleave', () => {
+        button.style.transform = '';
+      });
+    });
+
+    // Simple fade-in sequence
+    window.addEventListener('load', () => {
+      console.log('Booking confirmation loaded successfully.');
+    });
+  </script>
+</body></html>

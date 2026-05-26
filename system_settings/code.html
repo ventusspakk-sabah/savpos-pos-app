@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Suite - System Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "on-secondary-fixed": "#001a40",
+                    "primary-fixed-dim": "#aec7f5",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001b3c",
+                    "background": "#f8f9ff",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#002045",
+                    "surface": "#f8f9ff",
+                    "primary": "#00091b",
+                    "surface-container-high": "#dce9ff",
+                    "on-background": "#0b1c30",
+                    "surface-variant": "#d3e4fe",
+                    "outline": "#74777f",
+                    "on-tertiary-fixed": "#002113",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-secondary-container": "#003370",
+                    "on-surface-variant": "#44474e",
+                    "surface-container-highest": "#d3e4fe",
+                    "surface-tint": "#465f87",
+                    "secondary-container": "#659dfe",
+                    "tertiary": "#000b05",
+                    "on-primary-container": "#7089b3",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "outline-variant": "#c4c6cf",
+                    "inverse-primary": "#aec7f5",
+                    "on-tertiary-container": "#009b6b",
+                    "surface-dim": "#cbdbf5",
+                    "on-secondary": "#ffffff",
+                    "on-surface": "#0b1c30",
+                    "secondary-fixed-dim": "#acc7ff",
+                    "inverse-surface": "#213145",
+                    "on-error": "#ffffff",
+                    "secondary": "#115cb9",
+                    "surface-container-low": "#eff4ff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "on-tertiary-fixed-variant": "#005236",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-bright": "#f8f9ff",
+                    "tertiary-fixed-dim": "#4edea3",
+                    "surface-container": "#e5eeff",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#d7e2ff",
+                    "on-secondary-fixed-variant": "#004491",
+                    "tertiary-container": "#002617"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "xs": "4px",
+                    "margin-desktop": "32px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "xxl": "48px",
+                    "gutter": "24px",
+                    "sm": "8px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "data-mono": ["jetbrainsMono"],
+                    "display-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .settings-row-active {
+            @apply bg-surface-container-high;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex h-full w-72 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex-col py-xl px-md space-y-xs z-50">
+<div class="px-md mb-xl">
+<span class="font-headline-sm text-headline-sm font-black text-primary">Admin Suite</span>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all font-body-lg text-body-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all font-body-lg text-body-lg" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span>Staff</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all font-body-lg text-body-lg" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Catalog</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm bg-secondary-container text-on-secondary-container font-bold rounded-full transition-all font-body-lg text-body-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="mt-auto pt-xl px-md border-t border-outline-variant">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center overflow-hidden">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a corporate executive in a modern, brightly lit office environment. The lighting is soft and high-key, emphasizing a clean and authoritative atmosphere. The color palette is composed of sophisticated navy and crisp white tones. The executive has a confident and welcoming expression, representing high-stakes reliability and operational expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA94nSeN9Eql22axbp33bXFl4gMu6RkAKOcv4Xscp4UxsRuCrMyHJM70Gxk5TQFev0oT11Shu5abq-aPoZOeFynf04XlUDosvj9fBX7-YTo79sz7fzq8Gsf2JcWiwKqYIGG9712xsut0PzqpruFq3T_AnKlPnyxXMpME2osTHUIQfZo6HKQckjXrmyQ9JhZONPm8f2dUw0Qd3DfIUpNA6GqJ9quJljTk0E8YqZFj0v9bM36C5BaPcchYr-A7fwnxpevX3azuuVSYy8"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-bold text-on-surface">Operations Lead</span>
+<span class="text-[10px] text-on-surface-variant uppercase tracking-wider">POS Terminal Alpha</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Top App Bar (Mobile & Header Anchor) -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md md:ml-72 md:w-[calc(100%-288px)]">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary md:hidden">menu</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">System Settings</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant cursor-pointer active:scale-95 transition-transform">search</button>
+<div class="relative">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer active:scale-95 transition-transform">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="md:ml-72 p-margin-mobile md:p-margin-desktop min-h-screen pb-32">
+<div class="max-w-[1000px] mx-auto">
+<!-- Settings Categories -->
+<div class="space-y-gutter">
+<!-- Category Section -->
+<div>
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-md">Operational Core</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden divide-y divide-outline-variant">
+<!-- Business Info -->
+<div class="flex items-center justify-between p-lg hover:bg-surface-container-low transition-colors cursor-pointer group active:opacity-80">
+<div class="flex items-center gap-lg">
+<div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">business</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Business Info</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Name, Logo, Tax configurations</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+<!-- Commission Rules -->
+<div class="flex items-center justify-between p-lg hover:bg-surface-container-low transition-colors cursor-pointer group active:opacity-80">
+<div class="flex items-center gap-lg">
+<div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">account_balance_wallet</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Commission Rules</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Default rates, held periods, payout cycles</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Hardware & Devices Section -->
+<div>
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-md">External Systems</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden divide-y divide-outline-variant">
+<!-- Hardware -->
+<div class="flex items-center justify-between p-lg hover:bg-surface-container-low transition-colors cursor-pointer group active:opacity-80">
+<div class="flex items-center gap-lg">
+<div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">print</span>
+</div>
+<div>
+<div class="flex items-center gap-sm">
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Hardware</h3>
+<span class="w-2 h-2 rounded-full bg-[#22c55e]"></span>
+<span class="font-label-md text-[10px] text-on-surface-variant uppercase">Connected</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Printer, Cash Drawer, Terminal Sync</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Security & Access Section -->
+<div>
+<h2 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-widest mb-md">Identity &amp; Safety</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden divide-y divide-outline-variant">
+<!-- Account -->
+<div class="flex items-center justify-between p-lg hover:bg-surface-container-low transition-colors cursor-pointer group active:opacity-80">
+<div class="flex items-center gap-lg">
+<div class="w-12 h-12 rounded bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[28px]">manage_accounts</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">Account</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Security, Staff Roles, MFA, Activity Log</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bento Preview Section (Supplementary Visuals) -->
+<div class="mt-xxl grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="md:col-span-2 bg-primary-container p-xl rounded-lg text-on-primary-container relative overflow-hidden">
+<div class="relative z-10">
+<span class="font-label-md text-label-md opacity-70 uppercase mb-xs block">System Status</span>
+<h4 class="font-headline-md text-headline-md mb-md">All Systems Operational</h4>
+<p class="font-body-md text-body-md max-w-md opacity-80">Your terminal sync and cloud backup are running perfectly. No critical alerts detected in the last 24 hours.</p>
+</div>
+<div class="absolute right-0 bottom-0 opacity-10 pointer-events-none translate-x-1/4 translate-y-1/4">
+<span class="material-symbols-outlined text-[200px]">check_circle</span>
+</div>
+</div>
+<div class="bg-surface-container border border-outline-variant p-xl rounded-lg">
+<span class="font-label-md text-label-md text-on-surface-variant uppercase mb-md block">Quick Action</span>
+<button class="w-full bg-primary text-on-primary py-md rounded-lg font-label-md text-label-md uppercase tracking-widest active:scale-95 transition-all mb-md">
+                        Backup Now
+                    </button>
+<p class="text-[10px] text-center text-on-surface-variant italic">Last backup: Today at 04:12 AM</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden border-t border-outline-variant bg-surface shadow-sm h-16 flex justify-around items-center px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for active state simulation
+        document.querySelectorAll('.settings-row').forEach(row => {
+            row.addEventListener('click', () => {
+                // In a real app, this would navigate
+                console.log('Navigating to settings section...');
+            });
+        });
+    </script>
+</body></html>

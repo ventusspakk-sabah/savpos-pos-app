@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Clawback Rules Configuration | Sav.pos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#465f87",
+                        "on-secondary-fixed-variant": "#004881",
+                        "primary": "#00091b",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-surface-variant": "#44474e",
+                        "secondary": "#1960a3",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-container": "#7db6ff",
+                        "on-primary": "#ffffff",
+                        "outline": "#74777f",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "primary-container": "#002045",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "on-background": "#191c1e",
+                        "inverse-primary": "#aec7f5",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-fixed": "#d3e4ff",
+                        "tertiary-container": "#002617",
+                        "surface-dim": "#d8dadc",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "surface-container": "#eceef0",
+                        "surface": "#f7f9fb",
+                        "surface-variant": "#e0e3e5",
+                        "background": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-container": "#00477f",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary": "#000b05",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary-container": "#00b47d",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed": "#001b3c",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-container": "#7089b3",
+                        "inverse-surface": "#2d3133"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "4px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "touch-target-min": "44px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-price": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-ring {
+            box-shadow: 0 0 0 2px theme('colors.secondary');
+        }
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-surface');
+        }
+        /* Custom radio styling to match brand */
+        input[type="radio"]:checked {
+            background-color: theme('colors.secondary');
+            border-color: theme('colors.secondary');
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md overflow-x-hidden">
+<!-- Top Navigation Anchor (Shared Component) -->
+<header class="bg-surface dark:bg-surface-dim shadow-sm docked full-width top-0 sticky z-50 flex justify-between items-center px-md py-xs w-full max-w-full">
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-variant/50 dark:hover:bg-surface-variant/20 transition-colors p-xs rounded-full active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface dark:text-inverse-on-surface">Bulk Commission Payout</h1>
+</div>
+<div class="flex items-center gap-xs">
+<button class="hover:bg-surface-variant/50 dark:hover:bg-surface-variant/20 transition-colors p-xs rounded-full active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-on-surface-variant">history</span>
+</button>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Navigation Drawer (Shared Component) -->
+<aside class="hidden lg:flex flex-col h-full fixed left-0 top-0 border-r border-outline-variant/30 bg-surface-container-low dark:bg-surface-container-lowest h-full w-72 rounded-r-xl shadow-md z-40">
+<div class="px-lg py-xl">
+<span class="font-headline-md text-headline-md font-black text-primary dark:text-inverse-primary">Sav.pos</span>
+</div>
+<nav class="flex flex-col gap-xs flex-grow">
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined mr-md">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined mr-md">point_of_sale</span>
+<span class="font-label-md text-label-md">Sales</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined mr-md">payments</span>
+<span class="font-label-md text-label-md">Commissions</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined mr-md">group</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-full mx-2 flex items-center px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined mr-md">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-grow lg:ml-72 pb-xl px-md md:px-lg lg:px-xl pt-lg">
+<div class="max-w-4xl mx-auto">
+<!-- Section Header -->
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Clawback Rules (佣金沖銷規則)</h2>
+<p class="text-on-surface-variant font-body-md">Configure how commissions are handled for refunds and adjusted payouts.</p>
+</div>
+<!-- Bento Grid Layout for Settings -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Full Refund Strategy Card -->
+<section class="md:col-span-12 bg-surface-container-lowest rounded-xl shadow-sm p-lg transition-all hover:shadow-md">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary">undo</span>
+<h3 class="font-headline-md text-headline-md">Clawback Strategy (Full Refund)</h3>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<!-- Option A -->
+<label class="group relative flex flex-col p-md bg-surface-container rounded-xl cursor-pointer hover:bg-surface-variant/40 transition-all border-2 border-transparent has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input checked="" class="hidden" name="full_clawback" type="radio" value="full"/>
+<span class="font-label-md text-label-md text-secondary mb-xs">Option A</span>
+<span class="font-headline-md text-headline-md mb-xs">Full Clawback</span>
+<p class="text-on-surface-variant text-label-sm">100% of commission is revoked immediately upon refund.</p>
+<div class="absolute top-4 right-4 text-secondary opacity-0 group-has-[:checked]:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<!-- Option B -->
+<label class="group relative flex flex-col p-md bg-surface-container rounded-xl cursor-pointer hover:bg-surface-variant/40 transition-all border-2 border-transparent has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input class="hidden" name="full_clawback" type="radio" value="partial"/>
+<span class="font-label-md text-label-md text-secondary mb-xs">Option B</span>
+<span class="font-headline-md text-headline-md mb-xs">Partial Clawback</span>
+<p class="text-on-surface-variant text-label-sm">Percentage-based recovery. Specify rate for operational costs.</p>
+<div class="mt-md">
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-xs py-1 shadow-sm">
+<input class="w-full bg-transparent border-none focus:ring-0 text-right font-label-md" placeholder="80" type="number"/>
+<span class="ml-xs text-on-surface-variant font-label-md">%</span>
+</div>
+</div>
+<div class="absolute top-4 right-4 text-secondary opacity-0 group-has-[:checked]:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+<!-- Option C -->
+<label class="group relative flex flex-col p-md bg-surface-container rounded-xl cursor-pointer hover:bg-surface-variant/40 transition-all border-2 border-transparent has-[:checked]:border-secondary has-[:checked]:bg-secondary/5">
+<input class="hidden" name="full_clawback" type="radio" value="manual"/>
+<span class="font-label-md text-label-md text-secondary mb-xs">Option C</span>
+<span class="font-headline-md text-headline-md mb-xs">Manual Review</span>
+<p class="text-on-surface-variant text-label-sm">Hold and flag for manager approval before adjustment.</p>
+<div class="absolute top-4 right-4 text-secondary opacity-0 group-has-[:checked]:opacity-100 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</label>
+</div>
+</section>
+<!-- Partial Refund Logic Card -->
+<section class="md:col-span-7 bg-surface-container-lowest rounded-xl shadow-sm p-lg transition-all hover:shadow-md flex flex-col">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+<h3 class="font-headline-md text-headline-md">Partial Refund Logic</h3>
+</div>
+<div class="space-y-md flex-grow">
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-md">
+<input checked="" class="h-5 w-5 text-secondary border-outline-variant focus:ring-secondary" id="proportional" name="partial_logic" type="radio"/>
+<label class="cursor-pointer" for="proportional">
+<div class="font-label-md text-label-md">Proportional Clawback</div>
+<div class="text-on-surface-variant text-label-sm">Clawback relative to refund amount</div>
+</label>
+</div>
+</div>
+<div class="flex items-center justify-between p-md bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-md">
+<input class="h-5 w-5 text-secondary border-outline-variant focus:ring-secondary" id="fixed_fee" name="partial_logic" type="radio"/>
+<label class="cursor-pointer" for="fixed_fee">
+<div class="font-label-md text-label-md">Fixed Handling Fee</div>
+<div class="text-on-surface-variant text-label-sm">Flat fee deducted per refund event</div>
+</label>
+</div>
+<div class="w-24">
+<div class="flex items-center bg-surface-container-lowest rounded-lg px-xs py-1 shadow-sm border border-outline-variant/30">
+<span class="mr-xs text-on-surface-variant font-label-md">$</span>
+<input class="w-full bg-transparent border-none focus:ring-0 text-right font-label-md" placeholder="5.00" type="number"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Illustration / Visual Aid Card -->
+<section class="md:col-span-5 relative overflow-hidden rounded-xl bg-primary-container text-on-primary-container shadow-sm p-lg flex flex-col justify-end min-h-[240px]">
+<img alt="Financial Dashboard Illustration" class="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-overlay" data-alt="A professional high-angle photograph of a sleek, minimalist modern office workspace with high-end financial equipment. Subtle blue and white accents from the Sav.pos brand are visible in the ambient lighting. The atmosphere is precise and sophisticated, suggesting corporate efficiency and financial reliability. Soft natural light streams in from a side window, highlighting the clean textures and premium materials." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGxAsMvgdFcjqj9Nl4giPc3HO8-7uuwdZYg1NfP0q6zbN94Bksa6qOn1C9x9hI6wmYA8ODr8suoRxOhTa3IAe6AcWWFAciS29dH8l_Ut-qD7Bg1O-Mk19YwKo_ECRD_bz2zkAGOfjet6Q_aOT74VKssu6E8K66VPSufNi0fF1hOg69jLYzQjYzVgnu_xjVLZySfzgZIkvDnQol0vTEOfCD6GCctDxMDl827Aju4cv5OZupe8k4nvCe9xuClXzUGvzAR0ohb0wvG7s"/>
+<div class="relative z-10">
+<h4 class="font-headline-md text-headline-md text-on-primary-fixed mb-xs">Optimization Tip</h4>
+<p class="font-body-md text-on-primary-container/80 text-sm leading-relaxed">
+                                Maintaining a 30-day "Held Period" significantly reduces operational overhead from frequent small-transaction clawbacks.
+                            </p>
+</div>
+</section>
+<!-- Payout Timing Policy Card -->
+<section class="md:col-span-12 bg-surface-container-lowest rounded-xl shadow-sm p-lg transition-all hover:shadow-md">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary">schedule</span>
+<h3 class="font-headline-md text-headline-md">Payout Timing Policy</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="flex items-start gap-md p-md bg-surface-container rounded-xl">
+<input checked="" class="mt-1 h-5 w-5 text-secondary" id="immediate" name="timing" type="radio"/>
+<div>
+<label class="font-label-md text-label-md block" for="immediate">Immediate Clawback</label>
+<p class="text-on-surface-variant text-label-sm mt-xs">Deduct the adjustment from the very next available payout cycle regardless of payout age.</p>
+</div>
+</div>
+<div class="flex items-start gap-md p-md bg-surface-container rounded-xl">
+<input class="mt-1 h-5 w-5 text-secondary" id="held" name="timing" type="radio"/>
+<div class="w-full">
+<label class="font-label-md text-label-md block" for="held">Held Period Protection</label>
+<p class="text-on-surface-variant text-label-sm mt-xs mb-md">Hold commission for a safety window before releasing to payable balance.</p>
+<div class="flex items-center gap-sm">
+<div class="flex-grow flex items-center bg-surface-container-lowest rounded-lg px-md py-2 shadow-sm border border-outline-variant/30">
+<input class="w-full bg-transparent border-none focus:ring-0 font-label-md" type="number" value="14"/>
+<span class="ml-xs text-on-surface-variant font-label-md">Days</span>
+</div>
+<div class="text-label-sm text-secondary font-medium">Recommended</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Footer Action -->
+<div class="mt-xl pt-lg border-t border-outline-variant/30 flex justify-end gap-md">
+<button class="px-xl py-3 rounded-full font-label-md text-on-surface-variant hover:bg-surface-variant transition-colors active:scale-95">
+                        Discard Changes
+                    </button>
+<button class="bg-primary text-on-primary px-xl py-3 rounded-full font-label-md flex items-center gap-xs hover:bg-primary-container transition-all active:scale-95 shadow-md">
+<span class="material-symbols-outlined text-sm">save</span>
+                        Save Settings
+                    </button>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Navigation Mobile (Shared Component) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-safe lg:hidden bg-surface-container-highest dark:bg-surface-container rounded-t-xl shadow-lg h-20">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-sm text-label-sm">Catalog</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Payouts</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-5 py-1 active:scale-95">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">More</span>
+</button>
+</nav>
+<script>
+        // Micro-interaction for radio buttons
+        const radioWrappers = document.querySelectorAll('label.group');
+        radioWrappers.forEach(wrapper => {
+            wrapper.addEventListener('click', () => {
+                const radioName = wrapper.querySelector('input').name;
+                document.querySelectorAll(`input[name="${radioName}"]`).forEach(input => {
+                    input.closest('label').classList.remove('active-ring');
+                });
+                wrapper.classList.add('active-ring');
+            });
+        });
+
+        // Simple animation on page load for the grid items
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    section.style.transition = 'all 0.5s ease-out';
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+        });
+    </script>
+</body></html>

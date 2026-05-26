@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Offline Mode &amp; Sync Status</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary-container": "#00b47d",
+                "tertiary-fixed-dim": "#9bd3b4",
+                "surface-bright": "#f7f9fb",
+                "on-tertiary-fixed-variant": "#195039",
+                "on-tertiary-fixed": "#002113",
+                "on-secondary": "#ffffff",
+                "on-secondary-fixed-variant": "#004881",
+                "surface-container-low": "#f2f4f6",
+                "on-primary-container": "#7089b3",
+                "outline-variant": "#c4c6cf",
+                "primary": "#00091b",
+                "on-error-container": "#93000a",
+                "primary-fixed-dim": "#aec7f5",
+                "on-primary-fixed": "#001b3c",
+                "on-primary-fixed-variant": "#2e476e",
+                "surface-container-lowest": "#ffffff",
+                "surface-container": "#eceef0",
+                "tertiary": "#000b05",
+                "surface-variant": "#e0e3e5",
+                "surface-dim": "#d8dadc",
+                "surface-container-high": "#e6e8ea",
+                "on-secondary-container": "#00477f",
+                "primary-container": "#002045",
+                "surface-tint": "#465f87",
+                "surface-container-highest": "#e0e3e5",
+                "inverse-on-surface": "#eff1f3",
+                "tertiary-fixed": "#6ffbbe",
+                "on-primary": "#ffffff",
+                "inverse-primary": "#aec7f5",
+                "secondary-container": "#7db6ff",
+                "primary-fixed": "#d6e3ff",
+                "on-surface": "#191c1e",
+                "on-tertiary": "#ffffff",
+                "secondary-fixed-dim": "#a2c9ff",
+                "tertiary-container": "#002617",
+                "error-container": "#ffdad6",
+                "on-surface-variant": "#44474e",
+                "on-secondary-fixed": "#001c38",
+                "on-error": "#ffffff",
+                "background": "#f7f9fb",
+                "secondary-fixed": "#d3e4ff",
+                "surface": "#f7f9fb",
+                "secondary": "#1960a3",
+                "on-background": "#191c1e",
+                "inverse-surface": "#2d3133",
+                "error": "#ba1a1a",
+                "outline": "#74777f"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "sm": "12px",
+                "lg": "24px",
+                "touch-target-min": "44px",
+                "base": "4px",
+                "xs": "8px",
+                "xl": "32px",
+                "md": "16px"
+            },
+            "fontFamily": {
+                "label-md": ["JetBrains Mono"],
+                "body-md": ["Inter"],
+                "headline-md": ["Inter"],
+                "headline-lg-mobile": ["Inter"],
+                "body-lg": ["Inter"],
+                "headline-lg": ["Inter"],
+                "label-sm": ["JetBrains Mono"],
+                "display-price": ["Inter"]
+            },
+            "fontSize": {
+                "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        @keyframes subtle-pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.98); }
+        }
+        .sync-animation {
+            animation: spin 2s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .bento-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-container">
+<!-- Offline Status Bar Indicator -->
+<div class="fixed top-0 left-0 w-full z-[60] bg-primary text-on-primary py-2 px-md flex items-center justify-center gap-xs shadow-md transform translate-y-0 transition-transform duration-500" id="offline-bar">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">cloud_off</span>
+<span class="font-label-sm text-label-sm tracking-wider">Offline Mode — Data is being saved locally</span>
+</div>
+<!-- Top Navigation -->
+<header class="flex justify-between items-center w-full px-md h-touch-target-min fixed top-0 left-0 bg-surface z-50 pt-10">
+<div class="flex items-center gap-sm">
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-black tracking-tight text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex items-center gap-xs px-3 py-1.5 bg-surface-container-low rounded-full border border-outline-variant/30" id="sync-status-indicator">
+<span class="material-symbols-outlined text-on-surface-variant text-[16px] sync-animation">sync</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Syncing...</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center hover:bg-surface-container-high rounded-full transition-all active:scale-95">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+</div>
+</header>
+<main class="pt-[120px] pb-[100px] px-md max-w-7xl mx-auto">
+<!-- Main Content Area: Bento Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Left Column: Order History / Local Queue -->
+<div class="md:col-span-8 space-y-lg">
+<!-- Notification Card: Network Restored -->
+<div class="bg-tertiary-container text-on-tertiary-container p-lg rounded-xl flex items-start gap-md shadow-sm border border-on-tertiary-container/10 animate-in fade-in slide-in-from-top-4 duration-700" id="success-notification">
+<div class="w-12 h-12 bg-on-tertiary-container/20 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[28px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div class="flex-1">
+<h3 class="font-headline-md text-headline-md mb-1">Network Restored</h3>
+<p class="font-body-md text-body-md opacity-90">12 orders synced successfully with the central cloud. Your local database is now up to date.</p>
+<button class="mt-md font-label-md text-label-md uppercase tracking-widest border-b border-on-tertiary-container pb-0.5 hover:opacity-70 transition-opacity" onclick="this.parentElement.parentElement.remove()">Dismiss</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-md">
+<!-- Local Queue Card -->
+<div class="bento-card bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/20">
+<div class="flex justify-between items-start mb-lg">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest">Queue Status</span>
+<span class="bg-error-container text-on-error-container px-2 py-0.5 rounded font-label-sm text-[10px] font-bold">4 PENDING</span>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between py-2 border-b border-surface-variant">
+<div>
+<p class="font-headline-md text-headline-md">#ORD-2841</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Table 12 • $142.00</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">pending_actions</span>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-surface-variant">
+<div>
+<p class="font-headline-md text-headline-md">#ORD-2842</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Bar • $24.50</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">pending_actions</span>
+</div>
+</div>
+</div>
+<!-- Sync Visualization Card -->
+<div class="bento-card relative overflow-hidden bg-primary text-on-primary p-lg rounded-xl shadow-lg h-full min-h-[200px] flex flex-col justify-end">
+<img alt="Network Sync Visualization" class="absolute inset-0 w-full h-full object-cover opacity-20" data-alt="A sophisticated data visualization screen showing complex network nodes and glowing connection lines on a deep black background. The mood is high-tech, corporate, and precise, featuring subtle cyan and dark navy blue tones. The lighting is low-key with sharp, neon-like highlights representing active data synchronization paths in a premium digital environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxGOytYd6YiL_W_4B9f-cxk0syniGuVgPM6CgRVs7bpNTBF2KMqvhxsJEXtlaOe190oYlczFmSNBqfHnVIlEtbhKrp4w5r7V_lVJlXCjX0-2aP1t0RpQ3uj3XmLuLWEy3MTxlSmo9fbYYZ_MHF9bb5Mmk_F_DGZqc28pNIZjtka8rs2Y_VxOOg2Z9DTwPCdiQpeGlUWlPnSGWpgPk4up5KdZOg7OjaKVtlOtBghYSTGql3gB__WxqonOlwuf-qwNaPbrSrNgYaehU"/>
+<div class="relative z-10">
+<h2 class="font-headline-lg text-headline-lg mb-2">Real-time Stability</h2>
+<p class="font-body-md text-body-md text-on-primary/70">Our proprietary edge-sync engine ensures zero downtime even during total ISP failure.</p>
+</div>
+</div>
+</div>
+<!-- Recent Activity Grid -->
+<div class="bg-surface-container-low p-lg rounded-xl">
+<h4 class="font-label-md text-label-md text-on-surface-variant uppercase mb-md">System Log</h4>
+<div class="space-y-md">
+<div class="flex gap-md items-center bg-surface-container-lowest p-md rounded-lg shadow-sm border border-outline-variant/10">
+<div class="w-1.5 h-1.5 rounded-full bg-error shrink-0"></div>
+<span class="font-label-sm text-label-sm font-bold w-16">10:42 AM</span>
+<span class="font-body-md text-body-md text-on-surface flex-1">Network connection lost. Switching to Local Storage Mode.</span>
+</div>
+<div class="flex gap-md items-center bg-surface-container-lowest p-md rounded-lg shadow-sm border border-outline-variant/10">
+<div class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container shrink-0"></div>
+<span class="font-label-sm text-label-sm font-bold w-16">11:15 AM</span>
+<span class="font-body-md text-body-md text-on-surface flex-1">Heartbeat detected. Initializing synchronization handshake...</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Sync Controls Sidebar -->
+<aside class="md:col-span-4 space-y-lg">
+<div class="bg-surface-container-low p-lg rounded-xl border border-outline-variant/20 sticky top-[140px]">
+<div class="mb-xl text-center">
+<div class="w-20 h-20 bg-secondary-container text-on-secondary-container rounded-full mx-auto flex items-center justify-center mb-md shadow-md">
+<span class="material-symbols-outlined text-[40px]" id="sync-icon">sync</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary">Sync Control Panel</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manual override for cloud operations</p>
+</div>
+<div class="space-y-md">
+<button class="w-full h-touch-target-min bg-primary text-on-primary rounded-lg font-headline-md flex items-center justify-center gap-sm hover:bg-primary-container transition-all active:scale-95 group" id="manual-sync-btn">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500">cached</span>
+                            Manual Sync
+                        </button>
+<div class="p-md bg-surface-container-lowest rounded-lg border border-outline-variant/30">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Last Successful Sync</span>
+<span class="material-symbols-outlined text-on-tertiary-container text-[16px]">verified</span>
+</div>
+<p class="font-headline-md text-headline-md text-primary">2 minutes ago</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mt-1">11:13:42 AM • Oct 24, 2023</p>
+</div>
+<div class="space-y-sm pt-md">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md">Cloud Storage</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">84.2 GB / 100 GB</span>
+</div>
+<div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+<div class="bg-secondary-container h-full w-[84%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Secondary Info Card -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/10 text-center">
+<span class="material-symbols-outlined text-outline text-[32px] mb-sm">database</span>
+<h5 class="font-headline-md text-headline-md">Local Database Ready</h5>
+<p class="font-body-md text-body-md text-on-surface-variant px-md mt-1">Your device can store up to 5,000 transactions offline.</p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-lg md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-sm text-label-sm mt-1">Rooms</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm mt-1">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm mt-1">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1 active:scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm mt-0.5">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for Manual Sync
+        const syncBtn = document.getElementById('manual-sync-btn');
+        const syncIcon = document.getElementById('sync-icon');
+        const indicator = document.getElementById('sync-status-indicator');
+        const offlineBar = document.getElementById('offline-bar');
+
+        syncBtn.addEventListener('click', () => {
+            const icon = syncBtn.querySelector('.material-symbols-outlined');
+            icon.classList.add('sync-animation');
+            syncIcon.classList.add('sync-animation');
+            
+            // Simulate sync completion
+            setTimeout(() => {
+                icon.classList.remove('sync-animation');
+                syncIcon.classList.remove('sync-animation');
+                
+                // Hide offline bar and stop header sync indicator
+                offlineBar.classList.add('-translate-y-full');
+                indicator.innerHTML = `
+                    <span class="material-symbols-outlined text-on-tertiary-container text-[16px]">check_circle</span>
+                    <span class="font-label-sm text-label-sm text-on-tertiary-container">System Synced</span>
+                `;
+                indicator.classList.remove('bg-surface-container-low');
+                indicator.classList.add('bg-tertiary-fixed-dim/30');
+            }, 2500);
+        });
+
+        // Atmospheric touch: show notification after a few seconds
+        window.addEventListener('load', () => {
+            const notif = document.getElementById('success-notification');
+            notif.style.display = 'none';
+            setTimeout(() => {
+                notif.style.display = 'flex';
+            }, 1000);
+        });
+    </script>
+</body></html>

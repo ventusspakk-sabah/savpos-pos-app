@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Agent Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#e0e3e5",
+                    "on-background": "#191c1e",
+                    "surface-variant": "#e0e3e5",
+                    "secondary-fixed": "#d3e4ff",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#d8dadc",
+                    "background": "#f7f9fb",
+                    "on-primary-container": "#7089b3",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "secondary-container": "#7db6ff",
+                    "on-tertiary-container": "#00b47d",
+                    "surface": "#f7f9fb",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2d3133",
+                    "on-primary-fixed": "#001b3c",
+                    "on-secondary-container": "#00477f",
+                    "primary-fixed": "#d6e3ff",
+                    "on-secondary-fixed-variant": "#004881",
+                    "error": "#ba1a1a",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "primary-container": "#002045",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "secondary": "#1960a3",
+                    "surface-container": "#eceef0",
+                    "inverse-primary": "#aec7f5",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "surface-tint": "#465f87",
+                    "surface-container-low": "#f2f4f6",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container-high": "#e6e8ea",
+                    "tertiary-fixed": "#b6efcf",
+                    "tertiary": "#000b05",
+                    "tertiary-container": "#002617",
+                    "on-surface": "#191c1e",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "primary-fixed-dim": "#aec7f5",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#44474e",
+                    "outline": "#74777f",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00091b",
+                    "on-tertiary-fixed": "#002113",
+                    "on-secondary-fixed": "#001c38"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "base": "4px",
+                    "sm": "12px",
+                    "lg": "24px",
+                    "touch-target-min": "44px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-price": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #c4c6cf; border-radius: 10px; }
+        .glass-badge { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.8); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full w-72 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant py-xl px-md space-y-xs z-50">
+<div class="px-md mb-xl">
+<h1 class="font-headline-sm text-headline-sm font-black text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center space-x-md px-md py-sm mb-xl">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest border border-outline-variant">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="Professional portrait of a male corporate operations lead with a confident expression, wearing a tailored navy suit. The lighting is crisp and studio-quality, emphasizing a modern corporate atmosphere. The background is a soft, out-of-focus high-end office interior with glass walls and neutral tones, aligning with a sophisticated and precise financial UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAHVnn7vDyEliswUEpvU5979ojKSG4J5zV7tt_FmhLbh-lF1N8xP3Ff92crmhERzsnUdflPI6j27XGxJPR1uulm4m5XHjHsufKK8D9pEfPXQ1MW7BKsWkM-YbR9jKw6KZxrtmRzSCHNDgVpKIEOOTsvL7SV9QFHIm_dRu2RX0Q5QPjCGWscppfBLjliliy1DwX31h-FjplnZ9PpgD7049EHxXhMpyCBpZuFBmaJxv2MB2BU-8gIGQeA7OMiQwbtARYbbBMPuQCj4vM"/>
+</div>
+<div>
+<p class="font-body-lg text-body-lg font-bold text-primary">Operations Lead</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">POS Terminal Alpha</p>
+</div>
+</div>
+<nav class="space-y-base">
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-full group" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-lg text-body-lg">Dashboard</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm bg-secondary-container text-on-secondary-container font-bold rounded-full group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="font-body-lg text-body-lg">Staff</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-full group" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-lg text-body-lg">Catalog</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-high transition-all rounded-full group" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-lg text-body-lg">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky bg-surface border-b border-outline-variant flex justify-between items-center px-md md:px-xl py-md z-40 md:pl-80">
+<div class="flex items-center space-x-md">
+<span class="material-symbols-outlined text-primary text-2xl">admin_panel_settings</span>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Agent Management</h2>
+</div>
+<div class="flex items-center space-x-md">
+<button class="w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="md:hidden w-11 h-11 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<!-- Main Content -->
+<main class="md:ml-72 min-h-[calc(100vh-64px)] p-md md:p-xl space-y-lg pb-32 md:pb-xl">
+<!-- Top Section: Agent Profile & Rapid Actions -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Agent Profile Summary -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg flex flex-col md:flex-row items-center md:items-start space-y-lg md:space-y-0 md:space-x-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -mr-16 -mt-16"></div>
+<div class="relative">
+<div class="w-24 h-24 rounded-full border-4 border-secondary-container p-1 shadow-md">
+<img alt="Agent" class="w-full h-full object-cover rounded-full" data-alt="Close-up portrait of a senior agent with graying hair and a sharp, experienced look, dressed in a charcoal blazer. The background is an abstract financial graph with blurred candles and light streaks, conveying a high-stakes, trustworthy environment. The lighting is dramatic and directional, highlighting textures and depth, in a sophisticated light-mode corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3BhbCeM1p9APdoHpmDRBe8Z4CWiQpCPwwO7Zau2xgs2l8YA0gvq0roHUmsscSsQv_ySQ4QtA15NjFTYBjY_o8zfwsHJCT2kaUkdoM6nVolhXF1fpUUlgO6yLdT1gUU2I63lKPZxygtNCK5kKyTvbNEKQhQ6HQxlR__521b2ooO-CI7Rsel9_9WpItxZ7FvetkrxFsBIRiMcH5wcdOBr9THDFUFWmylP6FKANbgOGPk_gEzKEIeIbegSvwnbiAgWmM4Zq10VqDHZ4"/>
+</div>
+<div class="absolute bottom-0 right-0 bg-on-tertiary-container text-white p-1 rounded-full shadow-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div class="flex-1 space-y-md">
+<div>
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Master Agent #8821</p>
+<h3 class="font-headline-lg text-headline-lg font-bold">Julian Sterling</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center">
+<span class="material-symbols-outlined mr-xs text-sm">location_on</span>
+                            Metro North Hub • Active since Jan 2022
+                        </p>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-md">
+<div class="p-md rounded-lg bg-surface-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Credit Limit</p>
+<p class="font-label-md text-label-md font-bold text-primary">$50,000.00</p>
+</div>
+<div class="p-md rounded-lg bg-surface-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Outstanding</p>
+<p class="font-label-md text-label-md font-bold text-error">$12,450.25</p>
+</div>
+<div class="p-md rounded-lg bg-surface-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Earned Comm.</p>
+<p class="font-label-md text-label-md font-bold text-on-tertiary-container">$3,820.50</p>
+</div>
+<div class="p-md rounded-lg bg-surface-container">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Used as Offset</p>
+<p class="font-label-md text-label-md font-bold text-secondary">$1,200.00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Area -->
+<div class="lg:col-span-4 flex flex-col space-y-md">
+<button class="flex-1 flex items-center justify-center space-x-md bg-secondary text-on-secondary font-bold py-lg rounded-xl shadow-md hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-body-lg text-body-lg">Record Repayment</span>
+</button>
+<button class="flex-1 flex items-center justify-center space-x-md bg-surface-container-highest text-primary font-bold py-lg rounded-xl hover:bg-outline-variant transition-all active:scale-95">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-body-lg text-body-lg">Export Statement</span>
+</button>
+</div>
+</div>
+<!-- Middle Section: A/R Statements and Commission Offset -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- A/R Statement Table -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant overflow-hidden">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md font-bold text-primary">A/R Statement</h4>
+<div class="flex items-center bg-surface-container rounded-full px-sm py-xs">
+<span class="material-symbols-outlined text-on-surface-variant mr-xs">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-md placeholder-on-surface-variant w-32" placeholder="Search order ID..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant">
+<th class="px-lg py-sm font-label-sm">Order ID</th>
+<th class="px-lg py-sm font-label-sm">Billing Date</th>
+<th class="px-lg py-sm font-label-sm">Total Amount</th>
+<th class="px-lg py-sm font-label-sm">Commission Offset</th>
+<th class="px-lg py-sm font-label-sm">Balance Due</th>
+<th class="px-lg py-sm font-label-sm">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors group cursor-pointer">
+<td class="px-lg py-md font-label-md text-primary">ORD-9921</td>
+<td class="px-lg py-md font-label-md">Oct 12, 2023</td>
+<td class="px-lg py-md font-label-md font-bold">$4,200.00</td>
+<td class="px-lg py-md font-label-md text-on-tertiary-container">-$200.00</td>
+<td class="px-lg py-md font-label-md font-bold">$4,000.00</td>
+<td class="px-lg py-md">
+<span class="px-md py-1 rounded-full bg-error-container text-on-error-container text-label-sm font-bold">Unpaid</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group cursor-pointer">
+<td class="px-lg py-md font-label-md text-primary">ORD-9915</td>
+<td class="px-lg py-md font-label-md">Oct 08, 2023</td>
+<td class="px-lg py-md font-label-md font-bold">$2,850.25</td>
+<td class="px-lg py-md font-label-md text-on-tertiary-container">-$150.00</td>
+<td class="px-lg py-md font-label-md font-bold">$2,700.25</td>
+<td class="px-lg py-md">
+<span class="px-md py-1 rounded-full bg-error-container text-on-error-container text-label-sm font-bold">Unpaid</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors group cursor-pointer">
+<td class="px-lg py-md font-label-md text-primary">ORD-9882</td>
+<td class="px-lg py-md font-label-md">Sep 30, 2023</td>
+<td class="px-lg py-md font-label-md font-bold">$6,100.00</td>
+<td class="px-lg py-md font-label-md text-on-tertiary-container">-$850.00</td>
+<td class="px-lg py-md font-label-md font-bold">$5,250.00</td>
+<td class="px-lg py-md">
+<span class="px-md py-1 rounded-full bg-surface-container-highest text-on-surface-variant text-label-sm font-bold">Partial</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Commission Breakdown Card -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant p-lg space-y-lg flex flex-col">
+<div class="flex items-center space-x-md">
+<div class="p-sm rounded-lg bg-tertiary-fixed text-on-tertiary-fixed">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<h4 class="font-headline-md text-headline-md font-bold">Commission Analysis</h4>
+</div>
+<div class="space-y-md flex-1">
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<div>
+<span class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-on-tertiary-container bg-tertiary-fixed">
+                                    Offset Utilization
+                                </span>
+</div>
+<div class="text-right">
+<span class="text-xs font-semibold inline-block text-on-tertiary-container">
+                                    31%
+                                </span>
+</div>
+</div>
+<div class="overflow-hidden h-2 mb-4 text-xs flex rounded bg-surface-container-high">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-secondary" style="width:31%"></div>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center py-sm border-b border-outline-variant">
+<span class="font-body-md text-on-surface-variant">Available Commission</span>
+<span class="font-label-md font-bold text-on-tertiary-container">$2,620.50</span>
+</div>
+<div class="flex justify-between items-center py-sm border-b border-outline-variant">
+<span class="font-body-md text-on-surface-variant">Applied to A/R</span>
+<span class="font-label-md font-bold text-error">-$1,200.00</span>
+</div>
+<div class="flex justify-between items-center py-sm">
+<span class="font-body-md font-bold">Net Payable</span>
+<span class="font-label-md font-bold text-primary">$1,420.50</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container p-md rounded-lg mt-auto">
+<p class="font-label-sm text-label-sm text-on-surface-variant leading-relaxed">
+                        * Commissions are automatically calculated at 2.5% of net sales and applied as credit offsets on the 1st of every month.
+                    </p>
+</div>
+</div>
+</div>
+<!-- Bottom Insights/Secondary Info -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<div class="bg-surface-container-low p-lg rounded-xl flex items-center space-x-md">
+<span class="material-symbols-outlined text-secondary text-3xl">trending_up</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Monthly Throughput</p>
+<p class="font-headline-md text-headline-md font-bold">$142,500.00</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-lg rounded-xl flex items-center space-x-md">
+<span class="material-symbols-outlined text-on-tertiary-container text-3xl">task_alt</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Repayment Rate</p>
+<p class="font-headline-md text-headline-md font-bold">94.2%</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-lg rounded-xl flex items-center space-x-md">
+<span class="material-symbols-outlined text-error text-3xl">warning</span>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Overdue Balance</p>
+<p class="font-headline-md text-headline-md font-bold">$0.00</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Nav Bar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden bg-surface border-t border-outline-variant shadow-sm flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-transform duration-150 active:scale-90" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<!-- Recording Repayment Modal (Hidden) -->
+<div class="fixed inset-0 bg-primary/40 backdrop-blur-sm z-[60] flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300" id="repaymentModal">
+<div class="bg-surface-container-lowest w-full max-w-lg mx-md rounded-2xl shadow-xl p-xl scale-90 transition-transform duration-300 transform" id="modalContent">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md font-bold">Record Repayment</h3>
+<button class="w-10 h-10 rounded-full hover:bg-surface-container flex items-center justify-center" onclick="closeModal()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-md">
+<div>
+<label class="font-label-sm text-on-surface-variant mb-xs block">Payment Source</label>
+<select class="w-full bg-surface-container-low border-none rounded-lg p-md focus:ring-2 focus:ring-primary">
+<option>Bank Transfer (Swift/SEPA)</option>
+<option>Cash Deposit</option>
+<option>Cheque</option>
+<option>Commission Offset</option>
+</select>
+</div>
+<div>
+<label class="font-label-sm text-on-surface-variant mb-xs block">Amount (USD)</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-md font-display-price text-2xl focus:ring-2 focus:ring-primary" placeholder="0.00" type="number"/>
+</div>
+<div>
+<label class="font-label-sm text-on-surface-variant mb-xs block">Reference Number</label>
+<input class="w-full bg-surface-container-low border-none rounded-lg p-md focus:ring-2 focus:ring-primary" placeholder="TXN-XXXX-XXXX" type="text"/>
+</div>
+<button class="w-full bg-primary text-on-primary font-bold py-lg rounded-xl mt-lg shadow-md hover:opacity-90 active:scale-95 transition-all">
+                    Confirm &amp; Post to Ledger
+                </button>
+</div>
+</div>
+</div>
+<script>
+        const modal = document.getElementById('repaymentModal');
+        const modalContent = document.getElementById('modalContent');
+        const triggerBtn = document.querySelector('button.bg-secondary');
+
+        triggerBtn.addEventListener('click', () => {
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-90');
+            modalContent.classList.add('scale-100');
+        });
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-90');
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+    </script>
+</body></html>

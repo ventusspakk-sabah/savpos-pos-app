@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos Spa - Technician Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#f7f9fb",
+                      "tertiary-fixed-dim": "#9bd3b4",
+                      "on-secondary-fixed-variant": "#004881",
+                      "error": "#ba1a1a",
+                      "on-secondary": "#ffffff",
+                      "primary-container": "#002045",
+                      "primary": "#00091b",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f7f9fb",
+                      "primary-fixed-dim": "#aec7f5",
+                      "surface-container-low": "#f2f4f6",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-container": "#00b47d",
+                      "surface-container-high": "#e6e8ea",
+                      "on-background": "#191c1e",
+                      "on-primary": "#ffffff",
+                      "secondary-container": "#7db6ff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed-variant": "#195039",
+                      "secondary-fixed-dim": "#a2c9ff",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed": "#002113",
+                      "surface-variant": "#e0e3e5",
+                      "surface-dim": "#d8dadc",
+                      "on-primary-container": "#7089b3",
+                      "tertiary-container": "#002617",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "tertiary-fixed": "#6ffbbe",
+                      "tertiary": "#000b05",
+                      "outline-variant": "#c4c6cf",
+                      "inverse-primary": "#aec7f5",
+                      "on-primary-fixed": "#001b3c",
+                      "on-secondary-container": "#00477f",
+                      "secondary": "#1960a3",
+                      "on-error-container": "#93000a",
+                      "inverse-surface": "#2d3133",
+                      "on-surface-variant": "#44474e",
+                      "secondary-fixed": "#d3e4ff",
+                      "on-surface": "#191c1e",
+                      "surface-container": "#eceef0",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface": "#f7f9fb",
+                      "primary-fixed": "#d6e3ff",
+                      "surface-tint": "#465f87",
+                      "outline": "#74777f",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary-fixed": "#001c38"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "8px",
+                      "sm": "12px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "base": "4px",
+                      "xl": "32px",
+                      "touch-target-min": "44px"
+              },
+              "fontFamily": {
+                      "label-sm": ["JetBrains Mono"],
+                      "label-md": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "display-price": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md">
+<!-- Top Navigation Overlay (Suppressed in focused flow, but keeping brand presence) -->
+<header class="bg-surface-container-lowest dark:bg-surface-container shadow-sm flex justify-between items-center px-md py-xs w-full sticky top-0 z-40">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim">arrow_back</span>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary-fixed">Sav.pos Spa</h1>
+</div>
+<div class="flex items-center gap-md">
+<div class="bg-surface-variant/50 w-10 h-10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+</div>
+</div>
+</header>
+<main class="flex-1 flex flex-col md:flex-row items-stretch overflow-hidden">
+<!-- Sidebar Shell (Using JSON structure but hidden on small screens for the modal focus) -->
+<nav class="hidden md:flex flex-col bg-surface-container-low dark:bg-inverse-surface w-80 h-full p-lg border-r border-outline-variant/30">
+<div class="flex items-center gap-md mb-xl">
+<div class="w-12 h-12 bg-secondary-container rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">spa</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md font-bold text-secondary">Spa Manager</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Professional Edition</p>
+</div>
+</div>
+<div class="space-y-xs">
+<div class="bg-secondary-container text-on-secondary-container rounded-full px-4 py-3 flex items-center gap-4 transition-transform active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-3 flex items-center gap-4 transition-transform active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-3 flex items-center gap-4 transition-transform active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-body-md text-body-md">Staff</span>
+</div>
+<div class="text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-3 flex items-center gap-4 transition-transform active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span class="font-body-md text-body-md">Customers</span>
+</div>
+<div class="mt-auto pt-xl">
+<div class="text-on-surface-variant hover:bg-surface-variant rounded-full px-4 py-3 flex items-center gap-4 transition-transform active:scale-95 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas (Technician Selection Interface) -->
+<div class="flex-1 p-md md:p-xl flex flex-col gap-lg bg-surface relative">
+<header class="max-w-4xl mx-auto w-full">
+<div class="flex items-end justify-between border-b border-outline-variant/30 pb-md">
+<div>
+<span class="font-label-md text-label-md text-secondary uppercase tracking-widest">Active Transaction</span>
+<h2 class="font-headline-lg text-headline-lg text-primary mt-base">Technician Assignment</h2>
+</div>
+<div class="hidden md:flex gap-sm">
+<div class="bg-surface-container-high px-md py-xs rounded-lg flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">event</span>
+<span class="font-label-md text-label-md">OCT 24, 2023</span>
+</div>
+</div>
+</div>
+</header>
+<div class="max-w-4xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-lg overflow-y-auto hide-scrollbar pb-32">
+<!-- Selected Service Card -->
+<div class="lg:col-span-12">
+<div class="bg-surface-container-lowest rounded-xl p-lg shadow-sm flex flex-col md:flex-row justify-between items-center gap-md border border-outline-variant/20">
+<div class="flex items-center gap-lg">
+<div class="w-16 h-16 rounded-lg overflow-hidden bg-surface-variant">
+<img alt="Service" class="w-full h-full object-cover" data-alt="A close-up shot of luxurious spa massage oils and smooth basalt stones arranged on a bamboo mat. The lighting is soft and warm, casting gentle shadows that create a serene, professional atmosphere. The color palette features deep earth tones and soft whites, embodying a high-end wellness aesthetic for a sophisticated point of sale interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsxVU1pUtkd2nxvwO_6AwAN6sDITsP2MhUGlciR_tSJkuQzwCgYxzY-YkxcGvz5_VNdySs8oSH_2bizv4YNb99KOVetUE82ma2Lwi4KYVrjKRoQE5M0n_d6F1OuQqJG0sjrJLnmQ7rBoRXC6zoZlNElVODer-GFp7F6ej-2KUrkR4dnA6l5F8J7sq2bp3EgkWf5mKvHHLScpdONg2SNV_hIw-6A21Gb1h_bdODnoxVnel1SFrkAU7kXYxxUaIQ7uobtPZLmqyYqt0"/>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Deep Tissue Therapy</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">90 Minutes • Full Body Focus</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-display-price text-display-price text-secondary">$145.00</p>
+</div>
+</div>
+</div>
+<!-- Available Technicians Section -->
+<div class="lg:col-span-7 flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md text-primary">Free Technicians</h4>
+<span class="font-label-md text-label-md text-on-tertiary-container bg-tertiary-fixed/30 px-sm py-1 rounded-full">Available Now</span>
+</div>
+<!-- Tech Card: Meiling -->
+<div class="group bg-surface-container-lowest hover:bg-surface-container-low transition-colors rounded-xl p-md shadow-sm border border-outline-variant/10 flex items-center justify-between cursor-pointer" onclick="addTechnician('Meiling', 'Specialist', 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=200&amp;q=80')">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Meiling" class="w-14 h-14 rounded-full object-cover border-2 border-tertiary-fixed" data-alt="A professional headshot of an Asian female spa technician with a warm, welcoming smile. She is wearing a crisp white therapist uniform against a blurred, elegant spa interior background. The image is brightly lit with high-key soft lighting, emphasizing a clean and sophisticated aesthetic consistent with a premium wellness brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2fwkNVls5pfL5APn0KejaEQHetkZiIODeb9ES3cLBuCVNKEXs49GpMDd2cQrLvWSC1fxF0XZf42jVcqNzum796yHJ01AQuQOx5e51BRuYmMl-v9CGd43A-8nH8tdTMHNSJD_3sEb7owkD1Y9srlq0q37dtfj_0OGres_r7L1gxSMtdlJhMYf8NgsxJVFL8ZxAJ0jHRZ9yuD8zS1P5zciJJRfgPD_azr4Qg36eUfEDDM4g6QTQtlnmPZfEoPSCE9PV1H7hkTEJAWE"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-tertiary-fixed border-2 border-surface rounded-full"></div>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-primary">Meiling</p>
+<div class="flex gap-xs mt-1">
+<span class="text-[10px] font-label-sm px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded uppercase">Deep Tissue</span>
+<span class="text-[10px] font-label-sm px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded uppercase">Stone Massage</span>
+</div>
+</div>
+</div>
+<button class="w-11 h-11 rounded-full bg-surface-variant/30 flex items-center justify-center transition-transform active:scale-95 group-hover:bg-secondary-container group-hover:text-on-secondary-container">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Tech Card: Jason -->
+<div class="group bg-surface-container-lowest hover:bg-surface-container-low transition-colors rounded-xl p-md shadow-sm border border-outline-variant/10 flex items-center justify-between cursor-pointer" onclick="addTechnician('Jason', 'Senior Staff', 'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=200&amp;q=80')">
+<div class="flex items-center gap-md">
+<div class="relative">
+<img alt="Jason" class="w-14 h-14 rounded-full object-cover border-2 border-tertiary-fixed" data-alt="A professional headshot of a male technician in a clean, high-end spa environment. He has a friendly and confident expression, dressed in a dark blue professional uniform. The lighting is crisp and modern, with soft depth-of-field effects that highlight the premium nature of the service. The overall mood is reliable, expert, and efficient." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDbkT47Wv6a21xJ8eZRL_KvJaW8d6Ct84YPqWohrDeFCmTlz0GdoqM_gUgWJ80vy4-MGpJKWKpSzigAEpHiiLBJJtGIXX1yc4RU_r3EKo4Xp3-wvIeaKuVRRq7SU8MqoYhIxp3ErOtw6AmmiV-CqSVgoMdCI-MlsocPByMAWF1EMg7fa16Y7aBUy-MLL0RWtqU5PLiN9-_FYv88Bvzb5-LbYvYN8UYDUPZxoIIzvfi0hF94ZVWF27ouocAAZUoCDl2utBd62oTPno"/>
+<div class="absolute bottom-0 right-0 w-4 h-4 bg-tertiary-fixed border-2 border-surface rounded-full"></div>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-primary">Jason</p>
+<div class="flex gap-xs mt-1">
+<span class="text-[10px] font-label-sm px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded uppercase">Swedish</span>
+<span class="text-[10px] font-label-sm px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded uppercase">Sports Recovery</span>
+</div>
+</div>
+</div>
+<button class="w-11 h-11 rounded-full bg-surface-variant/30 flex items-center justify-center transition-transform active:scale-95 group-hover:bg-secondary-container group-hover:text-on-secondary-container">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<!-- Search Filter (Bento Style) -->
+<div class="bg-primary-container p-lg rounded-xl text-on-primary-container flex flex-col gap-sm">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-white placeholder-on-primary-container/60 w-full font-body-md" placeholder="Search technician by name or skill..." type="text"/>
+</div>
+<div class="flex flex-wrap gap-xs">
+<span class="bg-primary px-3 py-1 rounded-full font-label-sm text-label-sm text-primary-fixed-dim">All</span>
+<span class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full font-label-sm text-label-sm transition-colors cursor-pointer">Available</span>
+<span class="bg-white/10 hover:bg-white/20 px-3 py-1 rounded-full font-label-sm text-label-sm transition-colors cursor-pointer">On Break</span>
+</div>
+</div>
+</div>
+<!-- Commission Split Sidebar -->
+<div class="lg:col-span-5 flex flex-col gap-md">
+<h4 class="font-headline-md text-headline-md text-primary">Commission Split</h4>
+<div class="bg-surface-container-low rounded-2xl p-lg flex flex-col gap-lg min-h-[320px] shadow-md border border-outline-variant/30 relative" id="split-container">
+<!-- Placeholder text if empty -->
+<div class="flex-1 flex flex-col items-center justify-center text-center p-xl" id="empty-state">
+<span class="material-symbols-outlined text-4xl text-outline-variant mb-md">person_add</span>
+<p class="font-body-md text-body-md text-on-surface-variant">Select technicians to assign them to this service and configure splits.</p>
+</div>
+<!-- Split List (Dynamic) -->
+<div class="flex flex-col gap-md" id="tech-list"></div>
+<!-- Total Calculator -->
+<div class="mt-auto pt-lg border-t border-outline-variant/50 hidden" id="total-split">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Split</span>
+<span class="font-headline-md text-headline-md font-bold text-secondary" id="split-total-percent">0%</span>
+</div>
+<div class="w-full bg-surface-variant rounded-full h-2 overflow-hidden">
+<div class="bg-secondary h-full transition-all duration-500" id="split-bar" style="width: 0%"></div>
+</div>
+<p class="text-error font-label-sm text-label-sm mt-xs hidden" id="split-error">Split must equal 100% to continue.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Order Sheet / Bottom Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 right-0 glass-panel border-t border-outline-variant/20 px-lg py-md md:pl-80 z-50">
+<div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-xl w-full md:w-auto justify-between md:justify-start">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Technicians Assigned</p>
+<p class="font-headline-md text-headline-md text-primary" id="tech-count">0 Selected</p>
+</div>
+<div class="h-10 w-px bg-outline-variant/50 hidden md:block"></div>
+<div class="text-right md:text-left">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Service Total</p>
+<p class="font-headline-md text-headline-md text-secondary">$145.00</p>
+</div>
+</div>
+<button class="w-full md:w-auto px-xl py-md bg-tertiary-container text-tertiary-fixed font-headline-md text-headline-md rounded-xl flex items-center justify-center gap-md shadow-lg transition-all opacity-50 cursor-not-allowed active:scale-95 duration-200" disabled="" id="start-service-btn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+                    Start Service
+                </button>
+</div>
+</div>
+</main>
+<!-- Modal Mobile Navigation (BottomNavBar) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center bg-surface-container-low dark:bg-surface-container-high px-md pb-xs pt-xs rounded-t-xl shadow-md border-t border-outline-variant/10">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-6 py-1">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</div>
+</nav>
+<script>
+        let assignedTechs = [];
+
+        function addTechnician(name, role, img) {
+            if (assignedTechs.find(t => t.name === name)) return;
+            
+            assignedTechs.push({ name, role, img, percent: 0 });
+            // Evenly split on add if empty
+            if (assignedTechs.length === 1) {
+                assignedTechs[0].percent = 100;
+            } else {
+                const equalShare = Math.floor(100 / assignedTechs.length);
+                assignedTechs.forEach(t => t.percent = equalShare);
+                // Adjust last one to hit 100 if rounding issues
+                assignedTechs[assignedTechs.length-1].percent += (100 - (equalShare * assignedTechs.length));
+            }
+            
+            renderSplits();
+        }
+
+        function removeTechnician(name) {
+            assignedTechs = assignedTechs.filter(t => t.name !== name);
+            if (assignedTechs.length > 0) {
+                const equalShare = Math.floor(100 / assignedTechs.length);
+                assignedTechs.forEach(t => t.percent = equalShare);
+                assignedTechs[assignedTechs.length-1].percent += (100 - (equalShare * assignedTechs.length));
+            }
+            renderSplits();
+        }
+
+        function updatePercent(name, value) {
+            const tech = assignedTechs.find(t => t.name === name);
+            if (tech) {
+                tech.percent = parseInt(value) || 0;
+                calculateTotal();
+            }
+        }
+
+        function calculateTotal() {
+            const total = assignedTechs.reduce((sum, t) => sum + t.percent, 0);
+            const totalDisplay = document.getElementById('split-total-percent');
+            const splitBar = document.getElementById('split-bar');
+            const errorMsg = document.getElementById('split-error');
+            const startBtn = document.getElementById('start-service-btn');
+
+            totalDisplay.innerText = total + '%';
+            splitBar.style.width = Math.min(total, 100) + '%';
+
+            if (total === 100 && assignedTechs.length > 0) {
+                totalDisplay.className = 'font-headline-md text-headline-md font-bold text-on-tertiary-container';
+                errorMsg.classList.add('hidden');
+                startBtn.disabled = false;
+                startBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                totalDisplay.className = 'font-headline-md text-headline-md font-bold text-error';
+                errorMsg.classList.remove('hidden');
+                startBtn.disabled = true;
+                startBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        }
+
+        function renderSplits() {
+            const container = document.getElementById('tech-list');
+            const emptyState = document.getElementById('empty-state');
+            const totalSection = document.getElementById('total-split');
+            const techCountDisplay = document.getElementById('tech-count');
+
+            techCountDisplay.innerText = `${assignedTechs.length} Selected`;
+
+            if (assignedTechs.length === 0) {
+                emptyState.classList.remove('hidden');
+                totalSection.classList.add('hidden');
+                container.innerHTML = '';
+                calculateTotal();
+                return;
+            }
+
+            emptyState.classList.add('hidden');
+            totalSection.classList.remove('hidden');
+
+            container.innerHTML = assignedTechs.map(tech => `
+                <div class="bg-surface-container-lowest rounded-xl p-md border border-outline-variant/30 flex items-center justify-between gap-md animate-in fade-in slide-in-from-right-4 duration-300">
+                    <div class="flex items-center gap-md">
+                        <img src="${tech.img}" class="w-10 h-10 rounded-full object-cover">
+                        <div>
+                            <p class="font-headline-md text-body-md font-bold text-primary">${tech.name}</p>
+                            <p class="font-label-sm text-label-sm text-on-surface-variant">${tech.role}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-sm">
+                        <div class="relative">
+                            <input type="number" 
+                                   value="${tech.percent}" 
+                                   onchange="updatePercent('${tech.name}', this.value)"
+                                   class="w-20 bg-surface-container-low border-none rounded-lg font-label-md text-label-md px-3 py-2 text-right focus:ring-2 focus:ring-primary">
+                            <span class="absolute right-8 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-md">%</span>
+                        </div>
+                        <button onclick="removeTechnician('${tech.name}')" class="text-on-surface-variant hover:text-error transition-colors">
+                            <span class="material-symbols-outlined">close</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            calculateTotal();
+        }
+    </script>
+</body></html>

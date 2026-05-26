@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POS_ENGINE::v2.4 - DB Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#d6e3ff",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#465f87",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "inverse-primary": "#aec7f5",
+                        "background": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "secondary-fixed": "#d3e4ff",
+                        "secondary": "#1960a3",
+                        "on-background": "#191c1e",
+                        "outline": "#74777f",
+                        "inverse-surface": "#2d3133",
+                        "error": "#ba1a1a",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "tertiary-container": "#002617",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#44474e",
+                        "on-secondary-fixed": "#001c38",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary-container": "#7089b3",
+                        "primary": "#00091b",
+                        "outline-variant": "#c4c6cf",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "on-tertiary-container": "#00b47d",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "on-tertiary-fixed": "#002113",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#000b05",
+                        "surface-variant": "#e0e3e5",
+                        "primary-container": "#002045",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-container": "#00477f",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-primary-fixed": "#001b3c",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#2e476e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "sm": "12px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-price": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background: #e0e3e5;
+            height: 6px;
+            border-radius: 3px;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            background: #002045;
+            border-radius: 50%;
+            margin-top: -7px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-md h-xl fixed top-0 z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="terminal">terminal</span>
+<h1 class="font-label-caps text-label-caps tracking-widest text-primary-container dark:text-primary-container">POS_ENGINE::v2.4</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-xs rounded-full hover:bg-surface-container-highest/50 transition-colors active:scale-95 duration-75 text-on-surface-variant" data-icon="settings_input_component">settings_input_component</button>
+</div>
+</header>
+<!-- NavigationDrawer -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-xl z-40 bg-surface-container-lowest/90 backdrop-blur-xl border-r border-outline-variant w-[240px] hidden md:flex">
+<div class="px-md py-lg">
+<h2 class="font-label-caps text-label-caps text-secondary-fixed opacity-60">SYSTEM_OPS</h2>
+</div>
+<nav class="flex-1 px-sm space-y-xs">
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="segment">segment</span>
+<span class="font-data-mono text-data-mono">Logs</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-data-mono text-data-mono">Metrics</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-data-mono text-data-mono">Audit</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-primary-container bg-surface-container-highest/40 border-l-2 border-primary-container transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="developer_board">developer_board</span>
+<span class="font-data-mono text-data-mono">Hardware</span>
+</a>
+<a class="flex items-center gap-md px-md py-sm rounded-lg text-on-surface-variant opacity-70 hover:bg-surface-container-high hover:opacity-100 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="font-data-mono text-data-mono">Security</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:pl-[240px] pt-xl min-h-screen">
+<div class="max-w-6xl mx-auto p-md lg:p-lg">
+<!-- Header Section -->
+<div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Database Connection</h2>
+<p class="text-on-surface-variant mt-base">Configure the core POS synchronization engine parameters.</p>
+</div>
+<div class="flex items-center gap-sm bg-surface-container px-md py-sm rounded-xl">
+<div class="w-3 h-3 rounded-full bg-tertiary shadow-[0_0_8px_rgba(0,180,125,0.6)] animate-pulse"></div>
+<span class="font-label-sm text-label-sm text-on-tertiary-container uppercase tracking-tight">System Status: Active</span>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Primary Configuration Form -->
+<section class="lg:col-span-8 space-y-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/30">
+<h3 class="font-headline-md text-headline-md mb-lg flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="database">database</span>
+                            Server Identity
+                        </h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Host Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Host Address</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low px-md py-sm rounded-lg border-none focus:ring-2 focus:ring-primary-container transition-all outline-none text-body-md font-label-md" type="text" value="db.savpos-cloud.internal"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant" data-icon="dns">dns</span>
+</div>
+</div>
+<!-- Port Field -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Port</label>
+<input class="w-full bg-surface-container-low px-md py-sm rounded-lg border-none focus:ring-2 focus:ring-primary-container transition-all outline-none text-body-md font-label-md" type="number" value="5432"/>
+</div>
+<!-- Database Name -->
+<div class="md:col-span-2 space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Database Name</label>
+<input class="w-full bg-surface-container-low px-md py-sm rounded-lg border-none focus:ring-2 focus:ring-primary-container transition-all outline-none text-body-md" placeholder="e.g. savpos_retail_prod" type="text"/>
+</div>
+<!-- Username -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Username</label>
+<input class="w-full bg-surface-container-low px-md py-sm rounded-lg border-none focus:ring-2 focus:ring-primary-container transition-all outline-none text-body-md" type="text" value="admin_engine"/>
+</div>
+<!-- Password -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Password</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low px-md py-sm rounded-lg border-none focus:ring-2 focus:ring-primary-container transition-all outline-none text-body-md" type="password" value="••••••••••••"/>
+<button class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline-variant hover:text-on-surface-variant" data-icon="visibility">visibility</button>
+</div>
+</div>
+</div>
+<div class="mt-xl pt-xl border-t border-outline-variant flex items-center justify-between">
+<button class="flex items-center gap-sm px-xl py-md bg-secondary text-on-secondary rounded-full font-headline-md hover:shadow-lg active:scale-95 transition-all" id="testConnection">
+<span class="material-symbols-outlined" data-icon="cable">cable</span>
+                                Test Connection
+                            </button>
+<span class="hidden font-label-md text-on-tertiary-container bg-tertiary-fixed/30 px-md py-sm rounded-full animate-in fade-in slide-in-from-left-2" id="testResult">
+                                Connection Verified
+                            </span>
+</div>
+</div>
+<!-- Sync Frequency Section -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/30">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="font-headline-md text-headline-md flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="sync_alt">sync_alt</span>
+                                Sync Dynamics
+                            </h3>
+<span class="font-label-sm text-label-sm bg-primary-fixed text-on-primary-fixed px-sm py-1 rounded-full uppercase">Real-time Priority</span>
+</div>
+<div class="space-y-lg">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant font-label-md">Data Fetch Frequency</span>
+<span class="font-display-price text-[24px] text-primary" id="syncVal">15s</span>
+</div>
+<input class="w-full" id="syncSlider" max="300" min="5" step="5" type="range" value="15"/>
+<div class="flex justify-between text-label-sm text-outline font-label-sm">
+<span>High Speed (5s)</span>
+<span>Eco Mode (5m)</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Sidebar Status Panels -->
+<aside class="lg:col-span-4 space-y-lg">
+<!-- Last Sync Status -->
+<div class="bg-primary-container text-on-primary-fixed-variant p-lg rounded-xl shadow-md relative overflow-hidden">
+<div class="relative z-10">
+<h4 class="font-label-md uppercase tracking-widest opacity-80 mb-sm">Last Sync Status</h4>
+<div class="flex items-baseline gap-xs mb-md">
+<span class="font-display-price text-on-primary text-[32px]">SUCCESS</span>
+</div>
+<p class="text-sm opacity-90 leading-relaxed font-body-md">
+                                All local terminal transactions were successfully pushed to the main database cluster 2 minutes ago.
+                            </p>
+<div class="mt-lg flex items-center gap-sm font-label-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="history">history</span>
+                                2023-11-24 14:32:01 UTC
+                            </div>
+</div>
+<!-- Abstract Background Decoration -->
+<div class="absolute -right-8 -bottom-8 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="check_circle">check_circle</span>
+</div>
+</div>
+<!-- Visual Context Image -->
+<div class="rounded-xl overflow-hidden shadow-sm h-[200px] relative group">
+<img alt="Server room infrastructure" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-tech server room with glowing blue led lights on dark rack units. The lighting is precise and cool-toned, creating a professional and sophisticated technical atmosphere. Minimalist composition highlights the efficiency and speed of the data processing environment in a premium retail backend setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQMqE2t5khdJuUSRUH9ZYcuhIcU6qYNMu_cKnv6d4U2K9_3A8SmPtiqs0AfSCPhzHNiV6QP0rMgs4e5MJ5yCMVSS9s4_LF7f0rG2rxuT9ONkE8VVk8uK5mSsR1fxVcb2SquzUDW3vQ7ZQ9LxEqjPemRSyrqLCK63pYmEvfVF1SBFPgYLdpqlsATNa1I5BLA3m2jvSM3L5o1Gdn5ABFUySqzvMSca6El26UlkIr0NLcFvIdGgzAyvnO_QKldwY8MdpLYIiOSEZ3kOM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-md">
+<span class="text-on-primary font-label-md flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm" data-icon="security">security</span>
+                                SSL Encrypted Connection
+                            </span>
+</div>
+</div>
+<!-- Quick Links/Help -->
+<div class="bg-surface-container-high p-lg rounded-xl border border-outline-variant/20">
+<h4 class="font-label-md text-on-surface mb-md">Engine Health</h4>
+<div class="space-y-sm">
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">Latency</span>
+<span class="font-label-sm text-tertiary">24ms</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-tertiary h-full w-[15%]"></div>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-on-surface-variant text-sm">Throughput</span>
+<span class="font-label-sm text-secondary">1.2 GB/s</span>
+</div>
+<div class="w-full bg-surface-variant h-1 rounded-full overflow-hidden">
+<div class="bg-secondary h-full w-[65%]"></div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+</main>
+<!-- Interactive Micro-interactions Script -->
+<script>
+        const slider = document.getElementById('syncSlider');
+        const display = document.getElementById('syncVal');
+        const testBtn = document.getElementById('testConnection');
+        const testResult = document.getElementById('testResult');
+
+        slider.oninput = function() {
+            let val = this.value;
+            if (val >= 60) {
+                let mins = Math.floor(val / 60);
+                let secs = val % 60;
+                display.innerText = `${mins}m ${secs > 0 ? secs + 's' : ''}`;
+            } else {
+                display.innerText = `${val}s`;
+            }
+        };
+
+        testBtn.addEventListener('click', () => {
+            testBtn.innerHTML = `<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> Testing...`;
+            testBtn.classList.add('opacity-80');
+            
+            setTimeout(() => {
+                testBtn.innerHTML = `<span class="material-symbols-outlined" data-icon="cable">cable</span> Test Connection`;
+                testBtn.classList.remove('opacity-80');
+                testResult.classList.remove('hidden');
+                
+                // Pulse effect on result
+                testResult.classList.add('ring-4', 'ring-tertiary/20');
+                setTimeout(() => {
+                    testResult.classList.remove('ring-4', 'ring-tertiary/20');
+                }, 1000);
+            }, 1500);
+        });
+
+        // Add visual scale on all interactive elements
+        document.querySelectorAll('button, a').forEach(el => {
+            el.addEventListener('mousedown', () => el.style.transform = 'scale(0.95)');
+            el.addEventListener('mouseup', () => el.style.transform = 'scale(1)');
+            el.addEventListener('mouseleave', () => el.style.transform = 'scale(1)');
+        });
+    </script>
+</body></html>

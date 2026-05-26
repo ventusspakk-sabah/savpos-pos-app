@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f7f9fb;
+            color: #191c1e;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-card {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#2d3133",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary": "#00091b",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-dim": "#d8dadc",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "tertiary": "#000b05",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "primary-container": "#002045",
+                        "surface": "#f7f9fb",
+                        "tertiary-container": "#002617",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary-container": "#00b47d",
+                        "outline": "#74777f",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-fixed": "#d3e4ff",
+                        "surface-container": "#eceef0",
+                        "secondary": "#1960a3",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary-fixed": "#001c38",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "surface-tint": "#465f87",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-low": "#f2f4f6",
+                        "on-background": "#191c1e",
+                        "inverse-primary": "#aec7f5",
+                        "on-primary-container": "#7089b3",
+                        "background": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#44474e",
+                        "on-surface": "#191c1e",
+                        "primary-fixed-dim": "#aec7f5",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-container": "#00477f",
+                        "on-primary-fixed": "#001b3c",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "44px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "md": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-price": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex bg-surface">
+<!-- Sidebar (NavigationDrawer) -->
+<aside class="hidden md:flex flex-col h-full w-72 bg-surface-container-low border-r border-outline-variant/30 sticky top-0">
+<div class="p-lg">
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</h1>
+<div class="mt-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">badge</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-bold text-primary">Sav.pos Admin</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium POS System</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-md space-y-base">
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">儀表板</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 bg-tertiary-container text-on-tertiary-container rounded-lg" href="#">
+<span class="material-symbols-outlined">loyalty</span>
+<span class="font-body-md text-body-md">會員行銷</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">庫存管理</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">客戶資料</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">數據報表</span>
+</a>
+</nav>
+<div class="p-lg border-t border-outline-variant/30">
+<button class="flex items-center gap-md w-full px-4 py-3 text-error hover:bg-error-container/20 rounded-lg transition-colors">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">登出系統</span>
+</button>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 min-h-screen relative pb-24 md:pb-lg">
+<!-- TopAppBar -->
+<header class="sticky top-0 z-40 bg-surface/80 backdrop-blur-md px-lg h-touch-target-min flex justify-between items-center shadow-sm">
+<div class="flex items-center gap-md">
+<button class="md:hidden p-2 text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">會員與行銷管理</h2>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest border-none rounded-full shadow-sm w-72 focus:ring-2 focus:ring-primary text-body-md" placeholder="搜尋會員姓名、手機或編號..." type="text"/>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-variant/50 rounded-full transition-colors relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Profile" data-alt="A professional portrait of a modern shop manager in a sleek, high-end retail environment. The individual is wearing a sophisticated dark uniform that aligns with a premium brand aesthetic. The background is softly blurred, showing a clean, minimalist interior with warm ambient lighting and polished surfaces. The overall mood is precise, efficient, and authoritative, reflecting the Sav.pos brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDW9Kcr471KpL17exomJON5IlwO-N6dBmKvisUMOXWgc9rp3aFF8gQ6tB3VKgy2PDWA7tg48q8aDU4kECu9ylD_tKTx3OQGyq2heSQ3z7MTdsQCv5xsu4vr7srsBB3k-W_6-yyXTj3U6o-BjdgU7g3ZWGzikE-blLAM3CMIZZbxgtXZ16WKQLTLN_6nydnXpGSAMzYO1amhj8Z2VgLSzGfB3E2Q0EAlihJ-MxXkbuEhdc5txSq0X710OxtBgIOlyQB8Ne2xVoQ6LsI"/>
+</div>
+</div>
+</header>
+<div class="p-lg space-y-lg max-w-7xl mx-auto">
+<!-- Loyalty Settings & Stats -->
+<div class="bento-grid">
+<!-- Loyalty Points Rule Card -->
+<section class="col-span-12 lg:col-span-8 glass-card rounded-xl p-lg shadow-md border border-white">
+<div class="flex justify-between items-center mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">stars</span>
+<h3 class="font-headline-md text-headline-md text-primary">點數回饋機制</h3>
+</div>
+<button class="flex items-center gap-xs px-md py-2 bg-primary text-on-primary rounded-full font-label-md transition-transform active:scale-95">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                            儲存變更
+                        </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div class="space-y-md">
+<label class="block">
+<span class="font-label-md text-on-surface-variant">累積規則 (消費金額 : 點數)</span>
+<div class="mt-2 flex items-center gap-md">
+<div class="relative flex-1">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-label-sm text-on-surface-variant">NT$</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary" type="number" value="1"/>
+</div>
+<span class="text-on-surface-variant font-bold">：</span>
+<div class="relative flex-1">
+<input class="w-full px-4 py-3 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary" type="number" value="1"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 font-label-sm text-on-surface-variant">點</span>
+</div>
+</div>
+<p class="mt-2 font-label-sm text-on-surface-variant/70">當前設定：每消費 1 元可獲得 1 點</p>
+</label>
+<label class="block">
+<span class="font-label-md text-on-surface-variant">折抵規則 (點數 : 折抵金額)</span>
+<div class="mt-2 flex items-center gap-md">
+<div class="relative flex-1">
+<input class="w-full px-4 py-3 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary" type="number" value="100"/>
+<span class="absolute right-3 top-1/2 -translate-y-1/2 font-label-sm text-on-surface-variant">點</span>
+</div>
+<span class="text-on-surface-variant font-bold">：</span>
+<div class="relative flex-1">
+<span class="absolute left-3 top-1/2 -translate-y-1/2 font-label-sm text-on-surface-variant">NT$</span>
+<input class="w-full pl-12 pr-4 py-3 bg-surface-container-low border-none rounded-lg focus:ring-2 focus:ring-primary" type="number" value="10"/>
+</div>
+</div>
+<p class="mt-2 font-label-sm text-on-surface-variant/70">當前設定：每 100 點可折抵 10 元</p>
+</label>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl border border-outline-variant/20 flex flex-col justify-center items-center text-center">
+<div class="w-16 h-16 bg-tertiary-fixed rounded-full flex items-center justify-center text-on-tertiary-fixed mb-md">
+<span class="material-symbols-outlined text-[32px]">insights</span>
+</div>
+<h4 class="font-body-md text-body-md font-bold text-primary mb-1">營運預估</h4>
+<p class="font-label-sm text-on-surface-variant max-w-[200px]">當前設定下，預計回饋率為 10%。這有助於提高 15% 的會員回購率。</p>
+<div class="mt-md px-4 py-2 bg-white rounded-full shadow-sm flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-sm text-on-surface">健康營運區間</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Loyalty Quick Stats -->
+<section class="col-span-12 lg:col-span-4 grid grid-rows-2 gap-lg">
+<div class="bg-primary text-on-primary p-lg rounded-xl shadow-lg relative overflow-hidden group">
+<div class="relative z-10">
+<p class="font-label-md">總核銷點數 (本月)</p>
+<h3 class="font-display-price text-display-price mt-xs">128,450</h3>
+<div class="flex items-center gap-xs mt-md text-tertiary-fixed">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="font-label-sm">+12.4% vs 上月</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-10 group-hover:scale-110 transition-transform duration-500">point_of_sale</span>
+</div>
+<div class="bg-secondary text-on-secondary p-lg rounded-xl shadow-lg relative overflow-hidden group">
+<div class="relative z-10">
+<p class="font-label-md">新增會員數</p>
+<h3 class="font-display-price text-display-price mt-xs">842</h3>
+<div class="flex items-center gap-xs mt-md text-secondary-fixed">
+<span class="material-symbols-outlined text-[16px]">group_add</span>
+<span class="font-label-sm">本週目標達成率 84%</span>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-10 group-hover:rotate-12 transition-transform duration-500">person_add</span>
+</div>
+</section>
+</div>
+<!-- Coupon Center -->
+<section class="space-y-md">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">票券中心 (Coupon Center)</h3>
+<p class="font-label-sm text-on-surface-variant">管理店內折扣券、促銷碼與限時優惠</p>
+</div>
+<button class="px-lg py-3 bg-tertiary-container text-on-tertiary-container font-headline-md rounded-xl flex items-center gap-md shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add_circle</span>
+                        建立新優惠券
+                    </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-lg">
+<!-- Coupon Card 1 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden group">
+<div class="p-md bg-surface-container-high flex justify-between items-center border-b border-dashed border-outline-variant">
+<span class="px-3 py-1 bg-on-tertiary-container/10 text-on-tertiary-container text-label-sm rounded-full font-bold">進行中</span>
+<span class="font-label-sm text-on-surface-variant">ID: CP-9012</span>
+</div>
+<div class="p-lg flex gap-lg">
+<div class="flex-1">
+<h4 class="font-headline-md text-primary">新春限時折百</h4>
+<p class="text-on-surface-variant font-label-sm mt-1">滿 $1,000 折 $100</p>
+<div class="mt-lg space-y-1">
+<p class="text-on-surface-variant font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 2024-03-31 截止
+                                    </p>
+<p class="text-on-surface-variant font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">bar_chart</span> 已使用: 142 / 500
+                                    </p>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center border-l border-dashed border-outline-variant pl-lg">
+<p class="font-label-sm text-secondary">折抵</p>
+<p class="font-display-price text-headline-lg text-secondary">$100</p>
+</div>
+</div>
+<div class="p-md bg-surface flex justify-end gap-md">
+<button class="text-on-surface-variant font-label-md hover:text-primary px-3 py-1 transition-colors">暫停</button>
+<button class="text-secondary font-label-md hover:underline px-3 py-1 transition-colors">編輯詳情</button>
+</div>
+</div>
+<!-- Coupon Card 2 -->
+<div class="bg-white rounded-xl shadow-sm border border-outline-variant/30 overflow-hidden group">
+<div class="p-md bg-surface-container-high flex justify-between items-center border-b border-dashed border-outline-variant">
+<span class="px-3 py-1 bg-on-tertiary-container/10 text-on-tertiary-container text-label-sm rounded-full font-bold">進行中</span>
+<span class="font-label-sm text-on-surface-variant">ID: CP-9015</span>
+</div>
+<div class="p-lg flex gap-lg">
+<div class="flex-1">
+<h4 class="font-headline-md text-primary">週末午茶 8 折</h4>
+<p class="text-on-surface-variant font-label-sm mt-1">飲品類不限金額 8 折</p>
+<div class="mt-lg space-y-1">
+<p class="text-on-surface-variant font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 2024-04-15 截止
+                                    </p>
+<p class="text-on-surface-variant font-label-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">bar_chart</span> 已使用: 89 / 200
+                                    </p>
+</div>
+</div>
+<div class="flex flex-col items-center justify-center border-l border-dashed border-outline-variant pl-lg">
+<p class="font-label-sm text-secondary">折扣</p>
+<p class="font-display-price text-headline-lg text-secondary">80%</p>
+</div>
+</div>
+<div class="p-md bg-surface flex justify-end gap-md">
+<button class="text-on-surface-variant font-label-md hover:text-primary px-3 py-1 transition-colors">暫停</button>
+<button class="text-secondary font-label-md hover:underline px-3 py-1 transition-colors">編輯詳情</button>
+</div>
+</div>
+<!-- Coupon Card 3 (Empty State / Placeholder) -->
+<div class="bg-surface-container-low rounded-xl border-2 border-dashed border-outline-variant/50 flex flex-col items-center justify-center p-xl group hover:border-primary transition-colors cursor-pointer">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant group-hover:bg-primary group-hover:text-on-primary transition-all">
+<span class="material-symbols-outlined">confirmation_number</span>
+</div>
+<p class="mt-md font-body-md font-bold text-on-surface-variant group-hover:text-primary">新增更多優惠方案</p>
+</div>
+</div>
+</section>
+<!-- Recent Activity Table -->
+<section class="bg-white rounded-xl shadow-md border border-outline-variant/20 overflow-hidden">
+<div class="p-lg flex justify-between items-center border-b border-surface-variant">
+<h3 class="font-headline-md text-primary">最近會員異動</h3>
+<div class="flex gap-md">
+<button class="px-4 py-2 border border-outline rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">匯出 CSV</button>
+<button class="px-4 py-2 border border-outline rounded-lg text-on-surface-variant font-label-md hover:bg-surface-container transition-colors">過濾條件</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low">
+<tr>
+<th class="px-lg py-4 font-label-md text-on-surface-variant uppercase tracking-wider">會員</th>
+<th class="px-lg py-4 font-label-md text-on-surface-variant uppercase tracking-wider">異動類型</th>
+<th class="px-lg py-4 font-label-md text-on-surface-variant uppercase tracking-wider">變動點數</th>
+<th class="px-lg py-4 font-label-md text-on-surface-variant uppercase tracking-wider">當前餘額</th>
+<th class="px-lg py-4 font-label-md text-on-surface-variant uppercase tracking-wider">時間</th>
+<th class="px-lg py-4 font-label-md text-on-surface-variant uppercase tracking-wider text-right">操作</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-4">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[12px] font-bold">LW</div>
+<div>
+<p class="font-body-md font-bold">李維君</p>
+<p class="font-label-sm text-on-surface-variant">0912-***-456</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4"><span class="px-2 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[12px] rounded font-bold">消費累點</span></td>
+<td class="px-lg py-4 text-on-tertiary-container font-bold font-label-md">+245 Pts</td>
+<td class="px-lg py-4 font-label-md">1,820 Pts</td>
+<td class="px-lg py-4 font-label-sm text-on-surface-variant">2 分鐘前</td>
+<td class="px-lg py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="px-lg py-4">
+<div class="flex items-center gap-md">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center text-[12px] font-bold">TH</div>
+<div>
+<p class="font-body-md font-bold">張廷豪</p>
+<p class="font-label-sm text-on-surface-variant">0933-***-821</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4"><span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[12px] rounded font-bold">點數折抵</span></td>
+<td class="px-lg py-4 text-error font-bold font-label-md">-500 Pts</td>
+<td class="px-lg py-4 font-label-md">340 Pts</td>
+<td class="px-lg py-4 font-label-sm text-on-surface-variant">15 分鐘前</td>
+<td class="px-lg py-4 text-right">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">more_vert</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface border-t border-outline-variant/30 flex justify-around items-center px-md py-xs z-50 rounded-t-xl shadow-lg">
+<button class="flex flex-col items-center justify-center text-on-surface-variant py-1">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">銷售</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant py-1">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">訂單</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1">
+<span class="material-symbols-outlined">loyalty</span>
+<span class="font-label-sm text-label-sm">行銷</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant py-1">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">設定</span>
+</button>
+</nav>
+<!-- FAB for Quick Member Search (Mobile Focus) -->
+<button class="md:hidden fixed bottom-20 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center active:scale-90 transition-transform">
+<span class="material-symbols-outlined">person_search</span>
+</button>
+<script>
+        // Simple Interaction: Toggle visual feedback on buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2)';
+                    setTimeout(() => icon.style.transform = 'scale(1)', 200);
+                }
+            });
+        });
+
+        // Search Input focus effect
+        const searchInput = document.querySelector('input[type="text"]');
+        if (searchInput) {
+            searchInput.addEventListener('focus', () => {
+                searchInput.parentElement.classList.add('ring-2', 'ring-primary');
+            });
+            searchInput.addEventListener('blur', () => {
+                searchInput.parentElement.classList.remove('ring-2', 'ring-primary');
+            });
+        }
+    </script>
+</body></html>

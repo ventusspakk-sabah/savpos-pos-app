@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Manrope:wght@600;700&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-bright": "#3a393a",
+            "surface-tint": "#d5bbff",
+            "surface-container-low": "#1c1b1c",
+            "inverse-on-surface": "#313031",
+            "tertiary": "#ffb599",
+            "processing-blue": "#2979FF",
+            "on-surface": "#e5e2e3",
+            "tertiary-container": "#a93c00",
+            "error": "#ffb4ab",
+            "secondary": "#b0c6ff",
+            "on-primary-fixed-variant": "#5e00c1",
+            "tertiary-fixed-dim": "#ffb599",
+            "primary-container": "#7e00ff",
+            "on-primary": "#41008a",
+            "surface-elevated": "#1A1A1E",
+            "critical-red": "#FF1744",
+            "surface-container": "#201f20",
+            "inverse-primary": "#7c00fb",
+            "on-tertiary": "#5a1c00",
+            "surface-container-high": "#2a2a2b",
+            "on-secondary": "#002d6e",
+            "on-tertiary-fixed": "#370e00",
+            "on-secondary-fixed": "#001945",
+            "primary": "#d5bbff",
+            "secondary-fixed-dim": "#b0c6ff",
+            "error-container": "#93000a",
+            "primary-fixed-dim": "#d5bbff",
+            "tertiary-fixed": "#ffdbce",
+            "on-tertiary-fixed-variant": "#7f2b00",
+            "outline": "#978da3",
+            "on-surface-variant": "#cdc2da",
+            "surface-dim": "#131314",
+            "on-error": "#690005",
+            "background": "#131314",
+            "success-green": "#00C853",
+            "surface-variant": "#353436",
+            "on-background": "#e5e2e3",
+            "surface-container-highest": "#353436",
+            "secondary-fixed": "#d9e2ff",
+            "border-subtle": "#2D2D32",
+            "surface-container-lowest": "#0e0e0f",
+            "on-secondary-container": "#f2f3ff",
+            "on-primary-fixed": "#270057",
+            "inverse-surface": "#e5e2e3",
+            "on-error-container": "#ffdad6",
+            "primary-fixed": "#ecdcff",
+            "on-secondary-fixed-variant": "#00429b",
+            "on-primary-container": "#e6d3ff",
+            "secondary-container": "#0068ed",
+            "outline-variant": "#4b4357",
+            "surface": "#131314",
+            "on-tertiary-container": "#ffd1c1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "margin-desktop": "32px",
+            "max-width": "1600px",
+            "margin-mobile": "16px",
+            "gutter": "16px",
+            "base": "8px"
+          },
+          "fontFamily": {
+            "label-sm": ["inter"],
+            "headline-md": ["manrope"],
+            "headline-lg": ["manrope"],
+            "data-tabular": ["jetbrainsMono"],
+            "data-header": ["jetbrainsMono"],
+            "body-md": ["inter"]
+          },
+          "fontSize": {
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "data-tabular": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "data-header": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .pulse-critical {
+      animation: pulse-red 2s infinite;
+    }
+    @keyframes pulse-red {
+      0% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 23, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 23, 68, 0); }
+    }
+    .scan-line {
+      background: linear-gradient(to bottom, transparent 50%, rgba(41, 121, 255, 0.05) 50%);
+      background-size: 100% 4px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden scan-line selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopAppBar Mapping -->
+<header class="flex justify-between items-center px-margin-desktop py-4 w-full bg-surface-container border-b border-border-subtle top-0 sticky z-50">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">POS_STRESS_ENGINE_V1</h1>
+</div>
+<button class="bg-critical-red text-on-primary px-4 py-2 font-data-header text-data-header rounded-lg hover:bg-surface-bright transition-colors active:scale-95 duration-100 uppercase tracking-widest">
+      STOP TEST
+    </button>
+</header>
+<div class="flex min-h-screen">
+<!-- NavigationDrawer Mapping -->
+<aside class="hidden md:flex flex-col h-screen w-64 left-0 sticky bg-surface-container-low border-r border-border-subtle py-base gap-2">
+<div class="px-6 py-4 mb-4">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">SYSTEM OPS</h2>
+</div>
+<nav class="flex flex-col px-2 gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer font-data-header text-data-header" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+          Real-time Metrics
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-secondary font-bold border-l-2 border-secondary bg-surface-variant/10 hover:bg-surface-container-high transition-all cursor-pointer font-data-header text-data-header" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+          Transaction Logs
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer font-data-header text-data-header" href="#">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+          Commission Integrity
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer font-data-header text-data-header" href="#">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+          Resource Monitor
+        </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer font-data-header text-data-header" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+          Stress Settings
+        </a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop bg-background max-w-full">
+<!-- Stability Score Banner -->
+<section class="mb-8 relative overflow-hidden rounded-xl border border-critical-red/30 bg-surface-container p-8 shadow-lg">
+<div class="absolute top-0 right-0 p-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]" data-icon="report_problem">report_problem</span>
+</div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+<div>
+<p class="font-data-header text-data-header text-critical-red uppercase tracking-[0.2em] mb-2 flex items-center gap-2">
+<span class="pulse-critical w-2 h-2 rounded-full bg-critical-red block"></span>
+              Critical Stress Phase Detected
+            </p>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">
+              Current Stability Score: <span class="text-critical-red">88%</span>
+</h2>
+</div>
+<div class="flex gap-4">
+<button class="bg-surface-variant border border-border-subtle px-6 py-3 font-data-header text-data-header text-on-surface hover:bg-surface-bright transition-all">
+              VIEW FULL REPORT
+            </button>
+<button class="bg-processing-blue text-white px-6 py-3 font-data-header text-data-header hover:brightness-110 active:scale-95 transition-all shadow-md shadow-processing-blue/20">
+              RETRY BATCH
+            </button>
+</div>
+</div>
+<!-- Progress Bar Background -->
+<div class="mt-6 w-full h-1 bg-surface-variant rounded-full overflow-hidden">
+<div class="h-full bg-critical-red" style="width: 88%"></div>
+</div>
+</section>
+<!-- Grid Header -->
+<div class="flex items-center justify-between mb-4 px-2">
+<div class="flex items-center gap-4">
+<h3 class="font-data-header text-data-header text-on-surface-variant uppercase tracking-widest">Active Anomalies</h3>
+<span class="bg-surface-container-high text-secondary px-2 py-0.5 rounded font-data-tabular text-[10px]">TOTAL: 04</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-surface-container-high rounded text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span>
+</button>
+<button class="p-2 hover:bg-surface-container-high rounded text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" data-icon="download">download</span>
+</button>
+</div>
+</div>
+<!-- Anomaly Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Entry Card 1: Large Critical -->
+<article class="md:col-span-8 bg-surface-elevated border-l-4 border-l-critical-red border border-border-subtle p-6 hover:bg-surface-container transition-all group">
+<div class="flex flex-col h-full justify-between">
+<div class="flex justify-between items-start mb-6">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="font-data-tabular text-on-surface-variant opacity-60">14:22:09.442</span>
+<span class="text-critical-red bg-critical-red/10 px-2 py-0.5 rounded text-[10px] font-bold">CRITICAL_ERR</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">Database Write Timeout</h4>
+<p class="text-on-surface-variant font-data-tabular mt-1">Component: SQL_PRIMARY_NODE_A</p>
+</div>
+<div class="text-right">
+<p class="font-data-header text-data-header text-on-surface-variant opacity-60">ERROR_CODE</p>
+<code class="text-secondary font-data-tabular bg-secondary/5 px-2 py-1 rounded">DB_504_GATEWAY</code>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-surface-container-lowest rounded-lg border border-border-subtle mb-6">
+<div>
+<p class="text-[10px] font-data-header text-on-surface-variant uppercase opacity-50 mb-1">Impact Radius</p>
+<p class="font-data-tabular text-on-surface">4,202 Transactions</p>
+</div>
+<div>
+<p class="text-[10px] font-data-header text-on-surface-variant uppercase opacity-50 mb-1">Auto-Recovery</p>
+<div class="flex items-center gap-2 text-warning">
+<span class="material-symbols-outlined text-sm animate-spin" data-icon="sync">sync</span>
+<span class="font-data-tabular">In Progress (42%)</span>
+</div>
+</div>
+<div>
+<p class="text-[10px] font-data-header text-on-surface-variant uppercase opacity-50 mb-1">Latent Delay</p>
+<p class="font-data-tabular text-critical-red">+1,240ms</p>
+</div>
+</div>
+<div class="flex flex-wrap gap-3">
+<button class="bg-processing-blue/10 border border-processing-blue/30 text-processing-blue px-4 py-2 font-data-header text-data-header hover:bg-processing-blue hover:text-white transition-all uppercase">Retry Batch</button>
+<button class="bg-surface-variant border border-border-subtle text-on-surface px-4 py-2 font-data-header text-data-header hover:bg-surface-bright transition-all uppercase">Clear Cache</button>
+<button class="bg-surface-variant border border-border-subtle text-on-surface px-4 py-2 font-data-header text-data-header hover:bg-surface-bright transition-all uppercase">Adjust Threshold</button>
+</div>
+</div>
+</article>
+<!-- Entry Card 2: Medium Alert -->
+<article class="md:col-span-4 bg-surface-elevated border-l-4 border-l-secondary border border-border-subtle p-6 flex flex-col justify-between group">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="font-data-tabular text-on-surface-variant opacity-60">14:21:45</span>
+<span class="text-secondary bg-secondary/10 px-2 py-0.5 rounded text-[10px] font-bold">OVERFLOW</span>
+</div>
+<span class="material-symbols-outlined text-secondary" data-icon="cloud_queue">cloud_queue</span>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface mb-2">SMS Queue Overflow</h4>
+<p class="text-on-surface-variant font-data-tabular text-sm">Component: NOTIFY_ENGINE_X</p>
+<div class="mt-6 flex flex-col gap-2">
+<div class="flex justify-between font-data-tabular text-xs">
+<span>Buffer Usage</span>
+<span class="text-secondary">98%</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-lowest rounded-full">
+<div class="h-full bg-secondary" style="width: 98%"></div>
+</div>
+</div>
+</div>
+<div class="mt-8 flex flex-col gap-2">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-success-green text-sm" data-icon="check_circle">check_circle</span>
+<span class="font-data-header text-[10px] text-success-green uppercase">Auto-recovery: SUCCESSFUL</span>
+</div>
+<button class="w-full bg-surface-variant border border-border-subtle text-on-surface px-4 py-2 font-data-header text-data-header hover:bg-surface-bright transition-all uppercase">Flush Buffer</button>
+</div>
+</article>
+<!-- Entry Card 3: Memory Spike -->
+<article class="md:col-span-4 bg-surface-elevated border-l-4 border-l-tertiary border border-border-subtle p-6 flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-2">
+<span class="font-data-tabular text-on-surface-variant opacity-60">14:19:12</span>
+<span class="text-tertiary bg-tertiary/10 px-2 py-0.5 rounded text-[10px] font-bold">STABILITY</span>
+</div>
+</div>
+<h4 class="font-headline-md text-[18px] text-on-surface mb-2">Memory Leak Detected</h4>
+<p class="text-on-surface-variant font-data-tabular text-sm">Component: AUTH_SERVICE_NODE_4</p>
+</div>
+<div class="mt-6">
+<div class="flex justify-between items-end">
+<img class="w-full h-16 object-contain opacity-60" data-alt="A minimalist tech visualization of a rising line graph in glowing neon orange against a dark ebony background. The style is data-heavy and technical, with a slight digital grid overlay. Subtle motion blur indicates a real-time system monitoring atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcbkwPbfv26s40-Aw3Aj3cgeQYX48c0E3JpTjgh5p29Bi5amciGTewWlaMf03aipFOu1Th1yFbm-lPvgjj05zpbbs_fDBP9Vi8Pk9rJZb5-ChEXoxgHCb_YniAxDw1sYlfTHtmXVu2vAw4_oYGHCvo5bfWd50OXbkgxSvio3JTdK3iHVheiy9Hi0jWLz96Ar9xfLkUwyOk1sA3fjOKkDySzPo7hQnxNFETHFE8PZ6LnIcYpyeo2EKcUVW6998KPvDHKrM3QnP5G50"/>
+</div>
+</div>
+<div class="mt-6 flex flex-col gap-2">
+<button class="w-full bg-surface-variant border border-border-subtle text-on-surface px-4 py-2 font-data-header text-data-header hover:bg-surface-bright transition-all uppercase">Restart Instance</button>
+</div>
+</article>
+<!-- Entry Card 4: Detailed Log Table -->
+<article class="md:col-span-8 bg-surface-elevated border border-border-subtle overflow-hidden">
+<div class="bg-surface-container px-6 py-3 border-b border-border-subtle flex justify-between items-center">
+<h4 class="font-data-header text-data-header uppercase tracking-widest text-on-surface-variant">Live Anomaly Feed</h4>
+<div class="flex items-center gap-4 text-[10px] font-data-tabular">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-critical-red"></span> ERROR</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> WARN</span>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-data-tabular text-sm">
+<thead class="bg-surface-container-low text-on-surface-variant/50">
+<tr>
+<th class="px-6 py-3 font-data-header text-[10px] uppercase">Timestamp</th>
+<th class="px-6 py-3 font-data-header text-[10px] uppercase">ID</th>
+<th class="px-6 py-3 font-data-header text-[10px] uppercase">Event</th>
+<th class="px-6 py-3 font-data-header text-[10px] uppercase">Status</th>
+<th class="px-6 py-3 font-data-header text-[10px] uppercase">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle/50">
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-4 opacity-60">14:22:45</td>
+<td class="px-6 py-4 font-bold text-critical-red">E-9932</td>
+<td class="px-6 py-4">API Rate Limit Exceeded</td>
+<td class="px-6 py-4"><span class="text-on-surface-variant italic">Throttling</span></td>
+<td class="px-6 py-4"><button class="text-secondary hover:underline">BYPASS</button></td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-4 opacity-60">14:22:41</td>
+<td class="px-6 py-4 font-bold text-secondary">W-1042</td>
+<td class="px-6 py-4">Disk I/O Latency High</td>
+<td class="px-6 py-4 text-success-green">Resolved</td>
+<td class="px-6 py-4"><button class="text-on-surface-variant opacity-30 cursor-not-allowed">NONE</button></td>
+</tr>
+<tr class="hover:bg-surface-container-high transition-colors">
+<td class="px-6 py-4 opacity-60">14:22:38</td>
+<td class="px-6 py-4 font-bold text-critical-red">E-0012</td>
+<td class="px-6 py-4">Deadlock on TRANSACTION_TBL</td>
+<td class="px-6 py-4 text-critical-red">Blocked</td>
+<td class="px-6 py-4"><button class="text-secondary hover:underline">KILL PID</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</article>
+</div>
+</main>
+</div>
+<!-- BottomNavBar Mapping -->
+<footer class="fixed bottom-0 left-0 w-full flex items-center justify-around px-margin-mobile bg-surface-container-lowest border-t border-border-subtle z-50 h-12 md:hidden">
+<div class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+<span class="font-data-tabular text-label-sm uppercase">NORMAL</span>
+</div>
+<div class="flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined" data-icon="warning">warning</span>
+<span class="font-data-tabular text-label-sm uppercase">HIGH</span>
+</div>
+<div class="flex flex-col items-center gap-1 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">
+<span class="material-symbols-outlined" data-icon="emergency_home">emergency_home</span>
+<span class="font-data-tabular text-label-sm uppercase">CRITICAL</span>
+</div>
+</footer>
+<script>
+    // Micro-interaction for stability simulation
+    setInterval(() => {
+      const scoreEl = document.querySelector('h2 .text-critical-red');
+      if (scoreEl) {
+        const base = 88;
+        const drift = (Math.random() * 2 - 1).toFixed(1);
+        const current = (parseFloat(base) + parseFloat(drift)).toFixed(1);
+        scoreEl.innerText = current + '%';
+      }
+    }, 3000);
+
+    // Fade in effect for cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('article');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.5s ease-out';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 * index);
+      });
+    });
+  </script>
+</body></html>

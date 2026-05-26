@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Welcome to Sav.pos (Wellness Variant)</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Inter & JetBrains Mono -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-low": "#f2f4f6",
+                      "background": "#f7f9fb",
+                      "on-secondary": "#ffffff",
+                      "tertiary-fixed": "#6ffbbe",
+                      "secondary-container": "#7db6ff",
+                      "surface-dim": "#d8dadc",
+                      "on-tertiary-fixed": "#002113",
+                      "surface": "#f7f9fb",
+                      "outline": "#74777f",
+                      "on-secondary-fixed": "#001c38",
+                      "secondary": "#1960a3",
+                      "primary-fixed": "#d6e3ff",
+                      "tertiary": "#000b05",
+                      "surface-variant": "#e0e3e5",
+                      "error-container": "#ffdad6",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#465f87",
+                      "secondary-fixed": "#d3e4ff",
+                      "tertiary-container": "#002617",
+                      "surface-bright": "#f7f9fb",
+                      "primary-container": "#002045",
+                      "on-tertiary-fixed-variant": "#195039",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "on-primary": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed-dim": "#9bd3b4",
+                      "on-primary-container": "#7089b3",
+                      "on-secondary-container": "#00477f",
+                      "surface-container-high": "#e6e8ea",
+                      "primary-fixed-dim": "#aec7f5",
+                      "on-secondary-fixed-variant": "#004881",
+                      "on-surface-variant": "#44474e",
+                      "on-error": "#ffffff",
+                      "on-surface": "#191c1e",
+                      "surface-container": "#eceef0",
+                      "surface-container-lowest": "#ffffff",
+                      "secondary-fixed-dim": "#a2c9ff",
+                      "surface-container-highest": "#e0e3e5",
+                      "inverse-surface": "#2d3133",
+                      "on-tertiary-container": "#00b47d",
+                      "on-primary-fixed": "#001b3c",
+                      "error": "#ba1a1a",
+                      "inverse-primary": "#aec7f5",
+                      "outline-variant": "#c4c6cf",
+                      "primary": "#00091b",
+                      "on-background": "#191c1e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xl": "32px",
+                      "touch-target-min": "44px",
+                      "sm": "12px",
+                      "base": "4px",
+                      "md": "16px",
+                      "xs": "8px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "body-md": ["Inter"],
+                      "label-sm": ["JetBrains Mono"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-lg-mobile": ["Inter"],
+                      "display-price": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+        }
+        .organic-blob {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        .warm-gradient {
+            background: linear-gradient(135deg, #FFF9F5 0%, #F2F7F2 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- Onboarding Container -->
+<main class="min-h-screen warm-gradient flex flex-col lg:flex-row relative">
+<!-- Background Atmospheric Blobs (Decorative) -->
+<div class="absolute top-[-10%] left-[-5%] w-96 h-96 organic-blob bg-tertiary-fixed/20 blur-3xl -z-10"></div>
+<div class="absolute bottom-[-10%] right-[-5%] w-[32rem] h-[32rem] organic-blob bg-secondary-fixed/20 blur-3xl -z-10"></div>
+<!-- Left Column: Visual Storytelling -->
+<section class="lg:w-1/2 w-full p-md lg:p-xl flex flex-col justify-center items-center lg:items-start relative overflow-hidden">
+<div class="max-w-xl w-full">
+<!-- Brand Anchor -->
+<div class="mb-xl animate-fade-in">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-on-tertiary-container text-4xl" data-icon="spa">spa</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Sav.pos Hub</h1>
+</div>
+</div>
+<!-- Bento Grid Style Visuals -->
+<div class="grid grid-cols-2 gap-md relative">
+<!-- Feature Card 1 -->
+<div class="col-span-2 relative h-64 rounded-3xl overflow-hidden shadow-lg group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A serene professional spa environment where a customer is receiving a relaxing stone massage. The lighting is soft and warm, featuring cream and sage green tones. The atmosphere is quiet, luxurious, and focused on wellness and holistic care, reflecting the high-end Sav.pos boutique aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFzjTC9W_mvX2XdzT3IpGpeReVKTz7gsvjk0NJt7J3Xyt0TEr4rM84mCteFX5B6m4HAuPHocgaUAyf-S0GKVuWmn--uk2hB_OqeKlMVVfAHo-CV0cP7-EI3SB4Q1mH-bx3nAOKNfTiL-HzfL_XMvgvNJjh6HCUSk1qe7Tntwr1F_8c-zOoWkxZ32J6aFBwBVaesxm9AIY033tmFU_kL2vc93NjRfsf6j8uVBGyPC5cv8XXleenHKWDIWFokOO6CLtBA81kySmS3QM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+<div class="absolute bottom-md left-md text-white">
+<p class="font-label-md text-label-md opacity-80 mb-base">COMMUNITY FIRST</p>
+<h2 class="font-headline-md text-headline-md">Nurturing Relationships</h2>
+</div>
+</div>
+<!-- Feature Card 2 -->
+<div class="h-48 rounded-3xl overflow-hidden shadow-md glass-card p-md flex flex-col justify-end">
+<div class="bg-tertiary-fixed/30 w-12 h-12 rounded-full flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" data-icon="favorite">favorite</span>
+</div>
+<p class="font-headline-md text-headline-md text-on-surface">Personal Touch</p>
+<p class="font-body-md text-on-surface-variant text-sm">Tailored for your regulars.</p>
+</div>
+<!-- Feature Card 3 -->
+<div class="h-48 rounded-3xl overflow-hidden shadow-md relative group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A high-quality close-up of herbal spa products including green tea leaves and bamboo elements on a soft linen surface. The visual palette includes muted terracotta and soft neutrals, emphasizing a natural, organic wellness brand identity. High-key lighting creates a bright and welcoming atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvWUgHglfjz84zWNc4JMB48fsaYnJ68Bo0JnK6HyOW7OvzCmMX1UO_BBHG2AHr2eCtENDgLDMW01NNGYHEp10Xhn1yY145rUXTt4p9tmY_1x_hXnTd1yRqQDUM4YaYDmKxZ_TMldKY83htYXMKGK50IOZsR_X_OM2eDKlrgpooacx7LXbuC5Tu2gVSxAuJ_bvspoWrpjvWRWW4oLglr2VbhvMXsDbQc87gUMcGWhzGpGq-ro6XNQ8Wy7LiHv6KWEI0B2ZuH4ZxzlQ"/>
+<div class="absolute inset-0 bg-secondary/20 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+<span class="text-white font-label-md text-label-md">View Services</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Interaction/Onboarding Form -->
+<section class="lg:w-1/2 w-full p-md lg:p-xl flex items-center justify-center">
+<div class="max-w-md w-full bg-surface-container-lowest p-xl rounded-[2.5rem] shadow-xl border border-white/50">
+<div class="text-center mb-xl">
+<h2 class="font-headline-lg text-headline-lg lg:text-headline-lg text-primary mb-sm">Welcome to Sav.pos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">The Wellness Variant: Sophisticated tools for compassionate care.</p>
+</div>
+<!-- Onboarding Progress -->
+<div class="flex justify-between items-center mb-xl px-xl">
+<div class="w-3 h-3 rounded-full bg-on-tertiary-container shadow-[0_0_10px_rgba(0,180,125,0.4)]"></div>
+<div class="flex-1 h-[2px] bg-surface-variant mx-base"></div>
+<div class="w-3 h-3 rounded-full bg-surface-variant"></div>
+<div class="flex-1 h-[2px] bg-surface-variant mx-base"></div>
+<div class="w-3 h-3 rounded-full bg-surface-variant"></div>
+</div>
+<!-- Input Group -->
+<div class="space-y-lg mb-xl">
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs ml-base">Studio Name</label>
+<input class="w-full px-md py-4 rounded-2xl bg-surface-container-low border-none focus:ring-2 focus:ring-primary shadow-sm transition-all text-body-md" placeholder="e.g. Serenity Springs Spa" type="text" value="Luxury Spa Group"/>
+</div>
+<div>
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs ml-base">Business Type</label>
+<div class="grid grid-cols-2 gap-sm">
+<button class="flex items-center gap-xs p-md rounded-2xl border-2 border-on-tertiary-container bg-tertiary-fixed/10 text-on-tertiary-container transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="spa">spa</span>
+<span class="font-label-md">Wellness</span>
+</button>
+<button class="flex items-center gap-xs p-md rounded-2xl border-2 border-transparent bg-surface-container-low text-on-surface-variant hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="content_cut">content_cut</span>
+<span class="font-label-md">Boutique</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Actions -->
+<div class="flex flex-col gap-md">
+<button class="w-full h-touch-target-min flex items-center justify-center gap-sm bg-tertiary-container text-on-tertiary-container font-headline-md rounded-full shadow-md hover:shadow-lg transition-all active:scale-95 group" onclick="window.location.reload()">
+<span>Get Started</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="w-full h-touch-target-min flex items-center justify-center text-on-surface-variant font-label-md hover:underline decoration-tertiary-fixed decoration-2 underline-offset-4 transition-all">
+                        Already have an account? Sign In
+                    </button>
+</div>
+<!-- Social Proof Footer -->
+<div class="mt-xl pt-xl border-t border-surface-variant text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-md">TRUSTED BY 500+ PREMIUM BOUTIQUES</p>
+<div class="flex justify-center gap-xl grayscale opacity-40">
+<span class="material-symbols-outlined" data-icon="diamond">diamond</span>
+<span class="material-symbols-outlined" data-icon="vaping_rooms">vaping_rooms</span>
+<span class="material-symbols-outlined" data-icon="self_care">self_care</span>
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating Help Button -->
+<button class="fixed bottom-xl right-xl w-14 h-14 bg-surface-container-lowest shadow-lg rounded-full flex items-center justify-center text-primary-fixed-variant hover:bg-primary-fixed transition-colors active:scale-90 z-50 group">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="absolute right-full mr-md px-md py-xs bg-primary text-white text-label-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">Need assistance?</span>
+</button>
+<script>
+        // Micro-interaction for the organic blobs
+        document.addEventListener('mousemove', (e) => {
+            const blobs = document.querySelectorAll('.organic-blob');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            blobs.forEach((blob, index) => {
+                const speed = (index + 1) * 20;
+                const x = (mouseX - 0.5) * speed;
+                const y = (mouseY - 0.5) * speed;
+                blob.style.transform = `translate(${x}px, ${y}px)`;
+            });
+        });
+
+        // Simple animation entry for cards
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100');
+                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card, img').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-4');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

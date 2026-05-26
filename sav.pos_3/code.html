@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos Professional | Premium Wellness Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed-variant": "#2e476e",
+                        "tertiary-container": "#002617",
+                        "on-tertiary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#00477f",
+                        "background": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#1960a3",
+                        "on-tertiary-container": "#00b47d",
+                        "surface-tint": "#465f87",
+                        "on-secondary-fixed": "#001c38",
+                        "surface": "#f7f9fb",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-primary-container": "#7089b3",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "on-background": "#191c1e",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed": "#001b3c",
+                        "error": "#ba1a1a",
+                        "on-surface": "#191c1e",
+                        "surface-container-high": "#e6e8ea",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "surface-bright": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-low": "#f2f4f6",
+                        "outline-variant": "#c4c6cf",
+                        "surface-dim": "#d8dadc",
+                        "on-surface-variant": "#44474e",
+                        "primary-container": "#002045",
+                        "secondary-container": "#7db6ff",
+                        "surface-container": "#eceef0",
+                        "outline": "#74777f",
+                        "inverse-primary": "#aec7f5",
+                        "primary": "#00091b",
+                        "on-error-container": "#93000a",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary": "#000b05",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "primary-fixed-dim": "#aec7f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "lg": "24px",
+                        "touch-target-min": "44px",
+                        "sm": "12px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #00091b;
+            color: #ffffff;
+        }
+        .premium-gradient {
+            background: radial-gradient(circle at 0% 0%, #002045 0%, #00091b 50%, #001b3c 100%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .transition-interaction {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s, background-color 0.2s;
+        }
+        .transition-interaction:active {
+            transform: scale(0.97);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden premium-gradient min-h-screen">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 animate-fade-in-up">
+<div class="flex items-center justify-between px-md py-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary-fixed" style="font-size: 24px;">spa</span>
+<span class="font-headline-md text-headline-md font-bold text-white">Sav.pos <span class="font-light text-primary-fixed-dim/70">PRO</span></span>
+</div>
+<div class="flex items-center gap-sm">
+<button class="flex items-center gap-1 text-label-sm font-label-sm text-outline-variant hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">language</span>
+<span>EN</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<button class="p-2 text-white">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex flex-col items-center justify-center min-h-screen px-md pt-xl pb-24">
+<div class="w-full max-w-lg mx-auto text-center space-y-xl">
+<!-- Logo Section -->
+<div class="relative inline-block group animate-fade-in-up delay-1 opacity-0">
+<div class="absolute -inset-10 bg-primary-fixed/10 rounded-full blur-[80px] group-hover:bg-primary-fixed/20 transition-all duration-1000"></div>
+<div class="relative bg-white p-6 rounded-[2.5rem] shadow-2xl shadow-primary/50 transform transition-transform duration-700 hover:scale-105">
+<img alt="Sav.pos Logo" class="w-32 h-32 md:w-40 md:h-40 mx-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujAKrMUG4JuUgaofYArl9-ydg-0lIKwBi6cb_Ngkzjy6heugzGiiUqwNLU6iqJkzKVsJGv1lOOM94sKCJz7urvnGzjpWCQ56x6lmoHaQaqEK_UZ9iEyfU2O4JlWfuOm1cA-yd3gxJfVcTIEP4HwB1lKvM1t8NwjCDf3_FyYwokAuyVhetFpb3gXQekkcg-J_hHep-DYSDgVS8BPIgmF7AT0ZYg94U17G9wMg7UCr1ExT9qey11noo8yXgA"/>
+</div>
+</div>
+<!-- Value Proposition -->
+<div class="space-y-md animate-fade-in-up delay-2 opacity-0">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white tracking-tight leading-tight">
+                Professional Management <br/> for <span class="text-primary-fixed">Modern Wellness</span>
+</h1>
+<p class="font-body-md text-body-md text-outline-variant max-w-md mx-auto leading-relaxed">
+                Experience the ultimate POS for luxury spas and premium boutiques. Precise, efficient, and beautifully sophisticated.
+            </p>
+</div>
+<!-- Action Cluster -->
+<div class="flex flex-col gap-md pt-lg max-w-sm mx-auto w-full animate-fade-in-up delay-3 opacity-0">
+<!-- Primary Action -->
+<button class="transition-interaction bg-primary-fixed text-primary font-headline-md text-headline-md py-4 px-lg rounded-full shadow-xl shadow-primary-fixed/10 flex items-center justify-center gap-md group">
+<span>Get Started</span>
+<span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+<!-- Secondary Action -->
+<button class="transition-interaction glass-card text-white font-headline-md text-headline-md py-4 px-lg rounded-full hover:bg-white/10 transition-colors">
+                Login to Dashboard
+            </button>
+<div class="pt-sm">
+<p class="font-label-sm text-label-sm text-outline-variant">
+                    Don't have an account? <a class="text-primary-fixed font-bold hover:underline" href="#">Register your business</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation -->
+<footer class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-sm pb-safe bg-black/20 backdrop-blur-md border-t border-white/5 animate-fade-in-up delay-3 opacity-0">
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-white transition-all scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined font-label-md text-label-md">help_outline</span>
+<span class="font-label-md text-label-md">Help Center</span>
+</a>
+<div class="w-px h-8 bg-white/10"></div>
+<a class="flex flex-col items-center justify-center text-outline-variant hover:text-white transition-all scale-95 active:opacity-80" href="#">
+<span class="material-symbols-outlined font-label-md text-label-md">support_agent</span>
+<span class="font-label-md text-label-md">Contact Support</span>
+</a>
+</footer>
+<!-- Decorative Background Accents -->
+<div class="fixed -top-40 -left-40 w-[600px] h-[600px] bg-primary-fixed/5 rounded-full blur-[150px] -z-10 animate-pulse" style="animation-duration: 8s;"></div>
+<div class="fixed -bottom-40 -right-40 w-[600px] h-[600px] bg-secondary-fixed/5 rounded-full blur-[150px] -z-10 animate-pulse" style="animation-duration: 10s;"></div>
+<script>
+    // Reveal animations on load
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.opacity-0').forEach(el => {
+            el.classList.remove('opacity-0');
+        });
+    });
+</script>
+</body></html>

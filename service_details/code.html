@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Deep Tissue Aromatherapy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#000b05",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "on-surface-variant": "#44474e",
+                    "outline": "#74777f",
+                    "primary-fixed": "#d6e3ff",
+                    "on-error-container": "#93000a",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary-container": "#00b47d",
+                    "on-surface": "#191c1e",
+                    "surface-container": "#eceef0",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary-fixed": "#6ffbbe",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "on-primary-fixed": "#001b3c",
+                    "on-primary-container": "#7089b3",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "surface-tint": "#465f87",
+                    "background": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea",
+                    "error-container": "#ffdad6",
+                    "surface-container-low": "#f2f4f6",
+                    "tertiary-container": "#002617",
+                    "primary-container": "#002045",
+                    "surface": "#f7f9fb",
+                    "on-secondary-container": "#00477f",
+                    "primary-fixed-dim": "#aec7f5",
+                    "inverse-primary": "#aec7f5",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary": "#1960a3",
+                    "error": "#ba1a1a",
+                    "on-background": "#191c1e",
+                    "on-secondary-fixed": "#001c38",
+                    "secondary-container": "#7db6ff",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "primary": "#00091b",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed": "#002113",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed": "#d3e4ff",
+                    "on-secondary-fixed-variant": "#004881",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e0e3e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "44px",
+                    "sm": "12px",
+                    "base": "4px",
+                    "md": "16px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "xs": "8px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "display-price": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Top Navigation Anchor -->
+<header class="sticky top-0 z-50 bg-surface/80 backdrop-blur-md">
+<nav class="flex items-center justify-between px-md py-xs w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-headline-md" data-icon="spa">spa</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</span>
+</div>
+<div class="hidden md:flex gap-lg items-center">
+<a class="font-label-md text-label-md text-secondary font-bold hover:bg-surface-container-high transition-colors px-4 py-2 rounded-full" href="#">Explore</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-2 rounded-full" href="#">Services</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-surface-container-high transition-colors px-4 py-2 rounded-full" href="#">About</a>
+</div>
+<button aria-label="Search" class="p-xs rounded-full hover:bg-surface-variant transition-transform active:scale-95">
+<span class="material-symbols-outlined">search</span>
+</button>
+</nav>
+</header>
+<main class="max-w-7xl mx-auto pb-32">
+<!-- Hero Section -->
+<div class="relative w-full h-[442px] md:h-[530px] overflow-hidden lg:rounded-b-3xl">
+<img alt="Spa Treatment" class="w-full h-full object-cover" data-alt="A luxury high-end spa scene showing a peaceful therapy room. Smooth volcanic hot stones are placed carefully along a person's spine on a massage table. The lighting is low and warm, casting soft glows on neutral-toned linens and stone textures. The aesthetic is sophisticated and serene, with a background of minimalist architecture and subtle steam rising. A palette of deep charcoal, soft cream, and muted greens creates a premium, professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC96ft9rqHB4o1pHPihcERblnSIaw2bGfkQ8H-uPTIiGhksbPuEmv5EyHx210f8g42bdH0vmrbv6gA32Q2POIWnXiJN5GfK7q41sJ7N9h0-NgYAhEZg34ujGU_9YdERVuyudWFLMrnV31ZhEbA242mpOJr9xQLfkiaCVKOEcBuuMb0-Vn3mCzZXJgpwTieuoWAJUGnzOTBPooeuvzTnP-8IYGX4fLiCs3DBeZjjvUeJa_7EaiDQBAd74MHBUAMGndTa_sOYl-Y2AcI"/>
+<div class="absolute top-md right-md">
+<div class="bg-surface-container-lowest/90 backdrop-blur px-md py-sm rounded-xl shadow-md border border-outline-variant/20">
+<p class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Top Rated</p>
+<div class="flex items-center gap-1 text-on-tertiary-container">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold">4.9</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Service Summary -->
+<section class="px-md mt-lg md:mt-xl grid grid-cols-1 lg:grid-cols-12 gap-xl">
+<div class="lg:col-span-8">
+<div class="space-y-xs">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Deep Tissue Aromatherapy</h1>
+<div class="flex items-center gap-md text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined">schedule</span>
+<span class="font-label-md text-label-md">90 mins</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Premium Tier</span>
+</div>
+</div>
+</div>
+<!-- Price & Mobile Action -->
+<div class="mt-xl flex items-end justify-between lg:hidden">
+<div>
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-widest">Total Investment</p>
+<p class="text-display-price font-display-price text-primary">$145.00</p>
+</div>
+</div>
+<!-- Benefits Chips (Bento Style) -->
+<div class="mt-xl grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-low p-lg rounded-2xl flex flex-col gap-sm hover:shadow-md transition-shadow group">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]">self_improvement</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Relaxation</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">Calm your nervous system with premium essential oils and rhythmic pressure.</p>
+</div>
+<div class="bg-surface-container-low p-lg rounded-2xl flex flex-col gap-sm hover:shadow-md transition-shadow group">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]">eco</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Detox</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">Stimulate lymphatic drainage to flush toxins and improve skin vitality.</p>
+</div>
+<div class="bg-surface-container-low p-lg rounded-2xl flex flex-col gap-sm hover:shadow-md transition-shadow group">
+<div class="w-12 h-12 rounded-full bg-primary-container text-primary-fixed flex items-center justify-center group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[28px]">fitness_center</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Muscle Relief</h3>
+<p class="text-on-surface-variant text-body-md font-body-md">Targeted pressure releases chronic tension in deep muscle layers.</p>
+</div>
+</div>
+<!-- Treatment Process -->
+<div class="mt-xl bg-surface-container-lowest p-xl rounded-3xl shadow-sm">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-lg">Treatment Process</h2>
+<div class="space-y-lg relative before:content-[''] before:absolute before:left-3 before:top-2 before:bottom-2 before:w-[2px] before:bg-outline-variant/30">
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-primary border-4 border-surface ring-2 ring-primary/10"></div>
+<h4 class="font-headline-md text-headline-md text-primary">Aromatic Consultation</h4>
+<p class="text-on-surface-variant mt-1">Begin with a scent profile analysis to select essential oils tailored to your mood and physical needs.</p>
+</div>
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-secondary border-4 border-surface ring-2 ring-secondary/10"></div>
+<h4 class="font-headline-md text-headline-md text-primary">Warm-Up Massage</h4>
+<p class="text-on-surface-variant mt-1">Light pressure combined with heat therapy prepares the muscles for deeper manipulation.</p>
+</div>
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-secondary-container border-4 border-surface ring-2 ring-secondary-container/10"></div>
+<h4 class="font-headline-md text-headline-md text-primary">Deep Tissue Integration</h4>
+<p class="text-on-surface-variant mt-1">Focused work on problem areas using slow, firm strokes and trigger point therapy.</p>
+</div>
+<div class="relative pl-xl">
+<div class="absolute left-0 top-1 w-6 h-6 rounded-full bg-tertiary-fixed border-4 border-surface ring-2 ring-tertiary-fixed/10"></div>
+<h4 class="font-headline-md text-headline-md text-primary">Aromatic Finishing</h4>
+<p class="text-on-surface-variant mt-1">A final application of balancing oils and a moment of quiet reflection to ground your energy.</p>
+</div>
+</div>
+</div>
+<!-- Meet Your Therapists -->
+<div class="mt-xl">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-lg">Expert Technicians</h2>
+<div class="flex gap-md overflow-x-auto hide-scrollbar pb-xs">
+<div class="min-w-[200px] flex-shrink-0 bg-surface-container-low p-md rounded-2xl text-center group">
+<div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-sm ring-4 ring-surface ring-offset-2 ring-offset-primary/10 transition-transform group-hover:scale-105">
+<img alt="Technician 1" class="w-full h-full object-cover" data-alt="A professional portrait of a senior spa therapist. She has a warm, welcoming expression and is wearing a clean, minimalist charcoal-colored uniform. The background is a soft-focus, high-end wellness center with natural wood accents and warm ambient lighting. The photography style is high-contrast, clean, and modern, reflecting a premium boutique hospitality brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCw5FhvabdklhLo2x10Up1Gispzou1fTHGNaHxPkA_F3d4_DlylU7DBjn5V4dzmIugcP75W_KmWXqfIk7LE4fFojuibw1ziu2QnJey9U9jdl5BT6sqCC4HiZAMP2ZlybpVXYyo1d66PEZxSdHNBdMt2s4yCkfjZqz0qJ1EtU7EGpSKxL94OuW92CyfgYB_YvDRjbcIazinQ5JxADVdUoQ86cEReCiSclnU5-Bw7nWSQrC3cDeQWV-gs3pzavNbwWinrjiSUZkR1j6Y"/>
+</div>
+<p class="font-headline-md text-headline-md text-primary">Elena Rossi</p>
+<p class="text-label-sm text-label-sm text-outline uppercase mt-1">Senior Specialist</p>
+</div>
+<div class="min-w-[200px] flex-shrink-0 bg-surface-container-low p-md rounded-2xl text-center group">
+<div class="w-24 h-24 mx-auto rounded-full overflow-hidden mb-sm ring-4 ring-surface ring-offset-2 ring-offset-primary/10 transition-transform group-hover:scale-105">
+<img alt="Technician 2" class="w-full h-full object-cover" data-alt="A professional male spa technician with a focused and serene demeanor. He is wearing a professional black polo shirt with a subtle embroidered logo. The setting is a bright, airy treatment room with minimalist white walls and a touch of greenery from a nearby plant. The lighting is soft and flattering, creating an atmosphere of reliability and expert care in a modern retail environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMuzqsudSDOIcUaapbnBHZDiFc6bKWXIaSjIkAZhlBg4Ikej_HUMB6fEBYxG2oezn5VDv2nd8eh2qkyldaWK3zoUxW0UTygmhOnn_vLshd1MgJhejN5-FzXo4RIiU9Tdj3-wXlU0dR_-Ir_w80DWPLFY4nAacuPK4DRKKuGBY9WBWr_tVYWBieD91ibQD5AQShxU3U8tIJbouK4SitU_5d2TvswCvM4AANxPloln23mARxhqlmWg3Yg4h-eraVxtrbaxRrt252Dgg"/>
+</div>
+<p class="font-headline-md text-headline-md text-primary">Marcus Chen</p>
+<p class="text-label-sm text-label-sm text-outline uppercase mt-1">Lead Therapist</p>
+</div>
+</div>
+</div>
+<!-- Reviews -->
+<div class="mt-xl">
+<div class="flex items-center justify-between mb-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary">Guest Experiences</h2>
+<button class="text-secondary font-label-md text-label-md flex items-center gap-1 hover:underline">
+                            See All (128) <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="space-y-md">
+<div class="bg-surface-container-low p-lg rounded-2xl border border-outline-variant/10">
+<div class="flex justify-between items-start mb-sm">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold">JD</div>
+<div>
+<p class="font-bold text-primary">Julianna D.</p>
+<p class="text-label-sm text-outline">Verified Guest • 2 days ago</p>
+</div>
+</div>
+<div class="flex text-on-tertiary-container">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant italic">"The best deep tissue I've ever had. Elena was incredibly intuitive and the aromatherapy selection was a game changer. Truly premium service from start to finish."</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Desktop Sticky Sidebar -->
+<aside class="hidden lg:block lg:col-span-4 h-fit sticky top-28">
+<div class="bg-surface-container-low p-xl rounded-3xl shadow-lg border border-outline-variant/20">
+<p class="text-label-sm font-label-sm text-outline uppercase tracking-widest mb-xs">Investment</p>
+<p class="text-display-price font-display-price text-primary mb-xl">$145.00</p>
+<div class="space-y-md mb-xl">
+<div class="flex justify-between text-body-md py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant">Treatment Duration</span>
+<span class="font-bold text-primary">90 Minutes</span>
+</div>
+<div class="flex justify-between text-body-md py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant">Technician Tier</span>
+<span class="font-bold text-primary">Senior</span>
+</div>
+<div class="flex justify-between text-body-md py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant">Aromatic Oils</span>
+<span class="font-bold text-primary">Included</span>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-bold py-4 rounded-full flex items-center justify-center gap-2 hover:bg-on-primary-fixed-variant transition-all transform active:scale-95 shadow-md">
+<span class="material-symbols-outlined">event_available</span>
+                        Secure Booking Now
+                    </button>
+<p class="text-center text-label-sm text-outline mt-md px-4">Flexible cancellation up to 24 hours before your session.</p>
+</div>
+<div class="mt-lg p-lg bg-tertiary-container rounded-2xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-tertiary-fixed">loyalty</span>
+</div>
+<div>
+<p class="text-on-tertiary-container font-bold text-label-md">Member Special</p>
+<p class="text-tertiary-fixed-dim text-label-sm">Earn 145 Sav.points today</p>
+</div>
+</div>
+</aside>
+</section>
+</main>
+<!-- Floating Mobile Bottom Bar -->
+<div class="md:hidden fixed bottom-0 left-0 w-full z-50 px-md pb-md">
+<div class="bg-surface-container-low/95 backdrop-blur-lg rounded-3xl p-md flex items-center justify-between shadow-2xl border border-outline-variant/30">
+<div class="flex flex-col">
+<span class="text-label-sm text-outline">Starting at</span>
+<span class="font-display-price text-headline-lg text-primary leading-none">$145</span>
+</div>
+<button class="bg-primary text-on-primary px-xl py-4 rounded-2xl font-bold flex items-center gap-2 shadow-lg active:scale-95 transition-transform">
+<span class="material-symbols-outlined">calendar_month</span>
+                Book Now
+            </button>
+</div>
+</div>
+<!-- Bottom Help Navigation -->
+<footer class="bg-surface-container-low py-xl px-md">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-lg border-t border-outline-variant/20 pt-xl">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="spa">spa</span>
+<span class="font-label-md font-bold text-primary">Sav.pos Boutique Portal</span>
+</div>
+<div class="flex gap-lg">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="p-2 rounded-full group-hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">help_outline</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">Help</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<div class="p-2 rounded-full group-hover:bg-surface-variant transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">support_agent</span>
+</div>
+<span class="font-label-sm text-on-surface-variant">Support</span>
+</a>
+</div>
+</div>
+<p class="text-center text-label-sm text-outline mt-xl">© 2024 Sav.pos. All rights reserved. Premium POS solutions for retail excellence.</p>
+</footer>
+<script>
+        // Simple micro-interaction for scroll effects
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+            } else {
+                header.classList.remove('shadow-md');
+            }
+        });
+
+        // Add active states to buttons for tactile feedback
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('touchstart', () => {
+                btn.style.opacity = '0.8';
+                btn.style.transform = 'scale(0.97)';
+            });
+            btn.addEventListener('touchend', () => {
+                btn.style.opacity = '1';
+                btn.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

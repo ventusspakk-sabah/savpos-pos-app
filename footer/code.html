@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Premium Wellness POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-fixed": "#001c38",
+            "on-tertiary-container": "#00b47d",
+            "on-primary-fixed-variant": "#2e476e",
+            "tertiary": "#000b05",
+            "primary-fixed": "#d6e3ff",
+            "on-primary-container": "#7089b3",
+            "tertiary-container": "#002617",
+            "surface-container": "#eceef0",
+            "on-primary-fixed": "#001b3c",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary-fixed-variant": "#195039",
+            "background": "#f7f9fb",
+            "surface-container-high": "#e6e8ea",
+            "secondary-fixed": "#d3e4ff",
+            "surface": "#f7f9fb",
+            "secondary-fixed-dim": "#a2c9ff",
+            "on-surface-variant": "#44474e",
+            "on-secondary-fixed-variant": "#004881",
+            "outline-variant": "#c4c6cf",
+            "on-secondary-container": "#00477f",
+            "outline": "#74777f",
+            "surface-variant": "#e0e3e5",
+            "surface-container-low": "#f2f4f6",
+            "primary-container": "#002045",
+            "surface-container-highest": "#e0e3e5",
+            "primary-fixed-dim": "#aec7f5",
+            "surface-tint": "#465f87",
+            "on-secondary": "#ffffff",
+            "on-background": "#191c1e",
+            "inverse-surface": "#2d3133",
+            "surface-dim": "#d8dadc",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff",
+            "inverse-primary": "#aec7f5",
+            "on-tertiary": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed": "#002113",
+            "tertiary-fixed": "#b6efcf",
+            "on-primary": "#ffffff",
+            "secondary-container": "#7db6ff",
+            "inverse-on-surface": "#eff1f3",
+            "tertiary-fixed-dim": "#9bd3b4",
+            "surface-bright": "#f7f9fb",
+            "on-surface": "#191c1e",
+            "primary": "#00091b",
+            "on-error-container": "#93000a",
+            "secondary": "#1960a3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "touch-target-min": "44px",
+            "xl": "32px",
+            "sm": "12px",
+            "md": "16px",
+            "xs": "8px",
+            "lg": "24px",
+            "base": "4px"
+          },
+          "fontFamily": {
+            "headline-lg": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg-mobile": ["Inter"],
+            "display-price": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "label-sm": ["JetBrains Mono"],
+            "label-md": ["JetBrains Mono"]
+          },
+          "fontSize": {
+            "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+            "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+            "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+            "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+            "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    body {
+      background-color: #f7f9fb;
+    }
+    .footer-backdrop {
+      background-color: #002045; /* Brand Primary Deep Navy */
+    }
+    .back-to-top-btn {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .back-to-top-btn:active {
+      transform: scale(0.9);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-background min-h-screen flex flex-col">
+<!-- Header Anchor -->
+<header class="bg-surface dark:bg-background shadow-sm docked full-width top-0 z-50">
+<div class="flex justify-between items-center px-md h-touch-target-min w-full max-w-full">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="storefront">storefront</span>
+<span class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary dark:text-inverse-primary">Sav.pos</span>
+</div>
+<button class="h-touch-target-min w-touch-target-min flex items-center justify-center hover:bg-surface-container-low transition-colors rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-outline" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<!-- Main Content Placeholder to push footer down -->
+<main class="flex-grow container mx-auto px-md py-xl space-y-lg">
+<div class="relative overflow-hidden rounded-xl h-48 bg-surface-container-highest">
+<img alt="Spa Treatment" class="w-full h-full object-cover opacity-90" data-alt="A serene high-end wellness spa treatment room with soft, warm ambient lighting. The atmosphere is sophisticated and quiet, featuring minimalist decor and pristine white linens. Deep navy blue accents in the background maintain the Sav.pos brand identity. The style is modern corporate photography with high-key lighting and a luxurious aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG8hGLYECVJo6jkHSKh98yyJRdmhMN3T7_6mfrpi9Wv0Onsl804UrxUGGem0b-TMNRFG40wnYTtg4BGTEUbi9gB1-J5HREbgIO8iMT1jc5R67xyFi4YxEeb9VIVhevNN3uHmG_2sjTRf16aI-tab5-5wfJY8X5dZwYlTtHjF2zt4sTNYqrA7OEglpWETBbtg_3CWja5ucCRl4dPzR8lHx4jCmCMD-R_0lFgiOZ_wNWzod59yoAHCc7vsaotuuzLFkRczUsCKF7d0A"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent flex items-end p-lg">
+<h1 class="text-white font-headline-lg-mobile text-headline-lg-mobile">Refined Care, Managed Seamlessly.</h1>
+</div>
+</div>
+<section class="grid grid-cols-1 gap-md">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm space-y-md border border-surface-container">
+<h2 class="font-headline-md text-headline-md text-primary">Booking Dashboard</h2>
+<p class="text-on-surface-variant font-body-md">Manage your wellness experience with surgical precision. Our boutique POS system ensures every appointment is a masterpiece of efficiency.</p>
+</div>
+</section>
+</main>
+<!-- Mobile Footer Section -->
+<footer class="footer-backdrop text-on-primary py-xl px-md mt-auto relative overflow-hidden">
+<!-- Subtle Background Element -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+<div class="relative z-10 space-y-xl max-w-lg mx-auto">
+<!-- Brand Section -->
+<div class="space-y-sm">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-secondary-container" data-icon="spa" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-white tracking-tight">Sav.pos</span>
+</div>
+<p class="text-on-primary-container font-label-md">Premium Wellness &amp; Spa</p>
+<p class="text-outline-variant text-label-sm leading-relaxed max-w-xs">
+          Elevating the boutique hospitality experience through intelligent, precise, and sophisticated point-of-sale solutions.
+        </p>
+</div>
+<div class="grid grid-cols-2 gap-xl">
+<!-- Quick Links -->
+<nav class="space-y-md">
+<h3 class="text-label-md font-label-md text-secondary-container uppercase tracking-widest">Navigation</h3>
+<ul class="flex flex-col gap-sm">
+<li><a class="text-white font-body-md hover:text-secondary-container transition-colors py-xs block" href="#">Home</a></li>
+<li><a class="text-white font-body-md hover:text-secondary-container transition-colors py-xs block" href="#">Services</a></li>
+<li><a class="text-white font-body-md hover:text-secondary-container transition-colors py-xs block" href="#">Bookings</a></li>
+<li><a class="text-white font-body-md hover:text-secondary-container transition-colors py-xs block" href="#">About Us</a></li>
+<li><a class="text-white font-body-md hover:text-secondary-container transition-colors py-xs block" href="#">Privacy Policy</a></li>
+</ul>
+</nav>
+<!-- Contact Info -->
+<div class="space-y-md">
+<h3 class="text-label-md font-label-md text-secondary-container uppercase tracking-widest">Connect</h3>
+<div class="space-y-lg">
+<div class="flex items-start gap-sm">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-icon="location_on">location_on</span>
+<address class="not-italic text-label-md text-white">South Plaza Studio<br/>Level 4, Arts District</address>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-icon="call">call</span>
+<a class="text-label-md text-white" href="tel:5550123">555-0123</a>
+</div>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-primary-container text-sm" data-icon="mail">mail</span>
+<a class="text-label-md text-white truncate" href="mailto:support@savpos.com">support@savpos.com</a>
+</div>
+</div>
+</div>
+</div>
+<!-- Social Media -->
+<div class="pt-md flex items-center justify-between border-t border-on-primary-container/20">
+<div class="flex gap-lg">
+<a aria-label="Instagram" class="h-touch-target-min w-touch-target-min flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white" data-icon="camera">camera</span>
+</a>
+<a aria-label="Facebook" class="h-touch-target-min w-touch-target-min flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white" data-icon="public">public</span>
+</a>
+<a aria-label="Twitter" class="h-touch-target-min w-touch-target-min flex items-center justify-center rounded-full bg-white/5 hover:bg-white/10 transition-colors" href="#">
+<span class="material-symbols-outlined text-white" data-icon="flutter_dash">flutter_dash</span>
+</a>
+</div>
+<!-- Back to Top Button -->
+<button class="back-to-top-btn h-touch-target-min px-md flex items-center gap-xs rounded-full bg-secondary-container text-on-secondary-container font-label-md" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined" data-icon="arrow_upward">arrow_upward</span>
+<span>Top</span>
+</button>
+</div>
+<!-- Bottom Bar -->
+<div class="pt-xl pb-lg text-center">
+<p class="text-label-sm font-label-sm text-outline-variant">
+          © 2023 Sav.pos. All rights reserved.
+        </p>
+</div>
+</div>
+</footer>
+<!-- Nav Shell (Bottom Bar for Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface dark:bg-surface-container-lowest shadow-lg rounded-t-lg md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-xs">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm">Sale</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-xs">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Stock</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-xs">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-sm font-label-sm">Reports</span>
+</div>
+<!-- Active History Tab -->
+<div class="flex flex-col items-center justify-center bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-full px-lg py-xs scale-95 transition-all duration-150">
+<span class="material-symbols-outlined" data-icon="receipt_long" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-sm font-label-sm">History</span>
+</div>
+</nav>
+<!-- Content padding for mobile nav -->
+<div class="h-24 md:hidden"></div>
+<script>
+    // Micro-interaction for back to top button
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.querySelector('.back-to-top-btn');
+      
+      // Simple scroll listener to change opacity of floating elements if needed
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+          btn.classList.add('opacity-100');
+        } else {
+          btn.classList.add('opacity-90');
+        }
+      });
+    });
+  </script>
+</body></html>

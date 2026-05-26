@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>自動抹零設定 - Sav.pos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "tertiary-container": "#002617",
+                        "on-background": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "error": "#ba1a1a",
+                        "background": "#f7f9fb",
+                        "inverse-primary": "#aec7f5",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-tint": "#465f87",
+                        "on-tertiary-container": "#5d9377",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary": "#ffffff",
+                        "secondary": "#1960a3",
+                        "on-secondary-container": "#00477f",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "tertiary": "#000b05",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-surface-variant": "#44474e",
+                        "on-tertiary-fixed": "#002113",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "on-error-container": "#93000a",
+                        "primary-container": "#002045",
+                        "on-secondary-fixed": "#001c38",
+                        "secondary-fixed": "#d3e4ff",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-primary-fixed": "#001b3c",
+                        "surface": "#f7f9fb",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-dim": "#d8dadc",
+                        "secondary-container": "#7db6ff",
+                        "primary": "#00091b",
+                        "surface-container": "#eceef0",
+                        "surface-container-high": "#e6e8ea",
+                        "on-tertiary": "#ffffff",
+                        "outline": "#74777f",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#7089b3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "base": "4px",
+                        "touch-target-min": "44px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "display-price": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-ring {
+            box-shadow: 0 0 0 2px theme('colors.primary');
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant');
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased selection:bg-secondary-container selection:text-on-secondary-container h-screen flex flex-col overflow-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center px-lg h-touch-target-min z-40">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-variant/50 p-xs rounded-full transition-colors active:scale-95" onclick="history.back()">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">自動抹零設定</h1>
+</div>
+<div class="flex items-center gap-sm">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" id="global-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</header>
+<!-- Content Area -->
+<main class="flex-1 overflow-y-auto custom-scrollbar px-md pb-xl">
+<!-- Strategy Description -->
+<section class="mt-lg">
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/10">
+<p class="text-on-surface-variant font-body-md">
+                    設定結帳時的金額自動圓整規則，以提高櫃檯找零效率與客戶體驗。
+                </p>
+</div>
+</section>
+<!-- Precision Preview (Dynamic Hero) -->
+<section class="mt-lg">
+<div class="bg-primary-container text-on-primary-container p-lg rounded-xl shadow-md flex flex-col gap-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider opacity-80">抹零預覽效果</span>
+<div class="flex justify-between items-end">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md opacity-70">原始金額</span>
+<span class="font-headline-md text-headline-md line-through opacity-60">$ 1,258.85</span>
+</div>
+<div class="material-symbols-outlined text-display-price opacity-30">trending_flat</div>
+<div class="flex flex-col text-right">
+<span class="font-label-md text-label-md opacity-70">抹零後</span>
+<span class="font-display-price text-display-price text-secondary-container" id="preview-result">$ 1,250.00</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Rounding Strategy Selection -->
+<section class="mt-xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-md px-xs">圓整策略</h2>
+<div class="grid gap-sm">
+<!-- Strategy Card 1 -->
+<label class="group relative flex items-center justify-between p-lg bg-surface-container-lowest rounded-xl border border-outline-variant/30 hover:border-secondary transition-all cursor-pointer shadow-sm active:scale-[0.98]">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:bg-secondary/10 group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">block</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">不抹零</p>
+<p class="font-body-md text-on-surface-variant text-sm">維持原始計算結果</p>
+</div>
+</div>
+<input class="w-5 h-5 text-secondary border-outline-variant focus:ring-secondary" name="strategy" type="radio" value="none"/>
+</label>
+<!-- Strategy Card 2 -->
+<label class="group relative flex items-center justify-between p-lg bg-surface-container-lowest rounded-xl border border-outline-variant/30 hover:border-secondary transition-all cursor-pointer shadow-sm active:scale-[0.98]">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:bg-secondary/10 group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">exposure_zero</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">四捨五入至元</p>
+<p class="font-body-md text-on-surface-variant text-sm">例：$10.5 → $11</p>
+</div>
+</div>
+<input class="w-5 h-5 text-secondary border-outline-variant focus:ring-secondary" name="strategy" type="radio" value="round_1"/>
+</label>
+<!-- Strategy Card 3 (Default Selected) -->
+<label class="group relative flex items-center justify-between p-lg bg-surface-container-lowest rounded-xl border-2 border-secondary transition-all cursor-pointer shadow-md active:scale-[0.98]">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">arrow_downward</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">無條件捨去至元</p>
+<p class="font-body-md text-on-surface-variant text-sm">經典抹零模式 (例：$10.9 → $10)</p>
+</div>
+</div>
+<input checked="" class="w-5 h-5 text-secondary border-outline-variant focus:ring-secondary" name="strategy" type="radio" value="floor_1"/>
+</label>
+<!-- Strategy Card 4 -->
+<label class="group relative flex items-center justify-between p-lg bg-surface-container-lowest rounded-xl border border-outline-variant/30 hover:border-secondary transition-all cursor-pointer shadow-sm active:scale-[0.98]">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:bg-secondary/10 group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">filter_9</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">四捨五入至十位</p>
+<p class="font-body-md text-on-surface-variant text-sm">例：$104 → $100</p>
+</div>
+</div>
+<input class="w-5 h-5 text-secondary border-outline-variant focus:ring-secondary" name="strategy" type="radio" value="round_10"/>
+</label>
+<!-- Strategy Card 5 -->
+<label class="group relative flex items-center justify-between p-lg bg-surface-container-lowest rounded-xl border border-outline-variant/30 hover:border-secondary transition-all cursor-pointer shadow-sm active:scale-[0.98]">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant group-hover:bg-secondary/10 group-hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">remove_circle_outline</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">無條件捨去至十位</p>
+<p class="font-body-md text-on-surface-variant text-sm">例：$109 → $100</p>
+</div>
+</div>
+<input class="w-5 h-5 text-secondary border-outline-variant focus:ring-secondary" name="strategy" type="radio" value="floor_10"/>
+</label>
+</div>
+</section>
+<!-- Applicability Settings -->
+<section class="mt-xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-md px-xs">適用範圍</h2>
+<div class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/10 divide-y divide-outline-variant/20">
+<div class="flex items-center justify-between p-lg">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">僅限現金支付</p>
+<p class="font-body-md text-on-surface-variant text-sm">電子支付與信用卡維持原價</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-lg opacity-50 pointer-events-none">
+<div>
+<p class="font-body-lg text-body-lg text-on-surface">所有支付方式</p>
+<p class="font-body-md text-on-surface-variant text-sm">包含信用卡、街口、LINE Pay 等</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- Threshold Setting -->
+<section class="mt-xl">
+<h2 class="font-headline-md text-headline-md text-primary mb-md px-xs">啟動門檻</h2>
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border border-outline-variant/10">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs" for="min-amount">啟動抹零的最低金額</label>
+<div class="relative flex items-center">
+<span class="absolute left-md font-headline-md text-headline-md text-on-surface-variant">$</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg py-md pl-xl pr-md font-headline-md text-headline-md focus:ring-2 focus:ring-secondary transition-shadow text-primary" id="min-amount" placeholder="輸入金額" type="number" value="500"/>
+</div>
+<p class="mt-sm font-label-sm text-label-sm text-on-surface-variant">當訂單總額超過此數值時，系統才會執行抹零運算。</p>
+</div>
+</section>
+<div class="h-32"></div> <!-- Spacer for fixed button -->
+</main>
+<!-- Save Button Container -->
+<div class="fixed bottom-0 w-full p-lg bg-gradient-to-t from-surface via-surface/90 to-transparent z-40">
+<button class="w-full h-touch-target-min bg-tertiary-container text-tertiary-fixed font-headline-md text-headline-md rounded-xl shadow-lg flex items-center justify-center gap-md hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">save</span>
+            儲存變更
+        </button>
+</div>
+<script>
+        // Simple Interaction logic for demo
+        const radioGroups = document.querySelectorAll('input[name="strategy"]');
+        const previewResult = document.getElementById('preview-result');
+        const originalAmount = 1258.85;
+
+        radioGroups.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Remove visual selection from all cards
+                radioGroups.forEach(r => {
+                    const card = r.closest('label');
+                    card.classList.remove('border-2', 'border-secondary', 'shadow-md');
+                    card.classList.add('border', 'border-outline-variant/30', 'shadow-sm');
+                    const iconBox = card.querySelector('div.rounded-full');
+                    iconBox.classList.replace('bg-secondary-container', 'bg-surface-container');
+                    iconBox.classList.replace('text-on-secondary-container', 'text-on-surface-variant');
+                });
+
+                // Add visual selection to active card
+                if(e.target.checked) {
+                    const card = e.target.closest('label');
+                    card.classList.add('border-2', 'border-secondary', 'shadow-md');
+                    card.classList.remove('border', 'border-outline-variant/30', 'shadow-sm');
+                    const iconBox = card.querySelector('div.rounded-full');
+                    iconBox.classList.replace('bg-surface-container', 'bg-secondary-container');
+                    iconBox.classList.replace('text-on-surface-variant', 'text-on-secondary-container');
+
+                    // Update Preview Text
+                    let val = originalAmount;
+                    switch(e.target.value) {
+                        case 'none': val = originalAmount; break;
+                        case 'round_1': val = Math.round(originalAmount); break;
+                        case 'floor_1': val = Math.floor(originalAmount); break;
+                        case 'round_10': val = Math.round(originalAmount / 10) * 10; break;
+                        case 'floor_10': val = Math.floor(originalAmount / 10) * 10; break;
+                    }
+                    previewResult.innerText = `$ ${val.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+                }
+            });
+        });
+
+        // Global Toggle interaction
+        const globalToggle = document.getElementById('global-toggle');
+        const mainContent = document.querySelector('main');
+        globalToggle.addEventListener('change', () => {
+            if(!globalToggle.checked) {
+                mainContent.classList.add('opacity-40', 'pointer-events-none');
+            } else {
+                mainContent.classList.remove('opacity-40', 'pointer-events-none');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Digital Receipt</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e6e8ea",
+                    "on-surface-variant": "#44474e",
+                    "inverse-surface": "#2d3133",
+                    "surface-container-low": "#f2f4f6",
+                    "surface": "#f7f9fb",
+                    "on-background": "#191c1e",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#465f87",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#191c1e",
+                    "on-secondary-container": "#00477f",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "on-primary-container": "#7089b3",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-container": "#00b47d",
+                    "inverse-on-surface": "#eff1f3",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "outline": "#74777f",
+                    "outline-variant": "#c4c6cf",
+                    "surface-dim": "#d8dadc",
+                    "tertiary-container": "#002617",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary": "#000b05",
+                    "primary-fixed": "#d6e3ff",
+                    "on-secondary-fixed-variant": "#004881",
+                    "tertiary-fixed": "#b6efcf",
+                    "on-primary-fixed": "#001b3c",
+                    "on-tertiary-fixed": "#002113",
+                    "secondary": "#1960a3",
+                    "on-secondary-fixed": "#001c38",
+                    "secondary-fixed": "#d3e4ff",
+                    "surface-variant": "#e0e3e5",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "primary-fixed-dim": "#aec7f5",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "secondary-container": "#7db6ff",
+                    "primary": "#00091b",
+                    "error": "#ba1a1a",
+                    "primary-container": "#002045",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "background": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#aec7f5",
+                    "on-secondary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "touch-target-min": "44px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-price": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .receipt-blur {
+            backdrop-filter: blur(12px);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        .qr-pattern {
+            background-image: radial-gradient(circle at 2px 2px, #002045 1px, transparent 0);
+            background-size: 8px 8px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface dark:bg-primary fixed top-0 full-width z-50">
+<div class="flex items-center justify-between px-md py-xs w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="spa">spa</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Sav.pos</h1>
+</div>
+<div class="hidden md:flex gap-lg">
+<a class="text-secondary dark:text-secondary-fixed font-bold transition-colors" href="#">Booking</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-primary-container px-2 py-1 rounded transition-all" href="#">Services</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high dark:hover:bg-primary-container px-2 py-1 rounded transition-all" href="#">Account</a>
+</div>
+<button class="md:hidden p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="mt-20 px-md pb-32 max-w-2xl mx-auto">
+<!-- Success Banner -->
+<div class="flex flex-col items-center justify-center text-center mb-xl animate-in fade-in slide-in-from-top-4 duration-700">
+<div class="w-16 h-16 bg-tertiary-fixed rounded-full flex items-center justify-center mb-md shadow-md">
+<span class="material-symbols-outlined text-on-tertiary-fixed text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-xs">Booking Confirmed</h2>
+<p class="text-on-surface-variant max-w-sm">Your retreat at Sav.pos Spa has been scheduled successfully. We look forward to seeing you.</p>
+</div>
+<!-- Main Receipt Card -->
+<div class="bg-surface-container-lowest rounded-[32px] shadow-lg overflow-hidden border border-surface-variant/30">
+<!-- Hero Image Header -->
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover brightness-90 hover:scale-105 transition-transform duration-1000" data-alt="A luxurious high-end spa treatment room with soft, warm ambient lighting. A massage table is draped in premium white linens, with organic basalt stones and a sprig of lavender placed neatly. The atmosphere is serene and sophisticated, featuring a minimalist aesthetic with natural stone textures and deep blue accents consistent with the Sav.pos brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBMGrdaYFaCGdWQqeSAl3LH1muHDtggz4D2nX2Gcmq5KzeB4CsM0bLt9whyHjFgOaNJAb0anMM10NzI0ejiX8WlFWP6k9umaOxfTi-pFByAnWIQZXh8nXJLggHAUiTeHAG433mQEbiZAQrNipMlTiqndAMnUcfM8yAKEJobcDZb2gOZo7iCgpalR0wcAKTCVbGtcaVpTc4d7BvxpIF2OuS8uzLUcrEvL-payrrkcbmcnzKfj3QxBjgAkNfiziIbmNfkFSuLddvaGmQ"/>
+<div class="absolute top-md right-md bg-white/80 backdrop-blur-md px-4 py-1 rounded-full shadow-sm">
+<span class="font-label-md text-label-md text-primary-container uppercase tracking-wider">Confirmed</span>
+</div>
+</div>
+<!-- Receipt Content -->
+<div class="p-lg md:p-xl space-y-xl">
+<!-- QR Section -->
+<div class="flex flex-col md:flex-row items-center gap-lg pb-xl border-b border-surface-variant">
+<div class="p-4 bg-white border border-surface-variant rounded-xl shadow-sm hover:shadow-md transition-shadow cursor-pointer relative group">
+<!-- Simulated QR Code with CSS/HTML -->
+<div class="w-32 h-32 qr-pattern flex items-center justify-center relative bg-white">
+<div class="absolute inset-0 border-4 border-white"></div>
+<div class="w-12 h-12 bg-white flex items-center justify-center rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="spa">spa</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-xl">
+<span class="text-label-sm text-primary font-bold">SCAN TO CHECK-IN</span>
+</div>
+</div>
+<div class="text-center md:text-left">
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">Confirmation Code</p>
+<p class="font-headline-md text-headline-md text-primary tracking-widest uppercase">SAV-892-XP9</p>
+<p class="text-on-surface-variant text-sm mt-2">Present this QR code at the reception desk upon arrival for instant check-in.</p>
+</div>
+</div>
+<!-- Detail Table -->
+<div class="space-y-md">
+<h3 class="font-headline-md text-headline-md text-primary">Service Summary</h3>
+<div class="space-y-sm">
+<!-- Item 1 -->
+<div class="flex justify-between items-start py-2">
+<div>
+<p class="font-body-md text-primary font-semibold">Deep Tissue Recovery Massage</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">90 Minutes • Therapist: Elena R.</p>
+</div>
+<p class="font-body-md text-primary">$185.00</p>
+</div>
+<!-- Item 2 -->
+<div class="flex justify-between items-start py-2">
+<div>
+<p class="font-body-md text-primary font-semibold">Aromatherapy Add-on</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Eucalyptus &amp; Mint Essential Oils</p>
+</div>
+<p class="font-body-md text-primary">$25.00</p>
+</div>
+</div>
+<!-- Totals -->
+<div class="pt-md mt-md border-t-2 border-dashed border-surface-variant/50 space-y-2">
+<div class="flex justify-between text-on-surface-variant">
+<p class="font-label-md text-label-md">Subtotal</p>
+<p class="font-body-md">$210.00</p>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<p class="font-label-md text-label-md">Tax (8.5%)</p>
+<p class="font-body-md">$17.85</p>
+</div>
+<div class="flex justify-between items-baseline pt-sm">
+<p class="font-headline-md text-headline-md text-primary">Total Amount</p>
+<p class="font-display-price text-display-price text-primary-container">$227.85</p>
+</div>
+</div>
+</div>
+<!-- Payment Info -->
+<div class="bg-surface-container-low rounded-xl p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">ios</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant">Payment Method</p>
+<p class="font-body-md text-primary font-semibold">Apple Pay (•••• 4921)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">contactless</span>
+</div>
+<!-- Actions -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md pt-lg">
+<button class="flex items-center justify-center gap-sm bg-primary-container text-on-primary font-semibold py-4 rounded-xl shadow-md hover:bg-primary transition-all active:scale-95 duration-100 group">
+<span class="material-symbols-outlined text-on-primary">download</span>
+                        Download PDF
+                    </button>
+<button class="flex items-center justify-center gap-sm bg-surface-variant text-on-surface-variant font-semibold py-4 rounded-xl hover:bg-surface-container-high transition-all active:scale-95 duration-100">
+<span class="material-symbols-outlined">calendar_add_on</span>
+                        Add to Calendar
+                    </button>
+</div>
+</div>
+<!-- Footer Branding -->
+<div class="bg-surface-container p-md text-center">
+<p class="font-label-sm text-label-sm text-on-surface-variant">Receipt No: Sav-001293-2023 • Date: Oct 24, 2023 14:15</p>
+</div>
+</div>
+<!-- Support Shortcut -->
+<div class="mt-xl text-center space-y-md">
+<p class="text-on-surface-variant text-sm">Need help with your booking?</p>
+<div class="flex justify-center gap-lg">
+<a class="flex items-center gap-1 font-label-md text-label-md text-secondary hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">help_outline</span>
+                    Help Center
+                 </a>
+<a class="flex items-center gap-1 font-label-md text-label-md text-secondary hover:underline" href="#">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+                    Contact Support
+                 </a>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Only for Main Destination) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-sm pb-safe bg-surface-container-low dark:bg-primary-container shadow-md md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container/70 group active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined group-hover:bg-surface-variant dark:hover:bg-on-primary-fixed-variant p-2 rounded-full">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-md text-label-md">Receipt</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container/70 group active:scale-95 transition-all" href="#">
+<span class="material-symbols-outlined group-hover:bg-surface-variant dark:hover:bg-on-primary-fixed-variant p-2 rounded-full">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</a>
+</nav>
+<script>
+        // Subtle micro-interaction for the QR code
+        document.querySelector('.group-hover\\:opacity-100')?.addEventListener('click', () => {
+            alert('Your QR code is ready to scan. Thank you for choosing Sav.pos Spa!');
+        });
+
+        // Simulating a "Download" effect
+        const downloadBtn = document.querySelector('.bg-primary-container');
+        downloadBtn.addEventListener('click', () => {
+            const originalText = downloadBtn.innerHTML;
+            downloadBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Generating PDF...';
+            setTimeout(() => {
+                downloadBtn.innerHTML = '<span class="material-symbols-outlined">check</span> Receipt Saved';
+                setTimeout(() => {
+                    downloadBtn.innerHTML = originalText;
+                }, 2000);
+            }, 1500);
+        });
+    </script>
+</body></html>

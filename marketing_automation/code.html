@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Marketing Automation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c6cf;
+            border-radius: 10px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#1960a3",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e6e8ea",
+                      "inverse-surface": "#2d3133",
+                      "tertiary-fixed": "#6ffbbe",
+                      "primary": "#00091b",
+                      "on-secondary": "#ffffff",
+                      "on-tertiary-fixed": "#002113",
+                      "secondary-fixed": "#d3e4ff",
+                      "surface-container-highest": "#e0e3e5",
+                      "on-background": "#191c1e",
+                      "surface-container": "#eceef0",
+                      "primary-fixed": "#d6e3ff",
+                      "on-tertiary-container": "#00b47d",
+                      "on-surface-variant": "#44474e",
+                      "surface-container-low": "#f2f4f6",
+                      "tertiary": "#000b05",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-secondary-fixed": "#001c38",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#7db6ff",
+                      "on-secondary-fixed-variant": "#004881",
+                      "tertiary-container": "#002617",
+                      "secondary-fixed-dim": "#a2c9ff",
+                      "on-secondary-container": "#00477f",
+                      "tertiary-fixed-dim": "#9bd3b4",
+                      "surface": "#f7f9fb",
+                      "on-primary-fixed": "#001b3c",
+                      "primary-fixed-dim": "#aec7f5",
+                      "on-primary-container": "#7089b3",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "outline": "#74777f",
+                      "surface-bright": "#f7f9fb",
+                      "primary-container": "#002045",
+                      "surface-tint": "#465f87",
+                      "on-tertiary-fixed-variant": "#195039",
+                      "on-surface": "#191c1e",
+                      "outline-variant": "#c4c6cf",
+                      "background": "#f7f9fb",
+                      "on-tertiary": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "inverse-primary": "#aec7f5",
+                      "surface-dim": "#d8dadc",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#e0e3e5"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "touch-target-min": "44px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "xs": "8px",
+                      "xl": "32px",
+                      "sm": "12px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "label-md": ["JetBrains Mono"],
+                      "body-lg": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["JetBrains Mono"],
+                      "headline-lg": ["Inter"],
+                      "display-price": ["Inter"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface-container-lowest shadow-sm dock-full-width top-0 z-50 flex justify-between items-center px-lg h-[72px] sticky border-b border-outline-variant/10">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary text-[32px]">storefront</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary tracking-tight">Sav.pos</h1>
+</div>
+<div class="hidden md:flex gap-lg">
+<nav class="flex items-center gap-md">
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors px-md py-xs rounded-lg font-label-md text-label-md" href="#">Sales</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors px-md py-xs rounded-lg font-label-md text-label-md" href="#">Clients</a>
+<a class="text-primary font-bold border-b-2 border-primary px-md py-xs font-label-md text-label-md" href="#">Marketing</a>
+<a class="text-on-surface-variant dark:text-outline-variant hover:bg-surface-container-high transition-colors px-md py-xs rounded-lg font-label-md text-label-md" href="#">Inventory</a>
+</nav>
+</div>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold shadow-sm cursor-pointer active:scale-95 transition-transform">
+                JD
+            </div>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Sidebar Shell -->
+<aside class="hidden lg:flex flex-col w-64 bg-surface-container-low p-md sticky top-[72px] h-[calc(100vh-72px)] border-r border-outline-variant/10">
+<div class="mb-xl px-sm">
+<h2 class="font-headline-md text-headline-md text-primary">Admin Portal</h2>
+<p class="text-label-sm text-on-surface-variant uppercase tracking-widest mt-base">Marketing Suite</p>
+</div>
+<nav class="flex flex-col gap-xs flex-1">
+<div class="flex items-center gap-md p-md hover:bg-surface-container-high transition-all rounded-xl text-on-surface-variant cursor-pointer group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex items-center gap-md p-md hover:bg-surface-container-high transition-all rounded-xl text-on-surface-variant cursor-pointer group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">card_membership</span>
+<span class="font-label-md text-label-md">Memberships</span>
+</div>
+<div class="flex items-center gap-md p-md bg-secondary-container text-on-secondary-container rounded-full shadow-md active:scale-[0.98] transition-all cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">campaign</span>
+<span class="font-label-md text-label-md">Marketing</span>
+</div>
+<div class="flex items-center gap-md p-md hover:bg-surface-container-high transition-all rounded-xl text-on-surface-variant cursor-pointer group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</div>
+<div class="flex items-center gap-md p-md hover:bg-surface-container-high transition-all rounded-xl text-on-surface-variant cursor-pointer group">
+<span class="material-symbols-outlined group-hover:scale-110 transition-transform">hub</span>
+<span class="font-label-md text-label-md">Stores</span>
+</div>
+</nav>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm mt-auto">
+<div class="flex justify-between items-center mb-xs">
+<span class="text-label-sm font-label-sm text-on-surface-variant">Monthly Reach</span>
+<span class="text-label-sm font-label-sm text-secondary">82%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-[82%] rounded-full"></div>
+</div>
+</div>
+</aside>
+<!-- Main Canvas -->
+<main class="flex-1 p-md md:p-lg xl:p-xl space-y-lg overflow-x-hidden">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Marketing Automation</h2>
+<p class="text-on-surface-variant font-body-md mt-xs">Orchestrate customer loyalty and re-engagement campaigns.</p>
+</div>
+<button class="bg-secondary text-on-secondary px-lg h-touch-target-min rounded-full flex items-center gap-sm shadow-md hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined">add</span>
+<span class="font-label-md">New Campaign</span>
+</button>
+</div>
+<!-- Bento Grid Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-lg">
+<!-- Campaign Performance Overview -->
+<section class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant/10">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">analytics</span>
+<h3 class="font-headline-md text-headline-md">Performance Overview</h3>
+</div>
+<select class="bg-surface-container-low border-none rounded-lg text-label-sm font-label-sm focus:ring-2 focus:ring-secondary cursor-pointer">
+<option>Last 30 Days</option>
+<option>Last 90 Days</option>
+</select>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-lg mb-xl">
+<div class="bg-surface p-md rounded-xl flex flex-col items-center justify-center text-center shadow-inner">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter mb-xs">Coupons Sent</span>
+<span class="font-display-price text-display-price text-primary">2,481</span>
+<span class="text-on-tertiary-container text-label-sm bg-tertiary-fixed-dim/30 px-sm rounded-full mt-xs">+12% vs LY</span>
+</div>
+<div class="bg-surface p-md rounded-xl flex flex-col items-center justify-center text-center shadow-inner">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter mb-xs">Redeemed</span>
+<span class="font-display-price text-display-price text-secondary">842</span>
+<span class="text-on-tertiary-container text-label-sm bg-tertiary-fixed-dim/30 px-sm rounded-full mt-xs">34% Rate</span>
+</div>
+<div class="bg-surface p-md rounded-xl flex flex-col items-center justify-center text-center shadow-inner">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-tighter mb-xs">ROI (Estimated)</span>
+<span class="font-display-price text-display-price text-primary">4.2x</span>
+<span class="text-on-tertiary-container text-label-sm bg-tertiary-fixed-dim/30 px-sm rounded-full mt-xs">High Impact</span>
+</div>
+</div>
+<!-- Visual Chart Placeholder -->
+<div class="h-48 w-full bg-surface-container-low rounded-xl relative overflow-hidden flex items-end p-md gap-base">
+<div class="bg-secondary-container w-full h-[30%] rounded-t-sm"></div>
+<div class="bg-secondary w-full h-[45%] rounded-t-sm"></div>
+<div class="bg-secondary-container w-full h-[60%] rounded-t-sm"></div>
+<div class="bg-secondary w-full h-[55%] rounded-t-sm"></div>
+<div class="bg-secondary-container w-full h-[80%] rounded-t-sm"></div>
+<div class="bg-secondary w-full h-[70%] rounded-t-sm"></div>
+<div class="bg-secondary-container w-full h-[90%] rounded-t-sm"></div>
+<div class="bg-secondary w-full h-[85%] rounded-t-sm"></div>
+</div>
+</section>
+<!-- Task Queue Sidebar -->
+<section class="lg:col-span-4 bg-surface-container-low rounded-xl p-lg shadow-md border border-outline-variant/20 flex flex-col">
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-secondary">assignment_late</span>
+<h3 class="font-headline-md text-headline-md">High-Value Tasks</h3>
+</div>
+<div class="space-y-md flex-1 overflow-y-auto pr-xs">
+<!-- Task Card -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border-l-4 border-error hover:shadow-md transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-base">
+<h4 class="font-label-md text-label-md text-primary">Aura V. (Platinum)</h4>
+<span class="text-label-sm text-error font-bold">URGENT</span>
+</div>
+<p class="text-on-surface-variant text-label-sm mb-md leading-relaxed">Inactive for 45 days. Needs a personal re-engagement call or high-tier offer.</p>
+<div class="flex gap-sm">
+<button class="flex-1 bg-surface-container-high text-on-surface p-xs rounded-lg text-label-sm font-label-sm hover:bg-secondary hover:text-on-secondary transition-colors">Call</button>
+<button class="flex-1 bg-surface-container-high text-on-surface p-xs rounded-lg text-label-sm font-label-sm hover:bg-secondary hover:text-on-secondary transition-colors">Log Activity</button>
+</div>
+</div>
+<!-- Task Card -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm border-l-4 border-secondary hover:shadow-md transition-all group cursor-pointer">
+<div class="flex justify-between items-start mb-base">
+<h4 class="font-label-md text-label-md text-primary">Marcus Thorne</h4>
+<span class="text-label-sm text-secondary font-bold">ROUTINE</span>
+</div>
+<p class="text-on-surface-variant text-label-sm mb-md leading-relaxed">Follow up on custom suit fitting feedback. Loyalty anniversary next week.</p>
+<button class="w-full bg-surface-container-high text-on-surface p-xs rounded-lg text-label-sm font-label-sm hover:bg-secondary hover:text-on-secondary transition-colors">Send Email</button>
+</div>
+</div>
+</section>
+<!-- Birthday Auto-Coupons Toggle & Editor -->
+<section class="lg:col-span-6 bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant/10 overflow-hidden relative">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">cake</span>
+<h3 class="font-headline-md text-headline-md">Birthday Automation</h3>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="space-y-md">
+<div class="p-md bg-surface-container-low rounded-xl border border-outline-variant/10">
+<div class="flex items-center gap-md mb-md">
+<div class="w-12 h-12 rounded-xl overflow-hidden shadow-sm">
+<img alt="Birthday Coupon" class="w-full h-full object-cover" data-alt="A festive and elegant birthday celebration scene for a high-end boutique setting. Soft warm lighting illuminates a minimalist white box tied with a gold satin ribbon, resting on a clean marble surface. Subtle bokeh of party lights in the background creates a sophisticated celebratory atmosphere. The overall aesthetic is professional, modern, and high-contrast, matching the Sav.pos blue and white brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuQBnEIwC_-oLBAvwDB19pp0UW3okMasvqlJCOXHxkbK69s0byQKhytiRbclJ4Vvclq10ana2II2WlvXExfG4r43-uMNwReb43w6k98qQw7_Zy_StIhX5IKe-hFcX-czAsIMQRm3GXaQ_Z8soHmUOYR9x7z705YURwGoBSt3oKdAxoG3RccOnoK46s2Kp6z86ekmwpQmNIs6o8ggzHg6p5t4sVZnI9jOgtle3olICTc3NJDL2Q0t3gSH04Ku19mqQmunNxNjy_F14"/>
+</div>
+<div>
+<span class="text-label-sm font-label-sm text-on-surface-variant block">Subject:</span>
+<span class="font-label-md text-label-md text-primary">Happy Birthday! A gift from us...</span>
+</div>
+</div>
+<textarea class="w-full bg-surface-container-lowest border-none rounded-lg p-md text-label-sm font-label-sm h-32 focus:ring-2 focus:ring-secondary resize-none" placeholder="Enter message template...">Hi [Customer Name], happy birthday! Enjoy 20% off your next purchase as a thank you for being a valued member. Use code BDAY20 at checkout.</textarea>
+<div class="mt-md flex justify-between items-center">
+<span class="text-label-sm text-on-surface-variant">Auto-sends 7 days before</span>
+<button class="text-secondary font-bold text-label-md hover:underline active:scale-95 transition-transform">Preview Template</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Sleeping Customer Re-engagement -->
+<section class="lg:col-span-6 bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant/10">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">snooze</span>
+<h3 class="font-headline-md text-headline-md">Sleeping Customers</h3>
+</div>
+<span class="bg-secondary-fixed text-on-secondary-fixed text-label-sm px-md py-xs rounded-full">Inactive 30+ Days</span>
+</div>
+<div class="grid grid-cols-2 gap-md mb-lg">
+<div class="p-md rounded-xl bg-surface-container-low border border-outline-variant/10 flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-on-surface-variant">sms</span>
+<input checked="" class="rounded text-secondary focus:ring-secondary" type="checkbox"/>
+</div>
+<span class="font-label-md text-label-md text-primary mt-xs">SMS Blast</span>
+<span class="text-label-sm text-on-surface-variant">92% Delivery rate</span>
+</div>
+<div class="p-md rounded-xl bg-surface-container-low border border-outline-variant/10 flex flex-col gap-xs">
+<div class="flex justify-between items-center">
+<span class="material-symbols-outlined text-on-surface-variant">notifications_active</span>
+<input class="rounded text-secondary focus:ring-secondary" type="checkbox"/>
+</div>
+<span class="font-label-md text-label-md text-primary mt-xs">Push Alert</span>
+<span class="text-label-sm text-on-surface-variant">App users only</span>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex items-center justify-between p-sm border-b border-outline-variant/10">
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="text-label-md font-label-md text-on-surface-variant">Trigger: 35 Days</span>
+</div>
+<span class="text-label-sm text-primary font-bold">Enabled</span>
+</div>
+<div class="flex items-center justify-between p-sm border-b border-outline-variant/10">
+<div class="flex items-center gap-sm">
+<span class="w-2 h-2 rounded-full bg-outline-variant"></span>
+<span class="text-label-md font-label-md text-on-surface-variant">Trigger: 60 Days</span>
+</div>
+<span class="text-label-sm text-on-surface-variant">Disabled</span>
+</div>
+<button class="w-full mt-md h-touch-target-min border-2 border-dashed border-outline-variant text-on-surface-variant font-label-md rounded-xl hover:bg-surface-container-high hover:border-secondary transition-all">
+                            + Add Custom Trigger
+                        </button>
+</div>
+</section>
+</div>
+</main>
+</div>
+<!-- Mobile Navigation Shell -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface shadow-lg flex justify-around items-center px-md pb-xs h-touch-target-min border-t border-outline-variant/10">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all p-sm rounded-xl">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all p-sm rounded-xl">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Clients</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">Loyalty</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-all p-sm rounded-xl">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm text-label-sm">More</span>
+</div>
+</nav>
+<!-- Floating Action Button Contextual -->
+<button class="fixed bottom-[90px] right-lg md:bottom-lg md:right-lg bg-tertiary-container text-on-tertiary-container w-14 h-14 rounded-2xl shadow-xl flex items-center justify-center active:scale-95 transition-transform group overflow-hidden">
+<span class="material-symbols-outlined text-[28px]">support_agent</span>
+<div class="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</button>
+<script>
+        // Micro-interactions for toggle effects
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const parent = this.closest('section');
+                if(this.checked) {
+                    parent.classList.remove('opacity-60');
+                } else {
+                    parent.classList.add('opacity-60');
+                }
+            });
+        });
+
+        // Simulating some dynamic behavior for task queue
+        const taskCards = document.querySelectorAll('.group.cursor-pointer');
+        taskCards.forEach(card => {
+            card.addEventListener('click', function() {
+                this.classList.toggle('ring-2');
+                this.classList.toggle('ring-secondary');
+            });
+        });
+    </script>
+</body></html>

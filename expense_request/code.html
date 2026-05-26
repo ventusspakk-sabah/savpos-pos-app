@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAV.POS | Reimbursement Request</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ba1a1a",
+                      "error-container": "#ffdad6",
+                      "surface-container": "#e5eeff",
+                      "primary": "#00091b",
+                      "outline-variant": "#c4c6cf",
+                      "outline": "#74777f",
+                      "on-primary": "#ffffff",
+                      "secondary": "#0050cc",
+                      "tertiary-fixed": "#ffddaf",
+                      "on-secondary": "#ffffff",
+                      "on-background": "#0b1c30",
+                      "surface-container-low": "#eff4ff",
+                      "on-surface-variant": "#44474e",
+                      "background": "#f8f9ff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#f9f7ff",
+                      "inverse-surface": "#213145",
+                      "on-primary-container": "#7089b3",
+                      "on-secondary-fixed-variant": "#003fa4",
+                      "surface-variant": "#d3e4fe",
+                      "tertiary": "#0f0700",
+                      "secondary-fixed": "#dae1ff",
+                      "on-surface": "#0b1c30",
+                      "inverse-primary": "#aec7f5",
+                      "surface-tint": "#465f87",
+                      "surface-container-highest": "#d3e4fe",
+                      "on-tertiary-fixed": "#281800",
+                      "surface-dim": "#cbdbf5",
+                      "primary-fixed": "#d6e3ff",
+                      "surface-container-high": "#dce9ff",
+                      "on-secondary-fixed": "#001849",
+                      "secondary-fixed-dim": "#b3c5ff",
+                      "on-primary-fixed": "#001b3c",
+                      "secondary-container": "#0266ff",
+                      "primary-fixed-dim": "#aec7f5",
+                      "on-tertiary-container": "#b67c00",
+                      "inverse-on-surface": "#eaf1ff",
+                      "primary-container": "#002045",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#2e1d00",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "tertiary-fixed-dim": "#ffba43",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-mobile": "16px",
+                      "margin-desktop": "32px",
+                      "base": "8px",
+                      "xl": "32px",
+                      "lg": "24px",
+                      "xs": "4px",
+                      "md": "16px",
+                      "sm": "8px",
+                      "gutter": "16px"
+              },
+              "fontFamily": {
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "title-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "display-lg": ["Inter"],
+                      "label-md": ["Inter"],
+                      "code-md": ["Inter"]
+              },
+              "fontSize": {
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f8f9ff;
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-primary border-b border-outline-variant dark:border-outline flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-4">
+<button class="text-secondary dark:text-secondary-fixed active:opacity-80 transition-opacity">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary-fixed tracking-tight">Requests</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">terminal</span>
+</div>
+</header>
+<main class="mt-20 px-margin-mobile md:px-margin-desktop max-w-screen-xl mx-auto">
+<!-- Bento Grid Layout for Form and History -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Main Content Area: The Request Form (8 Columns) -->
+<section class="lg:col-span-7 space-y-6">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-lg">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">add_circle</span>
+<h2 class="font-title-md text-title-md">New Reimbursement</h2>
+</div>
+<form class="space-y-md">
+<!-- Date & Category Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Date of Expense</label>
+<input class="w-full bg-white border border-outline rounded-lg h-12 px-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" type="date"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Category</label>
+<select class="w-full bg-white border border-outline rounded-lg h-12 px-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all">
+<option>Hardware Replacement</option>
+<option>Travel &amp; Fuel</option>
+<option>Software Licensing</option>
+<option>Tools &amp; Equipment</option>
+<option>Emergency Repairs</option>
+</select>
+</div>
+</div>
+<!-- Amount & Currency -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Amount</label>
+<div class="relative">
+<span class="absolute left-4 top-1/2 -translate-y-1/2 font-bold text-on-surface-variant">$</span>
+<input class="w-full bg-white border border-outline rounded-lg h-12 pl-8 pr-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" placeholder="0.00" type="number"/>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Description / Memo</label>
+<textarea class="w-full bg-white border border-outline rounded-lg p-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none transition-all" placeholder="Explain the business purpose of this expense..." rows="3"></textarea>
+</div>
+<!-- File Upload Area (Visual Polish) -->
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Attach Receipt</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">upload_file</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-medium">Click to upload or drag and drop</p>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1">PNG, JPG or PDF up to 10MB</p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 flex flex-col sm:flex-row gap-md">
+<button class="flex-1 h-12 bg-secondary text-on-secondary font-bold rounded-lg hover:brightness-110 active:scale-95 transition-all" type="submit">Submit Request</button>
+<button class="flex-1 h-12 border border-secondary text-secondary font-bold rounded-lg hover:bg-secondary-container/10 active:scale-95 transition-all" type="button">Save as Draft</button>
+</div>
+</form>
+</div>
+</section>
+<!-- Sidebar Content: Recent & Status (4 Columns) -->
+<aside class="lg:col-span-5 space-y-6">
+<!-- Summary Card -->
+<div class="bg-primary text-on-primary rounded-xl p-lg shadow-xl relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-32 h-32 bg-secondary rounded-full blur-3xl opacity-20"></div>
+<h3 class="font-label-md text-label-md text-on-primary-container mb-2 uppercase">Pending Reimbursement</h3>
+<div class="flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg">$1,240.50</span>
+</div>
+<div class="mt-4 flex gap-4">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="font-label-md text-label-md">3 Active Requests</span>
+</div>
+</div>
+</div>
+<!-- Recent Activity List -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface">
+<h3 class="font-title-md text-title-md">Recent Requests</h3>
+<button class="text-secondary font-label-md text-label-md uppercase hover:underline">View All</button>
+</div>
+<div class="divide-y divide-outline-variant">
+<!-- Request Item 1 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">router</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">Cisco Router - Terminal 4</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Oct 24, 2023 • Hardware</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md text-body-md font-bold text-on-surface">$420.00</p>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-tertiary-fixed text-on-tertiary-fixed-variant">Pending</span>
+</div>
+</div>
+<!-- Request Item 2 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">local_gas_station</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">Fuel Reimbursement</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Oct 22, 2023 • Travel</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md text-body-md font-bold text-on-surface">$85.20</p>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-surface-container-highest text-secondary">Approved</span>
+</div>
+</div>
+<!-- Request Item 3 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-surface-variant flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">construction</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-surface">Fiber Tool Set</p>
+<p class="font-label-md text-label-md text-on-surface-variant">Oct 19, 2023 • Tools</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-body-md text-body-md font-bold text-on-surface">$735.30</p>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-widest bg-error-container text-error">Rejected</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Guidance Info Card -->
+<div class="bg-surface-container border border-secondary/20 rounded-xl p-md flex gap-4">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<h4 class="font-body-md text-body-md font-bold text-on-surface">Policy Update</h4>
+<p class="font-label-md text-label-md text-on-surface-variant mt-1 leading-relaxed">All expenses over $500 now require manager pre-approval. Please attach the approval email as a PDF along with your receipt.</p>
+</div>
+</div>
+</aside>
+</div>
+<!-- Featured Image Section (Asymmetric) -->
+<section class="mt-xl grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="relative h-64 rounded-xl overflow-hidden group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A high-angle professional photograph of a modern office desk featuring a laptop, a digital calculator, and neat stacks of financial receipts. The lighting is bright and airy, using a soft blue and crisp white palette that matches a professional corporate brand identity. The mood is organized, technical, and efficient, reflecting a stable financial environment for a mission-control point-of-sale management system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZY9ViweX98de5wbEuHcI9aK8S9cX1W87nweTqKleLigH3YSQhG269kbFb11z-BvW9DpNfh4dfciPu_6lhLQLLuIsbWJ_kI70_fwF7uDQNBT8jK7SshL069_OVZG9ctpCSSWhvHa7Xy0EeJmsbA7-h41VfspgzxQBOdpADfu6W6iMKS2TbIuN1VhsDTx81abyeyhL31kUYynJ0IunMvCI7j18fN-e7ULdtF0yHy50hdnVqLG09TLZSnDZmC40OY1oHTOkjiJaph_Y"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-lg">
+<div>
+<p class="font-label-md text-label-md text-secondary-fixed uppercase tracking-widest">Technician Perks</p>
+<h4 class="font-title-md text-title-md text-on-primary">Upgraded Equipment Allowance</h4>
+</div>
+</div>
+</div>
+<div class="bg-secondary-container text-on-secondary-container rounded-xl p-lg flex flex-col justify-center">
+<span class="material-symbols-outlined text-4xl mb-4">stars</span>
+<h3 class="font-headline-md text-headline-md mb-2">Automated Payouts</h3>
+<p class="font-body-lg text-body-lg opacity-90">Our new POS system automatically reconciles approved expenses every Friday. No more waiting for monthly payroll cycles.</p>
+<button class="mt-6 font-bold flex items-center gap-2 hover:translate-x-2 transition-transform">
+                    View Schedule <span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 bg-surface dark:bg-primary border-t border-outline-variant dark:border-outline pb-safe z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant active:scale-95 transition-transform duration-100 hover:text-secondary" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant active:scale-95 transition-transform duration-100 hover:text-secondary" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-label-md text-label-md">Work</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container dark:bg-secondary dark:text-on-secondary rounded-full px-4 py-1 active:scale-95 transition-transform duration-100" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">reorder</span>
+<span class="font-label-md text-label-md">Requests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant active:scale-95 transition-transform duration-100 hover:text-secondary" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Finance</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant active:scale-95 transition-transform duration-100 hover:text-secondary" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for form inputs
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.querySelector('label')?.classList.add('text-secondary');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.querySelector('label')?.classList.remove('text-secondary');
+            });
+        });
+
+        // Add a subtle parallax effect to the hero image on scroll
+        window.addEventListener('scroll', () => {
+            const img = document.querySelector('img[data-alt]');
+            if (img) {
+                const scrollPos = window.pageYOffset;
+                img.style.transform = `translateY(${scrollPos * 0.05}px) scale(1.05)`;
+            }
+        });
+    </script>
+</body></html>

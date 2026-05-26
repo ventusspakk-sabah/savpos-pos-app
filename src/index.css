@@ -1,0 +1,67 @@
+/* Material Symbols 基礎設定 */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* 自訂滾動條 */
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: #d3e4fe; border-radius: 10px; }
+
+/* 啟動的分類標籤底線 */
+.active-category { border-bottom: 3px solid #005db6; color: #005db6; }
+
+/* Tailwind 導入與主題 */
+@import "tailwindcss";
+
+@theme {
+  --color-error: #ba1a1a;
+  --color-inverse-on-surface: #eaf1ff;
+  --color-on-primary-fixed: #001b3c;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-bright: #f8f9ff;
+  --color-surface-container: #e5eeff;
+  --color-on-tertiary: #ffffff;
+  --color-secondary-fixed-dim: #a9c7ff;
+  --color-error-container: #ffdad6;
+  --color-inverse-primary: #aec7f5;
+  --color-on-tertiary-fixed-variant: #43474a;
+  --color-on-background: #0b1c30;
+  --color-on-primary-fixed-variant: #2e476e;
+  --color-on-error: #ffffff;
+  --color-inverse-surface: #213145;
+  --color-on-secondary: #ffffff;
+  --color-surface: #f8f9ff;
+  --color-surface-container-low: #eff4ff;
+  --color-outline: #74777f;
+  --color-tertiary-fixed: #e0e3e6;
+  --color-on-primary: #ffffff;
+  --color-primary: #00091b;
+  --color-secondary: #005db6;
+  --color-on-secondary-fixed: #001b3d;
+  --color-on-error-container: #93000a;
+  --color-on-secondary-fixed-variant: #00468c;
+  --color-surface-tint: #465f87;
+  --color-tertiary-container: #1d2123;
+  --color-on-primary-container: #7089b3;
+  --color-surface-variant: #d3e4fe;
+  --color-on-tertiary-fixed: #181c1e;
+  --color-surface-container-high: #dce9ff;
+  --color-on-surface-variant: #44474e;
+  --color-secondary-container: #63a1ff;
+  --color-tertiary-fixed-dim: #c3c7ca;
+  --color-primary-container: #002045;
+  --color-background: #f8f9ff;
+  --color-tertiary: #06090c;
+  --color-primary-fixed-dim: #aec7f5;
+  --color-secondary-fixed: #d6e3ff;
+  --color-on-secondary-container: #00376f;
+  --color-outline-variant: #c4c6cf;
+  --color-surface-dim: #cbdbf5;
+  --color-on-surface: #0b1c30;
+}
+
+/* 基礎字型 */
+body {
+  font-family: 'Inter', sans-serif;
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1e",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#5d9377",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-surface": "#2d3133",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#001c38",
+                        "primary-container": "#002045",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-surface-variant": "#44474e",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-primary-container": "#7089b3",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-secondary-container": "#00477f",
+                        "secondary": "#1960a3",
+                        "outline-variant": "#c4c6cf",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-tint": "#465f87",
+                        "secondary-container": "#7db6ff",
+                        "primary": "#00091b",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "tertiary-container": "#002617",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-fixed": "#001b3c",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "background": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-container": "#eceef0",
+                        "outline": "#74777f",
+                        "inverse-primary": "#aec7f5",
+                        "tertiary": "#000b05",
+                        "surface-dim": "#d8dadc",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "md": "16px",
+                        "touch-target-min": "44px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-price": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-ring {
+            box-shadow: 0 0 0 2px #1960a3;
+        }
+        .glass-badge {
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md selection:bg-secondary-container">
+<!-- TopAppBar Navigation -->
+<header class="w-full top-0 sticky bg-surface-container-lowest shadow-sm flex justify-between items-center px-md py-xs z-40">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary hover:bg-surface-variant/50 transition-colors p-2 rounded-full active:scale-95 duration-200">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary">Sav.pos Spa</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-label-md text-label-md text-on-surface-variant hidden md:block">Website Builder</span>
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden flex items-center justify-center border border-outline-variant">
+<img alt="Staff Profile" class="w-full h-full object-cover" data-alt="A professional portrait of a spa manager in a bright, modern office setting. The person has a warm, confident expression and is wearing high-end corporate attire. The background is softly blurred, showing hints of a luxury spa interior with neutral tones and soft lighting, maintaining a clean and sophisticated aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs-8i4lsRrEka_1WHPW8pzqCqUcOiUTpaUyouymHqdaIMyRUh1w7OtOe7Da2JTapPvtk0Y7R215KoJq13Cq62t9H6P0dVdzbVdBmk1IifktPdlLLuvjekCtidmDyfnM58QIm6jdHh9opHEvJCkvu-nPn-AMCK1NLm64GPd0hZTVgvWHIik1z_j_DIwWs14powrcicHDRq7MZwYVSqPM7nQlSgpfTovYU4nnNkht-KZT-o48XUjBMCTTnyHKkeNdvb_cmbwvFQgQnA"/>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)]">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden md:block h-full w-80 bg-surface-container-low shadow-lg rounded-r-xl py-lg sticky top-[64px] z-30">
+<nav class="space-y-1">
+<div class="px-lg pb-md">
+<p class="font-headline-md text-headline-md font-bold text-secondary">Spa Manager</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Professional Edition v2.4.0</p>
+</div>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">web</span>
+<span class="font-body-md text-body-md">Website Builder</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-body-md text-body-md">Staff</span>
+</a>
+<div class="pt-xl mt-xl border-t border-outline-variant">
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 px-md py-lg md:px-xl md:py-xl max-w-7xl mx-auto mb-20 md:mb-0">
+<header class="mb-xl">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-xs">Choose Your Identity</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Select a visual foundation for your automated online presence. Each template is fully responsive and optimized for high-end boutique services.</p>
+</header>
+<!-- Bento Grid of Templates -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Modern Style -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-secondary/20">
+<div class="relative aspect-square overflow-hidden bg-surface-container-high">
+<img alt="Modern Template" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A clean and bold modern website layout for a luxury spa. The design features large sans-serif typography, high-contrast black and white imagery of polished marble and minimalist treatment rooms. The interface shows a sleek booking widget with vibrant blue accents, reflecting a fast-paced, high-end professional environment with bright, cool lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDmsTiuNpB-fkkIbMOr-2kQQlbWAiCVqgeiYMllhUV5k3AKynaWEs0CSJpLkc2DYqfThszqIDLkX3dlc_XnXnysrc72sd-MvEbgBz7XtOUDekLBg7xoO9FKBDil7tHKtp-NrI9If7Upi2s6OflaPou16SACWamle6q2GL3rZ0VLuYlNmSwBuW19QSQiMrl1hoPfRl8zZY0qDecZTmU7AmdxzlFltT8A6BuQpKZRXbFqh-bdM1Q2ZwxDgOEPC97ZTQuHl_LbqOSrx0"/>
+<div class="absolute top-sm right-sm glass-badge px-3 py-1 rounded-full text-label-sm font-label-sm text-secondary">MODERN</div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md mb-base">The Metropolis</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1 mb-md">Bold typography and high-contrast layouts for a dynamic, urban presence.</p>
+<div class="flex gap-sm">
+<button class="flex-1 py-xs px-sm bg-surface-variant text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-on-surface-variant/10 transition-colors active:scale-95">Preview</button>
+<button class="flex-1 py-xs px-sm bg-secondary text-white rounded-lg font-label-md text-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors active:scale-95 shadow-sm">Apply</button>
+</div>
+</div>
+</div>
+<!-- Zen Style -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-secondary/20">
+<div class="relative aspect-square overflow-hidden bg-surface-container-high">
+<img alt="Zen Template" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A tranquil and serene website design featuring a soft palette of sage green and sand. High-quality imagery of smooth river stones, steaming aromatic baths, and delicate bamboo branches. The layout is spacious with elegant, airy typography that feels organic and calm. The overall mood is peaceful and high-end wellness focused." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxqTsrDvd41fCtUlzlvXA2dp-iJYxfRnYIM36QPbatnL6VvSBmYP11GWhd7TB3wdGOo0SGRjFSyBb0W1bLcEDbORjWOkONvAANogA6CBvtqMt9WZUyI8e7gMD1Clbh880AAebJr_8p3Bkgg4kD587LbkdCHnM5y7Id2A4e_W9l0MTeAWSHr9B60L9eqvMPsTHIoPeJgAE_xKrM8EfW-XdumFXiFyltzwIg_Hmh8OuzS2aYd03Fz_ZtHIALV7BkTit_Q44Wj3gZa64"/>
+<div class="absolute top-sm right-sm glass-badge px-3 py-1 rounded-full text-label-sm font-label-sm text-on-tertiary-fixed-variant">ZEN</div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md mb-base">Serenity</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1 mb-md">Earthy tones and spacious grids designed to evoke immediate relaxation.</p>
+<div class="flex gap-sm">
+<button class="flex-1 py-xs px-sm bg-surface-variant text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-on-surface-variant/10 transition-colors active:scale-95">Preview</button>
+<button class="flex-1 py-xs px-sm bg-secondary text-white rounded-lg font-label-md text-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors active:scale-95 shadow-sm">Apply</button>
+</div>
+</div>
+</div>
+<!-- Minimalist Style -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border-2 border-secondary">
+<div class="relative aspect-square overflow-hidden bg-surface-container-high">
+<img alt="Minimalist Template" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A pure minimalist web template with massive whitespace and razor-sharp thin lines. The design uses only shades of grey and pure white, with a single intense blue accent color for buttons. Imagery is sparse but impactful, featuring a single orchid in a white vase. The layout is extremely clean and focuses on essential information with high-end precision." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAY5gh_KugO9yUIjv3BR4O41AesrRFK6YqzWkho5rMZM26KvFoiBo-ixG3cc_O4NORqt8GMPOHyvlfYgy3iGwo--zze-4CmleZsclvVf-fCuTT36k27VtvAr57L6toICWuKtjkSo-tMLduy7ErRViE_sBvlu-oq7vlN1ih80pd7jMuy2bcNpu3d_YRmhrTPlJNtLFj19na6mjP93esg77pXtqCrYgk_qGT8w_eSvwFPHCaEI5Onn4lJa5vdpQSjL7SXDK-PwBS_uk"/>
+<div class="absolute top-sm right-sm bg-secondary text-white px-3 py-1 rounded-full text-label-sm font-label-sm">ACTIVE</div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<div class="flex justify-between items-start mb-base">
+<h3 class="font-headline-md text-headline-md">Pure Canvas</h3>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1 mb-md">Stripped back to the essentials. Precision-engineered for clarity and speed.</p>
+<div class="flex gap-sm">
+<button class="flex-1 py-xs px-sm bg-surface-variant text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-on-surface-variant/10 transition-colors active:scale-95">Preview</button>
+<button class="flex-1 py-xs px-sm bg-secondary-container text-on-secondary-container rounded-lg font-label-md text-label-md cursor-default">Current</button>
+</div>
+</div>
+</div>
+<!-- Classic Style -->
+<div class="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 border border-transparent hover:border-secondary/20">
+<div class="relative aspect-square overflow-hidden bg-surface-container-high">
+<img alt="Classic Template" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A sophisticated classic website design for a heritage spa brand. Featuring serif headlines, gold-leaf accents, and deep navy blue elements. The imagery shows leather chairs, dark wood panels, and warm, amber lighting in a luxury boutique environment. The feel is established, reliable, and premium, suggesting long-standing expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANYoSi_86GKkuLEUcBbyKPxY5O_iNCD3-d0L1xJpqaYkEVKvDqNOuW04DUMTkXN2B74XHYTwi-zGwrhrOuklEI046x3ysHjm-iBjSiC-x4hYq-vQ7iZcasWBQQcUHtpCGrZtDFNn-Qjilw6-WjdgDHQukvqLRn6sBaiTmzlY70OIYXagp7vMN2Wp9mdGbkmFFtTncmB-UuTPnrzylAfQK8K5WNzdadBqYWhfEu_MVl3Rf30ThaSCooZnZiLez17r6-PRPHYNEeAvo"/>
+<div class="absolute top-sm right-sm glass-badge px-3 py-1 rounded-full text-label-sm font-label-sm text-on-primary-fixed-variant">CLASSIC</div>
+</div>
+<div class="p-md flex flex-col flex-1">
+<h3 class="font-headline-md text-headline-md mb-base">Heritage</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex-1 mb-md">Timeless elegance with serif typography and sophisticated serif motifs.</p>
+<div class="flex gap-sm">
+<button class="flex-1 py-xs px-sm bg-surface-variant text-on-surface-variant rounded-lg font-label-md text-label-md hover:bg-on-surface-variant/10 transition-colors active:scale-95">Preview</button>
+<button class="flex-1 py-xs px-sm bg-secondary text-white rounded-lg font-label-md text-label-md hover:bg-secondary-container hover:text-on-secondary-container transition-colors active:scale-95 shadow-sm">Apply</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Features of Choice Section -->
+<section class="mt-xl p-lg bg-surface-container-low rounded-2xl border border-outline-variant">
+<div class="flex flex-col md:flex-row items-center gap-xl">
+<div class="flex-1">
+<h4 class="font-headline-md text-headline-md mb-sm">Website Personalization</h4>
+<div class="space-y-md">
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary mt-1">auto_awesome</span>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">AI Auto-Populate</p>
+<p class="font-body-md text-body-md text-on-surface-variant">We'll automatically sync your services, staff, and photos from your POS dashboard to your new theme.</p>
+</div>
+</div>
+<div class="flex items-start gap-md">
+<span class="material-symbols-outlined text-secondary mt-1">devices</span>
+<div>
+<p class="font-body-lg text-body-lg font-semibold">Native Responsiveness</p>
+<p class="font-body-md text-body-md text-on-surface-variant">Every theme is pixel-perfect for mobile, tablet, and desktop booking experiences.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-64 aspect-video md:aspect-square bg-surface-variant rounded-xl flex items-center justify-center p-md text-center">
+<div class="flex flex-col items-center">
+<span class="material-symbols-outlined text-display-price text-secondary mb-xs">verified</span>
+<p class="font-label-md text-label-md">SEO Ready &amp; Optimized</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-xs pt-xs bg-surface-container-low shadow-md rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-6 py-1 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                if(this.innerText === 'Apply') {
+                    const originalText = this.innerText;
+                    this.innerText = 'Applying...';
+                    this.classList.add('opacity-80');
+                    setTimeout(() => {
+                        this.innerText = originalText;
+                        this.classList.remove('opacity-80');
+                        alert('Theme selection updated! Your website is being synchronized.');
+                    }, 1200);
+                }
+            });
+        });
+
+        // Hover effect for template cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-4px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

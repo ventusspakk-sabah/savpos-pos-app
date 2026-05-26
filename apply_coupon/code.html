@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Apply Coupon</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#d3e4ff",
+                    "on-tertiary-fixed": "#002113",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-high": "#e6e8ea",
+                    "surface-container": "#eceef0",
+                    "tertiary-container": "#002617",
+                    "on-secondary-fixed": "#001c38",
+                    "inverse-primary": "#aec7f5",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed": "#b6efcf",
+                    "surface-container-highest": "#e0e3e5",
+                    "inverse-surface": "#2d3133",
+                    "secondary-container": "#7db6ff",
+                    "on-surface-variant": "#44474e",
+                    "on-primary-container": "#7089b3",
+                    "tertiary": "#000b05",
+                    "on-background": "#191c1e",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-variant": "#e0e3e5",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#002045",
+                    "on-secondary-fixed-variant": "#004881",
+                    "surface-bright": "#f7f9fb",
+                    "surface-tint": "#465f87",
+                    "primary": "#00091b",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-tertiary-container": "#00b47d",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "surface-dim": "#d8dadc",
+                    "on-primary-fixed": "#001b3c",
+                    "background": "#f7f9fb",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#1960a3",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "outline": "#74777f",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#00477f",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "error": "#ba1a1a",
+                    "on-surface": "#191c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "32px",
+                    "md": "16px",
+                    "sm": "12px",
+                    "touch-target-min": "44px",
+                    "xs": "8px",
+                    "base": "4px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "display-price": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .coupon-card:hover .apply-overlay {
+            opacity: 1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e0e3e5;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Top Navigation Bar (Shared Component Context) -->
+<header class="bg-surface docked full-width top-0 shadow-sm flex justify-between items-center px-md h-touch-target-min w-full max-w-full z-50 sticky">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary">storefront</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary">Sav.pos</h1>
+</div>
+<button class="p-xs rounded-full hover:bg-surface-container-low transition-transform active:scale-95 duration-100">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+</header>
+<main class="max-w-4xl mx-auto px-md py-lg md:py-xl flex flex-col md:flex-row gap-lg">
+<!-- Left Column: Coupons Selection -->
+<div class="flex-1 space-y-lg">
+<section>
+<h2 class="text-headline-md font-headline-md mb-md text-primary">Coupons &amp; Offers</h2>
+<!-- Manual Entry -->
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-sm flex items-center gap-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-sm top-1/2 -translate-y-1/2 text-outline">sell</span>
+<input class="w-full bg-surface-container-low border-none rounded-lg pl-xl py-sm text-body-md focus:ring-2 focus:ring-primary-container outline-none transition-all" placeholder="Enter promo code" type="text"/>
+</div>
+<button class="bg-primary-container text-on-primary-container px-lg py-sm rounded-lg font-bold text-label-md active:scale-95 transition-transform">
+                        Apply
+                    </button>
+</div>
+</section>
+<!-- Available Coupons List -->
+<section class="space-y-md">
+<div class="flex justify-between items-center">
+<h3 class="text-label-md font-label-md text-on-surface-variant uppercase tracking-wider">Available Coupons</h3>
+<span class="text-label-sm font-label-sm text-secondary">3 active</span>
+</div>
+<div class="grid grid-cols-1 gap-md">
+<!-- Coupon Card 1 -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-sm border border-transparent hover:border-secondary-container transition-all cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-tertiary-fixed/30 flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-fixed-variant" style="font-variation-settings: 'FILL' 1;">stars</span>
+</div>
+<div>
+<h4 class="text-headline-md font-headline-md text-primary">$20 Off</h4>
+<p class="text-label-sm font-label-sm text-on-tertiary-fixed-variant bg-tertiary-fixed/40 px-xs rounded mt-1 inline-block">WELCOME20</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-label-sm text-outline">Expires 24 Oct</p>
+</div>
+</div>
+<div class="mt-sm pt-sm border-t border-outline-variant">
+<p class="text-body-md text-on-surface-variant">First-time customer exclusive. Applicable on orders above $100.</p>
+</div>
+<!-- Select Hover State -->
+<div class="absolute inset-0 bg-secondary-container/10 rounded-xl opacity-0 group-hover:opacity-100 flex items-center justify-end pr-md transition-opacity">
+<span class="bg-primary-container text-on-primary-container px-md py-xs rounded-full text-label-md font-bold">Select Code</span>
+</div>
+</div>
+<!-- Coupon Card 2 -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-sm border-2 border-primary-container">
+<div class="flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-primary-container flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">local_offer</span>
+</div>
+<div>
+<div class="flex items-center gap-xs">
+<h4 class="text-headline-md font-headline-md text-primary">15% Discount</h4>
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<p class="text-label-sm font-label-sm text-on-primary-fixed-variant bg-primary-fixed/50 px-xs rounded mt-1 inline-block">SAVPOS15</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-label-sm text-on-tertiary-container font-bold">Applied</p>
+</div>
+</div>
+<div class="mt-sm pt-sm border-t border-outline-variant">
+<p class="text-body-md text-on-surface-variant">Seasonal boutique offer. Valid for all premium apparel items.</p>
+</div>
+</div>
+<!-- Coupon Card 3 -->
+<div class="group relative bg-surface-container-lowest p-md rounded-xl shadow-sm border border-transparent hover:border-secondary-container transition-all cursor-pointer">
+<div class="flex justify-between items-start">
+<div class="flex gap-md">
+<div class="w-12 h-12 bg-surface-container-high flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined text-outline">card_giftcard</span>
+</div>
+<div>
+<h4 class="text-headline-md font-headline-md text-primary">Free Shipping</h4>
+<p class="text-label-sm font-label-sm text-outline-variant bg-surface-container-high px-xs rounded mt-1 inline-block">FREESHIP</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-label-sm font-label-sm text-outline">Expires tomorrow</p>
+</div>
+</div>
+<div class="mt-sm pt-sm border-t border-outline-variant">
+<p class="text-body-md text-on-surface-variant">Complimentary delivery for orders over $250. Standard shipping only.</p>
+</div>
+<div class="absolute inset-0 bg-secondary-container/10 rounded-xl opacity-0 group-hover:opacity-100 flex items-center justify-end pr-md transition-opacity">
+<span class="bg-primary-container text-on-primary-container px-md py-xs rounded-full text-label-md font-bold">Select Code</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Order Summary (Sidebar Context) -->
+<aside class="w-full md:w-[360px]">
+<div class="bg-surface-container-low p-lg rounded-3xl shadow-lg sticky top-xl border border-surface-container-high">
+<h3 class="text-headline-md font-headline-md text-primary mb-lg">Order Summary</h3>
+<div class="space-y-md mb-xl">
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Subtotal (4 items)</span>
+<span class="font-label-md">$450.00</span>
+</div>
+<div class="flex justify-between text-body-md text-on-tertiary-container">
+<div class="flex items-center gap-xs">
+<span>Discount Applied</span>
+<span class="text-label-sm bg-on-tertiary-container/10 px-xs rounded">SAVPOS15</span>
+</div>
+<span class="font-label-md">- $67.50</span>
+</div>
+<div class="flex justify-between text-body-md text-on-surface-variant">
+<span>Tax (Est. 8%)</span>
+<span class="font-label-md">$36.00</span>
+</div>
+</div>
+<div class="pt-lg border-t-2 border-dashed border-outline-variant mb-xl">
+<div class="flex justify-between items-baseline">
+<span class="text-headline-md font-headline-md text-primary">Final Total</span>
+<span class="text-display-price font-display-price text-primary">$418.50</span>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary-container py-md rounded-xl font-bold text-body-lg flex items-center justify-center gap-sm hover:brightness-110 active:scale-95 transition-all shadow-md">
+                    Confirm &amp; Continue
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-label-sm font-label-sm text-outline mt-md px-md">
+                    By confirming, you agree to our Terms of Service and Privacy Policy.
+                </p>
+</div>
+<!-- Promotion Visual Card -->
+<div class="mt-lg relative h-48 rounded-3xl overflow-hidden group shadow-md">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A luxurious high-end retail interior with minimalist clothing racks and soft warm spotlighting. The image uses a clean navy and white color palette, reflecting a sophisticated boutique atmosphere typical of premium POS marketing. The lighting is bright and modern, creating an inviting yet professional light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkJ4SCjWVbJwnT8wLPJHxNQe5Mze3Q25aOCmf8wZfHjY1z8ah25bklBFH3rXyPz7KSphVj0rTv-r7d5mBQT_U2fCMQjWRy6ftJQw4sF41jTQ0g7NT1ti1oJaUGDb7K1WRTvF22aGlXioEWIJxb1hWJDST-gcoEeF35UnxqRKp7cOo2EmwxiVF8EOOggMsnkuusdcuhVW777ndL0m48w1awAmnivcgIIkx8kscpc_5UyhwLEk7CxNtP1DfCmwMCC03T8va3Z6d6r70"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-md">
+<p class="text-on-primary font-bold text-label-md">Member Special</p>
+<p class="text-on-primary text-headline-md leading-tight">Double points on luxury brands this weekend.</p>
+</div>
+</div>
+</aside>
+</main>
+<!-- Bottom Navigation (Mobile Only Context) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface rounded-t-lg shadow-lg flex justify-around items-center px-md pb-md pt-xs">
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="text-label-sm font-label-sm">Sale</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-lg py-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shopping_cart</span>
+<span class="text-label-sm font-label-sm">Checkout</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-label-sm font-label-sm">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-label-sm font-label-sm">History</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for coupon selection
+        document.querySelectorAll('.coupon-card').forEach(card => {
+            card.addEventListener('click', function() {
+                // This would normally trigger state change in a real app
+                console.log('Coupon selected');
+                this.classList.add('scale-95');
+                setTimeout(() => this.classList.remove('scale-95'), 150);
+            });
+        });
+
+        // Add subtle parallax-ish effect to image
+        window.addEventListener('scroll', () => {
+            const img = document.querySelector('aside img');
+            if(img) {
+                const scrolled = window.pageYOffset;
+                img.style.transform = `translateY(${scrolled * 0.05}px)`;
+            }
+        });
+    </script>
+</body></html>

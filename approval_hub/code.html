@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Approval Hub | SAV.POS Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "on-secondary-container": "#f9f7ff",
+                        "tertiary-fixed-dim": "#ffba43",
+                        "on-primary-container": "#7089b3",
+                        "on-secondary-fixed-variant": "#003fa4",
+                        "primary-fixed-dim": "#aec7f5",
+                        "background": "#f8f9ff",
+                        "surface": "#f8f9ff",
+                        "secondary-fixed-dim": "#b3c5ff",
+                        "tertiary-fixed": "#ffddaf",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#281800",
+                        "surface-container": "#e5eeff",
+                        "on-surface": "#0b1c30",
+                        "secondary-container": "#0266ff",
+                        "inverse-surface": "#213145",
+                        "on-tertiary-container": "#b67c00",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#001b3c",
+                        "tertiary-container": "#2e1d00",
+                        "surface-container-high": "#dce9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "primary-fixed": "#d6e3ff",
+                        "outline": "#74777f",
+                        "on-secondary-fixed": "#001849",
+                        "secondary": "#0050cc",
+                        "on-tertiary": "#ffffff",
+                        "surface-tint": "#465f87",
+                        "secondary-fixed": "#dae1ff",
+                        "tertiary": "#0f0700",
+                        "error-container": "#ffdad6",
+                        "surface-variant": "#d3e4fe",
+                        "primary": "#00091b",
+                        "inverse-on-surface": "#eaf1ff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "on-background": "#0b1c30",
+                        "inverse-primary": "#aec7f5",
+                        "primary-container": "#002045",
+                        "outline-variant": "#c4c6cf",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "on-tertiary-fixed-variant": "#614000"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xl": "32px",
+                        "margin-desktop": "32px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "xs": "4px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "title-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-md": ["Inter"],
+                        "code-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background selection:bg-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full bg-surface dark:bg-primary border-b border-outline-variant dark:border-outline">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-secondary dark:text-secondary-fixed">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary-fixed tracking-tight">SAV.POS</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+<div class="h-8 w-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Manager Profile" data-alt="A professional headshot of a middle-aged male manager with a confident and approachable expression. He is wearing a sharp, charcoal grey suit and a white shirt against a softly blurred high-end office background. The lighting is bright and natural, reflecting a clean and modern light-mode professional aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD03tnre5eoMbXkqzfIxU2b97JKTObSVUly0O9JTcfwb9k-t3hNSWlOQ3xl66QitSgqD36Y2JE74hLBBSWVAoCmFP16udzclsEjmjnyhmUO8QfqFpThfFvIGwLQqPQ4hTkZxN-Zut3XA6VVEmViH6Vc7syq2ro6rmOC6FjeT-AkLcJuKoAiZePRMSc7gjv-NtsTOIduCTP0z3bPrr7NL_fH8y_8jZTThZ7pxdecaHO2r2Vev7rmOG1KK8ZfdqPxeFkycmwnw6DM2wY"/>
+</div>
+</div>
+</header>
+<div class="flex h-screen pt-16">
+<!-- NavigationDrawer (Sidebar Desktop) -->
+<aside class="hidden md:flex flex-col h-full p-4 h-full w-80 bg-surface-container-low dark:bg-primary-container border-r border-outline-variant">
+<div class="flex items-center gap-md p-4 mb-xl">
+<div class="h-12 w-12 rounded-xl bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-secondary font-bold">Admin Portal</p>
+<p class="font-body-md text-body-md text-on-surface-variant">System Management</p>
+</div>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">security</span>
+<span class="font-body-md text-body-md">Audit Center</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 bg-secondary-container text-on-secondary-container font-medium rounded-full transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="font-body-md text-body-md">Approvals</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-body-md text-body-md">Permissions</span>
+</a>
+<a class="flex items-center gap-md px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest transition-all duration-200" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-4 border-t border-outline-variant">
+<p class="text-xs text-on-surface-variant font-medium tracking-widest uppercase">Version V2.4.0</p>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto bg-background p-margin-mobile md:p-margin-desktop no-scrollbar pb-32 md:pb-8">
+<!-- Page Header & Filter Section -->
+<div class="mb-xl flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div class="space-y-1">
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Approval Hub</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Review and manage technician requests across the system.</p>
+</div>
+<div class="flex items-center gap-sm overflow-x-auto no-scrollbar pb-2 md:pb-0">
+<button class="px-md py-2 rounded-full bg-secondary text-on-secondary font-label-md text-label-md">All Requests</button>
+<button class="px-md py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-highest transition-colors">Commissions</button>
+<button class="px-md py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-highest transition-colors">Advances</button>
+<button class="px-md py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-highest transition-colors">Leave</button>
+<button class="px-md py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-highest transition-colors">Expense</button>
+</div>
+</div>
+<!-- Dashboard Stats Summary (Bento-lite) -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-xl">
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded-xl flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-xs">Pending</p>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">14</p>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-20 text-4xl">pending_actions</span>
+</div>
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded-xl flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-xs">Approved Today</p>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">28</p>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-20 text-4xl">check_circle</span>
+</div>
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded-xl flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-xs">Total Payout</p>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">$12,450</p>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-20 text-4xl">payments</span>
+</div>
+<div class="bg-surface-container-lowest p-lg border border-outline-variant rounded-xl flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant uppercase mb-xs">Response Time</p>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">2.4h</p>
+</div>
+<span class="material-symbols-outlined text-secondary opacity-20 text-4xl">timer</span>
+</div>
+</div>
+<!-- Requests List - Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
+<!-- Card 1: Commission Request -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary transition-all group">
+<div class="p-lg flex items-start gap-md">
+<div class="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Technician Profile" data-alt="A close-up portrait of a young technician in a blue uniform shirt, looking into the camera with a friendly and professional demeanor. The setting is a brightly lit technical workshop with tools neatly arranged in the background, creating a workspace vibe. The color palette features cool blues and warm light tones, emphasizing reliability and technical expertise." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHwrqlJnvo2oD1mrjZeSP6-uDYpWZyAVa1pGzrjOBqlyRv5hTtj10ymKnsOOY9o8kAvFSSw5M6jERCK4KL-67uC48P7FPL6cQsMd38E3TzwR9IbRbYrlVHfDOelnAmO4nhyHyecr5Wjm6nPV-BtpqaZAchzcxSx56Q9Ei73ETkxQWz9wCHqpGm19v-jtItbJ2zA9QlUVH5HS76cwkmyg28jBwEBXeNocJ6kIQ8Tsm0t9yVUayMW8liZa-CMwSeo7oDyftPq-Z7CmU"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-xs">
+<h3 class="font-title-md text-title-md text-on-surface">Alex Rivera</h3>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md">Pending</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-sm">payments</span>
+<p class="font-body-md text-body-md">Commission Request • Service ID #4429</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">AMOUNT</p>
+<p class="font-headline-md text-headline-md font-bold text-secondary">$342.50</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">DATE</p>
+<p class="font-body-md text-body-md">Oct 24, 2023</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex border-t border-outline-variant">
+<button class="flex-1 py-4 flex items-center justify-center gap-sm text-error font-label-md text-label-md hover:bg-error-container transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">close</span>
+                            Reject
+                        </button>
+<div class="w-[1px] bg-outline-variant"></div>
+<button class="flex-1 py-4 flex items-center justify-center gap-sm bg-secondary text-on-secondary font-label-md text-label-md hover:bg-primary transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Approve
+                        </button>
+</div>
+</div>
+<!-- Card 2: Advance Request -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary transition-all">
+<div class="p-lg flex items-start gap-md">
+<div class="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Technician Profile" data-alt="A portrait of a male professional with glasses, smiling confidently. He is wearing a minimalist navy blue polo shirt. The background is a clean, white-walled office with modern architectural lines and soft shadows. The lighting is diffused and professional, conveying a trustworthy and technically proficient character within a modern corporate setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAg2ITlP-qbOoihMHyCvqJByN2vnlYm9y72ZrYQLNHy-BLOVJ66b7VJ53Wx9NiGafWL4C9kLAAdfoBVOzbhh0n6SEVoimLR1ztO9EHf2fcKSiogkIJbKa0UgthL3cXoH5XUSvN5hU_0XvGzMDlIze9cWoHW0aIOF5hXzW2OCXMDnqcG3ELtknujcVkNmsfGrqBkzWv79lRUs5v8DkQA4qe0HdwicL2y13s7KtaeIrR6N5xUbrsfpOMDUitSAE6VB7DoDnL6jfCOPZc"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-xs">
+<h3 class="font-title-md text-title-md text-on-surface">Jordan Smyth</h3>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md">Pending</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-sm">request_quote</span>
+<p class="font-body-md text-body-md">Salary Advance • Emergency Medical</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">AMOUNT</p>
+<p class="font-headline-md text-headline-md font-bold text-secondary">$1,500.00</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">REQUESTED ON</p>
+<p class="font-body-md text-body-md">Oct 23, 2023</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex border-t border-outline-variant">
+<button class="flex-1 py-4 flex items-center justify-center gap-sm text-error font-label-md text-label-md hover:bg-error-container transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">close</span>
+                            Reject
+                        </button>
+<div class="w-[1px] bg-outline-variant"></div>
+<button class="flex-1 py-4 flex items-center justify-center gap-sm bg-secondary text-on-secondary font-label-md text-label-md hover:bg-primary transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Approve
+                        </button>
+</div>
+</div>
+<!-- Card 3: Leave Request -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary transition-all opacity-80 hover:opacity-100">
+<div class="p-lg flex items-start gap-md">
+<div class="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Technician Profile" data-alt="A portrait of a female technician with her hair tied back, looking focused and competent. She is wearing a grey industrial jumpsuit. The background consists of a bright, modern laboratory or high-tech manufacturing floor with soft blue and white lighting. The overall mood is serious, professional, and efficient, perfectly aligning with a mission-control UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1T2rB2GNztV_Z56ZUxpa109LLSVNj0FSvUS1TH0jpw1E7-49dywZaU-dhpaezwJ0OtD-dZ0YtQScJxi24giOky-Z6z7qvtRn7A0aRySBV3iN_iMMpIoCt9al9VusSRp8PN9IGOB6eszbaI5jMNdKQVYTLeIW5jTyF43g9j8KNfdSfkAV_LqSPWQUb_mnEPgQ_bososCWCDyBL3x4EZMmwlE5qn2SRz1a10ltF-G0HTvW-D5QAHINswbL_1SEC40qNIizxgjUS4oY"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-xs">
+<h3 class="font-title-md text-title-md text-on-surface">Sarah Chen</h3>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-md text-label-md">Pending</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-sm">calendar_month</span>
+<p class="font-body-md text-body-md">Annual Leave • 3 Days</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">PERIOD</p>
+<p class="font-title-md text-title-md font-bold text-on-surface">Oct 28 - Oct 30</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">STATUS</p>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Awaiting Backup</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex border-t border-outline-variant">
+<button class="flex-1 py-4 flex items-center justify-center gap-sm text-error font-label-md text-label-md hover:bg-error-container transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">close</span>
+                            Reject
+                        </button>
+<div class="w-[1px] bg-outline-variant"></div>
+<button class="flex-1 py-4 flex items-center justify-center gap-sm bg-secondary text-on-secondary font-label-md text-label-md hover:bg-primary transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Approve
+                        </button>
+</div>
+</div>
+<!-- Card 4: Expense Request -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden hover:border-secondary transition-all">
+<div class="p-lg flex items-start gap-md">
+<div class="h-12 w-12 rounded-full overflow-hidden flex-shrink-0">
+<img alt="Technician Profile" data-alt="A portrait of an older, experienced male technician with a kind face. He is wearing a professional beige utility vest over a light shirt. The background is a clean, well-lit equipment storage room with organized metal shelving. The lighting is warm yet professional, creating a sense of reliability and seasoned expertise within a modern industrial environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHiwHGLdGK5ZHaoUGSJ2y0sLGSdGGY4yXRXw4Bij8D6YjQ3IKvPmyIHNZUyBHX9yDn4cRISxngE-qXXBVPRZyJScHbiX58SEfDwtmKfx6_KxryTPhXsu9MVIyQt9BPy3gdYAGuoWpgjsVvKroSmTg9_QL0TZ5JkCUO-Tdkn29R6T2mh-Fga2B4UiaUkLxCNqFJ4m1NvxeCEhrtX1l_U0ctLQa34Y2zP386V33w-ks4273dKzv-_VKFTKD_sKiqnA81rbiOD5n3_mQ"/>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between mb-xs">
+<h3 class="font-title-md text-title-md text-on-surface">Mark Wilson</h3>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-highest text-on-surface-variant font-label-md text-label-md">Reviewing</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant mb-md">
+<span class="material-symbols-outlined text-sm">receipt_long</span>
+<p class="font-body-md text-body-md">Travel Expense • Fuel &amp; Tolls</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">TOTAL</p>
+<p class="font-headline-md text-headline-md font-bold text-secondary">$89.20</p>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md text-on-surface-variant mb-xs">ATTACHED</p>
+<p class="font-body-md text-body-md underline text-secondary cursor-pointer">2 Receipts.pdf</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex border-t border-outline-variant">
+<button class="flex-1 py-4 flex items-center justify-center gap-sm text-error font-label-md text-label-md hover:bg-error-container transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">close</span>
+                            Reject
+                        </button>
+<div class="w-[1px] bg-outline-variant"></div>
+<button class="flex-1 py-4 flex items-center justify-center gap-sm bg-secondary text-on-secondary font-label-md text-label-md hover:bg-primary transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            Approve
+                        </button>
+</div>
+</div>
+</div>
+<!-- Recently Processed (Flat Table Approach) -->
+<div class="mt-xl">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-md">Recently Processed</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-low border-b border-outline-variant">
+<tr>
+<th class="px-md py-4 font-label-md text-label-md text-on-surface-variant uppercase">Technician</th>
+<th class="px-md py-4 font-label-md text-label-md text-on-surface-variant uppercase">Type</th>
+<th class="px-md py-4 font-label-md text-label-md text-on-surface-variant uppercase">Amount/Detail</th>
+<th class="px-md py-4 font-label-md text-label-md text-on-surface-variant uppercase">Status</th>
+<th class="px-md py-4 font-label-md text-label-md text-on-surface-variant uppercase text-right">Processed</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-md py-4 font-body-md text-body-md text-on-surface">Danielle Wu</td>
+<td class="px-md py-4 font-body-md text-body-md text-on-surface-variant">Expense</td>
+<td class="px-md py-4 font-body-md text-body-md text-on-surface">$124.00</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-xs text-green-700 bg-green-100 px-2 py-0.5 rounded-full text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">check</span> Approved
+                                        </span>
+</td>
+<td class="px-md py-4 font-body-md text-body-md text-on-surface-variant text-right">2h ago</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors">
+<td class="px-md py-4 font-body-md text-body-md text-on-surface">Tom Higgins</td>
+<td class="px-md py-4 font-body-md text-body-md text-on-surface-variant">Commission</td>
+<td class="px-md py-4 font-body-md text-body-md text-on-surface">$56.20</td>
+<td class="px-md py-4">
+<span class="inline-flex items-center gap-xs text-red-700 bg-red-100 px-2 py-0.5 rounded-full text-xs font-bold">
+<span class="material-symbols-outlined text-[14px]">block</span> Rejected
+                                        </span>
+</td>
+<td class="px-md py-4 font-body-md text-body-md text-on-surface-variant text-right">5h ago</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 bg-surface dark:bg-primary pb-safe border-t border-outline-variant z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-label-md text-label-md">Work</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">fact_check</span>
+<span class="font-label-md text-label-md">Requests</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Finance</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</a>
+</nav>
+<!-- FAB (Suppressed on this screen per rule, but here if context changes) -->
+<!-- <button class="fixed bottom-24 right-6 h-14 w-14 rounded-2xl bg-secondary text-on-secondary shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-3xl">add</span>
+    </button> -->
+<script>
+        // Simple filter interaction simulation
+        document.querySelectorAll('button[class*="rounded-full"]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if(this.textContent.includes('Requests') || this.textContent.includes('Commission')) {
+                    document.querySelectorAll('button[class*="bg-secondary"]').forEach(b => {
+                        b.classList.remove('bg-secondary', 'text-on-secondary');
+                        b.classList.add('bg-surface-container-high', 'text-on-surface-variant');
+                    });
+                    this.classList.add('bg-secondary', 'text-on-secondary');
+                    this.classList.remove('bg-surface-container-high', 'text-on-surface-variant');
+                }
+            });
+        });
+
+        // Approve/Reject Action simulation
+        document.querySelectorAll('button').forEach(btn => {
+            if(btn.textContent.includes('Approve') || btn.textContent.includes('Reject')) {
+                btn.addEventListener('click', function() {
+                    const card = this.closest('.bg-surface-container-lowest');
+                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    card.style.opacity = '0.5';
+                    card.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                });
+            }
+        });
+    </script>
+</body></html>

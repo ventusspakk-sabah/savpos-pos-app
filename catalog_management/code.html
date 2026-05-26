@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #c4c6cf;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #74777f;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#001a40",
+                        "primary-fixed-dim": "#aec7f5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001b3c",
+                        "background": "#f8f9ff",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#002045",
+                        "surface": "#f8f9ff",
+                        "primary": "#00091b",
+                        "surface-container-high": "#dce9ff",
+                        "on-background": "#0b1c30",
+                        "surface-variant": "#d3e4fe",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed": "#002113",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-secondary-container": "#003370",
+                        "on-surface-variant": "#44474e",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-tint": "#465f87",
+                        "secondary-container": "#659dfe",
+                        "tertiary": "#000b05",
+                        "on-primary-container": "#7089b3",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "outline-variant": "#c4c6cf",
+                        "inverse-primary": "#aec7f5",
+                        "on-tertiary-container": "#009b6b",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#0b1c30",
+                        "secondary-fixed-dim": "#acc7ff",
+                        "inverse-surface": "#213145",
+                        "on-error": "#ffffff",
+                        "secondary": "#115cb9",
+                        "surface-container-low": "#eff4ff",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-bright": "#f8f9ff",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "surface-container": "#e5eeff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#d7e2ff",
+                        "on-secondary-fixed-variant": "#004491",
+                        "tertiary-container": "#002617"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "xs": "4px",
+                        "margin-desktop": "32px",
+                        "margin-mobile": "16px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "xxl": "48px",
+                        "gutter": "24px",
+                        "sm": "8px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "data-mono": ["JetBrains Mono"],
+                        "display-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "data-mono": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex overflow-hidden">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex h-full w-72 fixed left-0 top-0 bg-surface-container-low border-r border-outline-variant flex-col py-xl px-md space-y-xs z-50">
+<div class="flex items-center space-x-md mb-xxl px-sm">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">admin_panel_settings</span>
+<h1 class="font-headline-sm text-headline-sm font-black text-primary">Admin Suite</h1>
+</div>
+<nav class="flex-1 space-y-xs">
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg active:opacity-80" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-lg text-body-lg">Dashboard</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg active:opacity-80" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-body-lg text-body-lg">Staff</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm bg-secondary-container text-on-secondary-container font-bold rounded-full transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-lg text-body-lg">Catalog</span>
+</a>
+<a class="flex items-center space-x-md px-md py-sm text-on-surface-variant hover:bg-surface-container-highest transition-all rounded-lg active:opacity-80" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-lg text-body-lg">Settings</span>
+</a>
+</nav>
+<div class="mt-auto p-md bg-surface-container border border-outline-variant rounded-xl flex items-center space-x-md">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-primary-fixed-dim flex-shrink-0">
+<img alt="Profile" data-alt="A professional studio portrait of a confident operations lead in a sleek, modern corporate office. Soft, high-key lighting illuminates the person, who is dressed in a navy blazer. The background is a blurred, high-end office environment with glass partitions and subtle technical displays, reflecting a systematic and authoritative brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlQ9m9bK1dnvt1VPFNIsgSibAapNnoyffY4DEJiUkfaz3KUVWvAZQNTjFs8dPXB5NbJnHXKZGp60Ab5Ky6DEsw_yDGagjWvEeAY-tvit7-kssE1nGkKXGTauATiIIJvFnppuP9u98UU-wXKZLQhks36aVSlq_SpWjKKjglcOZ7Um_jRx1wHFMNSoYEJ6GtF6UAPm2G5vUMbWpbPT_Z1Y55l1BOzY9QGUV6wGxEgkrUIJrVMhT8aX3-YylLJhjMLWDw-KZJyUMXsk8"/>
+</div>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md font-bold text-on-surface truncate">Operations Lead</p>
+<p class="font-label-md text-label-md text-on-surface-variant truncate">Terminal Alpha</p>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-72 min-h-screen bg-background relative">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95">inventory_2</span>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Catalog Management</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-on-surface-variant hover:bg-surface-container-high p-2 rounded-full transition-colors active:scale-95">notifications</button>
+</div>
+</header>
+<!-- Catalog Content Canvas -->
+<section class="p-margin-mobile md:p-margin-desktop flex flex-col space-y-lg flex-1 overflow-y-auto pb-32 md:pb-xxl">
+<!-- Controls Bar: Search & Tabs -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-md">
+<div class="flex bg-surface-container-low p-xs rounded-lg border border-outline-variant w-fit">
+<button class="px-xl py-xs bg-primary text-on-primary rounded-lg font-label-md text-label-md transition-all shadow-sm">Services</button>
+<button class="px-xl py-xs text-on-surface-variant hover:bg-surface-container-high rounded-lg font-label-md text-label-md transition-all">Products</button>
+</div>
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-xxl pr-md py-sm bg-surface border border-outline-variant rounded-lg focus:border-primary focus:ring-1 focus:ring-primary outline-none font-body-md text-body-md transition-all" placeholder="Search catalog items..." type="text"/>
+</div>
+</div>
+<!-- Bento Grid of Items -->
+<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-gutter">
+<!-- Service Item Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden group hover:border-primary transition-all flex flex-col">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A macro photograph of high-end cosmetic application, featuring sleek, minimalist glass containers and soft-bristled brushes. The lighting is cold and clinical, emphasizing the professional and systematic nature of the service. Deep navy and crisp white tones dominate the frame, conveying a sense of authoritative reliability and high-stakes precision in a modern back-office setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4MCt18I3x-nThmFJO4PzJJndfkNBZGm5N9fTmA8QRyum632eufyg2jMfT74YVMFzPygoiqubP7OL7801fKGluCoj27uqHa1ejNjHlEe-rRXm864Fg5cbXFXsXxB2BePrMWL5lXWMAQGCPw7JydK4MQrXctfh-VGVmbbrsfuc5x01w26ePdP0pQMpVcDCnj-b3qQG5FDyF1s4ovZDZE4Dftc5UzyyvskHpQI4SdY7U6iCS9PQJc1PCufEltJ_6ypsHAhUltF0wN2o"/>
+<div class="absolute top-md right-md bg-surface/90 backdrop-blur px-sm py-xs rounded border border-outline-variant flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="font-label-md text-label-md text-on-surface">Available</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary">Advanced Facial Audit</h3>
+<span class="font-data-mono text-data-mono text-secondary">$145.00</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-lg uppercase tracking-wider">Premium Skincare</p>
+<div class="mt-auto pt-lg border-t border-outline-variant flex items-center justify-between gap-md">
+<button class="flex-1 flex items-center justify-center gap-xs border border-primary text-primary px-md py-sm rounded font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit Price
+                            </button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded transition-colors active:scale-90" title="Toggle Availability">visibility</button>
+</div>
+</div>
+</div>
+<!-- Service Item Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden group hover:border-primary transition-all flex flex-col">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A wide-angle shot of a serene, ultra-modern luxury spa treatment room. The interior features polished concrete floors, minimalist walnut cabinetry, and deep navy accent walls. Soft architectural cove lighting creates a tranquil yet professional atmosphere. The scene is immaculate and systematic, reflecting a high-end corporate service environment with extreme attention to detail and professional systematic order." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAw_3d9hWl-qmXBMBcU76l8YicjG5KDtEYGgxP7iH5wE96d4zLO3jOHPZ4UYUZt5iIW6R2J-wGfK8VRBX5lK4EddDSo1rAED4fOmeV2B_yHk61Lc_s-95wdq8z7cpD75NR561HvjPczKo-wswLNPQ0G8eGN7W5Dx4TeEPiV_qO_1zL-siJubg8iNWspObHIr96MZAvvX6ZB_kJu5Sw7CS0qK0wHlYUBdnJsbvlWl0fgYGHPLSAUZR3vPgGPnNlpsZ1_R3ydGpgkYoE"/>
+<div class="absolute top-md right-md bg-surface/90 backdrop-blur px-sm py-xs rounded border border-outline-variant flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-amber-500"></span>
+<span class="font-label-md text-label-md text-on-surface">Limited</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary">Deep Tissue Therapy</h3>
+<span class="font-data-mono text-data-mono text-secondary">$120.00</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-lg uppercase tracking-wider">Body Wellness</p>
+<div class="mt-auto pt-lg border-t border-outline-variant flex items-center justify-between gap-md">
+<button class="flex-1 flex items-center justify-center gap-xs border border-primary text-primary px-md py-sm rounded font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit Price
+                            </button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded transition-colors active:scale-90" title="Toggle Availability">visibility</button>
+</div>
+</div>
+</div>
+<!-- Service Item Card 3 -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden group hover:border-primary transition-all flex flex-col opacity-60 grayscale-[0.5]">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="An artistic, high-contrast close-up of high-tech laboratory equipment used for cosmetic formulation. The image features stainless steel surfaces reflecting cool blue light and vibrant liquid samples in precise glass vials. The aesthetic is extremely clean, professional, and authoritative, using a palette of deep navy and bright white to communicate precision and technological advancement in product manufacturing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeE6CW3B8U0jds11vtVFx7rOQT8HTi6fwotg6IE0nvsTJ1uZjxOYknAyVmq9uECBLWWhKbX5U-Dw7MZvWmUW8R0ENuflrvXRN1C0YnrsBcoI6-7kM1fnu3TVkqLmrCcF6CZ2VRHJ7l-3Q4WFb5oUSuUDLGPNWFqPedP28avONhwsdDS4AfFijH2ZcdtyOWykMg06N5aEvvMlWU0RwnoxRhVIeN55ko1OWLkGjdawsmdSkdJ0Ud7uDkZ7TwTwg99ZhSG9uO5_7dhno"/>
+<div class="absolute top-md right-md bg-surface-container-high px-sm py-xs rounded border border-outline flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-md text-label-md text-on-surface">Disabled</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary">Bio-Restorative Treatment</h3>
+<span class="font-data-mono text-data-mono text-secondary">$210.00</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-lg uppercase tracking-wider">Specialty Care</p>
+<div class="mt-auto pt-lg border-t border-outline-variant flex items-center justify-between gap-md">
+<button class="flex-1 flex items-center justify-center gap-xs border border-primary text-primary px-md py-sm rounded font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit Price
+                            </button>
+<button class="material-symbols-outlined p-2 text-primary font-bold hover:bg-surface-container-high rounded transition-colors active:scale-90" title="Toggle Availability">visibility_off</button>
+</div>
+</div>
+</div>
+<!-- Card 4 (Product Style Example) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg overflow-hidden group hover:border-primary transition-all flex flex-col">
+<div class="relative h-48 w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist product display featuring premium, matte-finished cosmetic bottles arranged in a geometric composition on a grey stone surface. The lighting is soft and directional, casting subtle shadows that emphasize form and texture. The professional and systematic design is reinforced by a neutral color palette with deep navy accents, creating a high-end corporate retail feel for inventory management." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDleMjK_HXimEVag-XcaqHE2JQkCdpyALqqUf-L6zNZ2L_zntA_vbbEh_LByrOCiZzorv9-nn5mP988_dVul4z8a0oC5ZDDqEBCNz3B6O5Ne6pUIlh266GxbO_MOjt0TAGIdWjplbFa4stkWqW0iv_HrPAL312_qrpCUqsh2rPpQmdutOCY7B2Ce7L29wjBrrla0WltmTqP11OEdO2vWv02TpABWm-4wWgnN83lld8zdnWU17ZjsiKR8t3C6G2cOBZ0c9IN2ZI0ijc"/>
+<div class="absolute top-md right-md bg-surface/90 backdrop-blur px-sm py-xs rounded border border-outline-variant flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-green-500"></span>
+<span class="font-label-md text-label-md text-on-surface">14 In Stock</span>
+</div>
+</div>
+<div class="p-lg flex flex-col flex-1">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-headline-sm text-headline-sm text-primary">Hyaluronic Serum 30ml</h3>
+<span class="font-data-mono text-data-mono text-secondary">$58.00</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-lg uppercase tracking-wider">Retails Products</p>
+<div class="mt-auto pt-lg border-t border-outline-variant flex items-center justify-between gap-md">
+<button class="flex-1 flex items-center justify-center gap-xs border border-primary text-primary px-md py-sm rounded font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+                                Edit Price
+                            </button>
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded transition-colors active:scale-90" title="Toggle Availability">visibility</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Floating Action Button -->
+<button class="fixed bottom-margin-desktop right-margin-desktop bg-primary text-on-primary flex items-center gap-md px-xl py-lg rounded-full shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all z-50 group">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+<span class="font-label-md text-label-md font-bold uppercase tracking-widest hidden md:block">Quick Create Service</span>
+</button>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="fixed bottom-0 w-full z-50 md:hidden flex justify-around items-center h-16 bg-surface border-t border-outline-variant shadow-sm px-4">
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-md text-label-md font-bold">Catalog</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+</nav>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const rect = this.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                let ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.width = '100px';
+                ripple.style.height = '100px';
+                ripple.style.background = 'rgba(255, 255, 255, 0.3)';
+                ripple.style.borderRadius = '50%';
+                ripple.style.pointerEvents = 'none';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                ripple.style.transition = 'transform 0.5s ease-out, opacity 0.5s';
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                requestAnimationFrame(() => {
+                    ripple.style.transform = 'translate(-50%, -50%) scale(3)';
+                    ripple.style.opacity = '0';
+                });
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 500);
+            });
+        });
+    </script>
+</body></html>

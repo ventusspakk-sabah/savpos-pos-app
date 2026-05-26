@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos Admin - Expense Categories</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#0b1c30",
+                    "on-secondary-fixed": "#001849",
+                    "primary": "#00091b",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffba43",
+                    "inverse-surface": "#213145",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-high": "#dce9ff",
+                    "secondary-fixed": "#dae1ff",
+                    "primary-container": "#002045",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001b3c",
+                    "inverse-primary": "#aec7f5",
+                    "on-tertiary-fixed-variant": "#614000",
+                    "tertiary-container": "#2e1d00",
+                    "secondary-fixed-dim": "#b3c5ff",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-variant": "#d3e4fe",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "secondary": "#0050cc",
+                    "tertiary-fixed": "#ffddaf",
+                    "tertiary": "#0f0700",
+                    "on-surface-variant": "#44474e",
+                    "on-secondary-fixed-variant": "#003fa4",
+                    "on-error-container": "#93000a",
+                    "on-secondary-container": "#f9f7ff",
+                    "surface-bright": "#f8f9ff",
+                    "background": "#f8f9ff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f8f9ff",
+                    "outline": "#74777f",
+                    "on-primary-container": "#7089b3",
+                    "on-tertiary-fixed": "#281800",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "secondary-container": "#0266ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#b67c00",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container": "#e5eeff",
+                    "on-background": "#0b1c30",
+                    "surface-tint": "#465f87",
+                    "surface-container-highest": "#d3e4fe"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "lg": "24px",
+                    "base": "8px",
+                    "md": "16px",
+                    "margin-desktop": "32px",
+                    "gutter": "16px",
+                    "xl": "32px",
+                    "sm": "8px",
+                    "xs": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "code-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface border-b border-outline-variant flex justify-between items-center px-margin-desktop py-md">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Admin Suite</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-base rounded-full hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="search">search</span>
+</button>
+<button class="p-base rounded-full hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<!-- NavigationDrawer -->
+<aside class="hidden md:flex h-full w-72 flex-col py-xl px-md space-y-xs bg-surface-container-low border-r border-outline-variant shrink-0">
+<!-- Profile Header -->
+<div class="flex items-center gap-md px-md mb-xl">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-high border border-outline-variant">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="Professional headshot of a senior operations lead in a sleek, minimalist corporate office environment. The lighting is soft and neutral, reflecting a modern, high-end business aesthetic. The individual wears professional attire, conveying authority and technical expertise. The overall color palette is dominated by professional blues and clean whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmCNtn7bIgdPsGXvnX5notU62IRJr0YDeugeOhFsXrKk1vePqofXCytK9AB_xAhgc6KfFIxu0sAwh2bD5J8gizjCcEEPYbLaui_H642cx21u_tw34ALTSxmrgB5m6I0lZ5uqRFkEaHulPy200n7ocFa-Ys-F-DrTC0GmzL3QcrpsVOmDLWosAwJLDc7uN6xDw3SeNjBE0q3PvGTHm274NfZ55wkkFwko5Pq0hRIIDU9d9YnHzIj51jZrOW6LD0MzCyrC7R4OzpbPc"/>
+</div>
+<div>
+<p class="font-title-md text-title-md text-primary font-bold">Operations Lead</p>
+<p class="font-label-md text-label-md text-on-surface-variant">POS Terminal Alpha</p>
+</div>
+</div>
+<!-- Nav Items -->
+<nav class="space-y-xs">
+<a class="flex items-center gap-md px-md py-md text-on-surface-variant hover:bg-surface-container-high transition-all rounded-full active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-lg text-body-lg">Dashboard</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-on-surface-variant hover:bg-surface-container-high transition-all rounded-full active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-body-lg text-body-lg">Staff</span>
+</a>
+<a class="flex items-center gap-md px-md py-md text-on-surface-variant hover:bg-surface-container-high transition-all rounded-full active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-lg text-body-lg">Catalog</span>
+</a>
+<a class="flex items-center gap-md px-md py-md bg-secondary-container text-on-secondary-container font-bold rounded-full transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-lg text-body-lg">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop bg-background pb-24 md:pb-margin-desktop">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-xl">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary">Expense Categories</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Configure management rules and spending limits for operational costs.</p>
+</div>
+<button class="bg-secondary-container text-on-secondary-container px-lg py-md rounded-xl font-title-md text-title-md flex items-center gap-base active:scale-95 transition-transform" onclick="document.getElementById('add-modal').classList.remove('hidden')">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+                    New Category
+                </button>
+</div>
+<!-- Grid Layout for Categories (Bento inspired cards) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Category Card: Hardware -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col gap-md hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="computer">computer</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Hardware</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">IT equipment, printers, and accessories.</p>
+</div>
+<div class="h-px bg-outline-variant w-full my-xs"></div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Monthly Limit</span>
+<span class="font-title-md text-title-md text-primary">$2,500</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Pre-approval</span>
+<span class="font-label-md text-label-md px-sm py-xs bg-error-container text-on-error-container rounded-lg">Required</span>
+</div>
+</div>
+<button class="mt-base text-secondary font-title-md text-title-md flex items-center gap-xs hover:underline">
+                        Edit Rules <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Category Card: Travel -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col gap-md hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="flight">flight</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Travel</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Flights, lodging, and transport.</p>
+</div>
+<div class="h-px bg-outline-variant w-full my-xs"></div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Monthly Limit</span>
+<span class="font-title-md text-title-md text-primary">No Limit</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Pre-approval</span>
+<span class="font-label-md text-label-md px-sm py-xs bg-surface-container-high text-on-surface-variant rounded-lg">Optional</span>
+</div>
+</div>
+<button class="mt-base text-secondary font-title-md text-title-md flex items-center gap-xs hover:underline">
+                        Edit Rules <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Category Card: Supplies -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col gap-md hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="inventory">inventory</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Supplies</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Office stationery and breakroom items.</p>
+</div>
+<div class="h-px bg-outline-variant w-full my-xs"></div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Monthly Limit</span>
+<span class="font-title-md text-title-md text-primary">$500</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Pre-approval</span>
+<span class="font-label-md text-label-md px-sm py-xs bg-surface-container-high text-on-surface-variant rounded-lg">Optional</span>
+</div>
+</div>
+<button class="mt-base text-secondary font-title-md text-title-md flex items-center gap-xs hover:underline">
+                        Edit Rules <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Category Card: Tools -->
+<div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-xl flex flex-col gap-md hover:border-secondary transition-colors group">
+<div class="flex justify-between items-start">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary" data-icon="build">build</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-primary">Tools</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Maintenance equipment and subscriptions.</p>
+</div>
+<div class="h-px bg-outline-variant w-full my-xs"></div>
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-label-md text-on-surface-variant">Monthly Limit</span>
+<span class="font-title-md text-title-md text-primary">$1,200</span>
+</div>
+<div class="flex justify-between items-center opacity-50">
+<span class="font-label-md text-label-md text-on-surface-variant">Inactive</span>
+</div>
+</div>
+<button class="mt-base text-secondary font-title-md text-title-md flex items-center gap-xs hover:underline">
+                        Edit Rules <span class="material-symbols-outlined text-[18px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+<!-- Empty State/Add New As Card -->
+<button class="border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center gap-md py-xl hover:bg-surface-container-low transition-colors group" onclick="document.getElementById('add-modal').classList.remove('hidden')">
+<div class="w-12 h-12 rounded-full border-2 border-dashed border-outline-variant flex items-center justify-center group-hover:border-secondary group-hover:text-secondary">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</div>
+<p class="font-title-md text-title-md text-on-surface-variant">Create New Category</p>
+</button>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-center h-16 px-4 shadow-sm">
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant px-4 py-1">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</button>
+</nav>
+<!-- Add Category Modal -->
+<div class="hidden fixed inset-0 z-[60] flex items-center justify-center p-md bg-primary/40 backdrop-blur-sm" id="add-modal">
+<div class="bg-surface-container-lowest w-full max-w-lg rounded-xl shadow-xl overflow-hidden border border-outline-variant animate-in fade-in zoom-in duration-200">
+<div class="px-lg py-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-primary">New Category</h3>
+<button class="p-sm hover:bg-surface-container-high rounded-full" onclick="document.getElementById('add-modal').classList.add('hidden')">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+</div>
+<div class="p-lg space-y-lg">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Category Name</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" placeholder="e.g. Marketing, Utilities" type="text"/>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Select Icon</label>
+<div class="grid grid-cols-5 gap-sm">
+<button class="h-12 border border-outline-variant rounded-lg flex items-center justify-center hover:bg-surface-container-high transition-colors bg-secondary-container border-secondary">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="category">category</span>
+</button>
+<button class="h-12 border border-outline-variant rounded-lg flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="restaurant">restaurant</span>
+</button>
+<button class="h-12 border border-outline-variant rounded-lg flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="shopping_cart">shopping_cart</span>
+</button>
+<button class="h-12 border border-outline-variant rounded-lg flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="local_gas_station">local_gas_station</span>
+</button>
+<button class="h-12 border border-outline-variant rounded-lg flex items-center justify-center hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Monthly Limit ($)</label>
+<input class="w-full bg-surface border border-outline-variant rounded-lg px-md py-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none" placeholder="0.00" type="number"/>
+</div>
+<div class="space-y-sm">
+<label class="font-label-md text-label-md text-on-surface-variant">Approval Rule</label>
+<select class="w-full bg-surface border border-outline-variant rounded-lg px-md py-md focus:border-secondary focus:ring-1 focus:ring-secondary outline-none appearance-none">
+<option>Auto-approve</option>
+<option>Require Manager</option>
+<option>Require Director</option>
+</select>
+</div>
+</div>
+</div>
+<div class="px-lg py-md bg-surface-container-low border-t border-outline-variant flex justify-end gap-md">
+<button class="px-lg py-md text-on-surface-variant font-title-md text-title-md hover:bg-surface-container-high rounded-xl transition-colors" onclick="document.getElementById('add-modal').classList.add('hidden')">Cancel</button>
+<button class="px-lg py-md bg-primary text-on-primary font-title-md text-title-md rounded-xl shadow-sm hover:opacity-90 transition-all">Create Category</button>
+</div>
+</div>
+</div>
+<script>
+        // Micro-interactions and state management
+        document.querySelectorAll('input[type="checkbox"]').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                const card = e.target.closest('.group');
+                if (e.target.checked) {
+                    card.classList.remove('opacity-60');
+                } else {
+                    card.classList.add('opacity-60');
+                }
+            });
+        });
+
+        // Close modal on escape
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('add-modal').classList.add('hidden');
+            }
+        });
+    </script>
+</body></html>

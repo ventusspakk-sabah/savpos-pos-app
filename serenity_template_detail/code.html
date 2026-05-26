@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Serenity Template Detail</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "secondary": "#1960a3",
+                        "on-primary-container": "#7089b3",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed-dim": "#aec7f5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#000b05",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "primary": "#00091b",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#465f87",
+                        "primary-container": "#002045",
+                        "on-tertiary-container": "#00b47d",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-primary": "#aec7f5",
+                        "on-background": "#191c1e",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#002617",
+                        "surface-dim": "#d8dadc",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed": "#001c38",
+                        "on-secondary-container": "#00477f",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001b3c",
+                        "outline": "#74777f",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#7db6ff",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-fixed-variant": "#195039"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "display-price": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { background-color: #f7f9fb; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .zen-glass { backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.85); }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e0e3e5; border-radius: 10px; }
+        .active-pill { transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
+        .active-pill:active { transform: scale(0.95); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background">
+<!-- Top Navigation Anchor -->
+<header class="bg-surface docked full-width top-0 shadow-sm flex justify-between items-center px-md h-touch-target-min w-full max-w-full sticky z-50">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary">Sav.pos</h1>
+</div>
+<!-- Live Preview Toggle Cluster -->
+<div class="flex items-center bg-surface-container-high rounded-full p-1 gap-1">
+<button class="px-md py-1 bg-surface-container-lowest rounded-full shadow-sm text-label-md font-label-md text-primary flex items-center gap-xs">
+<span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span>
+                Live Preview
+            </button>
+<button class="px-md py-1 text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors">
+                Editor
+            </button>
+</div>
+<div class="flex items-center gap-md">
+<button class="text-on-surface-variant hover:bg-surface-container-low p-xs rounded-full transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="min-h-screen pb-xl">
+<!-- Hero Section for Template Context -->
+<section class="w-full px-md md:px-lg mt-md">
+<div class="flex flex-col md:flex-row gap-lg items-center bg-surface-container-lowest p-lg rounded-xl shadow-sm">
+<div class="flex-1 space-y-md">
+<nav class="flex items-center gap-xs text-on-surface-variant mb-xs">
+<span class="text-label-sm font-label-sm">Template Library</span>
+<span class="material-symbols-outlined text-[14px]" data-icon="chevron_right">chevron_right</span>
+<span class="text-label-sm font-label-sm text-primary font-bold">Serenity Detail</span>
+</nav>
+<h2 class="text-headline-lg font-headline-lg text-primary">Serenity Spa &amp; Wellness</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl">
+                        A boutique digital experience designed for high-end hospitality. This template prioritizes visual storytelling with minimal friction points for service booking.
+                    </p>
+<div class="flex flex-wrap gap-sm">
+<span class="bg-surface-container-high px-md py-1 rounded-full text-label-sm font-label-sm">Hospitality</span>
+<span class="bg-surface-container-high px-md py-1 rounded-full text-label-sm font-label-sm">Booking-Ready</span>
+<span class="bg-surface-container-high px-md py-1 rounded-full text-label-sm font-label-sm">Material 3</span>
+</div>
+</div>
+<div class="w-full md:w-1/3 flex justify-end">
+<button class="bg-tertiary-container text-on-tertiary-container px-xl py-md rounded-lg font-bold flex items-center gap-md hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined" data-icon="rocket_launch">rocket_launch</span>
+                        Deploy This Template
+                    </button>
+</div>
+</div>
+</section>
+<!-- Preview Canvas: The 'Services' Section -->
+<section class="max-w-7xl mx-auto px-md md:px-lg mt-xl">
+<div class="bg-white rounded-3xl overflow-hidden shadow-lg border border-surface-container-high">
+<!-- Internal 'Serenity' Navigation -->
+<div class="px-xl py-lg flex justify-between items-center border-b border-surface-container">
+<div class="text-primary font-headline-md text-headline-md tracking-tighter">SERENITY</div>
+<div class="hidden md:flex gap-xl text-label-md font-label-md text-on-surface-variant">
+<a class="hover:text-primary" href="#">Home</a>
+<a class="text-primary border-b-2 border-primary pb-1" href="#">Services</a>
+<a class="hover:text-primary" href="#">About</a>
+<a class="hover:text-primary" href="#">Contact</a>
+</div>
+<button class="material-symbols-outlined md:hidden" data-icon="menu">menu</button>
+</div>
+<!-- Main Service Display (Bento/Asymmetric Layout) -->
+<div class="p-lg md:p-xl space-y-xl">
+<div class="text-center space-y-xs max-w-xl mx-auto mb-xl">
+<span class="text-label-md font-label-md uppercase tracking-[0.2em] text-on-tertiary-container">Sanctuary</span>
+<h3 class="text-headline-lg font-headline-lg text-primary">Elevated Treatments</h3>
+<p class="text-body-md font-body-md text-on-surface-variant">Curated wellness experiences designed to restore balance and harmony to your body and mind.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Featured Service: Therapeutic Massage -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-2xl h-[400px]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A tranquil spa setting featuring a close-up of smooth basalt stones resting on a client's back during a professional massage. The lighting is low and warm, creating a serene and zen atmosphere with soft amber highlights. The background is blurred, showing high-end natural wooden textures and minimalist decor in a light mode palette of creams and soft greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5w62S1pNawi_pdgjMh53hjhg0SP6Mjtgn_4_rywwIvl52Z6491VSAU1W5Dii2Y0wqqIDNM3XKEtwDqKBLNNZ4h3jjU2RhpSi8g8kGBjpzwLTwtk9xAEBoDtpUVBtWFeiHpDHYhU2CsQFKD1985DGGkGh01LNGbRdpZnN1NiNNHS7-SAAkE8yEkkXq0hNBwAtZiR4J-0ySpCQ_mwcOoLuOchRb-Wm1IoD7ANJ8I2Tr7vovXY-HCoEcjOZ8xHcXNsiAmsZytlhCK8c"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-lg text-white space-y-xs">
+<div class="zen-glass backdrop-blur-md bg-white/10 px-md py-xs rounded-full inline-block border border-white/20">
+<span class="text-label-sm font-label-sm">Most Requested</span>
+</div>
+<h4 class="text-headline-md font-headline-md">Signature Deep Tissue Therapy</h4>
+<p class="text-body-md font-body-md text-white/80 max-w-md">Targeted relief using pressurized strokes and aromatherapy oils for complete rejuvenation.</p>
+<div class="flex items-center gap-lg pt-md">
+<span class="text-headline-md font-headline-md">$145 / 60min</span>
+<button class="bg-white text-primary px-xl py-sm rounded-full font-bold hover:bg-surface-container-lowest transition-colors active:scale-95">Book Now</button>
+</div>
+</div>
+</div>
+<!-- Secondary: Facial -->
+<div class="md:col-span-4 group relative overflow-hidden rounded-2xl h-[400px]">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A professional aesthetician applying a cooling gel mask to a person's face in a modern, luxury skincare clinic. The room is flooded with bright, natural daylight, reflecting a high-end light-mode aesthetic. The color palette is composed of pristine whites, soft mint greens, and sterile glass textures. The mood is clinical yet exceptionally calming and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnBTJIoYerPZ-9t6-fx6Q5lyan77bV6RuW23vqdCGzIc-gK7cMI5U76J2EYS5qGnfqWVWcJLzdM8a-G0gDlwZYB3J6M7Hj52v-uNIkYR6wIv5KcIZNXlDsLqew43N2ifaItv4Cj8f9PWvM3C40sckO_SF7x5SC6MDtSud-fNMGxx1CYscrYhaGEQf3GPWDFQmPgo0L1SOstdmc2qg5Icx4QQJUe0Mb3U4wRA8X3DJsselLcSfNxksmAqNHcT0OQbSBSY9PGVldmlU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 via-transparent to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-lg text-white space-y-xs">
+<h4 class="text-headline-md font-headline-md">Botanical Glow Facial</h4>
+<p class="text-body-md font-body-md text-white/80">Revitalize skin with organic enzymes and deep hydration.</p>
+<div class="flex flex-col gap-sm pt-xs">
+<span class="text-headline-md font-headline-md text-secondary-container">$90</span>
+<button class="w-full border border-white/30 hover:bg-white/10 text-white px-md py-xs rounded-full font-bold transition-all active:scale-95">Details</button>
+</div>
+</div>
+</div>
+<!-- Service Grid Row -->
+<div class="md:col-span-4 space-y-md">
+<div class="bg-surface-container-low p-lg rounded-2xl border border-surface-container-high hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary mb-md" data-icon="hot_tub" style="font-size: 32px;">hot_tub</span>
+<h5 class="text-headline-md font-headline-md text-primary">Thermal Bath</h5>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">Access to our magnesium-infused pools and cedar saunas.</p>
+<div class="mt-lg flex justify-between items-end">
+<span class="text-headline-md font-headline-md text-on-tertiary-container">$65</span>
+<button class="p-xs bg-primary text-white rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 space-y-md">
+<div class="bg-surface-container-low p-lg rounded-2xl border border-surface-container-high hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary mb-md" data-icon="self_improvement" style="font-size: 32px;">self_improvement</span>
+<h5 class="text-headline-md font-headline-md text-primary">Private Yoga</h5>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">One-on-one sessions tailored to your mobility and peace.</p>
+<div class="mt-lg flex justify-between items-end">
+<span class="text-headline-md font-headline-md text-on-tertiary-container">$110</span>
+<button class="p-xs bg-primary text-white rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+<div class="md:col-span-4 space-y-md">
+<div class="bg-surface-container-low p-lg rounded-2xl border border-surface-container-high hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary mb-md" data-icon="energy_savings_leaf" style="font-size: 32px;">energy_savings_leaf</span>
+<h5 class="text-headline-md font-headline-md text-primary">Herbal Ritual</h5>
+<p class="text-body-md font-body-md text-on-surface-variant mt-xs">Ancient detoxifying body wrap with locally sourced herbs.</p>
+<div class="mt-lg flex justify-between items-end">
+<span class="text-headline-md font-headline-md text-on-tertiary-container">$180</span>
+<button class="p-xs bg-primary text-white rounded-full active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="add">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Footer -->
+<div class="bg-surface-container-lowest p-xl text-center border-t border-surface-container mt-xl">
+<p class="text-label-md font-label-md text-on-surface-variant">Looking for a custom wellness package?</p>
+<button class="mt-md text-primary font-bold flex items-center justify-center gap-xs mx-auto hover:underline">
+                        Contact our concierge
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell (Mobile only destination rule) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface dark:bg-surface-container-lowest shadow-lg md:hidden">
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm">Sale</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Stock</span>
+</div>
+<!-- Reports is active as we are analyzing a template performance/detail -->
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-lg py-xs active-pill">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-sm font-label-sm">Reports</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant p-xs">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm">History</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for price badge glass effect
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const img = card.querySelector('img');
+                img.style.transition = 'transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1)';
+            });
+        });
+
+        // Simple preview toggle logic
+        const toggleButtons = document.querySelectorAll('button');
+        toggleButtons.forEach(btn => {
+            if (btn.innerText.includes('Editor')) {
+                btn.addEventListener('click', () => {
+                    alert('Switching to Template Editor Mode...');
+                });
+            }
+        });
+    </script>
+</body></html>

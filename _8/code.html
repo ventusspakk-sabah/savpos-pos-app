@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bulk Commission Payout - Expense Request</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            vertical-align: middle;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#0b1c30",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-tertiary-container": "#b67c00",
+                        "on-tertiary": "#ffffff",
+                        "surface-dim": "#cbdbf5",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#f9f7ff",
+                        "primary": "#00091b",
+                        "on-primary-fixed": "#001b3c",
+                        "error-container": "#ffdad6",
+                        "secondary": "#0050cc",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary-fixed-variant": "#614000",
+                        "outline": "#74777f",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-container-low": "#eff4ff",
+                        "tertiary-fixed": "#ffddaf",
+                        "secondary-fixed": "#dae1ff",
+                        "secondary-container": "#0266ff",
+                        "tertiary-container": "#2e1d00",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-fixed-variant": "#003fa4",
+                        "on-primary-container": "#7089b3",
+                        "on-primary": "#ffffff",
+                        "background": "#f8f9ff",
+                        "inverse-surface": "#213145",
+                        "secondary-fixed-dim": "#b3c5ff",
+                        "error": "#ba1a1a",
+                        "on-secondary-fixed": "#001849",
+                        "tertiary-fixed-dim": "#ffba43",
+                        "surface-container-high": "#dce9ff",
+                        "inverse-primary": "#aec7f5",
+                        "tertiary": "#0f0700",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-bright": "#f8f9ff",
+                        "surface-variant": "#d3e4fe",
+                        "on-surface": "#0b1c30",
+                        "surface": "#f8f9ff",
+                        "on-tertiary-fixed": "#281800",
+                        "primary-container": "#002045"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "md": "16px",
+                        "base": "8px"
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface min-h-screen pb-20 lg:pb-0 lg:pl-72">
+<!-- Top Navigation Bar -->
+<header class="bg-surface sticky top-0 z-50 shadow-sm flex justify-between items-center px-md py-xs w-full max-w-full">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200" data-icon="arrow_back">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Bulk Commission Payout</h1>
+</div>
+<button class="material-symbols-outlined text-primary p-2 hover:bg-surface-variant/50 transition-colors active:scale-95 duration-200" data-icon="history">history</button>
+</header>
+<!-- Sidebar / Navigation Drawer (Desktop) -->
+<aside class="hidden lg:flex flex-col h-full fixed left-0 top-0 border-r border-outline-variant/30 bg-surface-container-low w-72 rounded-r-xl z-40 shadow-md">
+<div class="p-lg">
+<span class="font-headline-md text-headline-md font-black text-primary">Sav.pos</span>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="point_of_sale">point_of_sale</span>
+<span class="font-label-md text-label-md">Sales</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-full mx-2 flex items-center px-4 py-3 transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="payments">payments</span>
+<span class="font-label-md text-label-md">Commissions</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="group">group</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined mr-3" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+</aside>
+<main class="p-4 lg:p-lg max-w-5xl mx-auto space-y-6">
+<!-- Header Section -->
+<section class="flex flex-col gap-2">
+<h2 class="text-2xl font-bold text-on-background">New Expense Reimbursement</h2>
+<p class="text-on-surface-variant text-sm">Submit your technical expenses for approval and processing.</p>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<!-- Left Column: Form -->
+<div class="lg:col-span-2 space-y-6">
+<div class="bg-surface-container-lowest border border-outline-variant p-6 rounded-xl shadow-sm">
+<form class="space-y-6">
+<!-- Category Selector -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Expense Category</label>
+<div class="relative">
+<select class="w-full h-12 px-4 bg-background border border-outline rounded-lg appearance-none focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all">
+<option>Travel &amp; Lodging</option>
+<option>Field Tools</option>
+<option selected="">Hardware Replacement</option>
+<option>Software Licensing</option>
+<option>Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant">expand_more</span>
+</div>
+</div>
+<!-- Validation Warning (Rule Enforcement) -->
+<div class="bg-error-container border-l-4 border-error p-4 rounded-r-lg">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-error" data-icon="error">error</span>
+<div class="space-y-1">
+<p class="text-sm font-semibold text-on-error-container">Error: Budget Exceeded</p>
+<p class="text-sm text-on-error-container leading-relaxed">
+                This request exceeds your remaining monthly quota for this category.
+            </p>
+</div>
+</div>
+</div>
+<!-- Amount and Pre-approval -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Amount (USD)</label>
+<input class="w-full h-12 px-4 bg-background border border-outline rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="0.00" type="number" value="800.00"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-secondary flex items-center gap-1">
+                                    Pre-approval Code
+                                    <span class="material-symbols-outlined text-[14px]" data-icon="lock">lock</span>
+</label>
+<input class="w-full h-12 px-4 bg-background border-2 border-secondary rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all font-mono" placeholder="EX-PR-XXXX" required="" type="text"/>
+</div>
+</div>
+<!-- File Upload -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Attach Approval Email / Receipt</label>
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-8 flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant group-hover:text-secondary transition-colors mb-2" data-icon="cloud_upload">cloud_upload</span>
+<p class="text-sm text-on-surface-variant">Click or drag files to upload</p>
+<p class="text-xs text-outline mt-1">PDF, JPG, PNG up to 10MB</p>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">Reason for Hardware Replacement</label>
+<textarea class="w-full p-4 bg-background border border-outline rounded-lg focus:ring-2 focus:ring-secondary/20 focus:border-secondary transition-all" placeholder="Explain why the replacement is necessary..." rows="3"></textarea>
+</div>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="w-full text-on-secondary h-14 rounded-full font-bold text-lg hover:brightness-110 active:scale-[0.99] transition-all shadow-md flex items-center justify-center gap-2 opacity-50 cursor-not-allowed bg-outline" disabled="true" type="submit">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+                                Submit Request
+                            </button><p class="text-xs text-error mt-2 text-center font-medium">Please reduce the amount or contact your manager for a quota increase.</p>
+</div>
+</form>
+</div>
+</div>
+<!-- Right Column: Sidebar Stats -->
+<div class="space-y-6">
+<!-- Limit Card -->
+<div class="bg-surface-container-highest p-6 rounded-xl border border-outline-variant">
+<h3 class="text-sm font-bold uppercase text-on-surface-variant mb-4">Monthly Quota</h3>
+<div class="flex items-end justify-between mb-2">
+<span class="text-2xl font-black text-primary">$2,500.00</span>
+<span class="text-xs text-on-surface-variant">Total Limit</span>
+</div>
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-medium">Spent</span>
+<span>$1,850.00</span>
+</div>
+<div class="w-full bg-surface-container-low h-2 rounded-full">
+<div class="h-full rounded-full bg-error" style="width: 100%;"></div>
+</div>
+</div>
+<div class="flex items-center gap-2 text-xs text-on-surface-variant bg-surface/50 p-2 rounded-lg"><span class="material-symbols-outlined text-[16px] text-error" data-icon="error">error</span>
+<span class="text-error font-bold">Over Limit: -$150.00</span></div>
+</div>
+</div>
+<!-- Recent Activity (As seen in SCREEN_51) -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="p-4 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-bold text-sm">Recent Activity</h3>
+<span class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-1 rounded-full font-bold">LIVE</span>
+</div>
+<div class="divide-y divide-outline-variant/30">
+<div class="p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-fixed-dim flex items-center justify-center">
+<span class="material-symbols-outlined text-primary" data-icon="router">router</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-xs font-bold text-on-surface">Cisco Switch replacement</p>
+<span class="text-[10px] text-error font-bold">PENDING</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-1">Today, 10:45 AM • $1,200.00</p>
+</div>
+</div>
+</div>
+<div class="p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="commute">commute</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-xs font-bold text-on-surface">Regional Site Visit</p>
+<span class="text-[10px] text-on-secondary-fixed-variant font-bold">APPROVED</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-1">Yesterday • $340.00</p>
+</div>
+</div>
+</div>
+<div class="p-4 hover:bg-surface-container-low transition-colors">
+<div class="flex gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="construction">construction</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-start">
+<p class="text-xs font-bold text-on-surface">Fiber Optic Splicing Kit</p>
+<span class="text-[10px] text-on-secondary-fixed-variant font-bold">APPROVED</span>
+</div>
+<p class="text-[10px] text-on-surface-variant mt-1">Oct 24 • $185.50</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full py-3 text-[10px] font-bold text-secondary uppercase tracking-widest hover:bg-secondary/5 transition-colors">View All Logs</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-safe bg-surface-container-highest shadow-lg rounded-t-xl h-16">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-label-sm text-label-sm">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-5 py-1 transition-transform active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Payouts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-label-sm text-label-sm">More</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for the form validation
+        const amountInput = document.querySelector('input[type="number"]');
+        const preApprovalSection = document.querySelector('.bg-tertiary-fixed\\/30');
+        
+        amountInput.addEventListener('input', (e) => {
+            const val = parseFloat(e.target.value);
+            if(val > 650) {
+                preApprovalSection.classList.add('border-error');
+                preApprovalSection.querySelector('p').classList.add('text-error');
+            } else {
+                preApprovalSection.classList.remove('border-error');
+                preApprovalSection.querySelector('p').classList.remove('text-error');
+            }
+        });
+    </script>
+</body></html>

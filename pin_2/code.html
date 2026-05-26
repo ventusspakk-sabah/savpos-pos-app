@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Set Your Access PIN</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d6e3ff",
+                    "tertiary-container": "#002617",
+                    "inverse-primary": "#aec7f5",
+                    "inverse-on-surface": "#eff1f3",
+                    "surface-container-high": "#e6e8ea",
+                    "primary": "#00091b",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#2d3133",
+                    "surface-tint": "#465f87",
+                    "on-background": "#191c1e",
+                    "on-tertiary-container": "#00b47d",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#f2f4f6",
+                    "on-primary": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-lowest": "#ffffff",
+                    "on-tertiary-fixed": "#002113",
+                    "on-error": "#ffffff",
+                    "surface-dim": "#d8dadc",
+                    "secondary-container": "#7db6ff",
+                    "surface": "#f7f9fb",
+                    "on-primary-container": "#7089b3",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-surface-variant": "#44474e",
+                    "on-error-container": "#93000a",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "primary-container": "#002045",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed": "#001b3c",
+                    "secondary-fixed": "#d3e4ff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "on-surface": "#191c1e",
+                    "on-secondary-fixed": "#001c38",
+                    "surface-container": "#eceef0",
+                    "surface-container-highest": "#e0e3e5",
+                    "outline": "#74777f",
+                    "on-secondary-container": "#00477f",
+                    "surface-bright": "#f7f9fb",
+                    "background": "#f7f9fb",
+                    "tertiary": "#000b05",
+                    "on-secondary-fixed-variant": "#004881",
+                    "secondary": "#1960a3",
+                    "surface-variant": "#e0e3e5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "44px",
+                    "sm": "12px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "lg": "24px",
+                    "base": "4px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "display-price": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pin-dot {
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .keypad-button:active {
+            transform: scale(0.90);
+            background-color: var(--surface-container-highest);
+        }
+        body {
+            min-height: 100dvh;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased flex flex-col">
+<!-- Top Navigation -->
+<header class="bg-surface-container-lowest border-b border-surface-container-high sticky top-0 z-50">
+<div class="flex items-center justify-between px-md py-sm w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="spa">spa</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center">
+<div class="flex items-center gap-xs px-sm py-1 rounded-full bg-secondary-container/20 border border-secondary/10">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-label-md text-label-md text-secondary font-semibold">3/3: Security</span>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center px-md py-lg">
+<!-- Main Focus Container -->
+<div class="w-full max-w-sm bg-surface-container-lowest rounded-xl shadow-xl border border-surface-container overflow-hidden p-lg flex flex-col gap-lg">
+<!-- Instruction Section -->
+<div class="text-center space-y-md">
+<h2 class="font-headline-lg text-headline-lg text-primary tracking-tight" id="pin-instruction">Set Your Access PIN</h2>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed" id="pin-subtext">This PIN will be required for POS unlocks and admin approvals.</p>
+</div>
+<!-- PIN Visualization Dots -->
+<div class="flex justify-center gap-lg py-md">
+<div class="pin-dot w-6 h-6 rounded-full border-2 border-outline-variant bg-transparent shadow-sm" id="dot-0"></div>
+<div class="pin-dot w-6 h-6 rounded-full border-2 border-outline-variant bg-transparent shadow-sm" id="dot-1"></div>
+<div class="pin-dot w-6 h-6 rounded-full border-2 border-outline-variant bg-transparent shadow-sm" id="dot-2"></div>
+<div class="pin-dot w-6 h-6 rounded-full border-2 border-outline-variant bg-transparent shadow-sm" id="dot-3"></div>
+</div>
+<!-- Tactile Numeric Keypad -->
+<div class="grid grid-cols-3 gap-lg w-full max-w-[300px] mx-auto pb-md">
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('1')">1</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('2')">2</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('3')">3</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('4')">4</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('5')">5</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('6')">6</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('7')">7</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('8')">8</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('9')">9</button>
+<div class="h-[72px] invisible"></div>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-surface-container-low font-headline-lg text-headline-lg text-primary shadow-sm active:shadow-inner transition-all border border-surface-container" onclick="handleKey('0')">0</button>
+<button class="keypad-button h-[72px] flex items-center justify-center rounded-2xl bg-transparent text-outline hover:text-primary active:scale-90 transition-all" onclick="handleBackspace()">
+<span class="material-symbols-outlined text-[32px]" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Security Footer within Card -->
+<div class="pt-lg border-t border-surface-container flex flex-col items-center gap-sm">
+<div class="flex items-center gap-xs text-on-surface-variant/80">
+<span class="material-symbols-outlined text-[18px]" data-icon="encrypted">encrypted</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">End-to-End Encrypted</span>
+</div>
+<!-- Completion Success Indicator -->
+<div class="hidden flex items-center gap-sm text-on-tertiary-container bg-tertiary-fixed/40 px-lg py-sm rounded-xl" id="success-indicator">
+<span class="material-symbols-outlined fill-1 text-tertiary-container" data-icon="verified_user">verified_user</span>
+<span class="font-label-md text-label-md font-bold">PIN Successfully Saved</span>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto w-full flex justify-center items-center px-lg py-md pb-safe bg-surface-container-lowest border-t border-surface-container">
+<div class="flex gap-xl">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="help">help</span>
+<span class="font-label-md text-label-md">Security Guide</span>
+</button>
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="support_agent">support_agent</span>
+<span class="font-label-md text-label-md">Contact Support</span>
+</button>
+</div>
+</footer>
+<script>
+    let pin = "";
+    let confirmPin = "";
+    let isConfirming = false;
+
+    function handleKey(num) {
+        if (pin.length < 4) {
+            pin += num;
+            updateDots();
+            if (pin.length === 4) {
+                setTimeout(() => processPin(), 350);
+            }
+        }
+    }
+
+    function handleBackspace() {
+        if (pin.length > 0) {
+            pin = pin.slice(0, -1);
+            updateDots();
+        }
+    }
+
+    function updateDots() {
+        for (let i = 0; i < 4; i++) {
+            const dot = document.getElementById(`dot-${i}`);
+            if (i < pin.length) {
+                dot.classList.add('bg-primary', 'border-primary', 'scale-110');
+                dot.classList.remove('bg-transparent', 'border-outline-variant');
+            } else {
+                dot.classList.remove('bg-primary', 'border-primary', 'scale-110');
+                dot.classList.add('bg-transparent', 'border-outline-variant');
+            }
+        }
+    }
+
+    function processPin() {
+        if (!isConfirming) {
+            confirmPin = pin;
+            pin = "";
+            isConfirming = true;
+            document.getElementById('pin-instruction').innerText = "Confirm Your PIN";
+            document.getElementById('pin-subtext').innerText = "Please re-enter the 4-digit PIN to verify accuracy.";
+            updateDots();
+        } else {
+            if (pin === confirmPin) {
+                // Success logic
+                document.getElementById('pin-instruction').innerText = "PIN Confirmed";
+                document.getElementById('pin-subtext').innerText = "Identity verification and security setup complete.";
+                document.getElementById('success-indicator').classList.remove('hidden');
+                document.querySelectorAll('.keypad-button').forEach(btn => btn.disabled = true);
+                
+                // Shake effect on success dots
+                const dots = document.querySelectorAll('.pin-dot');
+                dots.forEach(d => d.classList.add('bg-on-tertiary-container', 'border-on-tertiary-container'));
+            } else {
+                // Error logic
+                pin = "";
+                updateDots();
+                const instruction = document.getElementById('pin-instruction');
+                const subtext = document.getElementById('pin-subtext');
+                
+                const oldText = instruction.innerText;
+                instruction.innerText = "PINs Don't Match";
+                instruction.classList.add('text-error');
+                subtext.innerText = "Please try again carefully.";
+                
+                setTimeout(() => {
+                    instruction.innerText = oldText;
+                    instruction.classList.remove('text-error');
+                }, 1500);
+            }
+        }
+    }
+</script>
+</body></html>

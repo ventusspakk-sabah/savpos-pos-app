@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos Hub | Enterprise Ready</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#195039",
+                    "error": "#ba1a1a",
+                    "primary-fixed-dim": "#aec7f5",
+                    "surface-container": "#eceef0",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-container": "#002617",
+                    "inverse-on-surface": "#eff1f3",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#7089b3",
+                    "surface-container-high": "#e6e8ea",
+                    "on-tertiary-fixed": "#002113",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-primary-fixed": "#001b3c",
+                    "tertiary-fixed": "#b6efcf",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "on-surface-variant": "#44474e",
+                    "surface": "#f7f9fb",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-container": "#7db6ff",
+                    "surface-bright": "#f7f9fb",
+                    "on-primary": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "primary": "#00091b",
+                    "primary-container": "#002045",
+                    "on-error": "#ffffff",
+                    "on-secondary-fixed": "#001c38",
+                    "inverse-surface": "#2d3133",
+                    "secondary": "#1960a3",
+                    "tertiary": "#000b05",
+                    "surface-dim": "#d8dadc",
+                    "on-secondary-container": "#00477f",
+                    "on-secondary": "#ffffff",
+                    "background": "#f7f9fb",
+                    "on-tertiary-container": "#5d9377",
+                    "on-background": "#191c1e",
+                    "on-error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#004881",
+                    "outline": "#74777f",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e0e3e5",
+                    "surface-tint": "#465f87",
+                    "secondary-fixed": "#d3e4ff",
+                    "inverse-primary": "#aec7f5",
+                    "outline-variant": "#c4c6cf",
+                    "on-surface": "#191c1e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "44px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xs": "8px",
+                    "sm": "12px",
+                    "base": "4px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "display-price": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { background-color: #f7f9fb; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface select-none">
+<!-- Top Navigation Shell -->
+<header class="bg-surface dark:bg-on-background shadow-sm docked full-width top-0 z-40 flex items-center justify-between px-md lg:px-lg h-16 w-full fixed border-b border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="spa">spa</span>
+<div class="flex flex-col">
+<h1 class="text-headline-md font-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight">Sav.pos Hub</h1>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-md">
+<div class="flex items-center gap-xs px-sm py-1 bg-tertiary-container rounded-full text-on-tertiary-container border border-on-tertiary-container/20">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified" data-weight="fill" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-label-md font-label-md">Enterprise Ready</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="w-11 h-11 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors duration-200 active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Admin Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXXrE16vshpxiKBJ8oH9zeEOSbWjoi-5BCSKassW2u8ogOtTc7lE7-dKkW7WExEXtUwBAyw6grUQP_230zWcR7ZDIlrni54vyZX5o7HJz8g7AIOgvcKVV3jtrdXxMC_4d6YOAuykXlmZr7ckSVB9Hd-675sCKNmS1ApTSr69Jt02BVMtTDdp4gzoD-7UkGN990P2BhPpwQgnProHKctVnavxiKI5zVCJW-JIky1vjSfQMfYxC3ruR0LIa8W6iAIal99fI0w6u_1iE"/>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen pt-16 pb-24 lg:pb-0">
+<!-- Sidebar Navigation -->
+<aside class="hidden lg:flex flex-col h-[calc(100vh-64px)] w-72 bg-surface-container-low dark:bg-surface-dim shadow-md fixed left-0 py-lg rounded-r-xl z-30">
+<div class="px-lg mb-xl">
+<h2 class="text-headline-md font-headline-md font-bold text-primary">Luxury Spa Group</h2>
+<p class="text-label-md font-label-md text-on-surface-variant">Premium Tier Access</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="bg-tertiary-container text-on-tertiary-container flex items-center gap-4 px-4 py-3 rounded-full mx-2 active:scale-[0.98] transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-md font-label-md">POS System</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-4 px-4 py-3 rounded-full mx-2 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="self_care">self_care</span>
+<span class="text-label-md font-label-md">Technician App</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-4 px-4 py-3 rounded-full mx-2 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="text-label-md font-label-md">Admin/Owner App</span>
+</a>
+<div class="pt-4 mt-4 border-t border-outline-variant/30">
+<a class="text-on-surface-variant flex items-center gap-4 px-4 py-3 rounded-full mx-2 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="monitor_heart">monitor_heart</span>
+<span class="text-label-md font-label-md">Health Monitor</span>
+</a>
+<a class="text-on-surface-variant flex items-center gap-4 px-4 py-3 rounded-full mx-2 hover:bg-surface-container-highest transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="text-label-md font-label-md">Support</span>
+</a>
+</div>
+</nav>
+<div class="mt-auto px-lg pt-lg border-t border-outline-variant/30">
+<div class="flex items-center gap-sm">
+<div class="flex flex-col">
+<span class="text-label-md font-label-md font-bold text-primary">Admin User</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">System Master</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-72 p-md lg:p-xl space-y-xl max-w-[1440px] mx-auto w-full">
+<!-- Infrastructure Health Bento -->
+<section>
+<div class="flex items-center justify-between mb-md px-base">
+<h3 class="text-headline-md font-headline-md text-primary">Infrastructure Health</h3>
+<span class="text-label-sm font-label-sm text-on-tertiary-container bg-tertiary-fixed-dim/30 px-sm py-1 rounded-full flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-fixed-variant animate-pulse"></span>
+                        Real-time Monitoring
+                    </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="bg-surface-container-lowest shadow-sm rounded-xl p-lg flex flex-col items-center justify-center text-center group hover:shadow-md transition-shadow cursor-pointer">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-base">System Latency</span>
+<span class="text-display-price font-display-price text-secondary">24ms</span>
+<div class="mt-sm flex items-center gap-xs text-on-tertiary-container text-label-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="check_circle">check_circle</span>
+<span>Optimal performance</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest shadow-sm rounded-xl p-lg flex flex-col items-center justify-center text-center group hover:shadow-md transition-shadow cursor-pointer">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-base">Cloud Sync</span>
+<span class="text-display-price font-display-price text-on-tertiary-container">100%</span>
+<div class="mt-sm flex items-center gap-xs text-on-tertiary-container text-label-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="sync">sync</span>
+<span>All nodes active</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest shadow-sm rounded-xl p-lg flex flex-col items-center justify-center text-center group hover:shadow-md transition-shadow cursor-pointer">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider mb-base">Firewall Status</span>
+<span class="text-display-price font-display-price text-on-secondary-container">Active</span>
+<div class="mt-sm flex items-center gap-xs text-on-secondary-container text-label-md">
+<span class="material-symbols-outlined text-[16px]" data-icon="shield">shield</span>
+<span>Threat protection enabled</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Application Portals (Exactly Three) -->
+<section>
+<h3 class="text-headline-md font-headline-md text-primary mb-md px-base">Application Portals</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- POS System -->
+<div class="relative h-72 rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant/20">
+<img alt="POS System" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkXhLVPQeNg7sNhFvsnAsntWvwFBaM1DgYm_5i9qMbP09H-E2xu3kItafAwrsw6dkpK61a1LM4ogYWT2fS4jRGdpr6D62h6Sw8tzdA_TY6lD2wmUVU24LOYEQzkBZ2ZL9iHqPt6UkMgX_UNAs1qDnXzav1WeKVsIdl7uyBHLXci5HnwHiiEEUGQbULT-bZBtnP4VAnI9BoLadoeET_xCCC_jn5EhvY5eSlA4gphHLkhNvWfKzpSj3zWIkfxQ4k77STGRVAqCjQpNE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent flex flex-col justify-end p-lg">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-tertiary-fixed" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm text-white/70">CORE OPERATIONS</span>
+</div>
+<h4 class="text-headline-md font-headline-md text-white">POS System</h4>
+<p class="text-body-md font-body-md text-white/80 line-clamp-2">Streamlined checkout, inventory management, and front-desk retail transactions.</p>
+</div>
+</div>
+<!-- Technician App -->
+<div class="relative h-72 rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant/20">
+<img alt="Technician App" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMG4PmBSWtR-e6AElMiipj_OQn5Is_E9XOWfYQ3nZRfSvARP8drFpNzFITfM0ViKsFv1dNxWOnzNiu7iJaMVu5EGMsPyo-l6kgPswaE391s5N6q9Ct4bnNPAp3jLgVcvlgOpQqhZvfZpbUxUuDW7XFsUsaSJDFS_S86IMBp871x6gP30gfd1L_hzAQdmaOGVk3SpPHBjnSMbWrgM06jFBh1GsRmDMyNk4lOoRgxUA_eQ7fdKSZAXYjX014Y-8meTBm0L5eRCsTtsE"/>
+<div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent flex flex-col justify-end p-lg">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-secondary-fixed" data-icon="self_care">self_care</span>
+<span class="text-label-sm font-label-sm text-white/70">PERSONAL EARNINGS &amp; WORK</span>
+</div>
+<h4 class="text-headline-md font-headline-md text-white">Technician App</h4>
+<p class="text-body-md font-body-md text-white/80 line-clamp-2">Track appointments, manage personal performance, and view daily earnings.</p>
+</div>
+</div>
+<!-- Admin/Owner App -->
+<div class="relative h-72 rounded-xl overflow-hidden shadow-sm group cursor-pointer border border-outline-variant/20">
+<img alt="Admin/Owner App" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDATMWU4hL6fVnPknTExrLIGjj2DM5R3IQP7sYdsVC5qdLAKZwO9k18f4AhKhhsMQeJAwcY7qJM-dhDBcz7Iuy_djs8qNJkbYWIqgCuO4Xpy1o59X2KjRfnQudrCVfbujmEpDW_ngopQxnuMorEl-xYvPz8VwcJjgttzfRKXcLmWCI4dl09QrTE6oQchf4OoumZJoIgHTsJzAJizvRi3w4nAhzn3f9lTw26PLcfQOJIL1j9PO_Pfdo2tN4Tnw9DiGqJpiRHuNMGNRc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent flex flex-col justify-end p-lg">
+<div class="flex items-center gap-sm mb-xs">
+<span class="material-symbols-outlined text-primary-fixed" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="text-label-sm font-label-sm text-white/70">DATA, APPROVALS &amp; SETTINGS</span>
+</div>
+<h4 class="text-headline-md font-headline-md text-white">Admin/Owner App</h4>
+<p class="text-body-md font-body-md text-white/80 line-clamp-2">High-level reporting, system configuration, and managerial approval workflows.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Operational Core & Resource Center -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xl">
+<!-- Operational Core List -->
+<section>
+<h3 class="text-headline-md font-headline-md text-primary mb-md px-base">Operational Core</h3>
+<div class="bg-surface-container-low rounded-xl overflow-hidden shadow-sm">
+<div class="divide-y divide-outline-variant/30">
+<div class="p-md flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-bold text-primary">POS Terminal Node</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Switch to POS App</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="p-md flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-bold text-primary">Technician Earnings</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Switch to Technician App</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="p-md flex items-center justify-between hover:bg-surface-container-high transition-colors cursor-pointer group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-lg bg-surface-container-lowest flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="settings_suggest">settings_suggest</span>
+</div>
+<div class="flex flex-col">
+<span class="text-body-md font-body-md font-bold text-primary">Master Logic Settings</span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Switch to Admin App</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Resource Center List -->
+<section>
+<h3 class="text-headline-md font-headline-md text-primary mb-md px-base">Resource Center</h3>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-lowest p-md rounded-xl flex items-center gap-sm hover:bg-primary hover:text-white transition-all group cursor-pointer shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="description">description</span>
+<span class="text-label-md font-label-md">Documentation</span>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl flex items-center gap-sm hover:bg-primary hover:text-white transition-all group cursor-pointer shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="contact_support">contact_support</span>
+<span class="text-label-md font-label-md">Support Center</span>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl flex items-center gap-sm hover:bg-primary hover:text-white transition-all group cursor-pointer shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="settings">settings</span>
+<span class="text-label-md font-label-md">System Config</span>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl flex items-center gap-sm hover:bg-primary hover:text-white transition-all group cursor-pointer shadow-sm border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary group-hover:text-white" data-icon="integration_instructions">integration_instructions</span>
+<span class="text-label-md font-label-md">Integrations</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Promotional Banner -->
+<section class="pb-xl">
+<div class="relative h-64 lg:h-80 rounded-2xl overflow-hidden shadow-lg group">
+<img alt="Empire Dashboard" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKRGbRv2QZfWzKMl2ZmKcz9fHYxplEOLg_GvN9g7cro37s2a6UiCcg0AX_6ES_aLp3umVjIEYkWFRCjBdWoJXVzFYtlIeGpo1A4jqr0s63TZAdJv76lSQ92dXpbBwWVtQre6AvtZQ64mflxRIPTDXG9Bx9ZaweXjVrda7908bGi3Gw-Qy-6Fj2U52oxRB38vWCKIAPe0C2-CsogSNQweSSaYhZsTXy9wEad2fUzTsTOeeRCLRTsc-uJnIPazPcYDj3_pJVpw8Y_HE"/>
+<div class="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center p-xl">
+<h2 class="text-display-price font-display-price text-white mb-sm tracking-tight drop-shadow-lg">Your Empire. One Dashboard.</h2>
+<p class="text-headline-md font-headline-md text-white/90 mb-lg max-w-2xl drop-shadow-md">The unified operating system for high-end hospitality and premium retail global operations.</p>
+<button class="bg-tertiary-container text-on-tertiary-container px-xl py-3 rounded-full font-bold flex items-center gap-sm hover:bg-tertiary-fixed transition-colors active:scale-95 shadow-lg">
+                            Upgrade to Platinum Tier
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Mobile Navigation Shell -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-2 pb-safe bg-surface-container dark:bg-on-background shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] rounded-t-xl z-50 border-t border-outline-variant/30">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-6 py-1 active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm">POS</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:bg-surface-container-highest active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="self_care">self_care</span>
+<span class="text-label-sm font-label-sm">Tech</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:bg-surface-container-highest active:scale-95 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="admin_panel_settings">admin_panel_settings</span>
+<span class="text-label-sm font-label-sm">Admin</span>
+</a>
+</nav>
+<script>
+        // Simple interactive feedback for dashboard cards
+        document.querySelectorAll('.bg-surface-container-lowest').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-2px)';
+                card.style.transition = 'transform 0.2s ease-out';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>

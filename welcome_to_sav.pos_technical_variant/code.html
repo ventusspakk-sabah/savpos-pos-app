@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Technical Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --step-0: #0A0A0B;
+            --step-1: #1A1A1E;
+            --step-2: #2D2D32;
+        }
+        body {
+            background-color: var(--step-0);
+            color: #e5e2e3;
+            overflow-x: hidden;
+        }
+        .font-data-tabular, .font-data-header {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #7e00ff, transparent);
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: scan 4s linear infinite;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+        .glow-border:focus-within {
+            box-shadow: 0 0 0 2px #0068ed;
+        }
+        .pulse-accent {
+            animation: pulse-ring 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse-ring {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        .grid-bg {
+            background-image: linear-gradient(#1A1A1E 1px, transparent 1px), linear-gradient(90deg, #1A1A1E 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdbce",
+                        "secondary-container": "#0068ed",
+                        "surface-dim": "#131314",
+                        "on-tertiary-fixed": "#370e00",
+                        "surface": "#131314",
+                        "critical-red": "#FF1744",
+                        "background": "#131314",
+                        "on-secondary": "#002d6e",
+                        "surface-bright": "#3a393a",
+                        "surface-container-low": "#1c1b1c",
+                        "primary-container": "#7e00ff",
+                        "on-tertiary-fixed-variant": "#7f2b00",
+                        "inverse-on-surface": "#313031",
+                        "on-primary-fixed-variant": "#5e00c1",
+                        "on-primary": "#41008a",
+                        "on-error-container": "#ffdad6",
+                        "outline": "#978da3",
+                        "on-secondary-fixed": "#001945",
+                        "secondary": "#b0c6ff",
+                        "primary-fixed": "#ecdcff",
+                        "tertiary": "#ffb599",
+                        "surface-variant": "#353436",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#5a1c00",
+                        "surface-tint": "#d5bbff",
+                        "secondary-fixed": "#d9e2ff",
+                        "tertiary-container": "#a93c00",
+                        "on-surface": "#e5e2e3",
+                        "surface-container": "#201f20",
+                        "surface-elevated": "#1A1A1E",
+                        "secondary-fixed-dim": "#b0c6ff",
+                        "tertiary-fixed-dim": "#ffb599",
+                        "on-primary-container": "#e6d3ff",
+                        "processing-blue": "#2979FF",
+                        "on-secondary-container": "#f2f3ff",
+                        "primary-fixed-dim": "#d5bbff",
+                        "on-secondary-fixed-variant": "#00429b",
+                        "border-subtle": "#2D2D32",
+                        "on-surface-variant": "#cdc2da",
+                        "on-error": "#690005",
+                        "inverse-primary": "#7c00fb",
+                        "outline-variant": "#4b4357",
+                        "surface-container-lowest": "#0e0e0f",
+                        "primary": "#d5bbff",
+                        "success-green": "#00C853",
+                        "on-background": "#e5e2e3",
+                        "surface-container-highest": "#353436",
+                        "inverse-surface": "#e5e2e3",
+                        "on-tertiary-container": "#ffd1c1",
+                        "on-primary-fixed": "#270057",
+                        "surface-container-high": "#2a2a2b",
+                        "error": "#ffb4ab"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "16px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "32px",
+                        "max-width": "1600px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter", "sans-serif"],
+                        "label-sm": ["Inter", "sans-serif"],
+                        "headline-lg": ["Manrope", "sans-serif"],
+                        "data-tabular": ["JetBrains Mono", "monospace"],
+                        "data-header": ["JetBrains Mono", "monospace"],
+                        "headline-md": ["Manrope", "sans-serif"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-tabular": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "data-header": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
+<!-- Top Navigation Bar -->
+<header class="flex justify-between items-center px-margin-desktop py-4 w-full bg-surface-container border-b border-border-subtle top-0 sticky z-50">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">SAV.POS_V1</h1>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-4 font-data-header text-data-header uppercase tracking-widest text-on-surface-variant">
+<span class="text-primary border-b border-primary">Initialization</span>
+<span class="opacity-40">Verification</span>
+<span class="opacity-40">Deployment</span>
+</div>
+<button class="font-data-header text-data-header bg-primary-container text-on-primary-container px-4 py-2 uppercase hover:bg-surface-bright transition-colors active:scale-95 duration-100">
+                SKIP_SETUP
+            </button>
+</div>
+</header>
+<main class="flex-1 flex flex-col md:flex-row relative">
+<!-- Background Grid -->
+<div class="absolute inset-0 grid-bg opacity-20 pointer-events-none"></div>
+<div class="scanline"></div>
+<!-- Left Column: Narrative/Onboarding -->
+<section class="flex-1 flex flex-col justify-center px-margin-mobile md:px-margin-desktop py-12 z-10 max-w-2xl">
+<div class="mb-8">
+<span class="font-data-header text-data-header bg-secondary-container/20 text-secondary px-3 py-1 border border-secondary-container/30 uppercase tracking-widest mb-4 inline-block">
+                    System Protocol v1.0.4
+                </span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">
+                    Welcome to Sav.pos <span class="text-primary">(Technical Variant)</span>
+</h2>
+<p class="text-on-surface-variant text-body-md max-w-lg">
+                    Initialize your retail ecosystem with architectural precision. Sav.pos provides granular control over transaction cycles, inventory heatmaps, and terminal telemetry.
+                </p>
+</div>
+<!-- Feature Steps (Bento-style list) -->
+<div class="grid grid-cols-1 gap-4 mb-10">
+<div class="bg-surface-elevated border border-border-subtle p-6 flex gap-6 hover:border-primary transition-all group">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center border border-border-subtle group-hover:bg-primary/10">
+<span class="material-symbols-outlined text-primary">monitoring</span>
+</div>
+<div>
+<h3 class="font-data-header text-data-header text-on-surface uppercase mb-1">Real-time Metrics</h3>
+<p class="text-label-sm text-on-surface-variant opacity-80">Sub-second latency on all transaction reporting and system throughput.</p>
+</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-6 flex gap-6 hover:border-processing-blue transition-all group">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center border border-border-subtle group-hover:bg-processing-blue/10">
+<span class="material-symbols-outlined text-processing-blue">hub</span>
+</div>
+<div>
+<h3 class="font-data-header text-data-header text-on-surface uppercase mb-1">System-wide Control</h3>
+<p class="text-label-sm text-on-surface-variant opacity-80">Unified management interface for multi-region terminal clusters and cloud sync.</p>
+</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-6 flex gap-6 hover:border-success-green transition-all group">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center border border-border-subtle group-hover:bg-success-green/10">
+<span class="material-symbols-outlined text-success-green">security</span>
+</div>
+<div>
+<h3 class="font-data-header text-data-header text-on-surface uppercase mb-1">Encrypted Ledger</h3>
+<p class="text-label-sm text-on-surface-variant opacity-80">Zero-trust transaction auditing with automated commission integrity checks.</p>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary font-data-header text-data-header px-8 py-4 uppercase font-bold tracking-widest hover:bg-white transition-all active:scale-95">
+                    INITIALIZE_CORE_V1
+                </button>
+<button class="border border-border-subtle text-on-surface-variant font-data-header text-data-header px-8 py-4 uppercase tracking-widest hover:bg-surface-bright transition-all">
+                    VIEW_DOCUMENTATION
+                </button>
+</div>
+</section>
+<!-- Right Column: Visual Telemetry / Data Dashboard Preview -->
+<section class="hidden lg:flex flex-1 bg-surface-container-low border-l border-border-subtle p-12 flex-col justify-center items-center relative">
+<!-- Widget Cluster -->
+<div class="w-full max-w-xl space-y-6">
+<!-- Large Chart Widget -->
+<div class="bg-surface-elevated border border-border-subtle p-6 shadow-2xl relative overflow-hidden">
+<div class="flex justify-between items-center mb-6">
+<h4 class="font-data-header text-data-header text-on-surface-variant flex items-center gap-2">
+<span class="w-2 h-2 bg-processing-blue rounded-full pulse-accent"></span>
+                            TRAFFIC_DENSITY_ESTIMATE
+                        </h4>
+<span class="font-data-tabular text-label-sm text-processing-blue">LIVE_SYNC: ACTIVE</span>
+</div>
+<div class="h-48 w-full flex items-end gap-1 px-2">
+<!-- Simulated bar chart -->
+<div class="bg-surface-container-high w-full transition-all duration-1000" style="height: 40%"></div>
+<div class="bg-surface-container-high w-full transition-all duration-1000" style="height: 65%"></div>
+<div class="bg-primary w-full transition-all duration-1000" style="height: 85%"></div>
+<div class="bg-primary w-full transition-all duration-1000" style="height: 70%"></div>
+<div class="bg-primary w-full transition-all duration-1000" style="height: 95%"></div>
+<div class="bg-processing-blue w-full transition-all duration-1000" style="height: 45%"></div>
+<div class="bg-processing-blue w-full transition-all duration-1000" style="height: 55%"></div>
+<div class="bg-processing-blue w-full transition-all duration-1000" style="height: 30%"></div>
+<div class="bg-surface-container-high w-full transition-all duration-1000" style="height: 20%"></div>
+<div class="bg-surface-container-high w-full transition-all duration-1000" style="height: 15%"></div>
+</div>
+</div>
+<!-- Split Metrics -->
+<div class="grid grid-cols-2 gap-6">
+<div class="bg-surface-elevated border border-border-subtle p-4">
+<h5 class="font-data-header text-data-header text-on-surface-variant opacity-60 mb-2">SYSTEM_LOAD</h5>
+<div class="text-3xl font-data-tabular text-on-surface">14.02<span class="text-sm opacity-40 ml-1">MS</span></div>
+<div class="w-full bg-surface-container h-1 mt-4">
+<div class="bg-success-green h-full" style="width: 14%"></div>
+</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-4">
+<h5 class="font-data-header text-data-header text-on-surface-variant opacity-60 mb-2">TERM_UPLINK</h5>
+<div class="text-3xl font-data-tabular text-on-surface">99.98<span class="text-sm opacity-40 ml-1">%</span></div>
+<div class="w-full bg-surface-container h-1 mt-4">
+<div class="bg-processing-blue h-full" style="width: 99%"></div>
+</div>
+</div>
+</div>
+<!-- Log Streamer -->
+<div class="bg-black border border-border-subtle p-4 font-data-tabular text-[11px] leading-tight space-y-1">
+<div class="text-on-surface-variant opacity-40">[14:22:01.03] INIT_SEQUENCE_STARTED...</div>
+<div class="text-on-surface-variant opacity-40">[14:22:01.45] AUTHENTICATING_ENDPOINT_SECURE...</div>
+<div class="text-success-green">[14:22:01.89] HANDSHAKE_SUCCESS_200_OK</div>
+<div class="text-on-surface-variant opacity-40">[14:22:02.12] LOADING_SCHEMA_RETAIL_v4...</div>
+<div class="text-primary">[14:22:02.55] CORE_RESOURCES_MOUNTED_AT_0xFF32</div>
+<div class="text-on-surface-variant opacity-40">[14:22:03.01] SYSTEM_IDLE_AWAITING_INPUT_</div>
+</div>
+</div>
+<!-- Floating Abstract Image -->
+<div class="absolute -bottom-20 -right-20 w-96 h-96 opacity-10 blur-3xl bg-primary rounded-full"></div>
+<div class="absolute top-40 -left-20 w-64 h-64 opacity-5 blur-3xl bg-processing-blue rounded-full"></div>
+</section>
+</main>
+<!-- System Status Footer (Non-Nav for focused flow) -->
+<footer class="h-10 bg-surface-container-lowest border-t border-border-subtle flex items-center justify-between px-6 z-50">
+<div class="flex items-center gap-6 font-data-header text-[10px] tracking-widest text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-success-green rounded-full"></span>
+                STATION_ID: XA-4022
+            </div>
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 bg-processing-blue rounded-full pulse-accent"></span>
+                LATENCY: 4MS
+            </div>
+</div>
+<div class="font-data-tabular text-[10px] text-on-surface-variant opacity-50 uppercase">
+            Sav.pos Precision Environment // © 2024
+        </div>
+</footer>
+<script>
+        // Micro-interaction: Dynamic height for the chart bars to simulate live data
+        setInterval(() => {
+            const bars = document.querySelectorAll('.h-48 div');
+            bars.forEach(bar => {
+                const height = Math.floor(Math.random() * 80) + 10;
+                bar.style.height = height + '%';
+            });
+        }, 3000);
+
+        // Terminal text typing effect for logs
+        const logContainer = document.querySelector('.space-y-1');
+        const appendLog = () => {
+            const time = new Date().toLocaleTimeString([], { hour12: false, hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const logs = [
+                "HEARTBEAT_SIGNAL_RCVD",
+                "SYNC_BUFFER_FLUSHED",
+                "NODE_CLUSTER_STABLE",
+                "TEL_METRICS_UPDATING...",
+                "SEC_PATCH_VERIFIED"
+            ];
+            const logEntry = document.createElement('div');
+            logEntry.className = "text-on-surface-variant opacity-40";
+            logEntry.innerHTML = `[${time}.${Math.floor(Math.random()*99)}] ${logs[Math.floor(Math.random()*logs.length)]}`;
+            
+            if (logContainer.children.length > 8) {
+                logContainer.removeChild(logContainer.firstChild);
+            }
+            logContainer.appendChild(logEntry);
+        };
+        setInterval(appendLog, 5000);
+    </script>
+</body></html>

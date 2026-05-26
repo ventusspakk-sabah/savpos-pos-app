@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Transaction Complete</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .countdown-circle {
+            transition: stroke-dashoffset 0.1s linear;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#195039",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-surface-variant": "#44474e",
+                        "on-secondary-fixed-variant": "#004881",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#aec7f5",
+                        "primary-container": "#002045",
+                        "secondary": "#1960a3",
+                        "on-tertiary-container": "#5d9377",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-primary-container": "#7089b3",
+                        "primary": "#00091b",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#00477f",
+                        "surface-tint": "#465f87",
+                        "on-tertiary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary-container": "#002617",
+                        "surface": "#f7f9fb",
+                        "error": "#ba1a1a",
+                        "surface-container": "#eceef0",
+                        "tertiary": "#000b05",
+                        "on-background": "#191c1e",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#aec7f5",
+                        "surface-variant": "#e0e3e5",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#7db6ff",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-tertiary-fixed": "#002113",
+                        "outline": "#74777f",
+                        "primary-fixed": "#d6e3ff",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-dim": "#d8dadc",
+                        "on-surface": "#191c1e",
+                        "on-error": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "tertiary-fixed-dim": "#9bd3b4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "md": "16px",
+                        "xs": "8px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "base": "4px",
+                        "touch-target-min": "44px"
+                    },
+                    "fontFamily": {
+                        "display-price": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex items-center justify-center p-md">
+<!-- Main Success Canvas -->
+<main class="w-full max-w-[640px] bg-surface-container-lowest rounded-xl shadow-lg overflow-hidden border border-outline-variant/20 relative">
+<!-- Header / Logo -->
+<header class="flex justify-between items-center px-lg h-touch-target-min bg-surface border-b border-outline-variant/10">
+<span class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</span>
+<div class="flex items-center gap-xs" id="close-timer-container">
+<div class="relative w-8 h-8">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 36 36">
+<circle class="stroke-surface-variant" cx="18" cy="18" fill="none" r="16" stroke-width="3"></circle>
+<circle class="stroke-primary countdown-circle" cx="18" cy="18" fill="none" id="timer-circle" r="16" stroke-dasharray="100.53" stroke-dashoffset="0" stroke-width="3"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center font-label-sm text-label-sm" id="timer-text">5</span>
+</div>
+<button class="font-label-md text-label-md text-secondary hover:bg-surface-variant/30 px-sm py-xs rounded-lg transition-colors active:scale-95" onclick="window.location.reload()">
+                    Close
+                </button>
+</div>
+</header>
+<!-- Success Animation & Summary -->
+<section class="p-xl text-center flex flex-col items-center">
+<div class="w-24 h-24 bg-tertiary-fixed-dim rounded-full flex items-center justify-center mb-lg animate-bounce">
+<span class="material-symbols-outlined text-[64px] text-on-tertiary-fixed-variant" style="font-variation-settings: 'wght' 600;">check_circle</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-xs">Transaction Complete</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-xl">Your payment has been processed successfully.</p>
+<div class="w-full bg-surface-container-low rounded-xl p-lg flex flex-col md:flex-row justify-between items-center gap-lg border border-outline-variant/20 mb-xl">
+<div class="text-center md:text-left">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Order Number</p>
+<p class="font-headline-md text-headline-md text-primary">#SP-94021-X</p>
+</div>
+<div class="h-px w-full md:w-px md:h-12 bg-outline-variant/30"></div>
+<div class="text-center md:text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Total Amount</p>
+<p class="font-display-price text-display-price text-secondary">$1,248.50</p>
+</div>
+</div>
+</section>
+<!-- Digital & Physical Receipt Section -->
+<section class="px-xl pb-xl">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Digital Receipt Card -->
+<div class="bg-surface-container-high rounded-xl p-lg border border-outline-variant/10">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'wght' 500;">alternate_email</span>
+<h2 class="font-headline-md text-headline-md text-primary">Email Receipt</h2>
+</div>
+<div class="space-y-md">
+<div class="relative">
+<input class="w-full h-touch-target-min bg-surface-container-lowest border-none rounded-lg px-md font-body-md text-body-md focus:ring-2 focus:ring-primary shadow-sm" placeholder="customer@email.com" type="email" value="alex.thompson@premiumretail.com"/>
+</div>
+<button class="w-full h-touch-target-min bg-secondary text-on-secondary rounded-lg font-headline-md text-headline-md flex items-center justify-center gap-xs hover:shadow-md transition-all active:scale-95" onclick="simulateSend(this)">
+<span class="material-symbols-outlined">send</span>
+                            Send Email
+                        </button>
+</div>
+</div>
+<!-- Print Receipt Card -->
+<div class="bg-surface-container-high rounded-xl p-lg border border-outline-variant/10 flex flex-col">
+<div class="flex items-center gap-xs mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'wght' 500;">print</span>
+<h2 class="font-headline-md text-headline-md text-primary">Print Receipt</h2>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md flex-grow">Generate a high-quality physical copy for the customer.</p>
+<button class="w-full h-touch-target-min border-2 border-secondary text-secondary rounded-lg font-headline-md text-headline-md flex items-center justify-center gap-xs hover:bg-secondary/5 transition-all active:scale-95" onclick="simulatePrint(this)">
+<span class="material-symbols-outlined">description</span>
+                        Print Copy
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bottom Graphic -->
+<div class="h-24 relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 flex gap-4">
+<img class="w-full h-full object-cover" data-alt="A sophisticated boutique retail interior with clean architectural lines, minimalist shelving, and premium lighting. The aesthetic is high-end and modern, using a color palette of soft whites and deep navy blues to convey luxury and professionalism. The atmosphere is calm and organized, reflecting the efficiency of a top-tier point of sale experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpbwitvwqxoVTwFcgfsWVu0zJcUk_eRZfp9OHwKV0uTHtprGxudj-2a1xf8HVeoyt8dosc-rRWoOC9P2ztDe7rws8Tzo42t8DWLtXNaxs6D-xcviHKwm4hHNWWfX8Iwr30mutCNsuZxnUsfLXmvPib72yKvunZM6u5dfRjhEm7yRFi4-DAoJT-gSfJqzPJoHfDHfmnf6Bq8EsQB6uw4W0lymL0eAj1SeIjKMfBlefv4DUSHsXjzEHvWxgyxdhoueeRZvyIcKiqwWg"/>
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest to-transparent"></div>
+</div>
+</main>
+<!-- Notification Toast (Hidden by default) -->
+<div class="fixed bottom-lg left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-lg py-md rounded-xl shadow-xl flex items-center gap-md transform translate-y-32 transition-transform duration-300 z-[100]" id="toast">
+<span class="material-symbols-outlined text-tertiary-fixed" id="toast-icon">check_circle</span>
+<span class="font-body-md text-body-md" id="toast-message">Email sent successfully!</span>
+</div>
+<script>
+        // Countdown Timer Logic
+        let timeLeft = 5;
+        const timerText = document.getElementById('timer-text');
+        const timerCircle = document.getElementById('timer-circle');
+        const totalOffset = 100.53; // Circumference for r=16
+
+        const countdown = setInterval(() => {
+            timeLeft -= 0.05;
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                timerText.innerText = "0";
+                // In a real app, this would redirect
+                console.log("Auto-redirecting...");
+                document.body.style.opacity = "0.5";
+                document.body.style.pointerEvents = "none";
+                setTimeout(() => window.location.reload(), 1000);
+            } else {
+                timerText.innerText = Math.ceil(timeLeft);
+                const offset = totalOffset * (1 - (timeLeft / 5));
+                timerCircle.style.strokeDashoffset = offset;
+            }
+        }, 50);
+
+        // Interaction Simulation
+        function showToast(message, icon = 'check_circle') {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+            
+            toastMsg.innerText = message;
+            toastIcon.innerText = icon;
+            
+            toast.classList.remove('translate-y-32');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32');
+            }, 3000);
+        }
+
+        function simulateSend(btn) {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span> Sending...`;
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                showToast("Receipt emailed to customer");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1200);
+        }
+
+        function simulatePrint(btn) {
+            const originalText = btn.innerHTML;
+            btn.innerHTML = `<span class="material-symbols-outlined animate-pulse">print</span> Printing...`;
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                showToast("Sending document to terminal printer...", "print");
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }, 1500);
+        }
+
+        // Stop timer on interaction
+        document.addEventListener('mousedown', () => {
+            clearInterval(countdown);
+            document.getElementById('close-timer-container').style.opacity = "0.3";
+        }, { once: true });
+    </script>
+</body></html>

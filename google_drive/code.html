@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAV.POS | Data Backup &amp; Restore</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#d3e4ff",
+                        "inverse-primary": "#aec7f5",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-low": "#f2f4f6",
+                        "on-tertiary-container": "#00b47d",
+                        "on-surface": "#191c1e",
+                        "on-secondary-fixed-variant": "#004881",
+                        "outline": "#74777f",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "surface-tint": "#465f87",
+                        "on-error-container": "#93000a",
+                        "on-background": "#191c1e",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary-container": "#00477f",
+                        "tertiary-fixed": "#6ffbbe",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed": "#001c38",
+                        "inverse-surface": "#2d3133",
+                        "secondary": "#1960a3",
+                        "tertiary": "#000b05",
+                        "primary": "#00091b",
+                        "primary-container": "#002045",
+                        "surface": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#7db6ff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "on-primary-fixed": "#001b3c",
+                        "inverse-on-surface": "#eff1f3",
+                        "error-container": "#ffdad6",
+                        "on-primary-container": "#7089b3",
+                        "primary-fixed-dim": "#aec7f5",
+                        "surface-container": "#eceef0",
+                        "primary-fixed": "#d6e3ff",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-container": "#002617",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "12px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "touch-target-min": "44px",
+                        "md": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "label-md": ["JetBrains Mono"],
+                        "display-price": ["Inter"],
+                        "body-lg": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-badge {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(8px);
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface dark:bg-primary text-secondary dark:text-secondary-fixed fixed top-0 w-full z-50 border-b border-outline-variant dark:border-outline flex items-center justify-between px-lg md:px-lg h-16">
+<div class="flex items-center gap-4">
+<button class="w-touch-target-min h-touch-target-min flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold tracking-tight">Data Backup &amp; Restore</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer">terminal</span>
+<span class="font-headline-md text-headline-md font-bold tracking-tight">SAV.POS</span>
+</div>
+</header>
+<!-- Main Content -->
+<main class="pt-24 pb-32 px-md md:px-lg max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Status & Actions -->
+<div class="lg:col-span-4 flex flex-col gap-lg">
+<!-- Current Status Card -->
+<section class="bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant/30 overflow-hidden relative">
+<div class="flex justify-between items-start mb-6">
+<div>
+<p class="font-label-md text-label-md text-on-surface-variant mb-1">CURRENT STATUS</p>
+<h2 class="font-headline-md text-headline-md text-secondary">System Healthy</h2>
+</div>
+<div class="bg-on-tertiary-container/10 text-on-tertiary-container px-3 py-1 rounded-full flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm">Active</span>
+</div>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center py-2 border-b border-outline-variant/20">
+<span class="text-on-surface-variant font-body-md text-body-md">Last Backup</span>
+<span class="text-on-surface font-label-md text-label-md">2 hours ago</span>
+</div>
+<div class="py-2">
+<div class="flex justify-between mb-2">
+<span class="text-on-surface-variant font-body-md text-body-md">Cloud Storage</span>
+<span class="text-on-surface font-label-md text-label-md">1.2 GB / 5.0 GB</span>
+</div>
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 24%"></div>
+</div>
+</div>
+</div>
+<!-- Subtle Decorative Background -->
+<div class="absolute -bottom-6 -right-6 opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" style="font-variation-settings: 'wght' 100;">cloud_done</span>
+</div>
+</section>
+<!-- Primary Actions -->
+<section class="flex flex-col gap-md">
+<button class="h-touch-target-min w-full bg-primary-container text-on-primary rounded-xl font-bold flex items-center justify-center gap-3 shadow-md hover:bg-primary transition-all active:scale-95 group">
+<span class="material-symbols-outlined transition-transform group-hover:-translate-y-1">backup</span>
+<span class="font-body-lg text-body-lg">Backup Now</span>
+</button>
+<button class="h-touch-target-min w-full bg-surface-container-low text-secondary border border-secondary/20 rounded-xl font-semibold flex items-center justify-center gap-3 hover:bg-surface-container-high transition-all active:scale-95">
+<span class="material-symbols-outlined">settings_backup_restore</span>
+<span class="font-body-lg text-body-lg">Restore from Backup</span>
+</button>
+</section>
+<!-- Automatic Settings -->
+<section class="bg-surface-container-low rounded-xl p-lg shadow-sm">
+<h3 class="font-headline-md text-headline-md mb-6">Automation</h3>
+<div class="space-y-6">
+<div class="flex items-center justify-between">
+<div>
+<p class="font-body-md text-body-md font-semibold text-on-surface">Auto Backup to Cloud</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Daily automated snapshots</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Frequency</label>
+<div class="relative">
+<select class="w-full bg-surface-container-lowest border-none shadow-sm rounded-lg h-12 px-4 appearance-none focus:ring-2 focus:ring-secondary font-body-md text-body-md">
+<option>Daily at 03:00 (Standard)</option>
+<option>Weekly (Mondays)</option>
+<option>Monthly (1st of month)</option>
+<option>Real-time (High Priority)</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-3 text-on-surface-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+</div>
+</section><section class="bg-surface-container-low rounded-xl p-lg shadow-sm mt-lg">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-secondary">cloud</span>
+<h3 class="font-headline-md text-headline-md">Google Drive Backup</h3>
+</div>
+<!-- Google Drive Connection Status -->
+<div class="bg-surface-container-lowest rounded-lg p-md mb-6 border border-outline-variant/30">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase mb-2">Connection State</p>
+<div class="flex items-center gap-2 mb-3">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+<p class="font-body-md text-body-md font-semibold">Connected as: storage@savpos.com</p>
+</div>
+<div class="space-y-1">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface-variant">Used Storage</span>
+<span class="text-on-surface">1.2GB / 15GB</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 8%"></div>
+</div>
+</div>
+</div>
+<!-- Backup Targets -->
+<div class="space-y-4 mb-6">
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Backup Targets</p>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md">Database Snapshots</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full peer peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md">Device Configuration</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full peer peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md">Transaction Logs</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-10 h-5 bg-surface-container-highest rounded-full peer peer-checked:bg-secondary after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:after:translate-x-full"></div>
+</label>
+</div>
+</div>
+<!-- Sync Devices Feature -->
+<div class="bg-surface-container p-md rounded-lg mb-6">
+<p class="font-body-md text-body-md font-semibold mb-1">Sync Devices</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">Save/Load entire POS terminal setup (printer, layout, permissions).</p>
+<div class="grid grid-cols-2 gap-2">
+<button class="text-label-md font-bold py-2 bg-surface-container-lowest border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">upload</span> Upload
+            </button>
+<button class="text-label-md font-bold py-2 bg-surface-container-lowest border border-outline-variant rounded-lg hover:bg-surface-container-high transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[18px]">download</span> Load
+            </button>
+</div>
+</div>
+<!-- Frequency & Manual Sync -->
+<div class="space-y-4">
+<div class="space-y-1">
+<label class="font-label-sm text-label-sm text-on-surface-variant uppercase">Frequency</label>
+<select class="w-full bg-surface-container-lowest border-none shadow-sm rounded-lg h-10 px-3 appearance-none focus:ring-2 focus:ring-secondary font-body-md text-body-md">
+<option>Real-time</option>
+<option selected="">Daily</option>
+<option>Weekly</option>
+</select>
+</div>
+<button class="w-full py-3 bg-primary-container text-on-primary rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-primary transition-all active:scale-95">
+<span class="material-symbols-outlined">sync</span>
+            Sync Now
+        </button>
+</div>
+</section>
+</div>
+<!-- Right Column: Backup History List -->
+<div class="lg:col-span-8 flex flex-col gap-lg">
+<section class="bg-surface-container-lowest rounded-xl shadow-sm border border-outline-variant/30 flex flex-col overflow-hidden">
+<div class="p-lg border-b border-outline-variant/20 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Backup History</h3>
+<div class="flex gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">filter_list</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant">refresh</span>
+</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-surface-container-low border-b border-outline-variant/20">
+<tr>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase">Snapshot Date</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase">Size</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase">Source</th>
+<th class="px-lg py-4 font-label-md text-label-md text-on-surface-variant uppercase text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<!-- History Item 1 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="px-lg py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">database</span>
+<div>
+<p class="font-body-md text-body-md font-semibold">Oct 24, 2023</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">03:00 AM</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4 font-label-md text-label-md">124.5 MB</td>
+<td class="px-lg py-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm">Automatic</span>
+</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-1">
+<button class="h-10 w-10 flex items-center justify-center rounded-full text-secondary hover:bg-secondary-fixed transition-colors" title="Restore">
+<span class="material-symbols-outlined">restore</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- History Item 2 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="px-lg py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">database</span>
+<div>
+<p class="font-body-md text-body-md font-semibold">Oct 23, 2023</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">05:12 PM</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4 font-label-md text-label-md">122.8 MB</td>
+<td class="px-lg py-4">
+<span class="bg-surface-container-highest text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">Manual</span>
+</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-1">
+<button class="h-10 w-10 flex items-center justify-center rounded-full text-secondary hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined">restore</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- History Item 3 -->
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="px-lg py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">database</span>
+<div>
+<p class="font-body-md text-body-md font-semibold">Oct 23, 2023</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">03:00 AM</p>
+</div>
+</div>
+</td>
+<td class="px-lg py-4 font-label-md text-label-md">121.1 MB</td>
+<td class="px-lg py-4">
+<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full font-label-sm text-label-sm">Automatic</span>
+</td>
+<td class="px-lg py-4 text-right">
+<div class="flex justify-end gap-1">
+<button class="h-10 w-10 flex items-center justify-center rounded-full text-secondary hover:bg-secondary-fixed transition-colors">
+<span class="material-symbols-outlined">restore</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-full text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-lg bg-surface-container-low/50 text-center">
+<button class="text-secondary font-semibold hover:underline flex items-center justify-center gap-2 mx-auto">
+                        View All History
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</section>
+<!-- Security Info Banner -->
+<section class="bg-secondary-container/20 rounded-xl p-lg flex items-start gap-4 border border-secondary-container/30">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<div>
+<h4 class="font-body-md text-body-md font-bold text-secondary">End-to-End Encryption Enabled</h4>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                        All backup data is encrypted using AES-256 standard before leaving your device. Only authenticated account holders can decrypt and restore this information to a SAV.POS terminal.
+                    </p>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 bg-surface dark:bg-primary border-t border-outline-variant dark:border-outline pb-safe z-50">
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">timer</span>
+<span class="font-label-md text-label-md">Work</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-md text-label-md">Finance</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-md text-label-md">Profile</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for backup button
+        const backupBtn = document.querySelector('button.bg-primary-container');
+        backupBtn.addEventListener('click', () => {
+            const originalText = backupBtn.innerHTML;
+            backupBtn.innerHTML = `
+                <span class="material-symbols-outlined animate-spin">refresh</span>
+                <span class="font-body-lg text-body-lg">Processing...</span>
+            `;
+            backupBtn.classList.add('opacity-80', 'pointer-events-none');
+            
+            setTimeout(() => {
+                backupBtn.innerHTML = `
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span class="font-body-lg text-body-lg">Backup Complete</span>
+                `;
+                backupBtn.classList.replace('bg-primary-container', 'bg-on-tertiary-container');
+                
+                setTimeout(() => {
+                    backupBtn.innerHTML = originalText;
+                    backupBtn.classList.replace('bg-on-tertiary-container', 'bg-primary-container');
+                    backupBtn.classList.remove('opacity-80', 'pointer-events-none');
+                }, 3000);
+            }, 2500);
+        });
+    </script>
+</body></html>

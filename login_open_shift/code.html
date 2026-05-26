@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Login &amp; Open Shift</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "secondary-fixed-dim": "#a2c9ff",
+                  "tertiary": "#000b05",
+                  "surface-bright": "#f7f9fb",
+                  "surface-container-lowest": "#ffffff",
+                  "primary": "#00091b",
+                  "outline": "#74777f",
+                  "primary-container": "#002045",
+                  "surface-container": "#eceef0",
+                  "surface-variant": "#e0e3e5",
+                  "on-background": "#191c1e",
+                  "tertiary-fixed-dim": "#9bd3b4",
+                  "on-error-container": "#93000a",
+                  "on-error": "#ffffff",
+                  "outline-variant": "#c4c6cf",
+                  "on-secondary-container": "#00477f",
+                  "on-tertiary-fixed": "#002113",
+                  "tertiary-fixed": "#b6efcf",
+                  "on-secondary-fixed-variant": "#004881",
+                  "on-primary": "#ffffff",
+                  "on-surface": "#191c1e",
+                  "primary-fixed": "#d6e3ff",
+                  "on-surface-variant": "#44474e",
+                  "secondary-fixed": "#d3e4ff",
+                  "inverse-surface": "#2d3133",
+                  "inverse-on-surface": "#eff1f3",
+                  "surface-container-low": "#f2f4f6",
+                  "on-primary-container": "#7089b3",
+                  "on-primary-fixed": "#001b3c",
+                  "primary-fixed-dim": "#aec7f5",
+                  "on-secondary-fixed": "#001c38",
+                  "on-tertiary-container": "#00b47d",
+                  "surface-container-high": "#e6e8ea",
+                  "secondary": "#1960a3",
+                  "surface-dim": "#d8dadc",
+                  "error-container": "#ffdad6",
+                  "on-tertiary-fixed-variant": "#195039",
+                  "surface-container-highest": "#e0e3e5",
+                  "surface": "#f7f9fb",
+                  "error": "#ba1a1a",
+                  "tertiary-container": "#002617",
+                  "inverse-primary": "#aec7f5",
+                  "on-primary-fixed-variant": "#2e476e",
+                  "surface-tint": "#465f87",
+                  "on-tertiary": "#ffffff",
+                  "secondary-container": "#7db6ff",
+                  "on-secondary": "#ffffff",
+                  "background": "#f7f9fb"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "base": "4px",
+                  "touch-target-min": "44px",
+                  "sm": "12px",
+                  "xl": "32px",
+                  "md": "16px",
+                  "xs": "8px",
+                  "lg": "24px"
+          },
+          "fontFamily": {
+                  "display-price": ["Inter"],
+                  "headline-lg-mobile": ["Inter"],
+                  "label-sm": ["JetBrains Mono"],
+                  "body-lg": ["Inter"],
+                  "headline-md": ["Inter"],
+                  "label-md": ["JetBrains Mono"],
+                  "headline-lg": ["Inter"],
+                  "body-md": ["Inter"]
+          },
+          "fontSize": {
+                  "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                  "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                  "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      line-height: 1;
+      text-transform: none;
+      letter-spacing: normal;
+      word-wrap: normal;
+      white-space: nowrap;
+      direction: ltr;
+    }
+    .pin-dot {
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .pin-dot.active {
+      background-color: #00091b;
+      transform: scale(1.2);
+    }
+    .glass-effect {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.85);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md text-body-md overflow-hidden h-screen flex flex-col">
+<!-- Main Canvas -->
+<main class="flex-grow flex items-center justify-center p-lg relative overflow-hidden">
+<!-- Abstract Background Shape -->
+<div class="absolute -top-24 -left-24 w-96 h-96 bg-primary-fixed opacity-20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary-container opacity-20 rounded-full blur-3xl"></div>
+<!-- Login Container -->
+<div class="w-full max-w-md z-10 transition-all duration-500 transform scale-100 opacity-100" id="login-container">
+<div class="bg-surface-container-lowest shadow-lg rounded-xl p-xl flex flex-col items-center">
+<!-- Brand Identity -->
+<div class="mb-xl text-center">
+<h1 class="font-headline-lg text-headline-lg text-primary tracking-tight">Sav.pos</h1>
+<p class="text-on-surface-variant font-body-md mt-xs">Professional POS System</p>
+</div>
+<!-- PIN Status -->
+<div class="flex gap-md mb-xl h-touch-target-min items-center">
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant" id="dot-1"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant" id="dot-2"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant" id="dot-3"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant" id="dot-4"></div>
+</div>
+<p class="mb-lg text-on-surface-variant h-6 transition-opacity" id="pin-message">請輸入 4 位數 PIN 碼</p>
+<!-- Number Pad -->
+<div class="grid grid-cols-3 gap-md w-full max-w-[280px]">
+<template id="numpad-btn">
+<button class="w-full h-touch-target-min flex items-center justify-center rounded-lg bg-surface-container-low font-headline-md text-headline-md text-primary hover:bg-surface-variant transition-all active:scale-90"></button>
+</template>
+</div>
+<div class="grid grid-cols-3 gap-md w-full max-w-[280px]" id="numpad-container">
+<!-- JS will populate -->
+</div>
+</div>
+</div>
+<!-- Open Shift Modal (Hidden by Default) -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-lg bg-primary/20 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300" id="shift-modal">
+<div class="bg-surface-container-lowest shadow-lg rounded-xl w-full max-w-md p-xl transform translate-y-8 transition-transform duration-300">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-12 h-12 rounded-lg bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed">
+<span class="material-symbols-outlined" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">開班設定</h2>
+<p class="text-on-surface-variant text-label-md font-label-md">Open Shift Configuration</p>
+</div>
+</div>
+<div class="space-y-lg">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant ml-xs">請輸入備用現金金額</label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant font-display-price text-lg">$</span>
+<input class="w-full h-14 pl-10 pr-md bg-surface-container-low border-none rounded-lg font-headline-md text-headline-md text-primary focus:ring-2 focus:ring-secondary transition-all outline-none" id="float-input" placeholder="0.00" type="number" value="1000"/>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg flex justify-between items-center">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-md" data-icon="person">person</span>
+<span class="text-label-md font-label-md">Cashier</span>
+</div>
+<span class="font-body-md text-primary font-bold">Sav.pos Admin</span>
+</div>
+<button class="w-full h-14 bg-tertiary-container text-on-tertiary-container rounded-lg font-headline-md text-headline-md flex items-center justify-center gap-sm hover:brightness-110 active:scale-95 transition-all shadow-md" id="confirm-shift">
+<span>確認開班</span>
+<span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Image/Atmospheric Placeholder (hidden but present for visual system) -->
+<div class="hidden">
+<img data-alt="A clean, minimalist high-end boutique interior with soft ambient lighting and premium finishes. The scene captures a sophisticated retail environment where the color palette is dominated by muted grays and crisp whites, reflecting a professional and efficient business atmosphere. Natural light streams through large windows, highlighting the quality of the products and the sleek, modern design of the checkout area." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6BZ2zXTdCkij_bXHy5QeivW6Z0SMT8PupQb3zmGQ8QHHRDRvX6J7aFPLzjOzTqrWBnkcVHCD8rtkxFV1IL8hOm5RtE7DPTaJAhOYlwc5Gh0VrltYG7mI6g_NikJz9rQy9ID1Rb-ozS5LTpZd4WZDRdqoowkw8Nk1xVXLwkM-_IrOxY95CPQkrOzCl_79cA20MdD0V_pYIGPu5Nl9MpWhe75HP1tpHiSOdSJUMhkJ-T08ZLqRXu0ZAGYX1Gcmvs1ETfef7tfBopl4"/>
+</div>
+<script>
+    const numpadContainer = document.getElementById('numpad-container');
+    const dots = [1, 2, 3, 4].map(i => document.getElementById(`dot-${i}`));
+    const loginContainer = document.getElementById('login-container');
+    const shiftModal = document.getElementById('shift-modal');
+    const pinMessage = document.getElementById('pin-message');
+    const floatInput = document.getElementById('float-input');
+    const confirmBtn = document.getElementById('confirm-shift');
+
+    let currentPin = '';
+    const correctPin = '1234';
+
+    // Build Numpad
+    const buttons = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'C', '0', '⌫'];
+    buttons.forEach(label => {
+      const btn = document.createElement('button');
+      btn.className = "w-full h-14 flex items-center justify-center rounded-lg bg-surface-container-low font-headline-md text-headline-md text-primary hover:bg-surface-variant transition-all active:scale-90 shadow-sm";
+      if (label === 'C') {
+        btn.innerHTML = '<span class="text-error font-bold">C</span>';
+        btn.onclick = () => resetPin();
+      } else if (label === '⌫') {
+        btn.innerHTML = '<span class="material-symbols-outlined" data-icon="backspace">backspace</span>';
+        btn.onclick = () => backspace();
+      } else {
+        btn.innerText = label;
+        btn.onclick = () => enterDigit(label);
+      }
+      numpadContainer.appendChild(btn);
+    });
+
+    function updateDots() {
+      dots.forEach((dot, index) => {
+        if (index < currentPin.length) {
+          dot.classList.add('active', 'bg-primary');
+          dot.classList.remove('border-outline-variant');
+        } else {
+          dot.classList.remove('active', 'bg-primary');
+          dot.classList.add('border-outline-variant');
+        }
+      });
+    }
+
+    function enterDigit(digit) {
+      if (currentPin.length < 4) {
+        currentPin += digit;
+        updateDots();
+        if (currentPin.length === 4) {
+          validatePin();
+        }
+      }
+    }
+
+    function backspace() {
+      currentPin = currentPin.slice(0, -1);
+      updateDots();
+    }
+
+    function resetPin() {
+      currentPin = '';
+      updateDots();
+    }
+
+    function validatePin() {
+      if (currentPin === correctPin) {
+        pinMessage.innerText = '驗證成功';
+        pinMessage.classList.add('text-on-tertiary-container');
+        
+        // Transition to Modal
+        setTimeout(() => {
+          loginContainer.classList.add('opacity-0', 'scale-95');
+          setTimeout(() => {
+            loginContainer.classList.add('hidden');
+            showShiftModal();
+          }, 400);
+        }, 300);
+      } else {
+        pinMessage.innerText = 'PIN 碼錯誤，請再試一次';
+        pinMessage.classList.add('text-error');
+        dots.forEach(dot => dot.classList.add('bg-error'));
+        setTimeout(() => {
+          resetPin();
+          pinMessage.innerText = '請輸入 4 位數 PIN 碼';
+          pinMessage.classList.remove('text-error');
+        }, 1000);
+      }
+    }
+
+    function showShiftModal() {
+      shiftModal.classList.remove('pointer-events-none');
+      shiftModal.classList.add('opacity-100');
+      shiftModal.querySelector('div').classList.remove('translate-y-8');
+      floatInput.focus();
+    }
+
+    confirmBtn.onclick = () => {
+      confirmBtn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="progress_activity">progress_activity</span>';
+      confirmBtn.disabled = true;
+      
+      setTimeout(() => {
+        // Final success state transition
+        confirmBtn.innerHTML = '<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span> <span>登入成功</span>';
+        confirmBtn.classList.replace('bg-tertiary-container', 'bg-secondary-container');
+        
+        setTimeout(() => {
+          // Here you would redirect to the main dashboard
+          alert('正在進入系統...');
+        }, 800);
+      }, 1200);
+    };
+  </script>
+</body></html>

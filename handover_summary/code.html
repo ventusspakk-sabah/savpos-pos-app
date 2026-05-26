@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Project Handover Summary | Sav.pos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        @keyframes subtle-float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: subtle-float 6s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "on-secondary-container": "#00477f",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "outline": "#74777f",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-primary-container": "#7089b3",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#465f87",
+                        "tertiary-container": "#002617",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-container": "#002045",
+                        "error": "#ba1a1a",
+                        "tertiary": "#000b05",
+                        "primary": "#00091b",
+                        "inverse-primary": "#aec7f5",
+                        "on-primary-fixed": "#001b3c",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-tertiary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-highest": "#e0e3e5",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#00b47d",
+                        "on-surface": "#191c1e",
+                        "secondary-container": "#7db6ff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4ff",
+                        "secondary": "#1960a3",
+                        "on-background": "#191c1e",
+                        "surface-bright": "#f7f9fb",
+                        "outline-variant": "#c4c6cf",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-surface-variant": "#44474e",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "touch-target-min": "44px",
+                        "sm": "12px",
+                        "xs": "8px",
+                        "md": "16px",
+                        "base": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-price": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim text-primary dark:text-primary-fixed-dim w-full top-0 sticky border-b border-outline-variant dark:border-outline z-50 flex justify-between items-center px-lg py-md">
+<div class="flex items-center gap-sm cursor-pointer active:scale-95 transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="admin_panel_settings">admin_panel_settings</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">Admin Suite</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors p-sm rounded-full cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<div class="hidden md:flex items-center gap-xs text-primary font-bold">
+<span class="font-label-md text-label-md">DASHBOARD</span>
+</div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)]">
+<!-- NavigationDrawer (Desktop Only) -->
+<aside class="hidden md:flex flex-col h-[calc(100vh-64px)] w-72 sticky top-16 bg-surface-container-low dark:bg-surface-container-lowest border-r border-outline-variant dark:border-outline py-xl px-md space-y-xs shrink-0">
+<div class="flex items-center gap-md px-md mb-xl">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Admin Avatar" class="w-full h-full object-cover" data-alt="A professional portrait of a senior operations lead in a high-end corporate environment. The person is dressed in modern, sophisticated business casual attire, with a soft-focus background of a contemporary, glass-walled office space. The lighting is crisp and natural, highlighting a calm, authoritative presence in a bright, modern light-mode setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuhCN6dPmNf4qn0k35lVKH211zw1mqoeND9MCm6MYswWgKWfhwVWzQP5piL32Ep3Y4eMQYcNaeJvfkIqfSfq-rbMivkCiVFDfD8Axkx-RQn9S5H3CTaq3x8fwWaKqaz6E6tPgDZ6d0PRmKchZoDTnX9wrq-fKHknPlC0346kqQ9-EmXDkRE68p4b6ZSkZ-heOr_gLRRVtjvT2vBXbKc9RJMOfkLKSOFJwsAHYX3ybq1IUDZx5Se1jJhprmTu1wEzoN6HsbcV3ZotA"/>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-black text-primary dark:text-primary-fixed-dim">Operations Lead</h3>
+<p class="text-on-surface-variant text-sm">POS Terminal Alpha</p>
+</div>
+</div>
+<nav class="flex flex-col gap-xs">
+<a class="bg-secondary-container text-on-secondary-container dark:bg-primary-container dark:text-on-primary-container font-bold rounded-full flex items-center gap-md px-md py-sm transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-lg text-body-lg">Dashboard</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high flex items-center gap-md px-md py-sm rounded-full transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-body-lg text-body-lg">Staff</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high flex items-center gap-md px-md py-sm rounded-full transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-body-lg text-body-lg">Catalog</span>
+</a>
+<a class="text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container-high flex items-center gap-md px-md py-sm rounded-full transition-all active:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-lg text-body-lg">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-grow p-md md:p-xl lg:px-24">
+<!-- Hero Header Section -->
+<section class="mb-xl text-center md:text-left">
+<div class="inline-flex items-center gap-sm bg-tertiary-fixed text-on-tertiary-fixed px-md py-base rounded-full mb-md animate-pulse">
+<span class="material-symbols-outlined text-sm" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Handover Ready</span>
+</div>
+<h2 class="font-display-price text-display-price text-primary mb-sm leading-tight">Congratulations.</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">The Sav.pos environment is now fully deployed and optimized. All core systems are operational, and the project handover is complete.</p>
+</section>
+<!-- Bento Grid Summary -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg auto-rows-min mb-xl">
+<!-- Main Status Card (Tech & Health) -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant/30 relative overflow-hidden group">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary-container/5 rounded-bl-full -mr-8 -mt-8 transition-all group-hover:scale-110"></div>
+<div class="relative z-10">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">System Health Check</h3>
+<p class="font-label-md text-label-md text-on-tertiary-container">Status: All Systems Nominal</p>
+</div>
+<button class="flex items-center gap-xs bg-surface-container-high px-md py-sm rounded-lg font-label-md text-label-md hover:bg-outline-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+                                Re-run Scan
+                            </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md">
+<div class="p-md rounded-lg bg-background border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="speed">speed</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Latency</p>
+<p class="font-headline-md text-headline-md text-primary">24ms</p>
+</div>
+<div class="p-md rounded-lg bg-background border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="cloud_done">cloud_done</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Cloud Sync</p>
+<p class="font-headline-md text-headline-md text-primary">100%</p>
+</div>
+<div class="p-md rounded-lg bg-background border border-outline-variant/20">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="security">security</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Firewall</p>
+<p class="font-headline-md text-headline-md text-primary">Active</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Handover Summary Card (Modules) -->
+<div class="md:col-span-4 bg-primary text-on-primary rounded-xl p-lg shadow-md flex flex-col justify-between">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary-fixed mb-md">Key Modules</h3>
+<ul class="space-y-sm">
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">POS Terminal Interface</span>
+</li>
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">Staff Management (Tech)</span>
+</li>
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">Admin Master Suite</span>
+</li>
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">Finance &amp; Reporting</span>
+</li>
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">Cloud Database Node</span>
+</li>
+</ul>
+</div>
+<div class="mt-lg pt-lg border-t border-on-primary/10">
+<p class="font-label-md text-label-md text-primary-fixed-dim">Environment Version: 2.4.0-PRO</p>
+</div>
+</div>
+<!-- Documentation Card -->
+<div class="md:col-span-6 bg-surface-container-high rounded-xl p-lg flex items-center gap-lg group cursor-pointer hover:bg-surface-variant transition-all">
+<div class="w-16 h-16 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="menu_book">menu_book</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md text-primary">Documentation</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Access API guides and technical specs.</p>
+</div>
+<span class="material-symbols-outlined ml-auto text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Support Card -->
+<div class="md:col-span-6 bg-secondary-container text-on-secondary-container rounded-xl p-lg flex items-center gap-lg group cursor-pointer hover:brightness-105 transition-all">
+<div class="w-16 h-16 rounded-xl bg-on-secondary-container/10 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<h4 class="font-headline-md text-headline-md">Concierge Support</h4>
+<p class="font-body-md text-body-md opacity-80">24/7 technical assistance for owners.</p>
+</div>
+<span class="material-symbols-outlined ml-auto group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Visual Accent Image Card -->
+<div class="md:col-span-12 h-64 rounded-xl overflow-hidden relative shadow-lg group">
+<img alt="Workspace" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A wide, cinematic shot of a minimalist, luxury corporate workspace during the golden hour. Large floor-to-ceiling windows reveal a blurred cityscape, while the foreground features a clean glass desk with a single premium laptop and a subtle desk plant. The lighting is warm and sophisticated, creating a serene and professional atmosphere that embodies success and high-end technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvA9q9kgJNzpbbHcMp0SbovqYXJGTsJrj5QJvBm7kWCgqfxP4Q-faYkTKXlwHyUDe2-wMSVNiUhyZHiQclePMQQIQYxwSZVWeywW5TOTuEfnVg5o8C2kPBTa_1yqdXbGhmK_D1w1AX5xm8F3-wbUJfPj2SYBrroabq5OZFxNkPsrJ9JjrJQy4xkXkLf6lGGVd7wPJ2ZpgjtbAzbKx34pAC3y9-jAeoUpbYF83xfDp2rncyz7JkDp8Tf3NZZswy4-NVoq1pPZIPD08"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-xl">
+<h3 class="text-white font-headline-lg text-headline-lg mb-xs">Ready for Operation.</h3>
+<p class="text-white/70 font-body-lg text-body-lg">Launch the terminal to begin processing your first transaction.</p>
+</div>
+</div>
+</div>
+<!-- CTA Section -->
+<div class="flex flex-col md:flex-row gap-md justify-center mt-xl pb-32 md:pb-0">
+<button class="bg-tertiary-container text-on-tertiary-container px-xl py-md rounded-xl font-headline-md text-headline-md flex items-center justify-center gap-md shadow-md active:scale-95 transition-all hover:brightness-125">
+<span class="material-symbols-outlined" data-icon="rocket_launch" data-weight="fill" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+                    Enter Terminal
+                </button>
+<button class="bg-surface-container-lowest text-primary border border-outline-variant px-xl py-md rounded-xl font-headline-md text-headline-md flex items-center justify-center gap-md shadow-sm active:scale-95 transition-all hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="share">share</span>
+                    Share Dashboard
+                </button>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface dark:bg-surface-dim border-t border-outline-variant dark:border-outline shadow-sm flex justify-around items-center h-16 px-4">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container dark:bg-secondary-container dark:text-on-secondary-container rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-container-highest active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Simple interactivity for the 'scan' button
+        document.querySelector('button:has(.material-symbols-outlined[data-icon="refresh"])').addEventListener('click', function() {
+            const btn = this;
+            const icon = btn.querySelector('.material-symbols-outlined');
+            icon.classList.add('animate-spin');
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                icon.classList.remove('animate-spin');
+                btn.disabled = false;
+                alert('System Health Check completed. Status: All systems green.');
+            }, 2000);
+        });
+    </script>
+</body></html>

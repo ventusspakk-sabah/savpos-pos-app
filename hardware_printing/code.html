@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hardware Configuration | Sav.pos Spa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "on-tertiary-fixed": "#002113",
+                  "on-tertiary-container": "#00b47d",
+                  "on-error-container": "#93000a",
+                  "tertiary": "#000b05",
+                  "surface-container-low": "#f2f4f6",
+                  "on-secondary-fixed": "#001c38",
+                  "surface-container-highest": "#e0e3e5",
+                  "primary-fixed": "#d6e3ff",
+                  "on-primary-container": "#7089b3",
+                  "inverse-surface": "#2d3133",
+                  "on-primary-fixed": "#001b3c",
+                  "tertiary-fixed": "#b6efcf",
+                  "secondary-fixed-dim": "#a2c9ff",
+                  "surface-container-high": "#e6e8ea",
+                  "surface-dim": "#d8dadc",
+                  "on-error": "#ffffff",
+                  "tertiary-container": "#002617",
+                  "inverse-on-surface": "#eff1f3",
+                  "secondary-fixed": "#d3e4ff",
+                  "error": "#ba1a1a",
+                  "on-secondary": "#ffffff",
+                  "surface-container-lowest": "#ffffff",
+                  "outline-variant": "#c4c6cf",
+                  "on-secondary-container": "#00477f",
+                  "surface-variant": "#e0e3e5",
+                  "background": "#f7f9fb",
+                  "on-tertiary-fixed-variant": "#195039",
+                  "surface-container": "#eceef0",
+                  "surface": "#f7f9fb",
+                  "tertiary-fixed-dim": "#9bd3b4",
+                  "primary-container": "#002045",
+                  "outline": "#74777f",
+                  "inverse-primary": "#aec7f5",
+                  "on-tertiary": "#ffffff",
+                  "on-background": "#191c1e",
+                  "on-primary-fixed-variant": "#2e476e",
+                  "error-container": "#ffdad6",
+                  "primary-fixed-dim": "#aec7f5",
+                  "on-surface-variant": "#44474e",
+                  "on-secondary-fixed-variant": "#004881",
+                  "primary": "#00091b",
+                  "surface-tint": "#465f87",
+                  "on-surface": "#191c1e",
+                  "secondary-container": "#7db6ff",
+                  "on-primary": "#ffffff",
+                  "secondary": "#1960a3",
+                  "surface-bright": "#f7f9fb"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.25rem",
+                  "lg": "0.5rem",
+                  "xl": "0.75rem",
+                  "full": "9999px"
+          },
+          "spacing": {
+                  "xl": "32px",
+                  "sm": "12px",
+                  "touch-target-min": "44px",
+                  "md": "16px",
+                  "base": "4px",
+                  "xs": "8px",
+                  "lg": "24px"
+          },
+          "fontFamily": {
+                  "headline-md": ["Inter"],
+                  "display-price": ["Inter"],
+                  "label-sm": ["JetBrains Mono"],
+                  "body-md": ["Inter"],
+                  "headline-lg": ["Inter"],
+                  "body-lg": ["Inter"],
+                  "label-md": ["JetBrains Mono"],
+                  "headline-lg-mobile": ["Inter"]
+          },
+          "fontSize": {
+                  "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                  "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                  "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                  "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                  "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                  "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                  "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                  "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #e0e3e5;
+      border-radius: 10px;
+    }
+    .glass-effect {
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.85);
+    }
+    .receipt-paper {
+      background: #ffffff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .receipt-paper::after {
+      content: "";
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: radial-gradient(circle, transparent, transparent 50%, #ffffff 50%, #ffffff 100%);
+      background-size: 20px 20px;
+      background-position: 0 -10px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen">
+<header class="bg-surface-container-lowest dark:bg-surface-container shadow-sm w-full top-0 sticky flex justify-between items-center px-md py-xs z-40">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-variant/50 transition-colors rounded-full p-2 active:scale-95 duration-200">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary dark:text-secondary-fixed">Sav.pos Spa</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="font-label-md text-on-surface-variant hidden md:block">Terminal 04 - East Wing</span>
+<div class="h-10 w-10 rounded-full bg-surface-container-high overflow-hidden shadow-sm">
+<img alt="Staff Profile" class="w-full h-full object-cover" data-alt="A professional close-up portrait of a woman in her late 30s wearing a clean, modern spa uniform. She has a warm, confident expression. The lighting is soft and flattering, emphasizing a serene, high-end hospitality environment with blurred wellness accents in the background. The overall aesthetic is professional, sophisticated, and light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-uG6qLX6UOF2KoC-Z71SF3QSC30h-1EGlm0UJ-JRDamlK-LaaRPjqOpqjsP2kd64efYTk7gFj269Sb4rWt1RKxYNgs3FEjJvatkcXIjMyhu6gQsqSwTyPBb_SuskoBRdE8q6tyvew3GHyJk9fLbu4BJ0sUvldgAoAjiZdwynHsvBI7n90ARmFtmXco52LQ3Lw6fVKTSr-DczAMXyU9nxwi8ftyhpMmFICvIRyCs-PNGlDPzgAiLaDGKdrOd1vQGLxPf2unEpTPjk"/>
+</div>
+</div>
+</header>
+<div class="flex h-[calc(100vh-64px)] overflow-hidden">
+<aside class="hidden md:block h-full w-80 bg-surface-container-low dark:bg-inverse-surface shadow-lg z-50 overflow-y-auto">
+<div class="p-lg flex flex-col gap-xs">
+<div class="flex items-center gap-md mb-lg">
+<div class="p-3 bg-secondary-container text-on-secondary-container rounded-xl">
+<span class="material-symbols-outlined">spa</span>
+</div>
+<div>
+<p class="font-headline-md text-on-surface font-bold">Spa Manager</p>
+<p class="font-label-sm text-on-surface-variant">Professional Edition</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md">Inventory</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-body-md">Staff</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">person_search</span>
+<span class="font-body-md">Customers</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md font-semibold">Settings</span>
+</a>
+<div class="my-4 border-t border-outline-variant/30 mx-6"></div>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 active:scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md">Logout</span>
+</a>
+</nav>
+<div class="mt-auto p-lg text-center">
+<p class="font-label-sm text-outline">v2.4.0</p>
+</div>
+</div>
+</aside>
+<main class="flex-1 overflow-y-auto custom-scrollbar bg-background p-md md:p-lg">
+<div class="max-w-6xl mx-auto">
+<header class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-base">Hardware Configuration</h2>
+<p class="text-on-surface-variant">Manage your peripherals and receipt customization for Terminal 04.</p>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<div class="lg:col-span-7 flex flex-col gap-lg">
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg border border-outline-variant/10">
+<div class="flex items-center gap-sm mb-md">
+<span class="material-symbols-outlined text-secondary">print</span>
+<h3 class="font-headline-md text-on-surface">Printer Setup</h3>
+</div>
+<div class="space-y-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Connection Type</label>
+<div class="flex gap-sm">
+<button class="flex-1 flex items-center justify-center gap-xs py-3 rounded-lg border-2 border-secondary bg-secondary-container/20 text-on-secondary-container">
+<span class="material-symbols-outlined text-[18px]">bluetooth</span>
+<span class="font-label-md">Bluetooth</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-xs py-3 rounded-lg border border-outline-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">lan</span>
+<span class="font-label-md">Network</span>
+</button>
+<button class="flex-1 flex items-center justify-center gap-xs py-3 rounded-lg border border-outline-variant hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[18px]">usb</span>
+<span class="font-label-md">USB Direct</span>
+</button>
+</div>
+</div>
+<div class="bg-surface-container rounded-lg p-md flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-on-tertiary-container/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-tertiary-container">check_circle</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface font-bold">Star Micronics mC-Print3</p>
+<p class="text-label-sm text-outline">Connected via Bluetooth • ID: 88:9F:FA:11</p>
+</div>
+</div>
+<button class="px-md py-2 bg-surface-container-highest rounded-full font-label-md text-on-surface-variant hover:bg-outline-variant transition-colors">Refresh</button>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Auto-Print Receipt</label>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Paper Width</label>
+<select class="bg-surface-container-low border-none rounded-lg font-body-md focus:ring-2 focus:ring-secondary">
+<option>80mm (Standard)</option>
+<option>58mm (Mobile)</option>
+</select>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg border border-outline-variant/10">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">barcode_scanner</span>
+<h3 class="font-headline-md text-on-surface">Scanner Sensitivity</h3>
+</div>
+<span class="bg-tertiary-fixed/30 text-on-tertiary-fixed-variant font-label-sm px-2 py-1 rounded">CALIBRATED</span>
+</div>
+<div class="space-y-lg">
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-center">
+<span class="font-label-md text-on-surface-variant">Scan Response Speed</span>
+<span class="font-label-sm text-secondary">High (150ms)</span>
+</div>
+<input class="w-full h-2 bg-surface-container-highest rounded-lg appearance-none cursor-pointer accent-secondary" type="range"/>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md rounded-lg bg-surface-container-low flex items-center gap-md">
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant">volume_up</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface">Feedback Sound</p>
+<p class="text-label-sm text-outline">Chirp on successful scan</p>
+</div>
+<input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+</div>
+<div class="p-md rounded-lg bg-surface-container-low flex items-center gap-md">
+<div class="p-2 bg-white rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-on-surface-variant">flashlight_on</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-on-surface">Aimer Light</p>
+<p class="text-label-sm text-outline">Show red laser guide</p>
+</div>
+<input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+</div>
+</div>
+</div>
+</section>
+</div>
+<div class="lg:col-span-5">
+<section class="bg-surface-container-low rounded-xl shadow-md p-lg sticky top-lg">
+<div class="flex items-center justify-between mb-lg">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-secondary">receipt</span>
+<h3 class="font-headline-md text-on-surface">Receipt Template</h3>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-secondary">edit</button>
+</div>
+<div class="receipt-paper w-full max-w-[320px] mx-auto p-lg font-label-md flex flex-col gap-sm text-on-surface">
+<div class="text-center mb-md">
+<div class="w-16 h-16 bg-surface-container-highest rounded-full mx-auto mb-xs flex items-center justify-center">
+<span class="material-symbols-outlined text-outline text-3xl">spa</span>
+</div>
+<h4 class="font-bold text-headline-md uppercase tracking-tight">Sav.pos Spa</h4>
+<p class="text-[11px] text-on-surface-variant leading-tight">
+                    123 Serenity Blvd, Suite 400<br/>
+                    Beverly Hills, CA 90210<br/>
+                    Tel: (555) 012-3456
+                  </p>
+</div>
+<div class="border-t border-dashed border-outline-variant/50 pt-sm">
+<div class="flex justify-between text-[11px] mb-xs">
+<span>Order: #88219</span>
+<span>10/24/2023 14:22</span>
+</div>
+<div class="flex justify-between text-[11px]">
+<span>Staff: Sarah J.</span>
+<span>Term: 04</span>
+</div>
+</div>
+<div class="border-y border-dashed border-outline-variant/50 py-sm flex flex-col gap-base">
+<div class="flex justify-between">
+<span class="flex-1 text-[13px]">Deep Tissue Massage (60m)</span>
+<span class="w-16 text-right font-label-sm">$125.00</span>
+</div>
+<div class="flex justify-between">
+<span class="flex-1 text-[13px]">Aromatherapy Oils Add-on</span>
+<span class="w-16 text-right font-label-sm">$25.00</span>
+</div>
+<div class="flex justify-between">
+<span class="flex-1 text-[13px]">Eucalyptus Face Mist</span>
+<span class="w-16 text-right font-label-sm">$18.50</span>
+</div>
+</div>
+<div class="flex flex-col gap-base pt-xs">
+<div class="flex justify-between font-label-sm">
+<span>Subtotal</span>
+<span>$168.50</span>
+</div>
+<div class="flex justify-between font-label-sm">
+<span>Tax (9.5%)</span>
+<span>$16.01</span>
+</div>
+<div class="flex justify-between font-bold text-headline-md pt-xs">
+<span>TOTAL</span>
+<span>$184.51</span>
+</div>
+</div>
+<div class="mt-lg text-center flex flex-col items-center gap-xs">
+<div class="w-24 h-24 bg-on-background/5 p-2 flex items-center justify-center">
+<img alt="Receipt QR Code" class="w-full h-full mix-blend-multiply opacity-80" data-alt="A clean, minimalist QR code rendered on white textured paper. The QR code represents a high-end point of sale transaction receipt. The surrounding receipt features crisp black typography and delicate dashed lines. The lighting is bright and even, creating a professional and reliable retail atmosphere consistent with a luxury spa environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOqMy1be9H-YLSxX6-p-SQztrDOA1w9z8hzuxekFIpcuNHM1ulJh2UrLnDjMpp3tyepVN8ZJ181eQNx_OduLh8zosHvuFcFJaBlcredxIPIlMqlb20WAfRUROu1fHOJiUieqznLD06UI9zmg0ggfa0SBwKKLNe5ua9WK861yDARfHcb4qMBKZjk8bK0AF7uDWfgcrdCqR6eKqBd-nlp90fpwfIXvi9okr8SMpPPuFkUJCl4cjSyqC9TyMaFfgjL-4bBu-xXzdtM10"/>
+</div>
+<p class="text-[10px] text-on-surface-variant italic">Thank you for visiting Sav.pos Spa.<br/>Please scan to rate your experience.</p>
+</div>
+</div>
+<div class="mt-lg flex flex-col gap-sm">
+<button class="w-full bg-tertiary-container text-on-tertiary-container font-bold py-md rounded-xl flex items-center justify-center gap-md shadow-sm hover:opacity-90 active:scale-95 transition-all">
+<span class="material-symbols-outlined">print</span>
+<span>Print Test Page</span>
+</button>
+<button class="w-full border border-outline-variant text-on-surface py-md rounded-xl font-label-md hover:bg-surface-variant transition-colors">
+                  Upload New Brand Logo
+                </button>
+</div>
+</section>
+</div>
+</div>
+</div>
+</main>
+</div>
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-xs pt-xs bg-surface-container-low dark:bg-surface-container-high shadow-md rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-6 py-1 active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+    // Simple ripple interaction for buttons
+    document.querySelectorAll('button, a').forEach(elem => {
+      elem.addEventListener('mousedown', function() {
+        this.style.transition = 'transform 0.1s ease';
+        this.style.transform = 'scale(0.97)';
+      });
+      elem.addEventListener('mouseup', function() {
+        this.style.transform = 'scale(1)';
+      });
+      elem.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1)';
+      });
+    });
+
+    // Scanner Range simulation
+    const slider = document.querySelector('input[type="range"]');
+    const speedDisplay = document.querySelector('.text-secondary');
+    if(slider) {
+      slider.addEventListener('input', (e) => {
+        const val = e.target.value;
+        const speed = 500 - (val * 4);
+        speedDisplay.innerText = val > 80 ? `Critical (${speed}ms)` : val > 40 ? `High (${speed}ms)` : `Standard (${speed}ms)`;
+      });
+    }
+  </script>
+</body></html>

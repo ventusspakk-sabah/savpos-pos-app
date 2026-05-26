@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registration Successful | Sav.pos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-up {
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline": "#74777f",
+                      "tertiary-fixed-dim": "#9bd3b4",
+                      "primary-container": "#002045",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e6e8ea",
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-background": "#191c1e",
+                      "inverse-primary": "#aec7f5",
+                      "on-surface": "#191c1e",
+                      "surface-tint": "#465f87",
+                      "on-secondary-fixed-variant": "#004881",
+                      "primary": "#00091b",
+                      "primary-fixed-dim": "#aec7f5",
+                      "on-surface-variant": "#44474e",
+                      "surface-bright": "#f7f9fb",
+                      "secondary": "#1960a3",
+                      "secondary-container": "#7db6ff",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e0e3e5",
+                      "tertiary": "#000b05",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary-fixed": "#001c38",
+                      "on-tertiary-fixed": "#002113",
+                      "on-tertiary-container": "#00b47d",
+                      "on-error-container": "#93000a",
+                      "tertiary-fixed": "#b6efcf",
+                      "on-primary-fixed": "#001b3c",
+                      "secondary-fixed-dim": "#a2c9ff",
+                      "primary-fixed": "#d6e3ff",
+                      "on-primary-container": "#7089b3",
+                      "inverse-surface": "#2d3133",
+                      "on-secondary": "#ffffff",
+                      "error": "#ba1a1a",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary-fixed": "#d3e4ff",
+                      "tertiary-container": "#002617",
+                      "surface-dim": "#d8dadc",
+                      "on-error": "#ffffff",
+                      "surface-container": "#eceef0",
+                      "surface": "#f7f9fb",
+                      "surface-variant": "#e0e3e5",
+                      "on-tertiary-fixed-variant": "#195039",
+                      "background": "#f7f9fb",
+                      "outline-variant": "#c4c6cf",
+                      "on-secondary-container": "#00477f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "md": "16px",
+                      "base": "4px",
+                      "xl": "32px",
+                      "sm": "12px",
+                      "touch-target-min": "44px",
+                      "xs": "8px",
+                      "lg": "24px"
+              },
+              "fontFamily": {
+                      "display-price": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "label-md": ["JetBrains Mono"],
+                      "headline-lg": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["JetBrains Mono"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col items-center justify-center relative overflow-hidden">
+<!-- Ambient Background Image -->
+<div class="fixed inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A luxurious and serene spa environment featuring smooth river stones, a single white orchid, and soft candlelight reflecting off tranquil water. The lighting is ethereal and high-key, emphasizing a clean, sophisticated light-mode aesthetic. Minimalist architecture with natural wood textures and a palette of soft whites and deep navy accents creates a mood of professional calm and premium reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhVDxbDsd4UwwQBmH_OJLO2e_f4F4L3BUakl6JZGG-SelTuQ6Y6OzWae6cb96kmC8riZ2kLloWilAQ8bfIyi_8XPrFt7jHCbPQjo_Um1dcjAJAqaDEeNGxZqlQdBsRyE1NeqD4H0jmF3SLIpvgaWlFJ3rdjuuc43JeE3t8ufgd86oK6Z_L0q7t0_KXXNJhbXvXSpVdF71GgA238fmEXVo7Wsz2HVzmIHbgjwjFIvt17TFMVW7gLh49Ov72f7Jx57Q91dHZaN8k3xU"/>
+<div class="absolute inset-0 bg-gradient-to-tr from-surface/80 via-transparent to-surface-bright/40"></div>
+</div>
+<!-- Main Content Canvas -->
+<main class="relative z-10 w-full max-w-2xl px-md text-center">
+<!-- Logo/Header (TopAppBar Semantic) -->
+<header class="mb-xl animate-fade-up" style="animation-delay: 0.1s;">
+<div class="flex flex-col items-center gap-base">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="spa">spa</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Sav.pos</h1>
+</div>
+</header>
+<!-- Success Message Card -->
+<div class="glass-panel rounded-xl shadow-lg p-lg md:p-xl animate-fade-up" style="animation-delay: 0.2s;">
+<div class="mb-lg">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-tertiary-fixed text-on-tertiary-fixed mb-md">
+<span class="material-symbols-outlined text-3xl" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Registration Successful</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-md mx-auto">
+                    Welcome to the next level of boutique hospitality management. Your digital environment is ready.
+                </p>
+</div>
+<!-- Business Identity Summary (Bento-style snippet) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md text-left mb-xl">
+<div class="bg-surface-container-low rounded-lg p-md border border-outline-variant/30 transition-all hover:shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-base uppercase tracking-wider">Business Identity</p>
+<p class="font-headline-md text-headline-md text-primary truncate">Lumina Wellness &amp; Spa</p>
+</div>
+<div class="bg-surface-container-low rounded-lg p-md border border-outline-variant/30 transition-all hover:shadow-sm">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-base uppercase tracking-wider">Plan Selected</p>
+<p class="font-headline-md text-headline-md text-primary">Sav.pos Premium</p>
+</div>
+</div>
+<!-- Action Button -->
+<div class="flex flex-col items-center gap-md">
+<button class="group w-full md:w-auto min-w-[240px] px-xl h-touch-target-min bg-primary text-on-primary rounded-full font-headline-md flex items-center justify-center gap-sm transition-all hover:bg-on-primary-fixed-variant active:scale-95">
+<span>Enter Dashboard</span>
+<span class="material-symbols-outlined transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<p class="font-label-md text-label-md text-outline">
+                    A confirmation email has been sent to your primary address.
+                </p>
+</div>
+</div>
+<!-- Footer Help Link (BottomNavBar-ish for transaction screens) -->
+<footer class="mt-xl flex justify-center gap-lg animate-fade-up" style="animation-delay: 0.4s;">
+<a class="flex items-center gap-xs font-label-md text-label-md text-secondary hover:text-on-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="help_outline">help_outline</span>
+<span>Help Center</span>
+</a>
+<a class="flex items-center gap-xs font-label-md text-label-md text-secondary hover:text-on-secondary-container transition-colors" href="#">
+<span class="material-symbols-outlined text-[18px]" data-icon="support_agent">support_agent</span>
+<span>Contact Support</span>
+</a>
+</footer>
+</main>
+<!-- Decorative Corner Gradients -->
+<div class="fixed -bottom-24 -left-24 w-96 h-96 bg-tertiary-fixed/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="fixed -top-24 -right-24 w-96 h-96 bg-secondary-fixed/20 rounded-full blur-3xl pointer-events-none"></div>
+<script>
+        // Micro-interaction for the success icon
+        document.addEventListener('DOMContentLoaded', () => {
+            const icon = document.querySelector('.material-symbols-outlined[data-icon="check_circle"]');
+            if(icon) {
+                icon.parentElement.style.transition = 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                setTimeout(() => {
+                    icon.parentElement.style.transform = 'scale(1.1)';
+                    setTimeout(() => {
+                        icon.parentElement.style.transform = 'scale(1)';
+                    }, 200);
+                }, 800);
+            }
+        });
+    </script>
+</body></html>

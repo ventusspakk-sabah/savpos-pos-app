@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos Spa - Template Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-high": "#e6e8ea",
+                        "background": "#f7f9fb",
+                        "secondary": "#1960a3",
+                        "on-primary-container": "#7089b3",
+                        "surface-variant": "#e0e3e5",
+                        "primary-fixed-dim": "#aec7f5",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "tertiary": "#000b05",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "primary": "#00091b",
+                        "on-surface": "#191c1e",
+                        "surface-tint": "#465f87",
+                        "primary-container": "#002045",
+                        "on-tertiary-container": "#00b47d",
+                        "on-secondary": "#ffffff",
+                        "on-surface-variant": "#44474e",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-tertiary-fixed": "#002113",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "primary-fixed": "#d6e3ff",
+                        "inverse-primary": "#aec7f5",
+                        "on-background": "#191c1e",
+                        "error": "#ba1a1a",
+                        "on-error": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "error-container": "#ffdad6",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "tertiary-fixed": "#6ffbbe",
+                        "tertiary-container": "#002617",
+                        "surface-dim": "#d8dadc",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed": "#001c38",
+                        "on-secondary-container": "#00477f",
+                        "inverse-surface": "#2d3133",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed": "#001b3c",
+                        "outline": "#74777f",
+                        "surface": "#f7f9fb",
+                        "secondary-container": "#7db6ff",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-fixed-variant": "#195039"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "md": "16px",
+                        "xl": "32px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .preview-scroll::-webkit-scrollbar { width: 4px; }
+        .preview-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .glass-badge { backdrop-filter: blur(8px); background: rgba(255, 255, 255, 0.85); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex h-full w-80 rounded-r-xl bg-surface-container-low flex-col fixed inset-y-0 left-0 z-50 shadow-lg">
+<div class="px-lg py-xl">
+<span class="font-headline-md text-headline-md font-bold text-secondary">Sav.pos Spa</span>
+<div class="mt-xl flex items-center gap-md">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<p class="font-headline-md text-sm font-bold text-on-surface">Spa Manager</p>
+<p class="text-xs text-on-surface-variant">Professional Edition</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 px-xs">
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span>Inventory</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-all" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span>Staff</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 transition-all" href="#">
+<span class="material-symbols-outlined">person_search</span>
+<span>Customers</span>
+</a>
+<div class="my-4 border-t border-outline-variant/30 mx-lg"></div>
+<a class="bg-secondary-container text-on-secondary-container rounded-full mx-2 my-1 px-4 py-3 flex items-center gap-4 shadow-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="p-lg">
+<button class="text-on-surface-variant hover:bg-surface-variant rounded-full w-full px-4 py-3 flex items-center gap-4 transition-all">
+<span class="material-symbols-outlined">logout</span>
+<span>Logout</span>
+</button>
+<p class="text-[10px] text-center mt-md text-outline opacity-50">v2.4.0</p>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-80 flex flex-col min-h-screen">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-lg py-sm w-full sticky top-0 z-40 bg-surface-container-lowest shadow-sm">
+<div class="flex items-center gap-md">
+<button class="md:hidden p-xs hover:bg-surface-variant rounded-full transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface">Online Booking Confirmation</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-md py-xs rounded-full border border-outline text-label-md hover:bg-surface-variant transition-colors">Cancel</button>
+<button class="px-lg py-xs rounded-full bg-secondary text-on-secondary text-label-md font-bold flex items-center gap-xs shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-sm">save</span> Save Template
+                </button>
+</div>
+</header>
+<!-- Editor Split Layout -->
+<div class="flex-1 flex flex-col lg:flex-row overflow-hidden">
+<!-- Left Side: Configuration & Editor -->
+<section class="flex-1 p-lg overflow-y-auto preview-scroll flex flex-col gap-lg bg-surface">
+<!-- Status Toggles -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="p-md bg-surface-container-lowest rounded-xl shadow-sm flex items-center justify-between border border-transparent hover:border-secondary-container transition-all">
+<div class="flex items-center gap-md">
+<div class="p-xs bg-tertiary-fixed-dim/20 rounded-lg text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Auto-Send</p>
+<p class="text-xs text-outline">Trigger on confirmation</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<div class="p-md bg-surface-container-lowest rounded-xl shadow-sm flex items-center justify-between border border-transparent hover:border-secondary-container transition-all">
+<div class="flex items-center gap-md">
+<div class="p-xs bg-secondary-fixed-dim/20 rounded-lg text-on-secondary-fixed-variant">
+<span class="material-symbols-outlined">map</span>
+</div>
+<div>
+<p class="font-bold text-on-surface">Include Map Link</p>
+<p class="text-xs text-outline">Direct Google Maps URL</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+</div>
+<!-- Template Editor Content -->
+<div class="flex flex-col gap-md">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-lg font-bold text-on-surface">Message Content</h2>
+<div class="flex gap-xs">
+<span class="px-2 py-1 bg-surface-variant rounded text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">SMS + Email</span>
+</div>
+</div>
+<!-- Editor Area -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden flex flex-col border border-outline-variant/30">
+<div class="p-xs bg-surface-container border-b border-outline-variant/30 flex flex-wrap gap-xs">
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors" title="Bold"><span class="material-symbols-outlined text-md">format_bold</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors" title="Italic"><span class="material-symbols-outlined text-md">format_italic</span></button>
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors" title="Link"><span class="material-symbols-outlined text-md">link</span></button>
+<div class="w-px h-6 bg-outline-variant self-center mx-xs"></div>
+<button class="p-2 hover:bg-surface-variant rounded-md transition-colors" title="Emoji"><span class="material-symbols-outlined text-md">mood</span></button>
+</div>
+<textarea class="w-full h-48 p-md border-none focus:ring-0 text-body-md bg-transparent resize-none" id="templateTextarea" placeholder="Enter message body...">Hello {{Customer Name}}, your appointment for {{Service}} is confirmed! See you on {{Time}} at Sav.pos Spa.
+                        
+Location: {{Location URL}}
+Need to reschedule? Call us at 555-0123.</textarea>
+</div>
+</div>
+<!-- Variables Palette -->
+<div class="flex flex-col gap-md">
+<h3 class="text-label-md font-bold text-on-surface flex items-center gap-xs">
+<span class="material-symbols-outlined text-sm">data_object</span> Template Variables
+                    </h3>
+<div class="flex flex-wrap gap-sm">
+<button class="group flex items-center gap-xs px-md py-2 bg-surface-container-high rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all text-sm font-medium" onclick="insertVar('{{Customer Name}}')">
+<span class="material-symbols-outlined text-sm opacity-50 group-hover:opacity-100">person</span>
+                            {{Customer Name}}
+                        </button>
+<button class="group flex items-center gap-xs px-md py-2 bg-surface-container-high rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all text-sm font-medium" onclick="insertVar('{{Service}}')">
+<span class="material-symbols-outlined text-sm opacity-50 group-hover:opacity-100">spa</span>
+                            {{Service}}
+                        </button>
+<button class="group flex items-center gap-xs px-md py-2 bg-surface-container-high rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all text-sm font-medium" onclick="insertVar('{{Time}}')">
+<span class="material-symbols-outlined text-sm opacity-50 group-hover:opacity-100">schedule</span>
+                            {{Time}}
+                        </button>
+<button class="group flex items-center gap-xs px-md py-2 bg-surface-container-high rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all text-sm font-medium" onclick="insertVar('{{Location URL}}')">
+<span class="material-symbols-outlined text-sm opacity-50 group-hover:opacity-100">location_on</span>
+                            {{Location URL}}
+                        </button>
+<button class="group flex items-center gap-xs px-md py-2 bg-surface-container-high rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-all text-sm font-medium" onclick="insertVar('{{Price}}')">
+<span class="material-symbols-outlined text-sm opacity-50 group-hover:opacity-100">payments</span>
+                            {{Price}}
+                        </button>
+</div>
+</div>
+</section>
+<!-- Right Side: Real-time Preview -->
+<section class="w-full lg:w-[450px] bg-surface-container-low p-lg border-l border-outline-variant/20 flex flex-col items-center gap-xl">
+<div class="w-full flex justify-between items-center px-xs">
+<h3 class="text-label-md font-bold uppercase tracking-widest text-outline">Real-time Preview</h3>
+<div class="flex bg-surface-container-high p-1 rounded-lg">
+<button class="px-4 py-1.5 rounded-md text-xs font-bold transition-all bg-surface-container-lowest shadow-sm text-secondary" id="tab-sms" onclick="togglePreview('sms')">SMS</button>
+<button class="px-4 py-1.5 rounded-md text-xs font-bold transition-all text-on-surface-variant hover:bg-surface-variant/40" id="tab-email" onclick="togglePreview('email')">Email</button>
+</div>
+</div>
+<!-- Phone Mockup -->
+<div class="relative w-[300px] h-[600px] bg-[#1a1a1a] rounded-[3rem] p-3 border-[6px] border-[#333] shadow-2xl overflow-hidden">
+<!-- Notch -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-[#333] rounded-b-2xl z-20"></div>
+<!-- Screen Content -->
+<div class="w-full h-full bg-white rounded-[2.2rem] overflow-hidden flex flex-col">
+<!-- Phone Header -->
+<div class="h-14 flex items-center px-6 pt-4 justify-between text-xs font-bold">
+<span>9:41</span>
+<div class="flex gap-1.5">
+<span class="material-symbols-outlined text-xs">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-xs">wifi</span>
+<span class="material-symbols-outlined text-xs">battery_full</span>
+</div>
+</div>
+<!-- SMS Preview Container -->
+<div class="flex-1 flex flex-col p-4" id="sms-view">
+<div class="flex flex-col items-center gap-1 mb-6">
+<div class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary">spa</span>
+</div>
+<span class="text-[10px] text-outline font-bold">Sav.pos Spa</span>
+</div>
+<div class="bg-[#E9E9EB] text-black p-4 rounded-2xl rounded-bl-none text-sm leading-relaxed self-start max-w-[85%] relative">
+<span id="sms-text-preview">Hello Alex, your appointment for Deep Tissue Massage is confirmed! See you on Oct 24 at 2:00 PM at Sav.pos Spa.</span>
+<div class="mt-2 text-secondary font-medium">https://maps.apple.com/sav-pos-spa</div>
+<div class="absolute -bottom-4 left-0 text-[10px] text-outline font-medium">Delivered</div>
+</div>
+</div>
+<!-- Email Preview Container (Hidden) -->
+<div class="hidden flex-1 flex flex-col bg-slate-50 overflow-y-auto preview-scroll" id="email-view">
+<div class="bg-white p-4 shadow-sm border-b border-slate-100 mb-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-secondary text-white flex items-center justify-center text-xs font-bold">S</div>
+<div>
+<p class="text-xs font-bold">Sav.pos Spa</p>
+<p class="text-[10px] text-slate-400">To: Alex Smith</p>
+</div>
+</div>
+</div>
+<div class="px-4 py-2">
+<div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+<div class="w-full h-24 mb-4 rounded-lg overflow-hidden relative">
+<img class="w-full h-full object-cover" data-alt="A luxurious high-end spa reception area with marble textures and soft, warm ambient lighting. The atmosphere is tranquil and sophisticated, featuring a minimalist aesthetic with neutral tones. Elegant floral arrangements and glass details accentuate the professional corporate retail environment typical of a premium boutique hospitality brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFUYhtNSBIK7ZqLwTc04UQQ4ZreBupaOykXw2LwCJlWBdVVie-FebMIkkREj96PyyyPKH3SImLhxOsIalN8YI8MorBYFJrIbhGkqgPjiuy__dqnel9WL7bbsAWTd9FEmNpGdE3Pm9NqsNsSOdXL1-XCcp2AvW8uOScHZc5C6lnTy_Eiom8jXfvBsgDb733mDmr_RcCOAmUtzWgjCKHhtXzwbjGPCc-VkTjG1PIJ_K7nWib9__hB8smfh67fJPmPWttn4j5ewpf9nM"/>
+<div class="absolute inset-0 bg-black/20 flex items-center justify-center">
+<span class="text-white font-bold text-sm tracking-widest">SAV.POS SPA</span>
+</div>
+</div>
+<h4 class="font-bold text-sm mb-2">Booking Confirmed!</h4>
+<p class="text-xs text-slate-600 leading-relaxed" id="email-text-preview">Hi Alex, we're excited to see you! Your treatment is scheduled for Oct 24 at 2:00 PM.</p>
+<div class="mt-4 p-3 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-sm">calendar_month</span>
+<span class="text-[10px] font-bold">Add to Calendar</span>
+</div>
+<span class="material-symbols-outlined text-slate-300 text-sm">chevron_right</span>
+</div>
+<button class="w-full mt-4 py-2 bg-secondary text-white text-[10px] font-bold rounded-lg uppercase tracking-wider">Manage Booking</button>
+</div>
+</div>
+</div>
+<!-- Phone Keyboard Mockup -->
+<div class="mt-auto h-24 bg-[#D1D3D9] flex items-center justify-center gap-4 px-4 pb-2">
+<div class="w-8 h-8 rounded-full bg-[#ABB0B8] flex items-center justify-center"><span class="material-symbols-outlined text-white text-sm">photo_camera</span></div>
+<div class="w-8 h-8 rounded-full bg-[#ABB0B8] flex items-center justify-center"><span class="material-symbols-outlined text-white text-sm">mic</span></div>
+<div class="flex-1 h-8 bg-white rounded-full border border-[#C4C6CB]"></div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<p class="text-xs text-outline mb-2">Previewing as Customer</p>
+<div class="flex gap-2">
+<img class="w-8 h-8 rounded-full border-2 border-white shadow-sm object-cover" data-alt="A headshot of a friendly, professional middle-aged man with a neat haircut and casual corporate attire. The background is softly blurred with clean office lighting, emphasizing a modern professional service atmosphere. He has a warm smile and is looking directly at the camera, conveying trust and reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrvSR3OQWrP7Fnme2Yiju6BFFPcMBxfe5ATdw255x_zv54azPCdVGfqYUFyBXkXyCNG3f--9YItLaA7_hHIWkgJiylUrLz3KrMnphuJG533xNEPhzxbVkTBZwonvnoqofmocnnCLfG-Ypd0awy29cqbtXvIfq5WZuFG0c7RmvWn8AIP3p56a5SPoxpZVPRJIBLLpDI1Mlw42EI6_9bLFWu4j0rZE2TlO4hvUfyXAa9BbKFEC87BsGcfegLp2iK1aCE7YnJiAv_4A8"/>
+<img class="w-8 h-8 rounded-full border-2 border-white shadow-sm object-cover opacity-50 grayscale" data-alt="A portrait of a young professional woman with dark hair and a bright, confident expression. She is in a high-key studio environment with soft, diffused lighting that creates a clean, premium aesthetic. The overall mood is approachable and stylish, fitting for a luxury spa or boutique service customer persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgOV0YOPg3kOz1mvUuOMxdU5XjnodhAARSw83agMutWzngCk5nXERsbf6Td7Nk9gTk8duGJ5whBk-17zl7sfZLPpxYjAAMo3csAyntoHKTDGutMFRFcichprdPW2fySLP6_AzwwTj-1RsLL_yZ_H7L5DnsIIWgHZK8Kjyr-VRk2b5VQBNZYxWivSmeLQzMJU4BusDw7qPeKDSYPHTcW0u0cCDvMhjQgZNMIrEmwSLnK7b5UYeHRYZxSAxMUKP-aYUEGU0Kufk2lUo"/>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Nav (Mobile) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-md pb-xs pt-xs bg-surface-container-low shadow-md">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="text-[10px] font-bold">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-bold">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="text-[10px] font-bold">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-6 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Settings</span>
+</a>
+</nav>
+<script>
+        const textarea = document.getElementById('templateTextarea');
+        const smsPreview = document.getElementById('sms-text-preview');
+        const emailPreview = document.getElementById('email-text-preview');
+        const tabSms = document.getElementById('tab-sms');
+        const tabEmail = document.getElementById('tab-email');
+        const viewSms = document.getElementById('sms-view');
+        const viewEmail = document.getElementById('email-view');
+
+        // Sample data for variable replacement
+        const sampleData = {
+            '{{Customer Name}}': 'Alex Smith',
+            '{{Service}}': 'Deep Tissue Massage',
+            '{{Time}}': 'Oct 24 at 2:00 PM',
+            '{{Location URL}}': 'Sav.pos Spa Central',
+            '{{Price}}': '$120.00'
+        };
+
+        function updatePreview() {
+            let content = textarea.value;
+            // Replace all placeholders with sample data
+            for (const [key, value] of Object.entries(sampleData)) {
+                content = content.replaceAll(key, value);
+            }
+            smsPreview.innerText = content;
+            emailPreview.innerText = content;
+        }
+
+        function insertVar(variable) {
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const text = textarea.value;
+            textarea.value = text.substring(0, start) + variable + text.substring(end);
+            textarea.focus();
+            textarea.selectionStart = textarea.selectionEnd = start + variable.length;
+            updatePreview();
+        }
+
+        function togglePreview(type) {
+            if (type === 'sms') {
+                viewSms.classList.remove('hidden');
+                viewEmail.classList.add('hidden');
+                tabSms.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-secondary');
+                tabSms.classList.remove('text-on-surface-variant');
+                tabEmail.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-secondary');
+                tabEmail.classList.add('text-on-surface-variant');
+            } else {
+                viewSms.classList.add('hidden');
+                viewEmail.classList.remove('hidden');
+                tabEmail.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-secondary');
+                tabEmail.classList.remove('text-on-surface-variant');
+                tabSms.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-secondary');
+                tabSms.classList.add('text-on-surface-variant');
+            }
+        }
+
+        textarea.addEventListener('input', updatePreview);
+        // Initial run
+        updatePreview();
+    </script>
+</body></html>

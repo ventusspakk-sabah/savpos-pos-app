@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1e",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-secondary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-container": "#5d9377",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-surface": "#2d3133",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed": "#001c38",
+                        "primary-container": "#002045",
+                        "tertiary-fixed": "#6ffbbe",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-surface-variant": "#44474e",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-primary-container": "#7089b3",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1e",
+                        "on-secondary-container": "#00477f",
+                        "secondary": "#1960a3",
+                        "outline-variant": "#c4c6cf",
+                        "surface-bright": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-tint": "#465f87",
+                        "secondary-container": "#7db6ff",
+                        "primary": "#00091b",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "tertiary-container": "#002617",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-fixed": "#001b3c",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "background": "#f7f9fb",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "surface-container": "#eceef0",
+                        "outline": "#74777f",
+                        "inverse-primary": "#aec7f5",
+                        "tertiary": "#000b05",
+                        "surface-dim": "#d8dadc",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "12px",
+                        "lg": "24px",
+                        "xs": "8px",
+                        "base": "4px",
+                        "md": "16px",
+                        "touch-target-min": "44px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-price": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky bg-surface-container-lowest shadow-sm flex justify-between items-center px-md py-xs z-40">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary cursor-pointer active:scale-95 duration-200">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary">Sav.pos Spa</h1>
+</div>
+<!-- Desktop Nav Cluster -->
+<nav class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Home</a>
+<a class="text-secondary font-bold font-body-md" href="#">Services</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Reviews</a>
+<a class="text-on-surface-variant hover:text-secondary transition-colors font-body-md" href="#">Contact</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="Staff Profile" class="w-full h-full object-cover" data-alt="A professional headshot of a friendly spa manager with a warm smile, set against a blurred, high-end boutique background. The lighting is soft and flattering, emphasizing a clean and sophisticated aesthetic. The color palette is composed of soft neutrals and cool blues, reflecting the premium brand identity of the spa." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDbni3dVxsRTzRonxKMh-o_BPwIbuvDMEb0IHpG0GBGRBW-QWDJWFEV4xUzF7F_ajphImlFDkOGRCcwbIw69_AxFmuOsIH9FxrFhwI1XO-pZBgh8LWBoS4qOAGOQmy8PnG7xsHlYbsdcFrJFVvTjxUrpDcmuTm5QmYxH_JqpYR8DNhhOXuzmEaSclTKAjcLpBrgSfR0XUYNyEqQRsXuphLUsSqGqlFMPcq6AeopnUV72n1ONNx7XQIGc1gByQOwK3gIzuyZLUWqRR8"/>
+</div>
+</header>
+<main class="pb-24">
+<!-- Hero Section -->
+<section class="relative h-[530px] md:h-[618px] flex items-center justify-center overflow-hidden">
+<img alt="Spa Hero" class="absolute inset-0 w-full h-full object-cover" data-alt="A serene and luxurious spa interior featuring a minimalist stone massage table and warm, ambient candlelight. Large windows reveal a lush, misty garden in the background, creating a peaceful atmosphere. The aesthetic is high-end and corporate, with a clean color palette of slate grays and ivory whites, perfectly capturing a sense of professional wellness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDINdBMDeEJjesNLOCbJmp9yQGDzm9Q_1W9iHOrMIV_aupLvdNIiB9njdToibmGOTahQhLLWfr7rgIi77ew7zYC6dNohhS5XFSCP2jBdOQ59Ba1CaG7weiX2zOasxp-ZgWTvlsbxvJ12DAKhGI81V7UtwWWiK-pI0Ox6aGuVGaoaV9TfIQhDE865V9xhsWSs3VCAbCuT5Y9i86E16iXjCRu6mYIdI2TQJc1blc8X21KZl44_neqouVtXRN5aG3iNgnAGl2EAlGsXbA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+<div class="relative z-10 text-center px-lg max-w-3xl">
+<h2 class="font-headline-lg text-white mb-md md:text-5xl">Rejuvenate Your Senses</h2>
+<p class="text-white/90 font-body-lg mb-xl">Experience the pinnacle of boutique hospitality and personalized wellness at Sav.pos Spa.</p>
+<div class="flex flex-col md:flex-row justify-center gap-md">
+<button class="bg-secondary-container text-on-secondary-container px-xl py-md rounded-full font-bold flex items-center justify-center gap-xs active:scale-95 transition-transform">
+<span class="material-symbols-outlined">calendar_today</span>
+                        Book Appointment
+                    </button>
+<button class="bg-surface-container-lowest/20 backdrop-blur-md text-white border border-white/30 px-xl py-md rounded-full font-bold hover:bg-white/10 transition-colors">
+                        View Packages
+                    </button>
+</div>
+</div>
+</section>
+<!-- Service Catalog Section -->
+<section class="max-w-7xl mx-auto px-md py-xl">
+<div class="flex flex-col md:flex-row justify-between items-end mb-xl gap-md">
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-xs">Service Catalog</h3>
+<p class="text-on-surface-variant font-body-md">Select from our curated list of premium treatments.</p>
+</div>
+<div class="flex gap-xs overflow-x-auto pb-2">
+<button class="bg-secondary-container text-on-secondary-container px-lg py-xs rounded-full font-label-md whitespace-nowrap">All Services</button>
+<button class="bg-surface-container-high text-on-surface-variant px-lg py-xs rounded-full font-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Massage</button>
+<button class="bg-surface-container-high text-on-surface-variant px-lg py-xs rounded-full font-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Facials</button>
+<button class="bg-surface-container-high text-on-surface-variant px-lg py-xs rounded-full font-label-md whitespace-nowrap hover:bg-surface-variant transition-colors">Therapy</button>
+</div>
+</div>
+<!-- Bento Grid Services -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-lg">
+<!-- Featured Service (Bento Large) -->
+<div class="md:col-span-8 group relative overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm hover:shadow-md transition-shadow">
+<div class="grid grid-cols-1 md:grid-cols-2 h-full">
+<div class="relative overflow-hidden aspect-square md:aspect-auto">
+<img alt="Signature Massage" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A close-up of a signature hot stone massage in a dim, tranquil room. Polished black basalt stones are placed carefully on a person's back, surrounded by soft, warm lighting. The image emphasizes a sense of deep relaxation and professional care, using a sophisticated palette of dark grays and warm skin tones, characteristic of a high-end spa environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnXKa7a27m_NUpMbiSM5qbnp5GPCTPj2otVh5cpmy2vvujUJiBITzuYrAAB-p4VBHBoHIuMLhR8LLR9mOSeQecy2rurAn6WXU7DoZkYyyhCkIROsVCLcrKO8zII-pldZz35_45E6xu9VZRTC1MeGbyrqNtmdmKzw7x7KGA5jwwC64Qf6lo05YrHfoxMsUJfmYudrMJgO-97zRhKvK7jyj2dPf3CfslQZrb1iuq_d2YecCqB5QZE_fyQ2xu5r9xk6xL66XTqx9uUgM"/>
+<span class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-lg font-label-md text-secondary shadow-sm">Popular Choice</span>
+</div>
+<div class="p-xl flex flex-col justify-between">
+<div>
+<div class="flex justify-between items-start mb-md">
+<h4 class="font-headline-md text-primary">Royal Signature Massage</h4>
+<span class="font-display-price text-primary-container text-2xl">$145</span>
+</div>
+<p class="text-on-surface-variant font-body-md mb-lg">A bespoke full-body therapy combining Swedish techniques with heated volcanic stones to melt away tension and restore vital energy levels.</p>
+<div class="flex gap-md mb-xl">
+<div class="flex items-center gap-xs text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span class="font-label-md">90 Mins</span>
+</div>
+<div class="flex items-center gap-xs text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md">4.9 (120+)</span>
+</div>
+</div>
+</div>
+<button class="w-full bg-primary text-white py-md rounded-xl font-bold flex items-center justify-center gap-xs active:scale-95 duration-150">
+<span class="material-symbols-outlined">add_circle</span>
+                                Book Now
+                            </button>
+</div>
+</div>
+</div>
+<!-- Secondary Service (Bento Small) -->
+<div class="md:col-span-4 group overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img alt="Deep Sea Facial" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A serene scene showing a high-end botanical facial treatment. Professional aesthetician hands are applying a nutrient-rich mask to a client's face. The lighting is bright and clinical yet inviting, with a focus on hygiene and precision. The aesthetic is modern and fresh, utilizing whites and light blues to convey a sense of purity and renewal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4qB1BXMd0-Tl8CJkJOFNLjrwlSylaIcfWmZpJhiUcmD7TlWuZVA_NSjxpFhh1LTBqTO9y6TwarE0Vcbvz7M6HagXouUlvxBTJ1kF7SpMWNvg0KmIR0yiGBuLkk_jAS8DKdxduIvgoJvzAkc2jXkt2v_yNkLCX0iW3GlUq4A-08FoKZW8TBGbbZY1f0TroRARCZoGcMfFVb8qY-gsb3sHES8u7OAcWM2XbXfO1djxWQOmSBjcKowHyEEvpA-nWWmncz9gpiOHe7SQ"/>
+<span class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-lg font-label-md text-secondary shadow-sm">$95</span>
+</div>
+<div class="p-lg flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-headline-md text-primary mb-xs">Deep Sea Mineral Facial</h4>
+<p class="text-on-surface-variant font-body-md mb-md line-clamp-2">Revitalize your skin with potent marine minerals and essential oils.</p>
+</div>
+<button class="w-full border-2 border-secondary-container text-on-secondary-container py-md rounded-xl font-bold active:scale-95 transition-transform">
+                            Quick Book
+                        </button>
+</div>
+</div>
+<!-- Grid Items (Standard Cards) -->
+<div class="md:col-span-4 group overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img alt="Aromatherapy" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="Close-up of aromatic essential oils and lavender sprigs on a clean, light wood surface. Soft afternoon sunlight filters through the scene, creating long, peaceful shadows. The atmosphere is quiet and sophisticated, with a clear focus on the natural elements of luxury aromatherapy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0GuOlZQAjFoVYVQ7pMT9NyLFT1grp1iPSuTN9oEmzKIEsZ_0IDxFmCMe7sNVA6xfC6hkqRbZ1yPuKnZfq9oazqM0U1UpGrozj43NuEfQn4eSBa_XnX6OUcFgx8bU-bbwh-43g-J5PF-obXF7KnziOKg-cbM3P5JNN7sRyjn9ZMzcHItHMTfsBBBtXEpGzG5wb5k-ljs-Ljvfa92P-yl1EDeixhmd4Oi0T6phFeTeme94S2IdQaXhv7iGrvyQo5rjNgaejoFRgUSs"/>
+<span class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-lg font-label-md text-secondary shadow-sm">$110</span>
+</div>
+<div class="p-lg">
+<h4 class="font-headline-md text-primary mb-xs">Zen Aromatherapy</h4>
+<p class="text-on-surface-variant font-body-md mb-md">Custom-blended oils to align your mind and body.</p>
+<button class="w-full bg-secondary-container text-on-secondary-container py-md rounded-xl font-bold active:scale-95 transition-transform">Book Now</button>
+</div>
+</div>
+<div class="md:col-span-4 group overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img alt="Detox Body Wrap" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A clean, minimalist spa room showing a professional detox wrap treatment. The focus is on the luxurious textures of the linens and the high-end skincare products arranged neatly nearby. The lighting is balanced and crisp, evoking a sense of pharmaceutical-grade precision within a boutique hospitality setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuADL0PXdr132VmQ55i-hzwY-aEAlIrHtHZuUFAJZtSUJ7kydIJEH5vG3r17HNF8NUbPqKXCavFzQjLBbSLrABGt5y0v0y1bVTDMEmcekCd6xkgcw16BqjIw_AMYex9bAYSHEyxh5ebHVHLtaLx_fyR-hXAXKKHBEK16jrwAwhuc8vha8m3ez1MafTJrk8IeUESSNyQjnF3WCIwSYyw2fmvH9FZUFQwWQZVqI39hpB073RxvRQTWazZgp5GIMwxnu9PQtITlz8He9c0"/>
+<span class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-lg font-label-md text-secondary shadow-sm">$130</span>
+</div>
+<div class="p-lg">
+<h4 class="font-headline-md text-primary mb-xs">Botanical Detox Wrap</h4>
+<p class="text-on-surface-variant font-body-md mb-md">Deep exfoliation followed by a warm herbal cocoon.</p>
+<button class="w-full bg-secondary-container text-on-secondary-container py-md rounded-xl font-bold active:scale-95 transition-transform">Book Now</button>
+</div>
+</div>
+<div class="md:col-span-4 group overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm flex flex-col">
+<div class="relative h-48 overflow-hidden">
+<img alt="Steam Session" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A modern steam room with sleek marble surfaces and soft, blue-tinted atmospheric lighting. Gentle clouds of steam fill the air, creating a mysterious and relaxing depth. The design is contemporary and architectural, emphasizing the premium quality of the spa's facilities through a palette of cool grays and soft teals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMXSqCdZ_96o8rsPvDSEtIRgIkO0OluXVPpTyYItpNfWAoCvd43_SNBqDiyb8S_l7tEdtHkyXfHybxsv4oWxg5dtrsY1dAxP0-RmKcN1qmIZI21dayyELaCThuVmVVJeBPl0oDbkhjXugU78cZ8AEbOfJFmV1TAuM5uoe6siS3CZQSHzyGCFK8Qw_FZij_TJt9mspxjHM2dGKLB33V3RQ4uTVj370rlS0wL81m5g2pg38xoiv2KVji_JU_Q7D_j6b56yES1y8Cyt8"/>
+<span class="absolute top-md right-md bg-white/90 backdrop-blur-md px-md py-xs rounded-lg font-label-md text-secondary shadow-sm">$60</span>
+</div>
+<div class="p-lg">
+<h4 class="font-headline-md text-primary mb-xs">Eucalyptus Steam</h4>
+<p class="text-on-surface-variant font-body-md mb-md">Purify your respiratory system in our luxury steam suites.</p>
+<button class="w-full bg-secondary-container text-on-secondary-container py-md rounded-xl font-bold active:scale-95 transition-transform">Book Now</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us / Value Prop (Asymmetric) -->
+<section class="bg-surface-container-low py-xl overflow-hidden">
+<div class="max-w-7xl mx-auto px-md grid grid-cols-1 md:grid-cols-2 gap-xl items-center">
+<div class="relative">
+<div class="w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-lg transform -rotate-3 hover:rotate-0 transition-transform duration-700">
+<img alt="Luxury Experience" class="w-full h-full object-cover" data-alt="A sophisticated boutique spa lobby featuring designer furniture and minimalist artwork. The space is illuminated by soft, natural light and features high-end materials like brushed brass and white marble. The scene suggests a world-class hospitality experience with a focus on luxury, speed, and intentional design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBFN9ZR9mDaIxkAXoxSqSA24F_ngVrmB6cQtCZnOdwMK9uACwP7NGFqGe6Aw9YnUSzY5ZO33KlYy4rpdF5huhppq_HO_IU1_p6bk4lW_DtOm5MPAS0Ed9_519XuU1RPF2iM9SS4WKsTrDXD4XQ8XyJQi1b044k3yQGWqHrtYcqFjbnnOEUE_RIrUq_8ve5qvY7lD-vkx9QE3bQaIbQEC57UhZ1VmPFsTeUK46wfTZ2jIfZg82B17tF3Zu5Dfe1mL9beFkoHgK728g"/>
+</div>
+<div class="absolute -bottom-xl -right-xs md:-right-xl w-48 h-48 bg-tertiary-fixed rounded-2xl flex flex-col items-center justify-center p-md text-center rotate-6 shadow-md">
+<span class="material-symbols-outlined text-4xl mb-xs" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-headline-md text-on-tertiary-fixed leading-tight">Certified Therapists</span>
+</div>
+</div>
+<div class="md:pl-xl">
+<h3 class="font-headline-lg text-primary mb-md">The Sav.pos Experience</h3>
+<p class="font-body-lg text-on-surface-variant mb-xl">We combine ancient wellness traditions with modern technology to provide an unparalleled service experience that respects your time and your health.</p>
+<ul class="space-y-lg">
+<li class="flex items-start gap-md">
+<div class="bg-primary-fixed w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-fixed">bolt</span>
+</div>
+<div>
+<h5 class="font-headline-md text-primary text-lg">Instant Confirmation</h5>
+<p class="text-on-surface-variant font-body-md">Get your booking confirmed in seconds through our integrated POS system.</p>
+</div>
+</li>
+<li class="flex items-start gap-md">
+<div class="bg-primary-fixed w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-fixed">spa</span>
+</div>
+<div>
+<h5 class="font-headline-md text-primary text-lg">Premium Products</h5>
+<p class="text-on-surface-variant font-body-md">Only the finest organic oils and clinical-grade skincare brands touch your skin.</p>
+</div>
+</li>
+<li class="flex items-start gap-md">
+<div class="bg-primary-fixed w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary-fixed">history</span>
+</div>
+<div>
+<h5 class="font-headline-md text-primary text-lg">Personalized Profiles</h5>
+<p class="text-on-surface-variant font-body-md">We remember your preferences, allergies, and history for every visit.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- Reviews Section (Marquee Style Layout) -->
+<section class="py-xl max-w-7xl mx-auto px-md">
+<h3 class="font-headline-lg text-center text-primary mb-xl">Client Testimonials</h3>
+<div class="flex flex-wrap justify-center gap-lg">
+<div class="w-full md:w-[350px] bg-surface-container-lowest p-xl rounded-2xl shadow-sm border border-outline-variant/30 hover:-translate-y-2 transition-transform">
+<div class="flex gap-1 mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-on-surface mb-lg font-body-md leading-relaxed">"The most efficient spa experience I've ever had. Booking was a breeze and the massage was world-class. Truly professional."</p>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed"></div>
+<div>
+<p class="font-bold text-primary">Sarah Jenkins</p>
+<p class="text-on-surface-variant text-sm">Verified Customer</p>
+</div>
+</div>
+</div>
+<div class="w-full md:w-[350px] bg-surface-container-lowest p-xl rounded-2xl shadow-sm border border-outline-variant/30 hover:-translate-y-2 transition-transform">
+<div class="flex gap-1 mb-md">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="italic text-on-surface mb-lg font-body-md leading-relaxed">"A level of sophistication you rarely see. From the moment you walk in, the atmosphere just breathes calm and luxury."</p>
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed"></div>
+<div>
+<p class="font-bold text-primary">Marcus Thorne</p>
+<p class="text-on-surface-variant text-sm">Business Executive</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface-container-low shadow-md flex justify-around items-center px-md pb-xs pt-xs rounded-t-xl border-t border-outline-variant/10">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-6 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">spa</span>
+<span class="font-label-sm text-label-sm">Services</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">reviews</span>
+<span class="font-label-sm text-label-sm">Reviews</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-6 py-1 hover:text-secondary transition-colors">
+<span class="material-symbols-outlined">mail</span>
+<span class="font-label-sm text-label-sm">Contact</span>
+</div>
+</nav>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-md md:bottom-lg md:right-lg bg-secondary-container text-on-secondary-container w-14 h-14 rounded-full shadow-lg flex items-center justify-center active:scale-95 transition-transform z-30 group">
+<span class="material-symbols-outlined text-3xl">chat_bubble</span>
+<span class="absolute right-full mr-md bg-primary text-white px-md py-xs rounded-lg font-label-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block">Need assistance?</span>
+</button>
+<footer class="bg-primary text-white py-xl px-md">
+<div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-xl">
+<div class="col-span-1 md:col-span-1">
+<h4 class="font-headline-md font-bold text-secondary mb-md">Sav.pos Spa</h4>
+<p class="text-white/60 font-body-md">Redefining luxury wellness with precise, efficient, and sophisticated care.</p>
+</div>
+<div>
+<h5 class="font-label-md text-white/40 uppercase tracking-widest mb-md">Contact Us</h5>
+<p class="font-body-md mb-xs">info@savpos-spa.com</p>
+<p class="font-body-md">+1 (555) 012-3456</p>
+</div>
+<div>
+<h5 class="font-label-md text-white/40 uppercase tracking-widest mb-md">Location</h5>
+<p class="font-body-md">123 Wellness Blvd</p>
+<p class="font-body-md">Beverly Hills, CA 90210</p>
+</div>
+<div>
+<h5 class="font-label-md text-white/40 uppercase tracking-widest mb-md">Follow Us</h5>
+<div class="flex gap-md mt-xs">
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">public</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">share</span>
+<span class="material-symbols-outlined cursor-pointer hover:text-secondary transition-colors">photo_camera</span>
+</div>
+</div>
+</div>
+<div class="max-w-7xl mx-auto border-t border-white/10 mt-xl pt-lg text-center text-white/40 font-label-sm">
+            © 2024 Sav.pos Spa Professional Edition. All rights reserved.
+        </div>
+</footer>
+<script>
+        // Simple micro-interaction for buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const originalScale = btn.style.transform;
+                btn.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    btn.style.transform = originalScale;
+                }, 150);
+            });
+        });
+
+        // Sticky header background shift on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.add('shadow-sm');
+                header.classList.remove('shadow-md');
+            }
+        });
+    </script>
+</body></html>

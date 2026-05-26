@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error": "#ba1a1a",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f8f9ff",
+                        "surface-container": "#e5eeff",
+                        "on-tertiary": "#ffffff",
+                        "secondary-fixed-dim": "#a9c7ff",
+                        "error-container": "#ffdad6",
+                        "inverse-primary": "#aec7f5",
+                        "on-tertiary-fixed-variant": "#43474a",
+                        "on-background": "#0b1c30",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "on-error": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-secondary": "#ffffff",
+                        "surface": "#f8f9ff",
+                        "surface-container-low": "#eff4ff",
+                        "outline": "#74777f",
+                        "tertiary-fixed": "#e0e3e6",
+                        "on-primary": "#ffffff",
+                        "primary": "#00091b",
+                        "secondary": "#005db6",
+                        "on-secondary-fixed": "#001b3d",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#00468c",
+                        "surface-tint": "#465f87",
+                        "tertiary-container": "#1d2123",
+                        "on-primary-container": "#7089b3",
+                        "surface-variant": "#d3e4fe",
+                        "on-tertiary-fixed": "#181c1e",
+                        "surface-container-high": "#dce9ff",
+                        "on-surface-variant": "#44474e",
+                        "secondary-container": "#63a1ff",
+                        "tertiary-fixed-dim": "#c3c7ca",
+                        "primary-container": "#002045",
+                        "background": "#f8f9ff",
+                        "tertiary": "#06090c",
+                        "primary-fixed-dim": "#aec7f5",
+                        "secondary-fixed": "#d6e3ff",
+                        "on-secondary-container": "#00376f",
+                        "outline-variant": "#c4c6cf",
+                        "surface-dim": "#cbdbf5",
+                        "on-surface": "#0b1c30"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "lg": "24px",
+                        "gutter": "12px",
+                        "md": "16px",
+                        "margin-desktop": "24px",
+                        "margin-mobile": "16px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "xl": "32px",
+                        "sm": "8px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "mono-md": ["jetbrainsMono"],
+                        "headline-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                        "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "600"}],
+                        "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "mono-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #d3e4fe; border-radius: 10px; }
+        .active-category { border-bottom: 3px solid #005db6; color: #005db6; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-md h-[64px] bg-surface">
+<div class="flex items-center gap-md">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-black tracking-tight text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 hover:bg-surface-container-high rounded-full transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">search</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container text-[18px]">person</span>
+</div>
+</div>
+</header>
+<main class="pt-[64px] pb-[80px] min-h-screen flex flex-col md:flex-row">
+<!-- Left Section: Catalog (8 columns equivalent) -->
+<section class="flex-1 p-md flex flex-col gap-md">
+<!-- Search & Barcode -->
+<div class="bg-surface-container-low p-sm rounded-xl flex items-center gap-3 border border-outline-variant/30">
+<span class="material-symbols-outlined text-outline">barcode_scanner</span>
+<input autofocus="" class="bg-transparent border-none focus:ring-0 w-full font-mono-md text-mono-md" placeholder="Scan or search services..." type="text"/>
+</div>
+<!-- Categories -->
+<div class="flex gap-md overflow-x-auto no-scrollbar border-b border-outline-variant/20 pb-1">
+<button class="px-md py-2 font-label-md text-label-md active-category whitespace-nowrap">Massage</button>
+<button class="px-md py-2 font-label-md text-label-md text-on-surface-variant hover:text-primary whitespace-nowrap">Facial</button>
+<button class="px-md py-2 font-label-md text-label-md text-on-surface-variant hover:text-primary whitespace-nowrap">Products</button>
+<button class="px-md py-2 font-label-md text-label-md text-on-surface-variant hover:text-primary whitespace-nowrap">Packages</button>
+<button class="px-md py-2 font-label-md text-label-md text-on-surface-variant hover:text-primary whitespace-nowrap">Add-ons</button>
+</div>
+<!-- Grid Items -->
+<div class="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Item Card 1 -->
+<button class="bg-surface-container-lowest border border-outline-variant/20 p-md rounded-xl text-left hover:border-secondary transition-all active:scale-95 group" onclick="addToCart('Swedish Massage', 85)">
+<div class="aspect-square bg-surface-container-high rounded-lg mb-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-[40px] group-hover:text-secondary transition-colors">spa</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface mb-1">Swedish Massage</p>
+<p class="font-mono-md text-mono-md text-secondary">60m • $85.00</p>
+</button>
+<!-- Item Card 2 -->
+<button class="bg-surface-container-lowest border border-outline-variant/20 p-md rounded-xl text-left hover:border-secondary transition-all active:scale-95 group" onclick="addToCart('Deep Tissue', 110)">
+<div class="aspect-square bg-surface-container-high rounded-lg mb-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-[40px] group-hover:text-secondary transition-colors">physical_therapy</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface mb-1">Deep Tissue</p>
+<p class="font-mono-md text-mono-md text-secondary">90m • $110.00</p>
+</button>
+<!-- Item Card 3 -->
+<button class="bg-surface-container-lowest border border-outline-variant/20 p-md rounded-xl text-left hover:border-secondary transition-all active:scale-95 group" onclick="addToCart('Hot Stone', 125)">
+<div class="aspect-square bg-surface-container-high rounded-lg mb-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-[40px] group-hover:text-secondary transition-colors">heat</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface mb-1">Hot Stone</p>
+<p class="font-mono-md text-mono-md text-secondary">60m • $125.00</p>
+</button>
+<!-- Item Card 4 -->
+<button class="bg-surface-container-lowest border border-outline-variant/20 p-md rounded-xl text-left hover:border-secondary transition-all active:scale-95 group" onclick="addToCart('Aromatherapy', 95)">
+<div class="aspect-square bg-surface-container-high rounded-lg mb-sm flex items-center justify-center">
+<span class="material-symbols-outlined text-outline-variant text-[40px] group-hover:text-secondary transition-colors">airware</span>
+</div>
+<p class="font-label-md text-label-md text-on-surface mb-1">Aromatherapy</p>
+<p class="font-mono-md text-mono-md text-secondary">60m • $95.00</p>
+</button>
+</div>
+</section>
+<!-- Right Section: Cart (4 columns equivalent) -->
+<aside class="w-full md:w-[400px] border-l border-outline-variant/20 flex flex-col bg-surface-container-lowest h-full">
+<!-- Member Info -->
+<div class="p-md border-b border-outline-variant/10">
+<div class="flex items-center justify-between mb-sm">
+<h2 class="font-label-md text-label-md uppercase tracking-wider text-outline">Customer</h2>
+<button class="text-secondary text-label-md hover:underline">+ New</button>
+</div>
+<div class="bg-secondary-container/10 p-md rounded-xl border border-secondary/20 flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">person</span>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-label-md text-on-surface">Elena Rodriguez</p>
+<p class="font-body-sm text-body-sm text-outline">Gold Member • 1,250 pts</p>
+</div>
+<button class="p-1 hover:bg-secondary-container/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-secondary">edit</span>
+</button>
+</div>
+</div>
+<!-- Cart Items -->
+<div class="flex-1 overflow-y-auto custom-scrollbar p-md flex flex-col gap-sm" id="cart-items">
+<!-- Example Cart Item -->
+<div class="flex justify-between items-start group">
+<div class="flex-1">
+<p class="font-label-md text-label-md">Swedish Massage (60m)</p>
+<div class="flex gap-xs mt-1">
+<span class="bg-surface-container-high px-2 py-0.5 rounded text-[10px] uppercase font-bold text-on-surface-variant">Therapist: David</span>
+</div>
+</div>
+<div class="text-right">
+<p class="font-mono-md text-mono-md">$85.00</p>
+<button class="text-error/50 hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</div>
+</div>
+<!-- Cart empty state placeholder -->
+<div class="flex flex-col items-center justify-center py-xl text-outline opacity-40">
+<span class="material-symbols-outlined text-[48px] mb-2">shopping_cart</span>
+<p class="font-body-sm">Cart is empty</p>
+</div>
+</div>
+<!-- Toggles & Points -->
+<div class="p-md bg-surface-container-low border-t border-outline-variant/20">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary">loyalty</span>
+<span class="font-body-md text-body-md">Redeem Points (500 pts = $10)</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-secondary"></div>
+</label>
+</div>
+<!-- Totals -->
+<div class="space-y-2 border-t border-outline-variant/20 pt-md mb-md">
+<div class="flex justify-between text-on-surface-variant">
+<span class="font-body-md">Subtotal</span>
+<span class="font-mono-md" id="subtotal">$0.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span class="font-body-md">Taxes (8%)</span>
+<span class="font-mono-md" id="tax">$0.00</span>
+</div>
+<div class="flex justify-between pt-2 border-t border-outline-variant/10">
+<span class="font-headline-sm text-headline-sm">Total</span>
+<span class="font-headline-sm text-headline-sm text-primary" id="total">$0.00</span>
+</div>
+</div>
+<!-- Primary Action -->
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md py-4 rounded-xl flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-[0.98]">
+                    CHECKOUT
+                    <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</aside>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe shadow-lg bg-surface">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-sm text-label-sm">Rooms</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1 active:scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-surface-variant/50 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+        let cart = [];
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateCartUI();
+            
+            // Interaction feedback
+            const btn = event.currentTarget;
+            btn.classList.add('ring-2', 'ring-secondary');
+            setTimeout(() => btn.classList.remove('ring-2', 'ring-secondary'), 300);
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cart-items');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center py-xl text-outline opacity-40">
+                        <span class="material-symbols-outlined text-[48px] mb-2">shopping_cart</span>
+                        <p class="font-body-sm">Cart is empty</p>
+                    </div>`;
+                updateTotals(0);
+                return;
+            }
+
+            container.innerHTML = cart.map((item, index) => `
+                <div class="flex justify-between items-start group animate-in slide-in-from-right duration-200">
+                    <div class="flex-1">
+                        <p class="font-label-md text-label-md text-on-surface">${item.name}</p>
+                        <div class="flex gap-xs mt-1">
+                            <span class="bg-surface-container-high px-2 py-0.5 rounded text-[10px] uppercase font-bold text-on-surface-variant">Standard Service</span>
+                        </div>
+                    </div>
+                    <div class="text-right">
+                        <p class="font-mono-md text-mono-md">$${item.price.toFixed(2)}</p>
+                        <button onclick="removeFromCart(${index})" class="text-error/50 hover:text-error opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+            updateTotals(subtotal);
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateTotals(subtotal) {
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax;
+            document.getElementById('subtotal').innerText = `$${subtotal.toFixed(2)}`;
+            document.getElementById('tax').innerText = `$${tax.toFixed(2)}`;
+            document.getElementById('total').innerText = `$${total.toFixed(2)}`;
+        }
+    </script>
+</body></html>

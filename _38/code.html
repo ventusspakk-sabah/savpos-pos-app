@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POS Stress Engine V1 - Monitor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        @font-face { font-family: 'jetbrainsMono'; src: local('JetBrains Mono'); }
+        @font-face { font-family: 'manrope'; src: local('Manrope'); }
+        @font-face { font-family: 'inter'; src: local('Inter'); }
+
+        body {
+            background-color: #131314;
+            color: #e5e2e3;
+            scrollbar-width: thin;
+            scrollbar-color: #2D2D32 #131314;
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: #131314; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #2D2D32; border-radius: 2px; }
+
+        .pulse-critical {
+            animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .data-grid-bg {
+            background-image: radial-gradient(#2D2D32 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#3a393a",
+                        "surface-tint": "#d5bbff",
+                        "surface-container-low": "#1c1b1c",
+                        "inverse-on-surface": "#313031",
+                        "tertiary": "#ffb599",
+                        "processing-blue": "#2979FF",
+                        "on-surface": "#e5e2e3",
+                        "tertiary-container": "#a93c00",
+                        "error": "#ffb4ab",
+                        "secondary": "#b0c6ff",
+                        "on-primary-fixed-variant": "#5e00c1",
+                        "tertiary-fixed-dim": "#ffb599",
+                        "primary-container": "#7e00ff",
+                        "on-primary": "#41008a",
+                        "surface-elevated": "#1A1A1E",
+                        "critical-red": "#FF1744",
+                        "surface-container": "#201f20",
+                        "inverse-primary": "#7c00fb",
+                        "on-tertiary": "#5a1c00",
+                        "surface-container-high": "#2a2a2b",
+                        "on-secondary": "#002d6e",
+                        "on-tertiary-fixed": "#370e00",
+                        "on-secondary-fixed": "#001945",
+                        "primary": "#d5bbff",
+                        "secondary-fixed-dim": "#b0c6ff",
+                        "error-container": "#93000a",
+                        "primary-fixed-dim": "#d5bbff",
+                        "tertiary-fixed": "#ffdbce",
+                        "on-tertiary-fixed-variant": "#7f2b00",
+                        "outline": "#978da3",
+                        "on-surface-variant": "#cdc2da",
+                        "surface-dim": "#131314",
+                        "on-error": "#690005",
+                        "background": "#131314",
+                        "success-green": "#00C853",
+                        "surface-variant": "#353436",
+                        "on-background": "#e5e2e3",
+                        "surface-container-highest": "#353436",
+                        "secondary-fixed": "#d9e2ff",
+                        "border-subtle": "#2D2D32",
+                        "surface-container-lowest": "#0e0e0f",
+                        "on-secondary-container": "#f2f3ff",
+                        "on-primary-fixed": "#270057",
+                        "inverse-surface": "#e5e2e3",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed": "#ecdcff",
+                        "on-secondary-fixed-variant": "#00429b",
+                        "on-primary-container": "#e6d3ff",
+                        "secondary-container": "#0068ed",
+                        "outline-variant": "#4b4357",
+                        "surface": "#131314",
+                        "on-tertiary-container": "#ffd1c1"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "32px",
+                        "max-width": "1600px",
+                        "margin-mobile": "16px",
+                        "gutter": "16px",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["inter"],
+                        "headline-md": ["manrope"],
+                        "headline-lg": ["manrope"],
+                        "data-tabular": ["jetbrainsMono"],
+                        "data-header": ["jetbrainsMono"],
+                        "body-md": ["inter"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "data-tabular": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "data-header": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="overflow-hidden flex h-screen bg-background">
+<!-- Navigation Drawer -->
+<aside class="h-screen w-64 left-0 sticky flex flex-col h-full py-base gap-2 bg-surface-container-low border-r border-border-subtle hidden md:flex">
+<div class="px-6 py-4">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">SYSTEM OPS</h1>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-secondary font-bold border-l-2 border-secondary bg-surface-variant/10 cursor-pointer transition-all">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-data-header text-data-header font-body-md text-body-md uppercase">Real-time Metrics</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant font-medium hover:bg-surface-container-high cursor-pointer transition-all">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-data-header text-data-header font-body-md text-body-md uppercase">Transaction Logs</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant font-medium hover:bg-surface-container-high cursor-pointer transition-all">
+<span class="material-symbols-outlined">calculate</span>
+<span class="font-data-header text-data-header font-body-md text-body-md uppercase">Commission Integrity</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant font-medium hover:bg-surface-container-high cursor-pointer transition-all">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-data-header text-data-header font-body-md text-body-md uppercase">Resource Monitor</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant font-medium hover:bg-surface-container-high cursor-pointer transition-all">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-data-header text-data-header font-body-md text-body-md uppercase">Stress Settings</span>
+</div>
+</nav>
+<div class="p-4 border-t border-border-subtle">
+<div class="flex items-center gap-2 text-success-green">
+<div class="w-2 h-2 rounded-full bg-success-green pulse-critical"></div>
+<span class="font-data-tabular text-data-tabular">ENGINE ONLINE</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 flex flex-col h-full overflow-hidden">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-margin-desktop py-4 w-full bg-surface-container border-b border-border-subtle z-20">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">POS_STRESS_ENGINE_V1</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end">
+<span class="font-data-header text-data-header text-on-surface-variant">NODE_01_WEST_CLUSTER</span>
+<span class="font-data-tabular text-data-tabular text-success-green">LATENCY: 12ms</span>
+</div>
+<button class="bg-critical-red text-on-primary font-data-header text-data-header px-6 py-2 rounded-lg font-bold hover:brightness-110 active:scale-95 transition-all">
+                    STOP TEST
+                </button>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto p-margin-desktop space-y-gutter data-grid-bg relative custom-scrollbar">
+<!-- KPIs Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<div class="bg-surface-elevated border border-border-subtle p-6 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-data-header text-data-header text-on-surface-variant">CURRENT TPS</span>
+<span class="material-symbols-outlined text-processing-blue">speed</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface" id="tps-val">4,812</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">TX/S</span>
+</div>
+<div class="mt-4 h-1 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-processing-blue w-[78%] transition-all duration-1000"></div>
+</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-6 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-data-header text-data-header text-on-surface-variant">AVG LATENCY</span>
+<span class="material-symbols-outlined text-tertiary">timer</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-on-surface" id="latency-val">48.2</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">MS</span>
+</div>
+<div class="mt-4 flex gap-1 h-1">
+<div class="h-full bg-tertiary flex-1"></div>
+<div class="h-full bg-tertiary flex-1"></div>
+<div class="h-full bg-tertiary flex-1"></div>
+<div class="h-full bg-tertiary flex-1 opacity-20"></div>
+<div class="h-full bg-tertiary flex-1 opacity-20"></div>
+</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-6 flex flex-col">
+<div class="flex justify-between items-start mb-4">
+<span class="font-data-header text-data-header text-on-surface-variant">ERROR RATE</span>
+<span class="material-symbols-outlined text-critical-red">error</span>
+</div>
+<div class="flex items-baseline gap-2">
+<span class="font-headline-lg text-headline-lg text-critical-red" id="error-val">0.04</span>
+<span class="font-data-tabular text-data-tabular text-on-surface-variant">%</span>
+</div>
+<div class="mt-4 flex items-center gap-2">
+<span class="font-data-header text-data-header text-success-green">WITHIN THRESHOLD</span>
+</div>
+</div>
+</div>
+<!-- Transaction Stream (Middle) -->
+<div class="bg-surface-elevated border border-border-subtle flex flex-col h-[400px]">
+<div class="px-6 py-3 border-b border-border-subtle flex justify-between items-center bg-surface-container/50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[18px]">list_alt</span>
+<span class="font-data-header text-data-header">LIVE TRANSACTION STREAM</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-success-green"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">VALIDATED</span>
+</div>
+<div class="flex items-center gap-1">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">PENDING</span>
+</div>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto custom-scrollbar font-data-tabular text-data-tabular p-0" id="log-container">
+<table class="w-full text-left border-collapse">
+<thead class="sticky top-0 bg-surface-elevated shadow-md">
+<tr class="text-on-surface-variant border-b border-border-subtle uppercase text-[10px] tracking-widest">
+<th class="px-6 py-2 font-data-header">TIMESTAMP</th>
+<th class="px-6 py-2 font-data-header">TX_ID</th>
+<th class="px-6 py-2 font-data-header">COMMISSION</th>
+<th class="px-6 py-2 font-data-header">DB_WRITE</th>
+<th class="px-6 py-2 font-data-header">LOAD</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-subtle/30" id="log-body">
+<!-- Rows injected via JS -->
+</tbody>
+</table>
+</div>
+</div>
+<!-- Bottom Graphs -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="bg-surface-elevated border border-border-subtle p-6 h-64 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<span class="font-data-header text-data-header text-on-surface-variant">DATABASE LOAD (%)</span>
+<span class="text-on-surface-variant font-data-tabular text-[10px]">REAL-TIME REFRESH 50MS</span>
+</div>
+<div class="flex-1 flex items-end gap-1 px-2">
+<div class="w-full bg-primary/20 h-[40%]"></div>
+<div class="w-full bg-primary/20 h-[45%]"></div>
+<div class="w-full bg-primary/20 h-[42%]"></div>
+<div class="w-full bg-primary/20 h-[55%]"></div>
+<div class="w-full bg-primary h-[65%]"></div>
+<div class="w-full bg-primary h-[60%]"></div>
+<div class="w-full bg-primary h-[58%]"></div>
+<div class="w-full bg-primary h-[72%]"></div>
+<div class="w-full bg-primary/20 h-[40%]"></div>
+<div class="w-full bg-primary/20 h-[38%]"></div>
+<div class="w-full bg-primary/20 h-[45%]"></div>
+<div class="w-full bg-primary h-[85%]"></div>
+<div class="w-full bg-primary h-[82%]"></div>
+<div class="w-full bg-primary h-[78%]"></div>
+<div class="w-full bg-primary h-[90%] pulse-critical"></div>
+</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-6 h-64 flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<span class="font-data-header text-data-header text-on-surface-variant">MQ BACKLOG (MESSAGES)</span>
+<span class="text-on-surface-variant font-data-tabular text-[10px]">AVG CLEARANCE 1.2S</span>
+</div>
+<div class="flex-1 flex items-center justify-center">
+<div class="relative w-48 h-48">
+<svg class="w-full h-full -rotate-90" viewbox="0 0 100 100">
+<circle class="text-surface-container" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-secondary transition-all duration-1000" cx="50" cy="50" fill="transparent" r="45" stroke="currentColor" stroke-dasharray="283" stroke-dashoffset="80" stroke-width="8"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-md text-headline-md text-on-surface">1,204</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">QUEUED</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Spacer for floating control -->
+<div class="h-24"></div>
+</div>
+<!-- Stress Control Panel (Bottom) -->
+<footer class="bg-surface-container-lowest border-t border-border-subtle p-4 fixed bottom-0 left-64 right-0 z-30 shadow-2xl">
+<div class="max-w-6xl mx-auto flex items-center justify-between gap-8">
+<div class="flex flex-col gap-1 min-w-[200px]">
+<div class="flex justify-between">
+<span class="font-data-header text-data-header text-primary">CONCURRENCY ENGINE</span>
+<span class="font-data-tabular text-data-tabular text-on-surface">64%</span>
+</div>
+<input class="w-full h-1.5 bg-surface-container rounded-lg appearance-none cursor-pointer accent-primary" type="range" value="64"/>
+</div>
+<div class="flex items-center gap-4 bg-surface-container p-1 rounded-lg">
+<button class="w-12 h-10 flex items-center justify-center hover:bg-surface-container-high text-on-surface transition-colors rounded" id="dec-load">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<div class="px-4 text-center">
+<div class="font-label-sm text-label-sm text-on-surface-variant opacity-60 uppercase">Load Vector</div>
+<div class="font-data-tabular text-data-tabular font-bold text-secondary">STAGE_4_AGGRESSIVE</div>
+</div>
+<button class="w-12 h-10 flex items-center justify-center bg-secondary text-on-secondary hover:brightness-110 transition-colors rounded" id="inc-load">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+<div class="flex items-center gap-6">
+<div class="flex flex-col items-end">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Simulated Nodes</span>
+<span class="font-data-tabular text-data-tabular text-on-surface">32/48 ACTIVE</span>
+</div>
+<button class="flex items-center gap-2 bg-processing-blue/10 border border-processing-blue/30 text-processing-blue px-6 py-2 rounded-lg font-data-header text-data-header hover:bg-processing-blue/20 transition-all">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+                        FORCE BURST
+                    </button>
+</div>
+</div>
+</footer>
+</main>
+<!-- Mobile Navigation (Suppressed per rule but simplified here) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full flex items-center justify-around h-16 bg-surface-container-lowest border-t border-border-subtle z-50">
+<button class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full flex flex-col items-center">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="text-[10px]">MONITOR</span>
+</button>
+<button class="text-on-surface-variant opacity-60 flex flex-col items-center">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px]">LOGS</span>
+</button>
+<button class="text-on-surface-variant opacity-60 flex flex-col items-center">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px]">LOAD</span>
+</button>
+</div>
+<script>
+        const logBody = document.getElementById('log-body');
+        const tpsVal = document.getElementById('tps-val');
+        const latencyVal = document.getElementById('latency-val');
+        
+        const txIds = ['TX-8821', 'TX-9902', 'TX-1102', 'TX-4432', 'TX-2219', 'TX-7731'];
+        const writeStatuses = ['COMMIT_OK', 'PENDING', 'COMMIT_OK', 'COMMIT_OK', 'RETRIED'];
+
+        function addLogRow() {
+            const row = document.createElement('tr');
+            row.className = "hover:bg-surface-container-high transition-colors text-[13px]";
+            
+            const timestamp = new Date().toLocaleTimeString('en-US', { hour12: false, fractionalSecondDigits: 3 });
+            const id = txIds[Math.floor(Math.random() * txIds.length)] + '-' + Math.floor(Math.random() * 1000);
+            const status = Math.random() > 0.15 ? 'VALIDATED' : 'PENDING';
+            const statusColor = status === 'VALIDATED' ? 'text-success-green' : 'text-tertiary';
+            const dbStatus = writeStatuses[Math.floor(Math.random() * writeStatuses.length)];
+            const dbColor = dbStatus === 'COMMIT_OK' ? 'text-on-surface-variant' : (dbStatus === 'RETRIED' ? 'text-tertiary' : 'text-processing-blue');
+
+            row.innerHTML = `
+                <td class="px-6 py-2 text-on-surface-variant opacity-60 font-data-tabular">${timestamp}</td>
+                <td class="px-6 py-2 text-on-surface font-bold">#${id}</td>
+                <td class="px-6 py-2 flex items-center gap-2">
+                    <div class="w-1.5 h-1.5 rounded-full ${status === 'VALIDATED' ? 'bg-success-green' : 'bg-tertiary'}"></div>
+                    <span class="${statusColor}">${status}</span>
+                </td>
+                <td class="px-6 py-2 ${dbColor}">${dbStatus}</td>
+                <td class="px-6 py-2 text-on-surface-variant">${(Math.random() * 200 + 4000).toFixed(0)} tx/s</td>
+            `;
+
+            logBody.insertBefore(row, logBody.firstChild);
+            
+            if (logBody.children.length > 50) {
+                logBody.removeChild(logBody.lastChild);
+            }
+        }
+
+        // Simulate real-time updates
+        setInterval(() => {
+            addLogRow();
+            
+            // Randomly oscillate values
+            const currentTps = parseInt(tpsVal.innerText.replace(',', ''));
+            const diff = Math.floor(Math.random() * 40) - 20;
+            tpsVal.innerText = (currentTps + diff).toLocaleString();
+
+            const currentLat = parseFloat(latencyVal.innerText);
+            const latDiff = (Math.random() * 2) - 1;
+            latencyVal.innerText = (currentLat + latDiff).toFixed(1);
+        }, 150);
+
+        // Populate initial data
+        for(let i=0; i<20; i++) addLogRow();
+    </script>
+</body></html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Store Selection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-pill {
+            font-variation-settings: 'FILL' 1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#eceef0",
+                        "on-secondary-container": "#00477f",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "outline": "#74777f",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-primary-container": "#7089b3",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#465f87",
+                        "tertiary-container": "#002617",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-low": "#f2f4f6",
+                        "primary-container": "#002045",
+                        "error": "#ba1a1a",
+                        "tertiary": "#000b05",
+                        "primary": "#00091b",
+                        "inverse-primary": "#aec7f5",
+                        "on-primary-fixed": "#001b3c",
+                        "inverse-on-surface": "#eff1f3",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-tertiary-fixed": "#002113",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-highest": "#e0e3e5",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#00b47d",
+                        "on-surface": "#191c1e",
+                        "secondary-container": "#7db6ff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "surface-container-high": "#e6e8ea",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4ff",
+                        "secondary": "#1960a3",
+                        "on-background": "#191c1e",
+                        "surface-bright": "#f7f9fb",
+                        "outline-variant": "#c4c6cf",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-surface-variant": "#44474e",
+                        "inverse-surface": "#2d3133",
+                        "on-error": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed": "#001c38",
+                        "on-primary": "#ffffff",
+                        "surface": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "touch-target-min": "44px",
+                        "sm": "12px",
+                        "xs": "8px",
+                        "md": "16px",
+                        "base": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-price": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface flex min-h-screen">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden md:flex h-full w-72 rounded-r-xl bg-surface-container-low dark:bg-surface-container-lowest shadow-md flex-col py-lg sticky top-0">
+<div class="px-lg mb-xl">
+<h1 class="font-headline-md text-headline-md text-primary">Sav.pos Admin</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant">v2.4.0</p>
+</div>
+<nav class="flex-1">
+<a class="bg-tertiary-container text-on-tertiary-container rounded-lg mx-2 my-1 px-4 py-3 flex items-center gap-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+<a class="text-on-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container-highest transition-colors active:bg-surface-variant duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-body-md text-body-md">Inventory</span>
+</a>
+<a class="text-on-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container-highest transition-colors active:bg-surface-variant duration-150" href="#">
+<span class="material-symbols-outlined">badge</span>
+<span class="font-body-md text-body-md">Staff</span>
+</a>
+<a class="text-on-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container-highest transition-colors active:bg-surface-variant duration-150" href="#">
+<span class="material-symbols-outlined">group</span>
+<span class="font-body-md text-body-md">Customers</span>
+</a>
+</nav>
+<div class="mt-auto px-lg pt-lg border-t border-outline-variant/20">
+<div class="flex items-center gap-md mb-lg">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold">
+                    A
+                </div>
+<div>
+<p class="font-body-md text-body-md font-bold">Admin User</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Premium POS System</p>
+</div>
+</div>
+<a class="text-on-surface-variant mx-2 my-1 px-4 py-3 flex items-center gap-md hover:bg-surface-container-highest transition-colors active:bg-surface-variant duration-150" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-body-md text-body-md">Logout</span>
+</a>
+</div>
+</aside>
+<div class="flex-1 flex flex-col min-h-screen">
+<!-- Top App Bar -->
+<header class="w-full top-0 sticky z-40 bg-surface dark:bg-surface-dim shadow-sm flex justify-between items-center px-lg h-touch-target-min">
+<div class="flex items-center gap-md">
+<div class="md:hidden w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]">menu</span>
+</div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">Sav.pos</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="w-11 h-11 rounded-full flex items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 transition-colors active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img alt="Cashier Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDZlXJMio2ph7cX7a-63caWQLIPC_VhqInCSyRTDI836-NWnxmbPdIC_jDckgi3dSpQXyq57gqTweeTzNelIxooPXuN_ARm082W3XYVIBYhfz8YkAFVKRRFuAx3Jyh6rH5R9lv6G_1jhSwA2jxmETM0S4YFgMtY2KJTAZi3n65h3g7MT13fjG-bhy0DeIstOnVP2N1ngYwcX-jPSGMv08pnQ2zn7jbFuef4a2l8t-z2kGw-2paG2hUZBNPsogoa0oA70rQKcVEY9r4"/>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 p-md md:p-lg lg:p-xl max-w-7xl mx-auto w-full">
+<!-- Page Header Area -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-lg mb-xl">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-primary mb-xs">Store Overview</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage and switch between your global retail locations.</p>
+</div>
+<div class="flex gap-md">
+<div class="relative flex-1 md:w-64">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full pl-xl pr-md py-xs bg-surface-container-lowest border-none rounded-lg shadow-sm focus:ring-2 focus:ring-primary font-body-md text-body-md" placeholder="Search stores..." type="text"/>
+</div>
+<button class="bg-tertiary-container text-on-tertiary-container px-lg py-xs rounded-lg font-headline-md text-headline-md flex items-center gap-xs shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+<span class="hidden sm:inline">Add Store</span>
+</button>
+</div>
+</div>
+<!-- Bento Grid of Stores -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Store Card 1 -->
+<div class="group relative bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-outline-variant/10">
+<div class="h-32 w-full overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A luxurious, high-end boutique spa interior with minimalist wooden furniture, soft warm ambient lighting, and white marble accents. The aesthetic is professional, clean, and sophisticated, reflecting a premium service environment with a neutral color palette of beige, cream, and deep charcoal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDx055E9-zaqNjcHvl7erDlasv5DIq3RBR9wTN8Wb9-v_XXP_NjH1lh24YywUOm-bZguJKlvw8JNpnbXck3gMKNrwwE4S6tX2JZUyudr0duuzYD7OU3_-tZ9Bda0Jn-KnZvlM5QuOsZ1IuIDvAqgg1vPuTWmxtk0x1Zt1e-QLbmCPyiVoHeQRAfI68c3-pvZCT8IXqNLahQdCx1rt7nYaOSQLYuQ7MOhkJPH6EuIE4uThRYdguvBPvfJmIad-QhqF2PP2M9OvUnMmQ"/>
+<div class="absolute top-md right-md bg-tertiary-fixed/90 backdrop-blur-md px-md py-base rounded-full text-on-tertiary-fixed font-label-sm text-label-sm shadow-sm">
+                            Online
+                        </div>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Downtown Spa</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    5th Avenue, NY
+                                </p>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-md pt-md border-t border-outline-variant/20">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Revenue Today</p>
+<p class="font-display-price text-[24px] text-on-surface">$4,820.00</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Techs</p>
+<p class="font-display-price text-[24px] text-secondary">12 / 15</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Store Card 2 -->
+<div class="group relative bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-outline-variant/10">
+<div class="h-32 w-full overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A modern beach resort lifestyle store with floor-to-ceiling windows overlooking a blue ocean. The interior features bright, high-key lighting, light wood textures, and organized displays of high-end resort wear. The visual style is airy, sophisticated, and evokes a high-end vacation atmosphere with shades of soft blue and sandy white." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_VCpImyPiwSFvI6Cq_C-gwioUrXrmFZ9hQ7cHquuC7x-B1X_QMSXyfMe3uYwjjKFtf-QewoFzVyJu3hYco-gENphNgPIhc10YoR2HrbBfbeeM11_0iH94GyBBtD9Y7qJ4H9u0h7LbBD0ZTNU81tor9znoBOJN0fwYKmcZrJmgm--3dBDwsEfghWhMRTm943M3g0sxMpoz2x3XDMVFbj0XcL7Hd5t2XjeiQUPgYOdVdfAAc_JzXSYHu9dCMoId4Jy6usxY2BFQPfQ"/>
+<div class="absolute top-md right-md bg-tertiary-fixed/90 backdrop-blur-md px-md py-base rounded-full text-on-tertiary-fixed font-label-sm text-label-sm shadow-sm">
+                            Online
+                        </div>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Beach Resort Outlet</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Malibu, CA
+                                </p>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-md pt-md border-t border-outline-variant/20">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Revenue Today</p>
+<p class="font-display-price text-[24px] text-on-surface">$2,150.45</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Techs</p>
+<p class="font-display-price text-[24px] text-secondary">4 / 6</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Store Card 3 (Alert State) -->
+<div class="group relative bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-outline-variant/10">
+<div class="h-32 w-full overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A sleek, professional urban bistro interior during a busy lunch hour. Sharp contrasts between black industrial ceilings and warm wooden tables. The lighting is focused and dramatic, creating a dynamic, high-energy mood. The palette uses deep obsidian and rich walnut tones, reflecting a precise and efficient metropolitan business setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDreK3i98nbDcqwpftKlKAfMpgZGzS8hjp6e5jRz7p1IOg4uxKkZIhAwo_YwMq9q-dB2HuX-Ip2Fym2rGg_voalhfc0YooYBYOczTeMDb1mQSPY-w3tDpnUnmCphHNFNtldtZNAYmP3NqpAGBRkE7SqKwSprIbxp7U7t3Yv5Q_inucOheB4yXPCbhiDf-pbbQdXY1k-2xF0yYa2eocjUOoq4cG2LMmCBZFChhnKe9ub9OqeJMLF4e7OmClCciBSaFNWoP-szu3pff0"/>
+<div class="absolute top-md right-md bg-error-container/90 backdrop-blur-md px-md py-base rounded-full text-on-error-container font-label-sm text-label-sm shadow-sm flex items-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                            Sync Issue
+                        </div>
+</div>
+<div class="p-lg">
+<div class="flex justify-between items-start mb-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Uptown Bistro</h3>
+<p class="font-body-md text-body-md text-on-surface-variant flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+                                    Chicago, IL
+                                </p>
+</div>
+<button class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-md pt-md border-t border-outline-variant/20">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Revenue Today</p>
+<p class="font-display-price text-[24px] text-on-surface">$940.00</p>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Active Techs</p>
+<p class="font-display-price text-[24px] text-secondary">2 / 8</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Add New Store (Placeholder Card) -->
+<div class="group border-2 border-dashed border-outline-variant rounded-xl flex flex-col items-center justify-center p-xl hover:bg-surface-container transition-all cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant mb-md group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">add_business</span>
+</div>
+<p class="font-headline-md text-headline-md text-on-surface">Add New Location</p>
+<p class="font-body-md text-body-md text-on-surface-variant text-center mt-xs">Expand your business footprint</p>
+</div>
+</div>
+<!-- Global Stats Summary -->
+<section class="mt-xl bg-primary text-on-primary rounded-xl p-lg md:p-xl flex flex-col md:flex-row items-center justify-between gap-xl">
+<div class="flex items-center gap-lg">
+<div class="w-16 h-16 rounded-2xl bg-on-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[40px] text-inverse-primary">analytics</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-inverse-primary">Network-wide Performance</h2>
+<p class="font-body-md text-body-md text-on-primary-container">Real-time aggregation across all 3 active branches.</p>
+</div>
+</div>
+<div class="flex gap-xl text-center md:text-left">
+<div>
+<p class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-widest">Total Revenue</p>
+<p class="font-display-price text-headline-lg">$7,910.45</p>
+</div>
+<div class="w-px h-12 bg-on-primary/20 hidden md:block"></div>
+<div>
+<p class="font-label-sm text-label-sm text-on-primary-container uppercase tracking-widest">Global Capacity</p>
+<p class="font-display-price text-headline-lg">18 / 29</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface dark:bg-surface-dim border-t border-outline-variant/30 shadow-lg z-50 flex justify-around items-center px-md py-xs">
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1 transition-all" href="#">
+<span class="material-symbols-outlined active-pill">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        // Simple hover effect enhancement for store cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for adding JS driven atmospheric effects like canvas sparkles or subtle tilts
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Analytics &amp; Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#003e28",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-secondary-container": "#00477f",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-container": "#00b47d",
+                        "on-secondary-fixed": "#001c38",
+                        "primary-container": "#1a365d",
+                        "surface-tint": "#455f88",
+                        "on-primary-fixed": "#001b3c",
+                        "on-surface-variant": "#43474e",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-dim": "#d8dadc",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "background": "#f7f9fb",
+                        "outline": "#74777f",
+                        "on-surface": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#002617",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-primary-container": "#86a0cd",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "primary": "#002045",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#1960a3",
+                        "inverse-primary": "#adc7f7",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed-variant": "#004881"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { -webkit-tap-highlight-color: transparent; }
+        .chart-bar { transition: height 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="bg-surface docked full-width top-0 shadow-sm flex justify-between items-center px-md h-touch-target-min w-full max-w-full sticky z-50">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center">
+<button class="p-xs text-on-surface hover:bg-surface-container-low rounded-full transition-transform active:scale-95">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+</button>
+</div>
+</header>
+<main class="px-md mt-md">
+<!-- Page Title & Time Filter -->
+<section class="mb-lg">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile mb-md">銷售報表</h2>
+<div class="flex bg-surface-container rounded-lg p-base">
+<button class="flex-1 py-xs text-label-md font-label-md rounded-md bg-surface-container-lowest shadow-sm text-primary">Today</button>
+<button class="flex-1 py-xs text-label-md font-label-md text-on-surface-variant hover:text-primary">Week</button>
+<button class="flex-1 py-xs text-label-md font-label-md text-on-surface-variant hover:text-primary">Month</button>
+</div>
+</section>
+<!-- Summary Metrics -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_4px_0_rgba(0,0,0,0.04)] border border-outline-variant/20">
+<span class="text-label-sm font-label-sm text-on-surface-variant mb-xs block">Total Revenue</span>
+<div class="text-headline-lg font-headline-lg text-primary">$12,840</div>
+<div class="text-label-sm font-label-sm text-tertiary-fixed-dim mt-xs flex items-center">
+<span class="material-symbols-outlined text-[14px] mr-1" data-icon="trending_up">trending_up</span> +12.5%
+                </div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_4px_0_rgba(0,0,0,0.04)] border border-outline-variant/20">
+<span class="text-label-sm font-label-sm text-on-surface-variant mb-xs block">Orders</span>
+<div class="text-headline-lg font-headline-lg text-primary">154</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-xs">Avg. 19/hr</div>
+</div>
+<div class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_4px_0_rgba(0,0,0,0.04)] border border-outline-variant/20">
+<span class="text-label-sm font-label-sm text-on-surface-variant mb-xs block">Average Transaction</span>
+<div class="text-headline-lg font-headline-lg text-primary">$83.4</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant mt-xs">Min. $12.00</div>
+</div>
+</section>
+<!-- Sales Trend Chart -->
+<section class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_4px_0_rgba(0,0,0,0.04)] border border-outline-variant/20 mb-lg">
+<div class="flex justify-between items-center mb-lg">
+<h3 class="text-headline-md font-headline-md">Sales Trends</h3>
+<span class="material-symbols-outlined text-outline" data-icon="more_horiz">more_horiz</span>
+</div>
+<div class="flex items-end justify-between h-48 gap-xs px-xs">
+<div class="w-full flex flex-col items-center">
+<div class="chart-bar w-full bg-secondary-container rounded-t-sm" style="height: 40%"></div>
+<span class="text-label-sm font-label-sm mt-xs text-outline">08:00</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="chart-bar w-full bg-secondary-container rounded-t-sm" style="height: 65%"></div>
+<span class="text-label-sm font-label-sm mt-xs text-outline">10:00</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="chart-bar w-full bg-primary rounded-t-sm" style="height: 95%"></div>
+<span class="text-label-sm font-label-sm mt-xs text-outline">12:00</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="chart-bar w-full bg-secondary-container rounded-t-sm" style="height: 80%"></div>
+<span class="text-label-sm font-label-sm mt-xs text-outline">14:00</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="chart-bar w-full bg-secondary-container rounded-t-sm" style="height: 55%"></div>
+<span class="text-label-sm font-label-sm mt-xs text-outline">16:00</span>
+</div>
+<div class="w-full flex flex-col items-center">
+<div class="chart-bar w-full bg-secondary-container rounded-t-sm" style="height: 70%"></div>
+<span class="text-label-sm font-label-sm mt-xs text-outline">18:00</span>
+</div>
+</div>
+</section>
+<!-- Top Selling Products -->
+<section class="bg-surface-container-lowest p-md rounded-xl shadow-[0_4px_4px_0_rgba(0,0,0,0.04)] border border-outline-variant/20">
+<h3 class="text-headline-md font-headline-md mb-md">Top 5 Selling Products</h3>
+<div class="space-y-md">
+<!-- Item 1 -->
+<div class="flex items-center gap-md">
+<img alt="Specialty Coffee" class="w-12 h-12 rounded-lg object-cover" data-alt="A macro photograph of a high-quality specialty coffee in a minimalist ceramic cup. The scene is lit with soft morning sunlight, emphasizing the rich brown texture of the espresso. The background is a clean, modern white countertop, maintaining a professional and crisp aesthetic consistent with a premium retail environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV966tGAsjCLa7i9bl0UXmvenVmkGyAWsgU-Sg7qMQ8rgXzIJTdU2YNEn35hwQnOqOIuuBqABesI84XAfLdYcfCVmsA-YLWnLaDZcT1vS3a7xPFMVEKhckTBAJ9huXM0ojsCNqc8xrLAVqypTcm4qUpnYdBlfb88yZ3l1vIcXdfrLoeulniXvm3W9v06wAM5QwrCquoNK00F59ihKAZIgA5BGMrUY6gIbmVimL5_ktwiemqVu2jZ1DA2n9HyzpM3g1yl328mHl8kY"/>
+<div class="flex-1">
+<div class="text-body-md font-headline-md text-primary leading-tight">Hand-Crafted Latte</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Qty: 42 units</div>
+</div>
+<div class="text-right">
+<div class="text-body-md font-headline-md text-primary">$231.0</div>
+<div class="text-label-sm font-label-sm text-tertiary-fixed-dim">Top #1</div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Item 2 -->
+<div class="flex items-center gap-md">
+<img alt="Artisan Bread" class="w-12 h-12 rounded-lg object-cover" data-alt="Close up of artisanal sourdough bread with a golden-brown crust, sitting on a clean, light-colored wooden surface. The lighting is soft and natural, highlighting the rustic texture of the bread. The scene is uncluttered and sophisticated, using a clean corporate minimalist color palette for a professional retail catalog display." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTh2jmVLw96ShRZ58wiGhJJppPSmtA9Wgqq0P-ld5T5ncgMokVPQOc-n31JKTVV_zMPaIOMsGhupigk97Zf9cBB9rXJnQxScrZ83uY1kGg4ESxdoLfCLKZbmWDWR8JXM8FmAb_0sr_f8CytoRKkW_lD6a550SwSSDyGDNJGmCzca6wLI6Eta61gD4KHfqxDHu-ClvUxmu4Ixo7487rLGX38y-8Ra9w8GCU3N5_MYyGv3buTrtHLOrQI5M4guG6ZSbUOcdRtcjJZDY"/>
+<div class="flex-1">
+<div class="text-body-md font-headline-md text-primary leading-tight">Artisan Sourdough</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Qty: 38 units</div>
+</div>
+<div class="text-right">
+<div class="text-body-md font-headline-md text-primary">$190.0</div>
+<div class="text-label-sm font-label-sm text-outline">Top #2</div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Item 3 -->
+<div class="flex items-center gap-md">
+<img alt="Cold Brew" class="w-12 h-12 rounded-lg object-cover" data-alt="A tall glass of bottled cold brew coffee with condensation on the exterior. The glass is positioned on a white surface with a neutral grey background. The lighting is high-key and modern, emphasizing the deep obsidian color of the coffee. The overall style is clean, precise, and business-focused, with no unnecessary visual clutter." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCY0YFlNuRFBoBR0X8GBs-g4bDjEDTFthj9uJU-S7d0GhGhUaOZyrFLLxTn8xd4I7Iv5H9nW3BINDeYZKu2VBy1nQKYTlcAvwNGo_oiq299y-dl4bIwP7aspAaw9FVg8wravIU962xkVQm6PaYwvskfPtZfUsmrSvGVmQRSAueTD4KLmAmtNcBmPUNthoGIcbioIsvzh3UUgueK1HCSPtUM8nbcJuZwh5DaB8N9f1bwvVcaqAKK9N61IiaaOIDbpl_fDd9jsw5wIbY"/>
+<div class="flex-1">
+<div class="text-body-md font-headline-md text-primary leading-tight">Cold Brew Bottle</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Qty: 29 units</div>
+</div>
+<div class="text-right">
+<div class="text-body-md font-headline-md text-primary">$159.5</div>
+<div class="text-label-sm font-label-sm text-outline">Top #3</div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Item 4 -->
+<div class="flex items-center gap-md">
+<img alt="Glazed Donut" class="w-12 h-12 rounded-lg object-cover" data-alt="A gourmet glazed donut with intricate patterns on top, presented on a minimalist white ceramic plate. The studio lighting is bright and soft, creating a crisp and high-quality product photo. The aesthetic is modern and corporate, using a palette of white and neutral tones with high-contrast sharp details to communicate premium quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZDBCYbeiYhEHJIXYneRmVzpvP9DXHOt9aQBAKsWN96pR8eNUUxMuy5HIXXfqL-Xb14oIRhiJJWRQ7zftwFktPmaN1LV6uCVo209RduqSjkf_2-dz6YPHB8GkA5I1LF0jO0xVuBNqar4lyGkoqv7tu0LVkBFG5r5Ik_LOS1aD6wRC4n1mv_HgxS5fG1qBBthSmnBIqhcWEiXaRLFN4M-OKe-9grxCyCLQeSoioFj93ayy-dyjNx4iEtk3kX047ggNhxA7NUAkadoI"/>
+<div class="flex-1">
+<div class="text-body-md font-headline-md text-primary leading-tight">Glazed Pastry</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Qty: 25 units</div>
+</div>
+<div class="text-right">
+<div class="text-body-md font-headline-md text-primary">$87.5</div>
+<div class="text-label-sm font-label-sm text-outline">Top #4</div>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant/30"></div>
+<!-- Item 5 -->
+<div class="flex items-center gap-md">
+<img alt="Lunch Bowl" class="w-12 h-12 rounded-lg object-cover" data-alt="A fresh, vibrant healthy lunch bowl containing greens, grains, and colorful vegetables. The bowl is positioned in the center of a minimalist gray tabletop. The lighting is bright and clinical yet inviting, reflecting a modern healthy-eating retail concept. The colors are punchy but balanced against a neutral background for a clean UI integration." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtDEWKMZ_ZvPAznLMPNO_auhpN-mh16sltUXL4zOSIkYy_pBjz3a2j7ka6aycb2IDJDzfEHN62HHSHlFFdJS96YoZ286dfNk8xWnddYe0kAVqCP1yMichQkGNO7-HzEk6OBaFBFPtN0zDpoAn1dqjV6cb4hhE2ScdhKG_qBjYyzjRlojCLJtxEothGONorAGc_jB-q_UL3UXffQxHiSYCPKgJn0HOOZ8KoTI6kMii8B-m6g1IMnxpkbE89TdSKsaSOLftkNlOsnls"/>
+<div class="flex-1">
+<div class="text-body-md font-headline-md text-primary leading-tight">Quinoa Salad Bowl</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant">Qty: 21 units</div>
+</div>
+<div class="text-right">
+<div class="text-body-md font-headline-md text-primary">$210.0</div>
+<div class="text-label-sm font-label-sm text-outline">Top #5</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface shadow-lg rounded-t-lg">
+<!-- Sale -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm">Sale</span>
+</a>
+<!-- Stock -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Stock</span>
+</a>
+<!-- Reports (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-lg py-xs transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="text-label-sm font-label-sm">Reports</span>
+</a>
+<!-- History -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary transition-all active:scale-95" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm">History</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for chart bars
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const finalHeight = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.height = finalHeight;
+                }, 300);
+            });
+
+            // Toggle active state for time filters
+            const filterButtons = document.querySelectorAll('.flex.bg-surface-container button');
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => {
+                        b.classList.remove('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+                        b.classList.add('text-on-surface-variant');
+                    });
+                    btn.classList.add('bg-surface-container-lowest', 'shadow-sm', 'text-primary');
+                    btn.classList.remove('text-on-surface-variant');
+                    
+                    // Randomize chart heights to simulate data loading
+                    bars.forEach(bar => {
+                        const randomHeight = Math.floor(Math.random() * 80) + 20 + '%';
+                        bar.style.height = randomHeight;
+                    });
+                });
+            });
+        });
+    </script>
+</body></html>

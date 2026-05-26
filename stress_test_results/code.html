@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POS_STRESS_ENGINE_V1 - System Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface": "#f7f9fb",
+                    "tertiary-container": "#002617",
+                    "error": "#ba1a1a",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#1960a3",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#7db6ff",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "inverse-primary": "#aec7f5",
+                    "surface-tint": "#465f87",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#5d9377",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-secondary": "#ffffff",
+                    "surface-container": "#eceef0",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "surface-variant": "#e0e3e5",
+                    "on-background": "#191c1e",
+                    "primary": "#00091b",
+                    "outline": "#74777f",
+                    "tertiary": "#000b05",
+                    "surface-bright": "#f7f9fb",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "primary-container": "#002045",
+                    "outline-variant": "#c4c6cf",
+                    "on-tertiary-fixed": "#002113",
+                    "on-secondary-container": "#00477f",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "on-secondary-fixed-variant": "#004881",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-secondary-fixed": "#001c38",
+                    "secondary-fixed": "#d3e4ff",
+                    "inverse-surface": "#2d3133",
+                    "inverse-on-surface": "#eff1f3",
+                    "primary-fixed": "#d6e3ff",
+                    "on-surface-variant": "#44474e",
+                    "on-primary-fixed": "#001b3c",
+                    "on-primary-container": "#7089b3"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "touch-target-min": "44px",
+                    "base": "4px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "lg": "24px",
+                    "margin-desktop": "24px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "display-price": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .animate-pulse-slow {
+            animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 flex justify-between items-center px-margin-desktop py-4 bg-surface-container border-b border-border-subtle">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="terminal">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">POS_STRESS_ENGINE_V1</h1>
+</div>
+<button class="bg-error text-on-error px-lg py-sm rounded-lg font-label-md text-label-md hover:bg-surface-bright hover:text-error transition-colors active:scale-95 duration-100 uppercase tracking-widest">
+            STOP TEST
+        </button>
+</header>
+<div class="flex flex-1 overflow-hidden">
+<!-- NavigationDrawer (Desktop) -->
+<aside class="hidden md:flex flex-col h-full py-base gap-2 bg-surface-container-low w-64 left-0 sticky border-r border-border-subtle">
+<div class="px-lg py-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">SYSTEM OPS</h2>
+</div>
+<nav class="flex flex-col gap-1 px-sm">
+<a class="flex items-center gap-3 px-lg py-sm rounded-lg text-secondary font-bold border-l-2 border-secondary bg-surface-variant/10 hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-body-md text-body-md">Real-time Metrics</span>
+</a>
+<a class="flex items-center gap-3 px-lg py-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-body-md text-body-md">Transaction Logs</span>
+</a>
+<a class="flex items-center gap-3 px-lg py-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="calculate">calculate</span>
+<span class="font-body-md text-body-md">Commission Integrity</span>
+</a>
+<a class="flex items-center gap-3 px-lg py-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="memory">memory</span>
+<span class="font-body-md text-body-md">Resource Monitor</span>
+</a>
+<a class="flex items-center gap-3 px-lg py-sm rounded-lg text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Stress Settings</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 overflow-y-auto p-margin-mobile md:p-margin-desktop">
+<div class="max-w-6xl mx-auto space-y-xl pb-32">
+<!-- Hero Score Section -->
+<section class="relative overflow-hidden rounded-xl bg-primary text-on-primary p-xl flex flex-col md:flex-row items-center justify-between gap-xl shadow-lg">
+<div class="relative z-10 space-y-md text-center md:text-left">
+<span class="inline-block bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">RUNNING ANALYSIS</span>
+<h2 class="font-headline-lg text-headline-lg text-white">系統健康報告</h2>
+<p class="text-on-primary-container opacity-80 max-w-md">當前引擎狀態穩定，模擬 48 小時高負載運行後，系統表現優於預期基準線。</p>
+</div>
+<div class="relative z-10 flex flex-col items-center">
+<div class="relative w-48 h-48 flex items-center justify-center">
+<svg class="absolute inset-0 w-full h-full transform -rotate-90">
+<circle class="text-white/10" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-width="8"></circle>
+<circle class="text-secondary-container" cx="96" cy="96" fill="transparent" r="88" stroke="currentColor" stroke-dasharray="552.92" stroke-dashoffset="11.05" stroke-linecap="round" stroke-width="10"></circle>
+</svg>
+<div class="text-center">
+<span class="font-display-price text-display-price block leading-none">98</span>
+<span class="font-label-md text-label-md opacity-60">SCORE</span>
+</div>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="absolute -right-20 -top-20 w-80 h-80 bg-secondary/20 blur-[100px] rounded-full"></div>
+</section>
+<!-- Bento Grid Findings -->
+<div class="bento-grid">
+<!-- 併發性能 -->
+<div class="col-span-12 md:col-span-8 glass-card p-xl rounded-xl shadow-sm border border-surface-container-highest transition-transform hover:scale-[1.01]">
+<div class="flex items-start justify-between mb-lg">
+<div class="space-y-sm">
+<div class="flex items-center gap-2 text-secondary">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+<h3 class="font-headline-md text-headline-md">併發性能發現</h3>
+</div>
+<p class="text-on-surface-variant">高並發壓力測試下，網關吞吐量保持高度線性增長。</p>
+</div>
+<span class="text-secondary font-label-md bg-secondary-container/20 px-3 py-1 rounded-full">OPTIMIZED</span>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-lg">
+<div class="bg-surface-container-low p-lg rounded-lg border border-surface-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">TRANSACTIONS PER SECOND</p>
+<p class="font-headline-lg text-headline-lg text-primary">500 <span class="text-body-md font-normal">TPS</span></p>
+</div>
+<div class="bg-surface-container-low p-lg rounded-lg border border-surface-variant">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">AVERAGE LATENCY</p>
+<p class="font-headline-lg text-headline-lg text-primary">20 <span class="text-body-md font-normal">MS</span></p>
+</div>
+</div>
+</div>
+<!-- 數據一致性 -->
+<div class="col-span-12 md:col-span-4 bg-tertiary-container text-on-tertiary p-xl rounded-xl shadow-sm flex flex-col justify-between">
+<div class="space-y-md">
+<span class="material-symbols-outlined text-tertiary-fixed text-4xl" data-icon="verified">verified</span>
+<h3 class="font-headline-md text-headline-md">數據一致性</h3>
+<p class="text-on-tertiary-container text-sm leading-relaxed">
+                                自動化審計模組完成對 10,000 筆模擬佣金計算的核對，無任何偏移或精度丟失。
+                            </p>
+</div>
+<div class="mt-xl">
+<div class="flex justify-between items-end">
+<span class="font-display-price text-display-price text-tertiary-fixed leading-none">100%</span>
+<span class="font-label-sm text-label-sm opacity-60">MATCH RATE</span>
+</div>
+<div class="w-full bg-white/10 h-1 rounded-full mt-sm">
+<div class="bg-tertiary-fixed h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+<!-- 缺陷修復 -->
+<div class="col-span-12 md:col-span-7 glass-card p-xl rounded-xl shadow-sm border border-surface-container-highest">
+<div class="flex items-center gap-3 mb-lg">
+<div class="w-12 h-12 rounded-full bg-error-container flex items-center justify-center">
+<span class="material-symbols-outlined text-error" data-icon="bug_report">bug_report</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md">缺陷修復日誌</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">PATCH VERSION 2.4.1</p>
+</div>
+</div>
+<div class="space-y-md">
+<div class="flex gap-lg items-start p-md bg-surface-container-lowest rounded-lg">
+<span class="material-symbols-outlined text-secondary" data-icon="shield_with_heart">shield_with_heart</span>
+<div>
+<p class="font-body-md font-bold">優化極端情況下的退款攔截邏輯</p>
+<p class="text-sm text-on-surface-variant">解決了在網路延遲高於 500ms 時，異步退款請求可能導致的二次扣款風險。</p>
+</div>
+</div>
+</div>
+</div>
+<!-- 視覺裝飾/圖片卡 -->
+<div class="col-span-12 md:col-span-5 rounded-xl overflow-hidden relative min-h-[200px] shadow-sm group">
+<img alt="Advanced server metrics visualization" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A futuristic dark control room with holographic blue data displays and complex geometric metrics patterns. High-end sophisticated server room atmosphere with low-key moody lighting and neon accents. Professional technical visualization with sharp clean lines and a modern digital aesthetic reflecting reliability and advanced performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM-_xCQLrP8TqRJOLZNLsLbeNPiRiEpC9q6KwwZkNawDAcTfaqZZ6DY6PJFv6pjqEg-UYqlMKURQd0G8kaQ4bxICd4Ws3uKOcUcXWcExvVPNdQo_CZcV9lbQiDq2rEpURe-SSpEx8UKlVUpd-5VD-purSHwWNfg-DwOVhl4hIrNig0sVSfIO3pnvCceisJ2BDZayHXU5ZjCP0FyC4ClIOCdgTDknLpdTUlBp6JNLqelJH3DxLmFQDtz1zmkqgi0e0cSeROxb17lbw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+<div class="absolute bottom-lg left-lg">
+<p class="font-label-md text-label-md text-white">SYSTEM INTEGRITY</p>
+<p class="text-white/60 text-xs">GLOBAL NODES: ACTIVE</p>
+</div>
+</div>
+</div>
+<!-- Action Section -->
+<section class="flex flex-col items-center justify-center py-xl gap-lg">
+<div class="text-center space-y-xs">
+<h4 class="font-headline-md text-headline-md">準備好進行系統升級了嗎？</h4>
+<p class="text-on-surface-variant">所有壓力測試已通過，當前版本推薦部署。升級將在 5 分鐘內完成。</p>
+</div>
+<button class="group relative flex items-center gap-4 bg-primary text-on-primary px-xl py-lg rounded-xl font-headline-md text-headline-md shadow-xl hover:bg-secondary transition-all active:scale-95 duration-200">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500" data-icon="auto_mode">auto_mode</span>
+<span>一鍵升級系統組件</span>
+<div class="absolute -top-1 -right-1 w-3 h-3 bg-tertiary-fixed rounded-full animate-pulse-slow"></div>
+</button>
+</section>
+</div>
+</main>
+</div>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex items-center justify-around px-margin-mobile h-12 bg-surface-container-lowest border-t border-border-subtle z-50">
+<button class="flex flex-col items-center justify-center transition-opacity duration-200 hover:opacity-100 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+<span class="font-label-sm text-label-sm">NORMAL</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 transition-opacity duration-200 hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="warning">warning</span>
+<span class="font-label-sm text-label-sm">HIGH</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant opacity-60 transition-opacity duration-200 hover:opacity-100">
+<span class="material-symbols-outlined text-[20px]" data-icon="emergency_home">emergency_home</span>
+<span class="font-label-sm text-label-sm">CRITICAL</span>
+</button>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelector('button.group').addEventListener('click', function() {
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin" data-icon="sync">sync</span> 升級中...';
+            btn.classList.add('opacity-80');
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined" data-icon="done_all">done_all</span> 升級完成';
+                btn.classList.replace('bg-primary', 'bg-tertiary-container');
+                btn.classList.replace('text-on-primary', 'text-tertiary-fixed');
+            }, 3000);
+        });
+    </script>
+</body></html>

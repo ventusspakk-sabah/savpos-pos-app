@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - 技師佣金變動明細</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#6ffbbe",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-secondary-fixed-variant": "#004881",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "on-secondary-fixed": "#001c38",
+                    "background": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "surface-tint": "#465f87",
+                    "surface-variant": "#e0e3e5",
+                    "surface-container-lowest": "#ffffff",
+                    "surface": "#f7f9fb",
+                    "surface-container-high": "#e6e8ea",
+                    "inverse-primary": "#aec7f5",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "on-primary-fixed": "#001b3c",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f7f9fb",
+                    "primary": "#00091b",
+                    "surface-container": "#eceef0",
+                    "surface-container-low": "#f2f4f6",
+                    "on-error": "#ffffff",
+                    "tertiary": "#000b05",
+                    "outline-variant": "#c4c6cf",
+                    "inverse-surface": "#2d3133",
+                    "on-background": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#44474e",
+                    "on-surface": "#191c1e",
+                    "outline": "#74777f",
+                    "secondary": "#1960a3",
+                    "surface-dim": "#d8dadc",
+                    "tertiary-container": "#002617",
+                    "secondary-container": "#7db6ff",
+                    "on-tertiary-container": "#00b47d",
+                    "on-secondary-container": "#00477f",
+                    "primary-fixed": "#d6e3ff",
+                    "on-primary-container": "#7089b3",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-fixed": "#d3e4ff",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#002045",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "touch-target-min": "44px",
+                    "xl": "32px",
+                    "sm": "12px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["JetBrains Mono"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-price": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #f7f9fb;
+            color: #191c1e;
+            -webkit-font-smoothing: antialiased;
+        }
+        .active-tab {
+            background-color: #002045;
+            color: #ffffff;
+        }
+        .glass-badge {
+            backdrop-filter: blur(8px);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-md h-touch-target-min bg-surface shadow-sm max-w-full">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary">Sav.pos</h1>
+</div>
+<button class="w-touch-target-min h-touch-target-min flex items-center justify-center rounded-full hover:bg-surface-container-low active:scale-95 transition-transform duration-100">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</button>
+</header>
+<main class="pt-[60px] pb-32 px-md max-w-5xl mx-auto">
+<!-- Header / Profile Section -->
+<section class="mt-lg mb-xl flex flex-col md:flex-row md:items-end md:justify-between gap-md">
+<div>
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-primary mb-base">技師佣金變動明細</h2>
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional high-end portrait of a hospitality technician in a minimalist setting. The person has a calm, confident expression, lit by soft, even studio lighting that matches a premium corporate aesthetic. The background is a clean, neutral grey-white tone consistent with a modern retail POS interface. High resolution and sharp focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3uDBBcVZCDJnUBsHVpi56R0Lnz8ufa3FjJCxMI4dfrg3CGeOdOceZR-ZmTMCE2U39dgtOaTUm3mo0gWi3nX8Aw91V1OD3pKhntLj165ZizdMgDNKbXrBvOYcsORofjr9ocv31r3KMHnYyqZ6oYRtBzH3yGORUT86vGr8aZfGOfcEDRNI8YEX1pXUu3lkjMGoEMRCDtt8LfgjL76qmZ3cgAY_rYlNeCbGxAK-5vwxnkz3ebr3nH9E0oveX6maikCKINmLOU8qXosM"/>
+</div>
+<div>
+<p class="font-headline-md text-headline-md text-on-surface">陳美玲 (Mei-Ling Chen)</p>
+<p class="text-label-sm font-label-sm text-on-surface-variant">員工編號: #V-8829</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-low p-md rounded-xl shadow-sm border border-outline-variant/30 text-right">
+<p class="text-label-sm font-label-sm text-outline mb-1">本月總累計收益</p>
+<p class="text-headline-lg font-headline-lg text-secondary">$ 42,850</p>
+</div>
+</section>
+<!-- Summary Cards Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+<!-- Available Balance -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-on-tertiary-container">
+<div class="flex justify-between items-start mb-sm">
+<span class="material-symbols-outlined text-on-tertiary-container" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="text-label-sm font-label-sm px-xs py-1 rounded bg-tertiary-fixed/30 text-on-tertiary-fixed-variant">可提領</span>
+</div>
+<h3 class="text-label-md font-label-md text-on-surface-variant mb-xs">可用餘額</h3>
+<p class="text-headline-lg font-headline-lg text-primary">$ 18,200</p>
+<p class="text-label-sm font-label-sm text-outline mt-xs">已通過 30 天保障期</p>
+</div>
+<!-- Held Period -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="lock_clock">lock_clock</span>
+<span class="text-label-sm font-label-sm px-xs py-1 rounded bg-secondary-fixed/30 text-on-secondary-fixed-variant">計算中</span>
+</div>
+<h3 class="text-label-md font-label-md text-on-surface-variant mb-xs">保障期內金額</h3>
+<p class="text-headline-lg font-headline-lg text-primary">$ 24,650</p>
+<p class="text-label-sm font-label-sm text-outline mt-xs">待核實之服務佣金</p>
+</div>
+<!-- Recent Payouts -->
+<div class="bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-outline">
+<div class="flex justify-between items-start mb-sm">
+<span class="material-symbols-outlined text-outline" data-icon="payments">payments</span>
+</div>
+<h3 class="text-label-md font-label-md text-on-surface-variant mb-xs">最近發放金額</h3>
+<p class="text-headline-lg font-headline-lg text-primary">$ 15,000</p>
+<p class="text-label-sm font-label-sm text-outline mt-xs">於 2024/05/01 轉出</p>
+</div>
+</section>
+<!-- Transaction List Section -->
+<section class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden">
+<!-- Filter Tabs -->
+<div class="px-md pt-md border-b border-outline-variant/30">
+<div class="flex gap-md">
+<button class="px-lg py-sm font-label-md text-label-md border-b-2 border-primary text-primary transition-all">
+                        全部明細 (All)
+                    </button>
+<button class="px-lg py-sm font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all">
+                        收益 (Income)
+                    </button>
+<button class="px-lg py-sm font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all">
+                        扣除 (Clawbacks)
+                    </button>
+</div>
+</div>
+<!-- List Content -->
+<div class="divide-y divide-outline-variant/20">
+<!-- Transaction Item 1: Income Held -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/20 flex items-center justify-center text-on-tertiary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-on-surface">深層組織按摩 (Deep Tissue)</span>
+<span class="text-label-sm font-label-sm px-xs py-0.5 rounded-full bg-secondary-container/20 text-on-secondary-container">保障期內</span>
+</div>
+<div class="flex gap-sm text-label-sm font-label-sm text-outline mt-1">
+<span>訂單編號: #POS-22910</span>
+<span>2024/05/18 14:30</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-on-tertiary-container">+ $ 850</p>
+<p class="text-label-sm font-label-sm text-outline mt-1">預計 06/17 結算</p>
+</div>
+</div>
+<!-- Transaction Item 2: Income Settled -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/20 flex items-center justify-center text-on-tertiary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-on-surface">香薰療癒服務 (Aromatherapy)</span>
+<span class="text-label-sm font-label-sm px-xs py-0.5 rounded-full bg-tertiary-fixed/20 text-on-tertiary-fixed-variant">已結算</span>
+</div>
+<div class="flex gap-sm text-label-sm font-label-sm text-outline mt-1">
+<span>訂單編號: #POS-22845</span>
+<span>2024/04/15 10:15</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-on-tertiary-container">+ $ 1,200</p>
+<p class="text-label-sm font-label-sm text-on-tertiary-container mt-1">已撥入餘額</p>
+</div>
+</div>
+<!-- Transaction Item 3: Clawback -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center text-error group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+</div>
+<div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-error">服務退款扣回 (Clawback)</span>
+<span class="text-label-sm font-label-sm px-xs py-0.5 rounded-full bg-error-container/20 text-error">退款沖銷</span>
+</div>
+<div class="flex gap-sm text-label-sm font-label-sm text-outline mt-1">
+<span>原訂單: #POS-22701</span>
+<span>2024/05/17 09:00</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-error">- $ 600</p>
+<p class="text-label-sm font-label-sm text-outline mt-1">顧客申請取消</p>
+</div>
+</div>
+<!-- Transaction Item 4: Income Held -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors group">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed/20 flex items-center justify-center text-on-tertiary-container group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-xs">
+<span class="font-headline-md text-on-surface">頭部經絡舒壓 (Head Spa)</span>
+<span class="text-label-sm font-label-sm px-xs py-0.5 rounded-full bg-secondary-container/20 text-on-secondary-container">保障期內</span>
+</div>
+<div class="flex gap-sm text-label-sm font-label-sm text-outline mt-1">
+<span>訂單編號: #POS-22905</span>
+<span>2024/05/17 18:20</span>
+</div>
+</div>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-on-tertiary-container">+ $ 450</p>
+<p class="text-label-sm font-label-sm text-outline mt-1">預計 06/16 結算</p>
+</div>
+</div>
+</div>
+<!-- Footer Pagination -->
+<div class="p-md bg-surface-container flex justify-center">
+<button class="text-label-md font-label-md text-primary flex items-center gap-xs hover:underline">
+                    查看更多歷史記錄
+                    <span class="material-symbols-outlined text-sm" data-icon="arrow_downward">arrow_downward</span>
+</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-md pt-xs bg-surface shadow-lg rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm">Sale</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Stock</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs hover:text-primary" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-sm font-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-lg py-xs active:scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="text-label-sm font-label-sm">History</span>
+</a>
+</nav>
+<script>
+        // Simple Interaction logic for active state feeling
+        document.querySelectorAll('nav a, .group').forEach(el => {
+            el.addEventListener('click', function() {
+                this.classList.add('scale-95');
+                setTimeout(() => this.classList.remove('scale-95'), 150);
+            });
+        });
+
+        // Tab switching visual (mock)
+        const tabs = document.querySelectorAll('button.font-label-md');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('border-primary', 'text-primary');
+                    t.classList.add('text-on-surface-variant');
+                });
+                tab.classList.add('border-primary', 'text-primary');
+                tab.classList.remove('text-on-surface-variant');
+                tab.classList.add('border-b-2');
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#003e28",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "tertiary-fixed": "#6ffbbe",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-secondary-container": "#00477f",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary-container": "#00b47d",
+                        "on-secondary-fixed": "#001c38",
+                        "primary-container": "#1a365d",
+                        "surface-tint": "#455f88",
+                        "on-primary-fixed": "#001b3c",
+                        "on-surface-variant": "#43474e",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "on-tertiary-fixed-variant": "#005236",
+                        "surface-container-high": "#e6e8ea",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-error": "#ffffff",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d6e3ff",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-dim": "#d8dadc",
+                        "on-background": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "tertiary-fixed-dim": "#4edea3",
+                        "background": "#f7f9fb",
+                        "outline": "#74777f",
+                        "on-surface": "#191c1e",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#002617",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-primary-container": "#86a0cd",
+                        "surface-container-low": "#f2f4f6",
+                        "surface": "#f7f9fb",
+                        "primary": "#002045",
+                        "on-tertiary": "#ffffff",
+                        "secondary": "#1960a3",
+                        "inverse-primary": "#adc7f7",
+                        "surface-container": "#eceef0",
+                        "on-secondary-fixed-variant": "#004881"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "touch-target-min": "44px",
+                        "base": "4px",
+                        "xs": "8px",
+                        "sm": "12px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "body-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .order-card {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .order-card:active {
+            transform: scale(0.98);
+        }
+        .receipt-overlay {
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm h-touch-target-min px-md flex justify-between items-center max-w-full">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<h1 class="text-headline-lg-mobile font-headline-lg-mobile font-bold text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="settings">settings</span>
+</div>
+</header>
+<main class="flex-grow pt-xl mt-touch-target-min px-md pb-32">
+<header class="mb-lg">
+<h2 class="text-headline-lg-mobile font-headline-lg-mobile text-on-surface mb-xs">訂單歷史</h2>
+<div class="flex gap-xs overflow-x-auto pb-xs">
+<span class="bg-primary text-on-primary px-md py-xs rounded-full text-label-md font-label-md whitespace-nowrap">今日</span>
+<span class="bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full text-label-md font-label-md whitespace-nowrap">昨日</span>
+<span class="bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full text-label-md font-label-md whitespace-nowrap">近七日</span>
+<span class="bg-surface-container-high text-on-surface-variant px-md py-xs rounded-full text-label-md font-label-md whitespace-nowrap flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="calendar_today">calendar_today</span> 自定義
+                </span>
+</div>
+</header>
+<!-- Search Bar -->
+<div class="mb-lg relative">
+<div class="absolute inset-y-0 left-md flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline" data-icon="search">search</span>
+</div>
+<input class="w-full h-touch-target-min pl-12 pr-12 bg-surface-container-lowest border-none rounded-xl shadow-sm focus:ring-2 focus:ring-primary text-body-md" placeholder="搜尋訂單編號或顧客" type="text"/>
+<div class="absolute inset-y-0 right-md flex items-center">
+<span class="material-symbols-outlined text-primary" data-icon="barcode_scanner">barcode_scanner</span>
+</div>
+</div>
+<!-- Transactions List -->
+<div class="space-y-md">
+<!-- Order Item 1 -->
+<div class="order-card bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col gap-sm cursor-pointer" onclick="openReceipt('INV-88291', '14:20', 'NT$ 1,280', 'Completed')">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-md font-label-md text-outline mb-1">INV-88291</p>
+<p class="text-body-md font-bold">下午 02:20</p>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-primary">NT$ 1,280</p>
+<span class="inline-flex items-center gap-xs bg-tertiary-fixed text-on-tertiary-fixed-variant px-xs py-1 rounded text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+                            已完成
+                        </span>
+</div>
+</div>
+</div>
+<!-- Order Item 2 -->
+<div class="order-card bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col gap-sm cursor-pointer" onclick="openReceipt('INV-88288', '13:45', 'NT$ 450', 'Refunded')">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-md font-label-md text-outline mb-1">INV-88288</p>
+<p class="text-body-md font-bold">下午 01:45</p>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-outline line-through">NT$ 450</p>
+<span class="inline-flex items-center gap-xs bg-error-container text-on-error-container px-xs py-1 rounded text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+                            已退款
+                        </span>
+</div>
+</div>
+</div>
+<!-- Order Item 3 -->
+<div class="order-card bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col gap-sm cursor-pointer" onclick="openReceipt('INV-88275', '11:12', 'NT$ 3,200', 'Completed')">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-md font-label-md text-outline mb-1">INV-88275</p>
+<p class="text-body-md font-bold">上午 11:12</p>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-primary">NT$ 3,200</p>
+<span class="inline-flex items-center gap-xs bg-tertiary-fixed text-on-tertiary-fixed-variant px-xs py-1 rounded text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+                            已完成
+                        </span>
+</div>
+</div>
+</div>
+<!-- Order Item 4 -->
+<div class="order-card bg-surface-container-lowest p-md rounded-xl shadow-sm flex flex-col gap-sm cursor-pointer" onclick="openReceipt('INV-88260', '10:05', 'NT$ 120', 'Completed')">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-label-md font-label-md text-outline mb-1">INV-88260</p>
+<p class="text-body-md font-bold">上午 10:05</p>
+</div>
+<div class="text-right">
+<p class="text-headline-md font-headline-md text-primary">NT$ 120</p>
+<span class="inline-flex items-center gap-xs bg-tertiary-fixed text-on-tertiary-fixed-variant px-xs py-1 rounded text-label-sm font-label-sm">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span>
+                            已完成
+                        </span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Receipt Modal Overlay -->
+<div class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm hidden flex items-center justify-center p-md" id="receiptModal">
+<div class="bg-surface-container-lowest w-full max-w-sm rounded-xl overflow-hidden shadow-2xl receipt-overlay scale-95 opacity-0">
+<div class="p-lg border-b border-dashed border-outline-variant relative">
+<button class="absolute top-md right-md text-outline" onclick="closeReceipt()">
+<span class="material-symbols-outlined" data-icon="close">close</span>
+</button>
+<div class="text-center">
+<p class="text-label-md font-label-md text-outline tracking-widest mb-xs">RECIEPT DETAILS</p>
+<h3 class="text-headline-md font-headline-md text-primary" id="modalOrderId">INV-88291</h3>
+</div>
+</div>
+<div class="p-lg space-y-md">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">時間</span>
+<span class="font-bold" id="modalTime">14:20</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">操作員</span>
+<span class="font-bold">Admin (Kevin)</span>
+</div>
+<div class="pt-md border-t border-surface-variant">
+<div class="flex justify-between mb-xs">
+<span class="text-body-md">精緻咖啡豆 (500g) x 2</span>
+<span class="font-bold">NT$ 960</span>
+</div>
+<div class="flex justify-between mb-xs">
+<span class="text-body-md">手沖濾紙 x 1</span>
+<span class="font-bold">NT$ 320</span>
+</div>
+</div>
+<div class="pt-md border-t border-surface-variant">
+<div class="flex justify-between items-center">
+<span class="text-headline-md font-headline-md">總計</span>
+<span class="text-headline-lg font-headline-lg text-primary" id="modalAmount">NT$ 1,280</span>
+</div>
+</div>
+<div class="flex gap-md pt-lg">
+<button class="flex-1 bg-surface-container-high text-on-surface h-touch-target-min rounded-lg font-bold flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[20px]" data-icon="print">print</span> 列印
+                    </button>
+<button class="flex-1 bg-error-container text-on-error-container h-touch-target-min rounded-lg font-bold flex items-center justify-center gap-xs" id="refundBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="undo">undo</span> 退款
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface dark:bg-surface-container-lowest shadow-lg flex justify-around items-center px-md pb-md pt-xs rounded-t-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs" href="#">
+<span class="material-symbols-outlined" data-icon="point_of_sale">point_of_sale</span>
+<span class="text-label-sm font-label-sm">Sale</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="text-label-sm font-label-sm">Stock</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-xs" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="text-label-sm font-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-lg py-xs scale-95 transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="text-label-sm font-label-sm">History</span>
+</a>
+</nav>
+<script>
+        function openReceipt(id, time, amount, status) {
+            const modal = document.getElementById('receiptModal');
+            const content = modal.querySelector('.receipt-overlay');
+            const refundBtn = document.getElementById('refundBtn');
+            
+            document.getElementById('modalOrderId').innerText = id;
+            document.getElementById('modalTime').innerText = time;
+            document.getElementById('modalAmount').innerText = amount;
+            
+            if(status === 'Refunded') {
+                refundBtn.classList.add('opacity-50', 'pointer-events-none');
+                refundBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]" data-icon="done">done</span> 已退款';
+            } else {
+                refundBtn.classList.remove('opacity-50', 'pointer-events-none');
+                refundBtn.innerHTML = '<span class="material-symbols-outlined text-[20px]" data-icon="undo">undo</span> 退款';
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeReceipt() {
+            const modal = document.getElementById('receiptModal');
+            const content = modal.querySelector('.receipt-overlay');
+            
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Close modal on click outside
+        document.getElementById('receiptModal').addEventListener('click', function(e) {
+            if(e.target === this) closeReceipt();
+        });
+    </script>
+</body></html>

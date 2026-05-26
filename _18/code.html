@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - Admin Identity Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container": "#eceef0",
+                    "on-surface": "#191c1e",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "on-secondary-container": "#00477f",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "on-primary-container": "#7089b3",
+                    "primary-fixed-dim": "#aec7f5",
+                    "on-secondary-fixed-variant": "#004881",
+                    "surface-container-high": "#e6e8ea",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#44474e",
+                    "inverse-primary": "#aec7f5",
+                    "outline-variant": "#c4c6cf",
+                    "primary": "#00091b",
+                    "on-background": "#191c1e",
+                    "surface-container-highest": "#e0e3e5",
+                    "tertiary-fixed": "#b6efcf",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-container": "#00b47d",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001b3c",
+                    "surface-dim": "#d8dadc",
+                    "on-tertiary-fixed": "#002113",
+                    "secondary-container": "#7db6ff",
+                    "surface": "#f7f9fb",
+                    "surface-container-low": "#f2f4f6",
+                    "background": "#f7f9fb",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#002045",
+                    "surface-bright": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-primary": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "outline": "#74777f",
+                    "on-secondary-fixed": "#001c38",
+                    "secondary": "#1960a3",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#465f87",
+                    "secondary-fixed": "#d3e4ff",
+                    "tertiary": "#000b05",
+                    "surface-variant": "#e0e3e5",
+                    "error-container": "#ffdad6",
+                    "tertiary-container": "#002617"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "touch-target-min": "44px",
+                    "sm": "12px",
+                    "base": "4px",
+                    "xs": "8px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "display-price": ["Inter"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "serif-luxury": ["Playfair Display", "serif"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-focus-ring:focus {
+            box-shadow: 0 0 0 2px #00091b;
+        }
+        .luxury-gradient {
+            background: linear-gradient(135deg, #f7f9fb 0%, #eceef0 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen flex flex-col selection:bg-primary-fixed">
+<!-- Top Navigation Anchor (Shared Component) -->
+<header class="bg-surface dark:bg-primary z-50 sticky top-0 border-none">
+<div class="flex items-center justify-between px-md py-xs w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="spa">spa</span>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Sav.pos</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md hover:text-primary transition-colors" href="#">Documentation</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md hover:text-primary transition-colors" href="#">Privacy</a>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-grow flex items-center justify-center px-md py-xl">
+<div class="w-full max-w-2xl bg-surface-container-lowest rounded-[32px] shadow-sm overflow-hidden p-xl md:p-[64px] border border-surface-container">
+<!-- Step Indicator -->
+<div class="flex items-center gap-base mb-xl">
+<div class="h-1 w-8 bg-primary rounded-full"></div>
+<div class="h-1 w-16 bg-primary rounded-full"></div>
+<div class="h-1 w-8 bg-surface-container-highest rounded-full"></div>
+<span class="ml-xs font-label-sm text-on-surface-variant uppercase tracking-widest">Step 02 — 03</span>
+</div>
+<!-- Header Section -->
+<section class="mb-xl">
+<h1 class="font-serif-luxury text-[48px] leading-[1.1] text-primary mb-md">Admin Identity</h1>
+<p class="font-body-lg text-on-surface-variant max-w-md">
+                    Establish your digital footprint. This profile grants <span class="text-primary font-semibold">unrestricted system-wide control</span> and represents the highest tier of security clearance.
+                </p>
+</section>
+<!-- Configuration Form -->
+<form class="space-y-xl" onsubmit="event.preventDefault()">
+<!-- Avatar Upload -->
+<div class="flex items-center gap-lg group">
+<div class="relative">
+<div class="w-32 h-32 rounded-full border-2 border-dashed border-outline-variant flex flex-col items-center justify-center bg-surface-container-low cursor-pointer hover:border-primary hover:bg-surface-variant transition-all duration-300 group-active:scale-95">
+<span class="material-symbols-outlined text-outline text-4xl mb-xs" data-icon="add_a_photo">add_a_photo</span>
+<span class="font-label-sm text-outline">Upload</span>
+</div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-on-primary w-8 h-8 rounded-full flex items-center justify-center shadow-md">
+<span class="material-symbols-outlined text-sm" data-icon="edit">edit</span>
+</div>
+</div>
+<div class="flex-1">
+<p class="font-label-md text-primary mb-xs">Profile Portrait</p>
+<p class="font-label-sm text-on-surface-variant">Optimal: 400x400px, PNG or JPG. This will be visible in audit logs and system activity feeds.</p>
+</div>
+</div>
+<!-- Input Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Full Name -->
+<div class="col-span-full">
+<label class="block font-label-sm text-on-surface-variant uppercase tracking-widest mb-xs" for="admin-name">Admin Full Name</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-lg py-md font-body-md text-primary placeholder:text-outline focus:ring-2 focus:ring-primary transition-all shadow-sm" id="admin-name" placeholder="Ex: Julian Vane" type="text"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="person">person</span>
+</div>
+</div>
+<!-- Work Email -->
+<div class="col-span-1">
+<label class="block font-label-sm text-on-surface-variant uppercase tracking-widest mb-xs" for="admin-email">Work Email Address</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-lg py-md font-body-md text-primary placeholder:text-outline focus:ring-2 focus:ring-primary transition-all shadow-sm" id="admin-email" placeholder="julian@luxuryretail.com" type="email"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="alternate_email">alternate_email</span>
+</div>
+</div>
+<!-- Mobile Number -->
+<div class="col-span-1">
+<label class="block font-label-sm text-on-surface-variant uppercase tracking-widest mb-xs" for="admin-phone">Mobile (Recovery)</label>
+<div class="relative">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-lg py-md font-body-md text-primary placeholder:text-outline focus:ring-2 focus:ring-primary transition-all shadow-sm" id="admin-phone" placeholder="+1 (555) 000-0000" type="tel"/>
+<span class="absolute right-md top-1/2 -translate-y-1/2 material-symbols-outlined text-outline" data-icon="smartphone">smartphone</span>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-lg flex items-center justify-between gap-lg">
+<button class="flex items-center gap-xs font-label-md text-on-surface-variant hover:text-primary transition-colors group" type="button">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform" data-icon="arrow_back">arrow_back</span>
+                        Previous
+                    </button>
+<button class="bg-primary text-on-primary font-headline-md px-xl py-md rounded-full flex items-center gap-md hover:bg-on-primary-fixed-variant active:scale-95 transition-all shadow-lg" type="submit">
+                        Confirm Identity
+                        <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Shared Component) -->
+<footer class="md:hidden">
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-sm pb-safe bg-surface-container-low dark:bg-primary-container shadow-md rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container/70 font-label-md scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="help_outline">help_outline</span>
+<span>Help</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container/70 font-label-md scale-95 active:opacity-80 transition-transform">
+<span class="material-symbols-outlined mb-1" data-icon="support_agent">support_agent</span>
+<span>Support</span>
+</button>
+</nav>
+</footer>
+<!-- Desktop Help Anchor -->
+<div class="hidden md:fixed bottom-lg right-lg flex items-center gap-md">
+<button class="bg-surface-container-high hover:bg-surface-variant p-md rounded-full shadow-md transition-all active:scale-95 group">
+<span class="material-symbols-outlined text-primary" data-icon="support_agent">support_agent</span>
+</button>
+<button class="bg-primary text-on-primary px-lg py-md rounded-full shadow-lg font-label-md flex items-center gap-xs hover:bg-on-primary-fixed-variant transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="help">help</span>
+            System Assistance
+        </button>
+</div>
+<script>
+        // Simple micro-interaction for input highlighting
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#00091b';
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.querySelector('.material-symbols-outlined').style.color = '#74777f';
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Commission Integrity Audit - POS_STRESS_ENGINE_V1</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-bright": "#3a393a",
+                      "surface-tint": "#d5bbff",
+                      "surface-container-low": "#1c1b1c",
+                      "inverse-on-surface": "#313031",
+                      "tertiary": "#ffb599",
+                      "processing-blue": "#2979FF",
+                      "on-surface": "#e5e2e3",
+                      "tertiary-container": "#a93c00",
+                      "error": "#ffb4ab",
+                      "secondary": "#b0c6ff",
+                      "on-primary-fixed-variant": "#5e00c1",
+                      "tertiary-fixed-dim": "#ffb599",
+                      "primary-container": "#7e00ff",
+                      "on-primary": "#41008a",
+                      "surface-elevated": "#1A1A1E",
+                      "critical-red": "#FF1744",
+                      "surface-container": "#201f20",
+                      "inverse-primary": "#7c00fb",
+                      "on-tertiary": "#5a1c00",
+                      "surface-container-high": "#2a2a2b",
+                      "on-secondary": "#002d6e",
+                      "on-tertiary-fixed": "#370e00",
+                      "on-secondary-fixed": "#001945",
+                      "primary": "#d5bbff",
+                      "secondary-fixed-dim": "#b0c6ff",
+                      "error-container": "#93000a",
+                      "primary-fixed-dim": "#d5bbff",
+                      "tertiary-fixed": "#ffdbce",
+                      "on-tertiary-fixed-variant": "#7f2b00",
+                      "outline": "#978da3",
+                      "on-surface-variant": "#cdc2da",
+                      "surface-dim": "#131314",
+                      "on-error": "#690005",
+                      "background": "#131314",
+                      "success-green": "#00C853",
+                      "surface-variant": "#353436",
+                      "on-background": "#e5e2e3",
+                      "surface-container-highest": "#353436",
+                      "secondary-fixed": "#d9e2ff",
+                      "border-subtle": "#2D2D32",
+                      "surface-container-lowest": "#0e0e0f",
+                      "on-secondary-container": "#f2f3ff",
+                      "on-primary-fixed": "#270057",
+                      "inverse-surface": "#e5e2e3",
+                      "on-error-container": "#ffdad6",
+                      "primary-fixed": "#ecdcff",
+                      "on-secondary-fixed-variant": "#00429b",
+                      "on-primary-container": "#e6d3ff",
+                      "secondary-container": "#0068ed",
+                      "outline-variant": "#4b4357",
+                      "surface": "#131314",
+                      "on-tertiary-container": "#ffd1c1"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "margin-desktop": "32px",
+                      "max-width": "1600px",
+                      "margin-mobile": "16px",
+                      "gutter": "16px",
+                      "base": "8px"
+              },
+              "fontFamily": {
+                      "label-sm": ["Inter", "sans-serif"],
+                      "headline-md": ["Manrope", "sans-serif"],
+                      "headline-lg": ["Manrope", "sans-serif"],
+                      "data-tabular": ["JetBrains Mono", "monospace"],
+                      "data-header": ["JetBrains Mono", "monospace"],
+                      "body-md": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "data-tabular": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "data-header": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        body { background-color: #131314; color: #e5e2e3; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        .neon-pulse { animation: neon-pulse 1.5s infinite; }
+        @keyframes neon-pulse {
+            0% { box-shadow: 0 0 2px #FF1744; }
+            50% { box-shadow: 0 0 10px #FF1744; }
+            100% { box-shadow: 0 0 2px #FF1744; }
+        }
+        .status-bar { width: 4px; height: 100%; position: absolute; left: 0; top: 0; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex overflow-hidden h-screen">
+<!-- Sidebar Navigation -->
+<aside class="hidden md:flex flex-col h-full py-base gap-2 bg-surface-container-low border-r border-border-subtle w-64 left-0 sticky">
+<div class="px-6 py-4">
+<span class="font-headline-lg text-headline-lg text-on-surface">SYSTEM OPS</span>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<div class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">monitoring</span>
+<span class="font-data-header text-data-header uppercase">Real-time Metrics</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-data-header text-data-header uppercase">Transaction Logs</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded text-secondary font-bold border-l-2 border-secondary bg-surface-variant/10 cursor-pointer">
+<span class="material-symbols-outlined">calculate</span>
+<span class="font-data-header text-data-header uppercase">Commission Integrity</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">memory</span>
+<span class="font-data-header text-data-header uppercase">Resource Monitor</span>
+</div>
+<div class="flex items-center gap-3 px-4 py-3 rounded text-on-surface-variant font-medium hover:bg-surface-container-high transition-all cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-data-header text-data-header uppercase">Stress Settings</span>
+</div>
+</nav>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col min-w-0 overflow-hidden relative">
+<!-- Top App Bar -->
+<header class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 w-full bg-surface-container border-b border-border-subtle sticky top-0 z-40">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary tracking-tight">POS_STRESS_ENGINE_V1</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-critical-red text-white font-data-header text-data-header px-4 py-2 rounded hover:brightness-110 active:scale-95 transition-all">
+                    STOP TEST
+                </button>
+</div>
+</header>
+<!-- Dashboard Canvas -->
+<div class="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 scrollbar-hide">
+<!-- Page Header / Controls -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Commission Integrity Audit</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Stress validation of real-time arithmetic pipelines.</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<!-- Filter Toggle -->
+<label class="flex items-center gap-2 cursor-pointer bg-surface-container-high px-3 py-2 rounded-lg border border-border-subtle">
+<input class="form-checkbox bg-surface-container border-outline text-secondary focus:ring-secondary rounded-sm" type="checkbox"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Only Anomalies</span>
+</label>
+<button class="flex items-center gap-2 bg-processing-blue text-white font-data-header text-data-header px-4 py-2 rounded-lg hover:brightness-110 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+                        RE-RUN BATCH
+                    </button>
+<button class="flex items-center gap-2 border border-outline text-on-surface font-data-header text-data-header px-4 py-2 rounded-lg hover:bg-surface-container-high active:scale-95 transition-all">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        EXPORT LOG
+                    </button>
+</div>
+</div>
+<!-- Bento Stats Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface-elevated border border-border-subtle p-4 rounded-xl">
+<span class="font-data-header text-data-header text-on-surface-variant uppercase">Total Records</span>
+<div class="font-headline-md text-headline-md mt-2 font-data-tabular">842,109</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-4 rounded-xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-success-green/30"></div>
+<span class="font-data-header text-data-header text-on-surface-variant uppercase">Integrity Rate</span>
+<div class="font-headline-md text-headline-md mt-2 font-data-tabular text-success-green">99.82%</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-4 rounded-xl relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-critical-red neon-pulse"></div>
+<span class="font-data-header text-data-header text-on-surface-variant uppercase">Detected Anomalies</span>
+<div class="font-headline-md text-headline-md mt-2 font-data-tabular text-critical-red">14</div>
+</div>
+<div class="bg-surface-elevated border border-border-subtle p-4 rounded-xl">
+<span class="font-data-header text-data-header text-on-surface-variant uppercase">Avg Delay</span>
+<div class="font-headline-md text-headline-md mt-2 font-data-tabular text-tertiary">42ms</div>
+</div>
+</div>
+<!-- Audit Table Container -->
+<div class="bg-surface-elevated border border-border-subtle rounded-xl overflow-hidden flex flex-col">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead class="bg-surface-container-high sticky top-0 z-10">
+<tr>
+<th class="p-4 font-data-header text-data-header text-on-surface-variant border-b border-border-subtle uppercase">Transaction ID</th>
+<th class="p-4 font-data-header text-data-header text-on-surface-variant border-b border-border-subtle uppercase">Raw Value</th>
+<th class="p-4 font-data-header text-data-header text-on-surface-variant border-b border-border-subtle uppercase">Expected Comm</th>
+<th class="p-4 font-data-header text-data-header text-on-surface-variant border-b border-border-subtle uppercase">Actual Comm</th>
+<th class="p-4 font-data-header text-data-header text-on-surface-variant border-b border-border-subtle uppercase">Lat (ms)</th>
+<th class="p-4 font-data-header text-data-header text-on-surface-variant border-b border-border-subtle uppercase">Status</th>
+<th class="p-4 font-data-header text-data-header text-on-surface-variant border-b border-border-subtle uppercase">Actions</th>
+</tr>
+</thead>
+<tbody class="font-data-tabular text-data-tabular">
+<!-- Row: Normal -->
+<tr class="hover:bg-surface-container transition-colors relative group border-b border-border-subtle/30">
+<td class="p-4 pl-6 relative">
+<div class="status-bar bg-success-green"></div>
+                                    TXN-9028-11
+                                </td>
+<td class="p-4 text-on-surface">$1,420.00</td>
+<td class="p-4 text-on-surface">$21.30</td>
+<td class="p-4 text-on-surface">$21.30</td>
+<td class="p-4 text-on-surface-variant">12</td>
+<td class="p-4">
+<span class="bg-success-green/10 text-success-green px-2 py-1 rounded text-xs font-bold">STABLE</span>
+</td>
+<td class="p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary">visibility</button>
+</td>
+</tr>
+<!-- Row: Anomaly (Mismatch) -->
+<tr class="bg-critical-red/5 hover:bg-critical-red/10 transition-colors relative group border-b border-border-subtle/30">
+<td class="p-4 pl-6 relative">
+<div class="status-bar bg-critical-red"></div>
+                                    TXN-9028-12
+                                </td>
+<td class="p-4 text-on-surface font-bold">$3,800.00</td>
+<td class="p-4 text-on-surface font-bold">$57.00</td>
+<td class="p-4 text-critical-red font-bold">$51.30</td>
+<td class="p-4 text-on-surface-variant">142</td>
+<td class="p-4">
+<span class="bg-critical-red text-white px-2 py-1 rounded text-xs font-bold">MISMATCH</span>
+</td>
+<td class="p-4">
+<button class="material-symbols-outlined text-critical-red hover:scale-110 transition-transform">replay</button>
+</td>
+</tr>
+<!-- Row: Delay Warning -->
+<tr class="hover:bg-surface-container transition-colors relative group border-b border-border-subtle/30">
+<td class="p-4 pl-6 relative">
+<div class="status-bar bg-tertiary"></div>
+                                    TXN-9028-13
+                                </td>
+<td class="p-4 text-on-surface">$840.50</td>
+<td class="p-4 text-on-surface">$12.61</td>
+<td class="p-4 text-on-surface">$12.61</td>
+<td class="p-4 text-tertiary font-bold">892</td>
+<td class="p-4">
+<span class="bg-tertiary/20 text-tertiary px-2 py-1 rounded text-xs font-bold uppercase">Latency High</span>
+</td>
+<td class="p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="material-symbols-outlined text-on-surface-variant">visibility</button>
+</td>
+</tr>
+<!-- Repeated Rows for Data density -->
+<tr class="hover:bg-surface-container transition-colors relative group border-b border-border-subtle/30">
+<td class="p-4 pl-6 relative">
+<div class="status-bar bg-success-green"></div>
+                                    TXN-9028-14
+                                </td>
+<td class="p-4 text-on-surface">$2,100.00</td>
+<td class="p-4 text-on-surface">$31.50</td>
+<td class="p-4 text-on-surface">$31.50</td>
+<td class="p-4 text-on-surface-variant">18</td>
+<td class="p-4">
+<span class="bg-success-green/10 text-success-green px-2 py-1 rounded text-xs font-bold">STABLE</span>
+</td>
+<td class="p-4 opacity-0 group-hover:opacity-100"></td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors relative group border-b border-border-subtle/30">
+<td class="p-4 pl-6 relative">
+<div class="status-bar bg-success-green"></div>
+                                    TXN-9028-15
+                                </td>
+<td class="p-4 text-on-surface">$500.00</td>
+<td class="p-4 text-on-surface">$7.50</td>
+<td class="p-4 text-on-surface">$7.50</td>
+<td class="p-4 text-on-surface-variant">21</td>
+<td class="p-4">
+<span class="bg-success-green/10 text-success-green px-2 py-1 rounded text-xs font-bold">STABLE</span>
+</td>
+<td class="p-4 opacity-0 group-hover:opacity-100"></td>
+</tr>
+<tr class="bg-critical-red/5 hover:bg-critical-red/10 transition-colors relative group border-b border-border-subtle/30">
+<td class="p-4 pl-6 relative">
+<div class="status-bar bg-critical-red"></div>
+                                    TXN-9028-16
+                                </td>
+<td class="p-4 text-on-surface font-bold">$12,400.00</td>
+<td class="p-4 text-on-surface font-bold">$186.00</td>
+<td class="p-4 text-critical-red font-bold">ERR_TIMEOUT</td>
+<td class="p-4 text-critical-red font-bold">5000+</td>
+<td class="p-4">
+<span class="bg-critical-red text-white px-2 py-1 rounded text-xs font-bold">TIMEOUT</span>
+</td>
+<td class="p-4">
+<button class="material-symbols-outlined text-critical-red">replay</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container transition-colors relative group border-b border-border-subtle/30">
+<td class="p-4 pl-6 relative">
+<div class="status-bar bg-success-green"></div>
+                                    TXN-9028-17
+                                </td>
+<td class="p-4 text-on-surface">$1,200.00</td>
+<td class="p-4 text-on-surface">$18.00</td>
+<td class="p-4 text-on-surface">$18.00</td>
+<td class="p-4 text-on-surface-variant">15</td>
+<td class="p-4">
+<span class="bg-success-green/10 text-success-green px-2 py-1 rounded text-xs font-bold">STABLE</span>
+</td>
+<td class="p-4 opacity-0 group-hover:opacity-100"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination/Footer -->
+<div class="p-4 border-t border-border-subtle flex items-center justify-between bg-surface-container-low">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Displaying 7 of 842,109 records</span>
+<div class="flex gap-2">
+<button class="p-2 border border-outline rounded-lg hover:bg-surface-container-high text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+<button class="p-2 border border-outline rounded-lg hover:bg-surface-container-high text-on-surface-variant"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+<!-- Detailed Analysis Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Log Streamer -->
+<div class="bg-surface-elevated border border-border-subtle rounded-xl p-4 flex flex-col h-64">
+<div class="flex items-center justify-between mb-4">
+<span class="font-data-header text-data-header text-primary uppercase">Kernel Compute Logs</span>
+<span class="w-2 h-2 rounded-full bg-processing-blue animate-pulse"></span>
+</div>
+<div class="flex-1 overflow-y-auto scrollbar-hide space-y-1 font-data-tabular text-[12px]">
+<div class="flex gap-4">
+<span class="text-on-surface-variant opacity-50">[12:44:01.002]</span>
+<span class="text-on-surface">Validating batch cluster ID: 88A2-X...</span>
+</div>
+<div class="flex gap-4">
+<span class="text-on-surface-variant opacity-50">[12:44:01.402]</span>
+<span class="text-success-green">Checksum verified for TXN-9028-11</span>
+</div>
+<div class="flex gap-4">
+<span class="text-on-surface-variant opacity-50">[12:44:01.442]</span>
+<span class="text-critical-red">MISMATCH: TXN-9028-12 Calc: 51.30 Exp: 57.00 Delta: -5.70</span>
+</div>
+<div class="flex gap-4">
+<span class="text-on-surface-variant opacity-50">[12:44:01.502]</span>
+<span class="text-tertiary">WARN: Pipeline saturation detected (82%)</span>
+</div>
+<div class="flex gap-4">
+<span class="text-on-surface-variant opacity-50">[12:44:01.622]</span>
+<span class="text-on-surface">Re-polling audit listener...</span>
+</div>
+</div>
+</div>
+<!-- Trend Chart Placeholder -->
+<div class="bg-surface-elevated border border-border-subtle rounded-xl p-4 flex flex-col h-64">
+<span class="font-data-header text-data-header text-on-surface-variant uppercase mb-4">Drift Coefficient Over Time</span>
+<div class="flex-1 flex items-end gap-1 px-2">
+<div class="w-full bg-processing-blue/20 rounded-t h-[40%]"></div>
+<div class="w-full bg-processing-blue/20 rounded-t h-[35%]"></div>
+<div class="w-full bg-processing-blue/20 rounded-t h-[45%]"></div>
+<div class="w-full bg-processing-blue/20 rounded-t h-[60%]"></div>
+<div class="w-full bg-critical-red/50 rounded-t h-[90%]"></div>
+<div class="w-full bg-processing-blue/20 rounded-t h-[50%]"></div>
+<div class="w-full bg-processing-blue/20 rounded-t h-[42%]"></div>
+<div class="w-full bg-processing-blue/20 rounded-t h-[38%]"></div>
+<div class="w-full bg-processing-blue/20 rounded-t h-[35%]"></div>
+<div class="w-full bg-processing-blue/20 rounded-t h-[40%]"></div>
+</div>
+<div class="flex justify-between mt-2 font-data-header text-[10px] text-on-surface-variant uppercase">
+<span>T-30m</span>
+<span>Now</span>
+</div>
+</div>
+</div>
+<!-- Extra padding for bottom nav on mobile -->
+<div class="h-16 md:hidden"></div>
+</div>
+<!-- Mobile Bottom Nav -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex items-center justify-around px-margin-mobile bg-surface-container-lowest border-t border-border-subtle h-12 z-50">
+<div class="flex flex-col items-center opacity-60 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span class="font-label-sm text-[10px] uppercase">NORMAL</span>
+</div>
+<div class="flex flex-col items-center opacity-60 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">warning</span>
+<span class="font-label-sm text-[10px] uppercase">HIGH</span>
+</div>
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full flex flex-col items-center">
+<span class="material-symbols-outlined text-[20px]">emergency_home</span>
+<span class="font-label-sm text-[10px] uppercase font-bold">CRITICAL</span>
+</div>
+</nav>
+</main>
+<!-- Floating Quick Actions (Conditional based on context) -->
+<!-- Not rendered as this is a details/audit view -->
+<script>
+        // Micro-interaction for Log Streamer
+        const logStreamer = document.querySelector('.overflow-y-auto.scrollbar-hide.flex-1');
+        setInterval(() => {
+            if (logStreamer) {
+                const logs = [
+                    { time: '12:45:00', text: 'Health ping received from CORE_NODE_01', color: 'text-on-surface' },
+                    { time: '12:45:02', text: 'Comm computation thread #42 spawned', color: 'text-processing-blue' },
+                    { time: '12:45:05', text: 'AUDIT: Verification failure at sequence IX-22', color: 'text-critical-red' }
+                ];
+                const log = logs[Math.floor(Math.random() * logs.length)];
+                const div = document.createElement('div');
+                div.className = 'flex gap-4 opacity-0 translate-y-2 transition-all duration-300';
+                div.innerHTML = `
+                    <span class="text-on-surface-variant opacity-50">[${log.time}]</span>
+                    <span class="${log.color}">${log.text}</span>
+                `;
+                logStreamer.appendChild(div);
+                setTimeout(() => {
+                    div.classList.remove('opacity-0', 'translate-y-2');
+                }, 10);
+                if (logStreamer.children.length > 20) {
+                    logStreamer.removeChild(logStreamer.children[0]);
+                }
+                logStreamer.scrollTop = logStreamer.scrollHeight;
+            }
+        }, 3000);
+
+        // Highlight Row interaction
+        document.querySelectorAll('tr').forEach(row => {
+            row.addEventListener('click', () => {
+                row.classList.add('bg-primary/10');
+                setTimeout(() => row.classList.remove('bg-primary/10'), 1000);
+            });
+        });
+    </script>
+</body></html>

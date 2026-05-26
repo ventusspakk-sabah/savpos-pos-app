@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#2e476e",
+                    "tertiary-container": "#002617",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#00477f",
+                    "background": "#f7f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004881",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#1960a3",
+                    "on-tertiary-container": "#00b47d",
+                    "surface-tint": "#465f87",
+                    "on-secondary-fixed": "#001c38",
+                    "surface": "#f7f9fb",
+                    "tertiary-fixed": "#6ffbbe",
+                    "secondary-fixed": "#d3e4ff",
+                    "on-primary-container": "#7089b3",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "on-background": "#191c1e",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-fixed": "#001b3c",
+                    "error": "#ba1a1a",
+                    "on-surface": "#191c1e",
+                    "surface-container-high": "#e6e8ea",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "surface-bright": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed": "#002113",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-low": "#f2f4f6",
+                    "outline-variant": "#c4c6cf",
+                    "surface-dim": "#d8dadc",
+                    "on-surface-variant": "#44474e",
+                    "primary-container": "#002045",
+                    "secondary-container": "#7db6ff",
+                    "surface-container": "#eceef0",
+                    "outline": "#74777f",
+                    "inverse-primary": "#aec7f5",
+                    "primary": "#00091b",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary": "#000b05",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "primary-fixed-dim": "#aec7f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "lg": "24px",
+                    "touch-target-min": "44px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-price": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-transition { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+        .input-focus-ring:focus-within { ring: 2px solid var(--primary); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- TopAppBar from Shared Components -->
+<header class="bg-surface dark:bg-primary docked full-width top-0 z-50">
+<div class="flex items-center justify-between px-md py-xs w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed" data-icon="spa">spa</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed">Sav.pos</h1>
+</div>
+<nav class="hidden md:flex gap-lg">
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-primary-container transition-colors px-4 py-2 rounded-lg" href="#">Dashboard</a>
+<a class="text-on-surface-variant dark:text-outline-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-primary-container transition-colors px-4 py-2 rounded-lg" href="#">Inventory</a>
+</nav>
+<div class="flex items-center gap-sm">
+<button class="material-symbols-outlined p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-all active:scale-95">account_circle</button>
+</div>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center p-md lg:p-xl">
+<div class="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 gap-lg items-center">
+<!-- Content Canvas: Admin Setup Side -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-xl p-lg shadow-sm">
+<!-- Progress Indicator -->
+<div class="mb-xl">
+<div class="flex justify-between items-center mb-xs">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest">Step 02 of 04</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Admin Configuration</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-1/2 rounded-full transition-all duration-700 ease-out"></div>
+</div>
+</div>
+<div class="mb-lg">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-xs">Admin Account Setup</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">This will be the master account for your store. Use professional credentials that you'll have long-term access to.</p>
+</div>
+<form class="space-y-md">
+<!-- Full Name -->
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs ml-1">Full Name</label>
+<div class="relative flex items-center bg-surface-container-low rounded-lg shadow-sm transition-all focus-within:ring-2 focus-within:ring-secondary group-hover:bg-surface-container-high">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="person">person</span>
+<input class="w-full bg-transparent border-none py-lg pl-12 pr-4 focus:ring-0 text-on-surface font-body-md" placeholder="e.g. Julian Montgomery" type="text"/>
+</div>
+</div>
+<!-- Email Address -->
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs ml-1">Email Address</label>
+<div class="relative flex items-center bg-surface-container-low rounded-lg shadow-sm transition-all focus-within:ring-2 focus-within:ring-secondary group-hover:bg-surface-container-high">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="mail">mail</span>
+<input class="w-full bg-transparent border-none py-lg pl-12 pr-4 focus:ring-0 text-on-surface font-body-md" placeholder="admin@savpos-boutique.com" type="email"/>
+</div>
+</div>
+<!-- Password Creation -->
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface-variant mb-xs ml-1">Password</label>
+<div class="relative flex items-center bg-surface-container-low rounded-lg shadow-sm transition-all focus-within:ring-2 focus-within:ring-secondary group-hover:bg-surface-container-high">
+<span class="material-symbols-outlined absolute left-4 text-outline" data-icon="lock">lock</span>
+<input class="w-full bg-transparent border-none py-lg pl-12 pr-12 focus:ring-0 text-on-surface font-body-md" placeholder="Min. 12 characters" type="password"/>
+<button class="material-symbols-outlined absolute right-4 text-outline hover:text-secondary transition-colors" data-icon="visibility" type="button">visibility</button>
+</div>
+<div class="mt-xs flex gap-xs">
+<div class="h-1 flex-1 rounded-full bg-tertiary-fixed/30"></div>
+<div class="h-1 flex-1 rounded-full bg-surface-variant"></div>
+<div class="h-1 flex-1 rounded-full bg-surface-variant"></div>
+<div class="h-1 flex-1 rounded-full bg-surface-variant"></div>
+</div>
+</div>
+<!-- Navigation Actions -->
+<div class="flex items-center justify-between pt-lg">
+<button class="flex items-center gap-xs font-label-md text-label-md text-on-surface-variant hover:text-primary transition-all active:scale-95" type="button">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+                            Back
+                        </button>
+<button class="bg-primary text-on-primary px-xl py-md rounded-full font-label-md text-label-md flex items-center gap-sm hover:opacity-90 transition-all active:scale-95 shadow-md" type="submit">
+                            Continue
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Visual Context/Bento Side -->
+<div class="hidden lg:grid lg:col-span-5 grid-cols-2 gap-md h-full">
+<div class="col-span-2 relative aspect-[4/3] rounded-xl overflow-hidden shadow-lg group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" data-alt="A sophisticated high-end boutique interior with minimalist clothing racks and soft architectural lighting. The scene represents a premium retail environment designed for an efficient and precise POS system. The atmosphere is quiet, luxurious, and technologically advanced with cool gray tones and warm wood accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9wKypZ3rNIr5okkWo3H-sTkPRTv5dgWYJXkPjvujuu4tdHsUbRYo-unoyCtXCpNtr2Of2_-V6ynl_JUz79pUheQiy4EEGLj7WcJhF0D9CBrP49GDcE84ep4EViYJTUe0cbvpYVmimaAUiDM5K9qmoCoOe9Ev0FpKECWnjqncnUxvf1r16aZ73zNBdY7gQiPVjgeAyUNizrRNdGq0WcVTWPcJ_cfR_ocXAdZ2HSrv3eW-f2fQKW2TkAz7IKefgesNox2xvS8v7c3U"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<p class="text-on-primary font-label-md text-label-md opacity-80 mb-1 uppercase tracking-widest">Enterprise Ready</p>
+<h3 class="text-on-primary font-headline-md text-headline-md">Secure Your Store Management</h3>
+</div>
+</div>
+<div class="bg-secondary-container/20 p-lg rounded-xl flex flex-col justify-center border border-secondary-container/30 backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary mb-sm text-4xl" data-icon="encrypted">encrypted</span>
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">End-to-End Encryption</h4>
+<p class="font-label-sm text-label-sm text-on-secondary-container">Your master credentials are protected with industry-standard AES-256 encryption.</p>
+</div>
+<div class="bg-surface-container-low p-lg rounded-xl flex flex-col justify-center border border-outline-variant/30">
+<div class="flex -space-x-2 mb-sm">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-primary-fixed-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-secondary-fixed-dim"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-tertiary-fixed-dim"></div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">Team Access</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">You'll be able to invite staff and assign permissions in Step 4.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar from Shared Components (Mobile Only Check) -->
+<footer class="md:hidden bg-surface-container-low dark:bg-primary-container fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-sm pb-safe rounded-t-xl shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-primary-container/70 font-label-md text-label-md hover:bg-surface-variant dark:hover:bg-on-primary-fixed-variant transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>Help</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span>Contact Support</span>
+</a>
+</footer>
+<script>
+        // Micro-interactions for form inputs
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('shadow-md');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('shadow-md');
+            });
+        });
+
+        // Simple password visibility toggle
+        const toggleBtn = document.querySelector('[data-icon="visibility"]');
+        const passInput = document.querySelector('input[type="password"]');
+        if (toggleBtn && passInput) {
+            toggleBtn.addEventListener('click', () => {
+                const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passInput.setAttribute('type', type);
+                toggleBtn.textContent = type === 'password' ? 'visibility' : 'visibility_off';
+            });
+        }
+    </script>
+</body></html>

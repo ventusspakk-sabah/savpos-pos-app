@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>批量佣金結算 - Sav.pos</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+        body {
+            background-color: #f7f9fb;
+            color: #191c1e;
+        }
+        .bento-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .bento-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-container": "#002617",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-low": "#f2f4f6",
+                      "primary-container": "#002045",
+                      "surface-tint": "#465f87",
+                      "on-secondary": "#ffffff",
+                      "on-primary-container": "#7089b3",
+                      "outline": "#74777f",
+                      "tertiary-fixed-dim": "#9bd3b4",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed-variant": "#004881",
+                      "surface-container": "#eceef0",
+                      "on-secondary-container": "#00477f",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "primary": "#00091b",
+                      "inverse-primary": "#aec7f5",
+                      "tertiary": "#000b05",
+                      "error": "#ba1a1a",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed": "#002113",
+                      "tertiary-fixed": "#b6efcf",
+                      "on-primary-fixed": "#001b3c",
+                      "inverse-on-surface": "#eff1f3",
+                      "background": "#f7f9fb",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-dim": "#d8dadc",
+                      "on-tertiary-fixed-variant": "#195039",
+                      "error-container": "#ffdad6",
+                      "surface-container-high": "#e6e8ea",
+                      "secondary-fixed-dim": "#a2c9ff",
+                      "on-surface": "#191c1e",
+                      "secondary-container": "#7db6ff",
+                      "on-tertiary-container": "#00b47d",
+                      "primary-fixed-dim": "#aec7f5",
+                      "on-surface-variant": "#44474e",
+                      "inverse-surface": "#2d3133",
+                      "outline-variant": "#c4c6cf",
+                      "surface-bright": "#f7f9fb",
+                      "secondary": "#1960a3",
+                      "on-background": "#191c1e",
+                      "secondary-fixed": "#d3e4ff",
+                      "on-tertiary": "#ffffff",
+                      "primary-fixed": "#d6e3ff",
+                      "on-error": "#ffffff",
+                      "surface": "#f7f9fb",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#001c38"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "24px",
+                      "md": "16px",
+                      "base": "4px",
+                      "xs": "8px",
+                      "xl": "32px",
+                      "touch-target-min": "44px",
+                      "sm": "12px"
+              },
+              "fontFamily": {
+                      "label-md": ["JetBrains Mono"],
+                      "headline-lg": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"],
+                      "label-sm": ["JetBrains Mono"],
+                      "display-price": ["Inter"],
+                      "body-lg": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body-md text-on-surface">
+<!-- Top AppBar -->
+<header class="bg-surface dark:bg-surface-dim shadow-sm docked full-width top-0 sticky z-50 flex justify-between items-center px-md py-xs w-full max-w-full">
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-variant/50 transition-colors p-2 rounded-full active:scale-95 duration-200">arrow_back</button>
+<h1 class="font-headline-md text-headline-md text-on-surface dark:text-inverse-on-surface font-bold">批量佣金結算</h1>
+</div>
+<div class="flex items-center gap-xs">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-variant/50 transition-colors p-2 rounded-full active:scale-95 duration-200">history</button>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- Navigation Drawer (Desktop) -->
+<aside class="hidden lg:flex flex-col h-full fixed left-0 top-0 border-r border-outline-variant/30 bg-surface-container-low dark:bg-surface-container-lowest h-full w-72 rounded-r-xl shadow-md z-40">
+<div class="p-lg">
+<span class="font-headline-md text-headline-md font-black text-primary dark:text-inverse-primary">Sav.pos</span>
+</div>
+<nav class="flex-1 mt-md">
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all mb-1" href="#">
+<span class="material-symbols-outlined mr-4">dashboard</span>
+<span class="font-label-md text-label-md">控制台</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all mb-1" href="#">
+<span class="material-symbols-outlined mr-4">point_of_sale</span>
+<span class="font-label-md text-label-md">銷售記錄</span>
+</a>
+<a class="bg-secondary-container text-on-secondary-container rounded-full mx-2 flex items-center px-4 py-3 transition-all mb-1" href="#">
+<span class="material-symbols-outlined mr-4">payments</span>
+<span class="font-label-md text-label-md">佣金結算</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all mb-1" href="#">
+<span class="material-symbols-outlined mr-4">group</span>
+<span class="font-label-md text-label-md">員工管理</span>
+</a>
+<a class="text-on-surface-variant hover:bg-surface-variant rounded-full mx-2 flex items-center px-4 py-3 transition-all mb-1" href="#">
+<span class="material-symbols-outlined mr-4">settings</span>
+<span class="font-label-md text-label-md">設定</span>
+</a>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="flex-1 lg:ml-72 p-md lg:p-lg pb-32">
+<!-- Summary Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-lg">
+<!-- Payable Balance -->
+<div class="bento-card bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-secondary">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-md text-label-md">可支付餘額 (已過30天)</span>
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+</div>
+<div class="font-display-price text-display-price text-primary">HK$ 12,450.00</div>
+<div class="text-on-surface-variant text-label-sm mt-xs">共 42 筆待結算項目</div>
+</div>
+<!-- Held Balance -->
+<div class="bento-card bg-surface-container-lowest p-lg rounded-xl shadow-sm border-l-4 border-outline">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-on-surface-variant font-label-md text-label-md">保留中餘額 (30天內保護期)</span>
+<span class="material-symbols-outlined text-outline">lock</span>
+</div>
+<div class="font-display-price text-display-price text-on-surface-variant">HK$ 4,200.00</div>
+<div class="text-on-surface-variant text-label-sm mt-xs">將於未來 30 天內陸續釋出</div>
+</div>
+<!-- Clawbacks/Adjustments -->
+<div class="bento-card bg-error-container/20 p-lg rounded-xl shadow-sm border-l-4 border-error">
+<div class="flex justify-between items-start mb-sm">
+<span class="text-error font-label-md text-label-md">退款扣除 (Clawbacks)</span>
+<span class="material-symbols-outlined text-error">assignment_return</span>
+</div>
+<div class="font-display-price text-display-price text-error">- HK$ 850.00</div>
+<div class="text-on-surface-variant text-label-sm mt-xs">3 筆已退款訂單之佣金回扣</div>
+</div>
+</div>
+<!-- List Section -->
+<div class="bg-surface-container-lowest rounded-xl shadow-md overflow-hidden">
+<!-- Tabs/Filters -->
+<div class="px-md py-sm border-b border-outline-variant/30 flex items-center justify-between bg-surface-container-low">
+<div class="flex gap-xs">
+<button class="px-4 py-2 rounded-full bg-secondary text-on-secondary font-label-md text-label-md">全部項目</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">待支付</button>
+<button class="px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant transition-colors">保留中</button>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="pl-10 pr-4 py-2 bg-surface-container-lowest rounded-lg border-none ring-1 ring-outline-variant focus:ring-2 focus:ring-primary text-sm w-64" placeholder="搜尋員工或訂單號" type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<th class="p-md w-12"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></th>
+<th class="p-md">員工 / 詳情</th>
+<th class="p-md">訂單日期</th>
+<th class="p-md">狀態</th>
+<th class="p-md text-right">金額</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/20">
+<!-- Category: Ready to Pay -->
+<tr class="bg-secondary-container/5">
+<td class="px-md py-2 font-label-sm text-label-sm text-secondary-fixed-dim bg-primary-container text-white" colspan="5">READY TO PAY - 已過 30 天保護期</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="p-md">
+<div class="flex flex-col">
+<span class="font-bold">陳大文 (David Chan)</span>
+<span class="text-xs text-on-surface-variant">訂單 #POS-9821 • 手錶配件銷售</span>
+</div>
+</td>
+<td class="p-md text-sm text-on-surface-variant">2023-10-15</td>
+<td class="p-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-tertiary-fixed/30 text-on-tertiary-fixed-variant text-[10px] font-bold uppercase">
+<span class="material-symbols-outlined text-[14px] mr-1">check_circle</span> 已釋出
+                                    </span>
+</td>
+<td class="p-md text-right font-bold text-primary">HK$ 1,200.00</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="p-md"><input checked="" class="rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/></td>
+<td class="p-md">
+<div class="flex flex-col">
+<span class="font-bold">林小美 (May Lam)</span>
+<span class="text-xs text-on-surface-variant">訂單 #POS-9815 • 皮具套裝</span>
+</div>
+</td>
+<td class="p-md text-sm text-on-surface-variant">2023-10-14</td>
+<td class="p-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-tertiary-fixed/30 text-on-tertiary-fixed-variant text-[10px] font-bold uppercase">
+<span class="material-symbols-outlined text-[14px] mr-1">check_circle</span> 已釋出
+                                    </span>
+</td>
+<td class="p-md text-right font-bold text-primary">HK$ 850.00</td>
+</tr>
+<!-- Category: Held -->
+<tr class="bg-surface-container-high/50">
+<td class="px-md py-2 font-label-sm text-label-sm text-on-surface-variant bg-surface-container" colspan="5">HELD (PROTECTED) - 30 天內交易</td>
+</tr>
+<tr class="opacity-70 grayscale-[0.5] hover:bg-surface-container-low transition-colors">
+<td class="p-md"><input class="rounded border-outline-variant bg-surface-container-high" disabled="" type="checkbox"/></td>
+<td class="p-md">
+<div class="flex flex-col">
+<span class="font-bold">張志強 (Kevin Cheung)</span>
+<span class="text-xs text-on-surface-variant">訂單 #POS-9942 • 限量版皮包</span>
+</div>
+</td>
+<td class="p-md text-sm text-on-surface-variant">2023-11-20</td>
+<td class="p-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-surface-container-high text-on-surface-variant text-[10px] font-bold uppercase">
+<span class="material-symbols-outlined text-[14px] mr-1">lock</span> 12 天後釋出
+                                    </span>
+</td>
+<td class="p-md text-right font-bold text-on-surface-variant">HK$ 3,100.00</td>
+</tr>
+<!-- Category: Clawbacks -->
+<tr class="bg-error-container/10">
+<td class="px-md py-2 font-label-sm text-label-sm text-on-error-container bg-error-container/30" colspan="5">CLAWBACKS - 退款扣回項目</td>
+</tr>
+<tr class="hover:bg-error-container/20 transition-colors">
+<td class="p-md"><input checked="" class="rounded border-error text-error focus:ring-error" type="checkbox"/></td>
+<td class="p-md">
+<div class="flex flex-col">
+<span class="font-bold">李子健 (Ken Lee)</span>
+<span class="text-xs text-on-surface-variant">訂單 #POS-9780 • (顧客已退貨)</span>
+</div>
+</td>
+<td class="p-md text-sm text-on-surface-variant">2023-11-25</td>
+<td class="p-md">
+<span class="inline-flex items-center px-2 py-1 rounded-full bg-error-container text-on-error-container text-[10px] font-bold uppercase">
+<span class="material-symbols-outlined text-[14px] mr-1">history</span> 回扣
+                                    </span>
+</td>
+<td class="p-md text-right font-bold text-error">- HK$ 450.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+<!-- Bottom Action Bar (Fixed) -->
+<div class="fixed bottom-0 left-0 w-full bg-surface-container-highest dark:bg-surface-container shadow-lg z-50 px-md py-md lg:pl-80">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-md">
+<div class="flex items-center gap-md w-full md:w-auto">
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant">選擇支付方式</span>
+<select class="bg-surface-container-lowest border-none rounded-lg text-sm font-medium py-2 pr-10 focus:ring-2 focus:ring-primary shadow-sm">
+<option>銀行轉帳 (FPS / Wire)</option>
+<option>公司支票 (Cheque)</option>
+<option>現金 (Cash)</option>
+</select>
+</div>
+<div class="h-10 w-px bg-outline-variant/30 hidden md:block"></div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface-variant">本次結算總額</span>
+<span class="text-headline-md font-bold text-primary">HK$ 11,600.00</span>
+</div>
+</div>
+<div class="flex gap-md w-full md:w-auto">
+<button class="flex-1 md:flex-none px-6 py-3 rounded-full bg-surface-container-high text-on-surface-variant font-bold hover:bg-surface-variant transition-all active:scale-95">取消</button>
+<button class="flex-1 md:flex-none px-8 py-3 rounded-full bg-secondary text-on-secondary font-bold shadow-lg hover:brightness-110 transition-all active:scale-95 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">payments</span>
+                    確認並支付
+                </button>
+</div>
+</div>
+</div>
+<!-- Mobile Navigation -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full z-[60] bg-surface-container-highest dark:bg-surface-container shadow-lg flex justify-around items-center px-md pb-safe rounded-t-xl h-16 border-t border-outline-variant/10">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-sm text-label-sm">目錄</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">訂單</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-5 py-1 active:scale-95">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">結算</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-5 py-1 hover:text-primary transition-colors active:scale-95">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-sm text-label-sm">更多</span>
+</button>
+</nav>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                // In a real app, this would recalculate totals
+                console.log('Selection updated');
+            });
+        });
+    </script>
+</body></html>

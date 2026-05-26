@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-Hant"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - 交班管理</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f7f9fb;
+            font-family: 'Inter', sans-serif;
+        }
+        .glass-panel {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.85);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "tertiary": "#000b05",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "primary": "#00091b",
+                        "outline": "#74777f",
+                        "primary-container": "#002045",
+                        "surface-container": "#eceef0",
+                        "surface-variant": "#e0e3e5",
+                        "on-background": "#191c1e",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c4c6cf",
+                        "on-secondary-container": "#00477f",
+                        "on-tertiary-fixed": "#002113",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-secondary-fixed-variant": "#004881",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "primary-fixed": "#d6e3ff",
+                        "on-surface-variant": "#44474e",
+                        "secondary-fixed": "#d3e4ff",
+                        "inverse-surface": "#2d3133",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-container-low": "#f2f4f6",
+                        "on-primary-container": "#7089b3",
+                        "on-primary-fixed": "#001b3c",
+                        "primary-fixed-dim": "#aec7f5",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-container": "#00b47d",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary": "#1960a3",
+                        "surface-dim": "#d8dadc",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface": "#f7f9fb",
+                        "error": "#ba1a1a",
+                        "tertiary-container": "#002617",
+                        "inverse-primary": "#aec7f5",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "surface-tint": "#465f87",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "on-secondary": "#ffffff",
+                        "background": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "4px",
+                        "touch-target-min": "44px",
+                        "sm": "12px",
+                        "xl": "32px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "display-price": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation Anchor -->
+<header class="w-full top-0 sticky bg-surface shadow-sm z-40 flex justify-between items-center px-lg h-touch-target-min">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center gap-md">
+<h2 class="font-headline-md text-headline-md text-primary">交班管理</h2>
+<span class="material-symbols-outlined text-on-surface-variant hover:bg-surface-variant/50 transition-colors rounded-full p-2 cursor-pointer">notifications</span>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-md md:px-lg py-lg pb-32">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+<!-- Left Column: Shift Summary -->
+<div class="lg:col-span-7 space-y-lg">
+<!-- Overview Header Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg">
+<div class="flex justify-between items-start mb-lg">
+<div>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-xs">SHIFT DURATION</p>
+<p class="font-headline-md text-headline-md text-primary">09:00 AM - 18:00 PM</p>
+</div>
+<div class="bg-tertiary-fixed/30 px-md py-xs rounded-full">
+<p class="font-label-sm text-label-sm text-on-tertiary-fixed-variant">ACTIVE: Cashier_01</p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="bg-surface-container-low p-md rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant">Total Orders</p>
+<p class="font-display-price text-display-price text-primary">142</p>
+</div>
+<div class="bg-surface-container-low p-md rounded-lg">
+<p class="font-label-md text-label-md text-on-surface-variant">Total Revenue</p>
+<p class="font-display-price text-display-price text-secondary">$12,450.00</p>
+</div>
+</div>
+</section>
+<!-- Payment Breakdown Card -->
+<section class="bg-surface-container-lowest rounded-xl shadow-sm p-lg">
+<h3 class="font-headline-md text-headline-md text-primary mb-lg">本班次彙總</h3>
+<div class="space-y-md">
+<!-- Cash -->
+<div class="flex items-center justify-between p-md bg-surface-bright rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">payments</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">Cash (現金)</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">$4,250.00</span>
+</div>
+<!-- Card -->
+<div class="flex items-center justify-between p-md bg-surface-bright rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">Card (刷卡)</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">$7,200.00</span>
+</div>
+<!-- E-wallet -->
+<div class="flex items-center justify-between p-md bg-surface-bright rounded-lg border border-outline-variant/30">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">E-wallet (電子支付)</span>
+</div>
+<span class="font-label-md text-label-md text-primary font-bold">$1,000.00</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Reconciliation -->
+<div class="lg:col-span-5">
+<div class="bg-surface-container-low rounded-xl shadow-lg p-lg sticky top-24 space-y-lg border border-outline-variant/20">
+<div class="space-y-sm">
+<h3 class="font-headline-md text-headline-md text-primary">實收現金核對</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">請輸入抽屜內實際清點的現金總額。</p>
+</div>
+<div class="relative">
+<label class="font-label-sm text-label-sm text-on-surface-variant absolute top-2 left-4">Actual Cash Counted</label>
+<input class="w-full pt-8 pb-4 px-4 bg-surface-container-lowest rounded-lg border-none shadow-sm focus:ring-2 focus:ring-secondary transition-all font-display-price text-display-price text-primary" id="cashInput" oninput="calculateDifference()" placeholder="0.00" type="number"/>
+</div>
+<div class="p-lg rounded-xl bg-surface-container-highest/50 border-dashed border-2 border-outline-variant">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md text-on-surface-variant">現金差異</span>
+<span class="font-display-price text-display-price text-on-surface-variant" id="diffDisplay">$0.00</span>
+</div>
+<div class="mt-xs font-label-sm text-label-sm text-center py-1 rounded hidden" id="diffMessage">
+<!-- Messages injected by JS -->
+</div>
+</div>
+<div class="space-y-md">
+<button class="w-full py-lg bg-secondary text-on-secondary rounded-xl font-headline-md text-headline-md font-bold flex items-center justify-center gap-sm active:scale-95 transition-transform shadow-md hover:bg-secondary/90" onclick="confirmReport()">
+<span class="material-symbols-outlined">print</span>
+                            確認並列印交班報告
+                        </button>
+<button class="w-full py-md text-on-surface-variant font-label-md text-label-md hover:bg-surface-variant/30 rounded-lg transition-colors">
+                            暫存數據
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-md py-xs bg-surface border-t border-outline-variant/30 shadow-lg z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant py-1" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-5 py-1" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<!-- Background Decoration / Mood Image -->
+<div class="fixed bottom-0 right-0 w-full h-full -z-10 opacity-5 pointer-events-none overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sophisticated close-up of a high-end retail point-of-sale terminal in a boutique setting. The lighting is soft and warm, highlighting the sleek minimalist design of the hardware and the professional atmosphere of a premium store. The color palette is composed of soft greys, clean whites, and subtle dark accents, reflecting an organized and efficient end-of-shift procedure. The overall mood is calm, reliable, and corporate-modern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCohFo7P07cet7mUcUpFo4Uw9_EDRMgGiRA4uEqikfrjVGVqL8spgRz3iQusQZ9sCqioYkfxJEVCz64vQgPkOQCyNxHXrEklrhaQVGAT_y8qVCzLGw1UnFCX5U0ME9VI3tNLY5BUVfFxf4R6pbrEXYLko2Ii3OUXJcCn441vveKzeAmt-LSk03SBb_uBBLCsZqP8P1IfYGELm4xOb1f8byiTyJ54n6yAtgTagfMGAJ8bSjm4RtMlB45io6PfCt60HMwetehauzvjQE"/>
+</div>
+<script>
+        const EXPECTED_CASH = 4250.00;
+
+        function calculateDifference() {
+            const input = document.getElementById('cashInput');
+            const display = document.getElementById('diffDisplay');
+            const message = document.getElementById('diffMessage');
+            
+            const actual = parseFloat(input.value) || 0;
+            const diff = actual - EXPECTED_CASH;
+            
+            display.textContent = (diff >= 0 ? '+' : '') + '$' + diff.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            
+            message.classList.remove('hidden');
+            if (diff === 0) {
+                display.className = 'font-display-price text-display-price text-on-tertiary-container';
+                message.textContent = '帳款相符';
+                message.className = 'mt-xs font-label-sm text-label-sm text-center py-1 rounded bg-tertiary-fixed/30 text-on-tertiary-fixed-variant';
+            } else if (diff < 0) {
+                display.className = 'font-display-price text-display-price text-error';
+                message.textContent = '現金短少 (Shortage)';
+                message.className = 'mt-xs font-label-sm text-label-sm text-center py-1 rounded bg-error-container text-on-error-container';
+            } else {
+                display.className = 'font-display-price text-display-price text-secondary';
+                message.textContent = '現金溢收 (Overage)';
+                message.className = 'mt-xs font-label-sm text-label-sm text-center py-1 rounded bg-secondary-container/20 text-on-secondary-container';
+            }
+        }
+
+        function confirmReport() {
+            const input = document.getElementById('cashInput').value;
+            if (!input) {
+                alert('請輸入實收現金金額');
+                return;
+            }
+            
+            // Visual feedback for interaction
+            const btn = event.currentTarget;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> 列印中...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                alert('交班報告已傳送至印表機。');
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> 已完成';
+                btn.className = btn.className.replace('bg-secondary', 'bg-tertiary-fixed text-on-tertiary-fixed');
+            }, 1500);
+        }
+    </script>
+</body></html>

@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary": "#005db6",
+                    "on-tertiary-fixed-variant": "#43474a",
+                    "tertiary": "#06090c",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#001b3d",
+                    "tertiary-fixed": "#e0e3e6",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#213145",
+                    "on-secondary-container": "#00376f",
+                    "tertiary-container": "#1d2123",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#cbdbf5",
+                    "primary-fixed-dim": "#aec7f5",
+                    "surface-container": "#e5eeff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-primary-container": "#7089b3",
+                    "on-secondary": "#ffffff",
+                    "inverse-on-surface": "#eaf1ff",
+                    "background": "#f8f9ff",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-primary-fixed": "#001b3c",
+                    "on-tertiary-fixed": "#181c1e",
+                    "tertiary-fixed-dim": "#c3c7ca",
+                    "secondary-fixed-dim": "#a9c7ff",
+                    "on-background": "#0b1c30",
+                    "on-surface-variant": "#44474e",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#63a1ff",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#465f87",
+                    "surface-container-high": "#dce9ff",
+                    "surface-bright": "#f8f9ff",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#d3e4fe",
+                    "surface": "#f8f9ff",
+                    "outline": "#74777f",
+                    "on-secondary-fixed-variant": "#00468c",
+                    "surface-container-highest": "#d3e4fe",
+                    "on-surface": "#0b1c30",
+                    "primary-container": "#002045",
+                    "secondary-fixed": "#d6e3ff",
+                    "inverse-primary": "#aec7f5",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-container": "#85888b",
+                    "primary": "#00091b",
+                    "outline-variant": "#c4c6cf"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "24px",
+                    "gutter": "12px",
+                    "xs": "4px",
+                    "unit": "4px",
+                    "margin-mobile": "16px",
+                    "md": "16px",
+                    "lg": "24px",
+                    "xl": "32px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "headline-md-mobile": ["Inter"],
+                    "mono-md": ["JetBrains Mono"],
+                    "headline-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "headline-md-mobile": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                    "mono-md": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                    "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                    "label-md": ["13px", { "lineHeight": "18px", "fontWeight": "600" }],
+                    "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                    "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                    "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface flex justify-between items-center px-md h-14">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-high rounded-full transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md-mobile text-headline-md-mobile text-primary">Export Report</h1>
+</div>
+<button class="flex items-center justify-center w-10 h-10 hover:bg-surface-container-high rounded-full transition-all active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary">help_outline</span>
+</button>
+</header>
+<main class="pt-14 pb-32 px-md">
+<!-- Step 1: Format Selection -->
+<section class="mt-lg">
+<h2 class="font-label-md text-label-md text-on-surface-variant mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">description</span>
+                CHOOSE FORMAT
+            </h2>
+<div class="grid grid-cols-3 gap-sm">
+<button class="format-btn flex flex-col items-center justify-center p-md bg-surface-container border border-outline-variant rounded-xl transition-all duration-200 ring-2 ring-secondary" id="format-csv" onclick="selectFormat('csv')">
+<span class="material-symbols-outlined text-secondary mb-1">csv</span>
+<span class="font-label-md text-label-md">CSV</span>
+</button>
+<button class="format-btn flex flex-col items-center justify-center p-md bg-surface border border-outline-variant rounded-xl transition-all duration-200" id="format-pdf" onclick="selectFormat('pdf')">
+<span class="material-symbols-outlined text-on-surface-variant mb-1">picture_as_pdf</span>
+<span class="font-label-md text-label-md">PDF</span>
+</button>
+<button class="format-btn flex flex-col items-center justify-center p-md bg-surface border border-outline-variant rounded-xl transition-all duration-200" id="format-xlsx" onclick="selectFormat('xlsx')">
+<span class="material-symbols-outlined text-on-surface-variant mb-1">table_view</span>
+<span class="font-label-md text-label-md">EXCEL</span>
+</button>
+</div>
+</section>
+<!-- Step 2: Date Range -->
+<section class="mt-xl">
+<h2 class="font-label-md text-label-md text-on-surface-variant mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                DATE RANGE
+            </h2>
+<div class="space-y-sm">
+<div class="flex items-center gap-sm bg-surface-container-low border border-outline-variant rounded-lg p-md">
+<div class="flex-1">
+<label class="block font-body-sm text-body-sm text-on-surface-variant">From</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-mono-md text-mono-md text-on-surface" type="text" value="2023-10-01"/>
+</div>
+<span class="material-symbols-outlined text-outline">arrow_forward</span>
+<div class="flex-1">
+<label class="block font-body-sm text-body-sm text-on-surface-variant">To</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-mono-md text-mono-md text-on-surface" type="text" value="2023-10-31"/>
+</div>
+</div>
+<div class="flex gap-xs overflow-x-auto hide-scrollbar pb-xs">
+<button class="whitespace-nowrap px-md py-1.5 bg-surface border border-outline-variant rounded-full font-label-md text-label-md hover:bg-secondary-container transition-colors">Today</button>
+<button class="whitespace-nowrap px-md py-1.5 bg-secondary-container text-on-secondary-container rounded-full font-label-md text-label-md">Last 30 Days</button>
+<button class="whitespace-nowrap px-md py-1.5 bg-surface border border-outline-variant rounded-full font-label-md text-label-md hover:bg-secondary-container transition-colors">Quarter</button>
+<button class="whitespace-nowrap px-md py-1.5 bg-surface border border-outline-variant rounded-full font-label-md text-label-md hover:bg-secondary-container transition-colors">Year</button>
+</div>
+</div>
+</section>
+<!-- Step 3: Data Categories -->
+<section class="mt-xl">
+<h2 class="font-label-md text-label-md text-on-surface-variant mb-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+                DATA CATEGORIES
+            </h2>
+<div class="space-y-sm">
+<label class="flex items-center justify-between p-md bg-surface border border-outline-variant rounded-xl active:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">point_of_sale</span>
+<div>
+<p class="font-label-md text-label-md">Sales</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Transactions, refunds, taxes</p>
+</div>
+</div>
+<input checked="" class="w-6 h-6 rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-md bg-surface border border-outline-variant rounded-xl active:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">percent</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Commissions</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Staff earnings and payouts</p>
+</div>
+</div>
+<input class="w-6 h-6 rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-md bg-surface border border-outline-variant rounded-xl active:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-secondary">inventory_2</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Inventory</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Stock levels and adjustments</p>
+</div>
+</div>
+<input checked="" class="w-6 h-6 rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+<label class="flex items-center justify-between p-md bg-surface border border-outline-variant rounded-xl active:bg-surface-container-high transition-colors">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant">groups</span>
+<div>
+<p class="font-label-md text-label-md text-on-surface">Customers</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Profiles and purchase history</p>
+</div>
+</div>
+<input class="w-6 h-6 rounded border-outline-variant text-secondary focus:ring-secondary" type="checkbox"/>
+</label>
+</div>
+</section>
+<!-- Export Summary Preview -->
+<section class="mt-xl p-md bg-surface-container-high rounded-2xl border border-secondary/10">
+<div class="flex items-center justify-between mb-sm">
+<h3 class="font-label-md text-label-md text-primary">EXPORT SUMMARY</h3>
+<span class="px-2 py-0.5 bg-secondary/10 text-secondary font-mono-md text-[10px] rounded uppercase tracking-wider">Preview</span>
+</div>
+<div class="grid grid-cols-2 gap-md">
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Total Records</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">1,240</span>
+</div>
+<div class="flex flex-col">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Est. File Size</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">2.4MB</span>
+</div>
+</div>
+<div class="mt-md pt-md border-t border-outline-variant/30 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[18px]">info</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Exporting to <span class="text-on-surface font-medium">reports_oct_2023.csv</span></p>
+</div>
+</section>
+</main>
+<!-- Bottom Action Area -->
+<div class="fixed bottom-0 left-0 w-full p-md bg-surface/80 backdrop-blur-md z-40">
+<button class="w-full h-14 bg-secondary text-on-secondary rounded-xl font-headline-sm text-headline-sm flex items-center justify-center gap-3 active:scale-95 transition-all shadow-lg" id="generateBtn" onclick="handleGenerate()">
+<span class="material-symbols-outlined" id="btnIcon">download</span>
+<span id="btnText">Generate &amp; Download</span>
+</button>
+</div>
+<!-- Notification Overlay (Hidden) -->
+<div class="fixed top-20 left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-lg py-md rounded-full font-label-md text-label-md shadow-2xl opacity-0 pointer-events-none transition-all duration-300 transform translate-y-4 z-[100] flex items-center gap-3" id="toast">
+<span class="material-symbols-outlined text-primary-fixed">check_circle</span>
+        Report generated successfully
+    </div>
+<script>
+        function selectFormat(formatId) {
+            // Reset all buttons
+            document.querySelectorAll('.format-btn').forEach(btn => {
+                btn.classList.remove('bg-surface-container', 'ring-2', 'ring-secondary');
+                btn.classList.add('bg-surface');
+                btn.querySelector('.material-symbols-outlined').classList.replace('text-secondary', 'text-on-surface-variant');
+            });
+            
+            // Highlight selected
+            const activeBtn = document.getElementById('format-' + formatId);
+            activeBtn.classList.add('bg-surface-container', 'ring-2', 'ring-secondary');
+            activeBtn.classList.remove('bg-surface');
+            activeBtn.querySelector('.material-symbols-outlined').classList.replace('text-on-surface-variant', 'text-secondary');
+        }
+
+        function handleGenerate() {
+            const btn = document.getElementById('generateBtn');
+            const icon = document.getElementById('btnIcon');
+            const text = document.getElementById('btnText');
+            const toast = document.getElementById('toast');
+
+            // Loading State
+            btn.disabled = true;
+            btn.classList.add('opacity-80');
+            text.innerText = "Processing...";
+            icon.innerText = "sync";
+            icon.classList.add('animate-spin');
+
+            setTimeout(() => {
+                // Success State
+                icon.classList.remove('animate-spin');
+                icon.innerText = "check";
+                text.innerText = "Download Started";
+                
+                // Show Toast
+                toast.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                
+                setTimeout(() => {
+                    toast.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                    // Reset Button
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-80');
+                    text.innerText = "Generate & Download";
+                    icon.innerText = "download";
+                }, 3000);
+            }, 1800);
+        }
+    </script>
+</body></html>

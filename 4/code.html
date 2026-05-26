@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAV.POS | System Access</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .pin-dot {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .pin-dot.filled {
+            transform: scale(1.2);
+        }
+        .keypad-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-surface-variant": "#44474e",
+                    "on-secondary-container": "#f9f7ff",
+                    "tertiary-fixed-dim": "#ffba43",
+                    "on-primary-container": "#7089b3",
+                    "on-secondary-fixed-variant": "#003fa4",
+                    "primary-fixed-dim": "#aec7f5",
+                    "background": "#f8f9ff",
+                    "surface": "#f8f9ff",
+                    "secondary-fixed-dim": "#b3c5ff",
+                    "tertiary-fixed": "#ffddaf",
+                    "surface-dim": "#cbdbf5",
+                    "on-tertiary-fixed": "#281800",
+                    "surface-container": "#e5eeff",
+                    "on-surface": "#0b1c30",
+                    "secondary-container": "#0266ff",
+                    "inverse-surface": "#213145",
+                    "on-tertiary-container": "#b67c00",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001b3c",
+                    "tertiary-container": "#2e1d00",
+                    "surface-container-high": "#dce9ff",
+                    "surface-container-highest": "#d3e4fe",
+                    "primary-fixed": "#d6e3ff",
+                    "outline": "#74777f",
+                    "on-secondary-fixed": "#001849",
+                    "secondary": "#0050cc",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#465f87",
+                    "secondary-fixed": "#dae1ff",
+                    "tertiary": "#0f0700",
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#d3e4fe",
+                    "primary": "#00091b",
+                    "inverse-on-surface": "#eaf1ff",
+                    "surface-container-lowest": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-background": "#0b1c30",
+                    "inverse-primary": "#aec7f5",
+                    "primary-container": "#002045",
+                    "outline-variant": "#c4c6cf",
+                    "surface-bright": "#f8f9ff",
+                    "surface-container-low": "#eff4ff",
+                    "on-tertiary-fixed-variant": "#614000"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "md": "16px",
+                    "xl": "32px",
+                    "margin-desktop": "32px",
+                    "lg": "24px",
+                    "sm": "8px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "margin-mobile": "16px",
+                    "xs": "4px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Inter"],
+                    "title-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "label-md": ["Inter"],
+                    "code-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "title-md": ["18px", {"lineHeight": "24px", "fontWeight": "500"}],
+                    "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "code-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md text-body-md">
+<!-- Header Section (Suppressed Shell as per Linear/Transactional Rule) -->
+<header class="flex items-center justify-between px-margin-mobile md:px-margin-desktop h-16 w-full fixed top-0 z-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" data-icon="terminal">terminal</span>
+<h1 class="font-headline-md text-headline-md font-bold text-secondary tracking-tight">SAV.POS</h1>
+</div>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="wifi">wifi</span>
+<span class="font-label-md text-label-md">STATION 04</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-grow flex flex-col items-center justify-center pt-16 pb-12 px-margin-mobile">
+<!-- Profile Selector (Bento Style Layout) -->
+<div class="w-full max-w-md mb-8 grid grid-cols-3 gap-4">
+<button class="profile-card group flex flex-col items-center p-4 bg-surface-container-lowest border border-outline-variant rounded-xl transition-all hover:border-secondary hover:shadow-md" onclick="selectProfile('Manager')">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-2 group-[.active]:ring-2 group-[.active]:ring-secondary">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="admin_panel_settings">admin_panel_settings</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant group-[.active]:text-secondary">Manager</span>
+</button>
+<button class="profile-card active group flex flex-col items-center p-4 bg-surface-container-lowest border border-secondary rounded-xl transition-all hover:border-secondary hover:shadow-md" onclick="selectProfile('Cashier')">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-2 ring-2 ring-secondary">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="person" data-weight="fill" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+<span class="font-label-md text-label-md text-secondary">Cashier</span>
+</button>
+<button class="profile-card group flex flex-col items-center p-4 bg-surface-container-lowest border border-outline-variant rounded-xl transition-all hover:border-secondary hover:shadow-md" onclick="selectProfile('Tech')">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-2 group-[.active]:ring-2 group-[.active]:ring-secondary">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="construction">construction</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface-variant group-[.active]:text-secondary">Tech</span>
+</button>
+</div>
+<!-- Identity Confirmation -->
+<div class="text-center mb-8">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2" id="greeting">Welcome back, Cashier</h2>
+<p class="text-on-surface-variant font-body-md text-body-md">Enter your 4-digit security PIN</p>
+</div>
+<!-- PIN Indicators -->
+<div class="flex gap-6 mb-12" id="pin-container">
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant bg-transparent"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant bg-transparent"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant bg-transparent"></div>
+<div class="pin-dot w-4 h-4 rounded-full border-2 border-outline-variant bg-transparent"></div>
+</div>
+<!-- Keypad Container (Modern Flat Grid) -->
+<div class="grid grid-cols-3 gap-x-8 gap-y-4 max-w-xs w-full mb-12">
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(1)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">1</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(2)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">2</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(3)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">3</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(4)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">4</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(5)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">5</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(6)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">6</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(7)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">7</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(8)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">8</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(9)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">9</span>
+</button>
+<div class="h-20 w-20"></div>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="appendPin(0)">
+<span class="font-headline-md text-headline-md text-on-surface group-active:text-on-secondary-container">0</span>
+</button>
+<button class="keypad-button h-20 w-20 rounded-full border border-outline-variant flex items-center justify-center hover:bg-surface-container-high transition-colors active:bg-secondary-container group" onclick="backspace()">
+<span class="material-symbols-outlined text-on-surface group-active:text-on-secondary-container" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Footer Links -->
+<div class="flex flex-col gap-4 items-center">
+<button class="text-secondary font-label-md text-label-md uppercase tracking-wider hover:underline decoration-2 underline-offset-4">
+                Forgot PIN
+            </button>
+<button class="flex items-center gap-2 px-6 py-2 border border-outline-variant rounded-full text-on-surface-variant font-body-md text-body-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="login">login</span>
+                Login with Password
+            </button>
+</div>
+</main>
+<!-- Visual Backdrop Element (Atmospheric Gradient) -->
+<div class="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary-container opacity-20 blur-[120px]"></div>
+<div class="absolute bottom-[-5%] left-[-5%] w-[30%] h-[30%] rounded-full bg-primary-container opacity-10 blur-[100px]"></div>
+</div>
+<script>
+        let pin = [];
+        const maxPinLength = 4;
+        const dots = document.querySelectorAll('.pin-dot');
+
+        function appendPin(num) {
+            if (pin.length < maxPinLength) {
+                pin.push(num);
+                updateDots();
+                if (pin.length === maxPinLength) {
+                    validatePin();
+                }
+            }
+        }
+
+        function backspace() {
+            pin.pop();
+            updateDots();
+        }
+
+        function updateDots() {
+            dots.forEach((dot, index) => {
+                if (index < pin.length) {
+                    dot.classList.add('bg-secondary', 'border-secondary', 'filled');
+                    dot.classList.remove('bg-transparent', 'border-outline-variant');
+                } else {
+                    dot.classList.remove('bg-secondary', 'border-secondary', 'filled');
+                    dot.classList.add('bg-transparent', 'border-outline-variant');
+                }
+            });
+        }
+
+        function validatePin() {
+            // Visual feedback for processing
+            const container = document.getElementById('pin-container');
+            container.classList.add('animate-pulse');
+            
+            setTimeout(() => {
+                // Mock validation: 1234 is the "success" pin
+                if (pin.join('') === '1234') {
+                    dots.forEach(dot => dot.classList.replace('bg-secondary', 'bg-on-secondary-container'));
+                    document.body.classList.add('opacity-0', 'transition-opacity', 'duration-500');
+                    alert('Access Granted. Redirecting to Terminal Dashboard...');
+                } else {
+                    container.classList.remove('animate-pulse');
+                    container.classList.add('animate-bounce');
+                    dots.forEach(dot => {
+                        dot.classList.replace('bg-secondary', 'bg-error');
+                        dot.classList.replace('border-secondary', 'border-error');
+                    });
+                    
+                    setTimeout(() => {
+                        container.classList.remove('animate-bounce');
+                        pin = [];
+                        updateDots();
+                        dots.forEach(dot => {
+                            dot.classList.remove('bg-error', 'border-error');
+                            dot.classList.add('border-outline-variant');
+                        });
+                    }, 1000);
+                }
+            }, 500);
+        }
+
+        function selectProfile(role) {
+            document.getElementById('greeting').innerText = `Welcome back, ${role}`;
+            document.querySelectorAll('.profile-card').forEach(card => {
+                card.classList.remove('active', 'border-secondary');
+                card.classList.add('border-outline-variant');
+                card.querySelector('span:last-child').classList.replace('text-secondary', 'text-on-surface-variant');
+                card.querySelector('div').classList.remove('ring-2', 'ring-secondary');
+            });
+            
+            const activeCard = event.currentTarget;
+            activeCard.classList.add('active', 'border-secondary');
+            activeCard.classList.remove('border-outline-variant');
+            activeCard.querySelector('span:last-child').classList.replace('text-on-surface-variant', 'text-secondary');
+            activeCard.querySelector('div').classList.add('ring-2', 'ring-secondary');
+            
+            // Reset PIN on profile switch
+            pin = [];
+            updateDots();
+        }
+    </script>
+</body></html>

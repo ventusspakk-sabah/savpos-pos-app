@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-TW"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos - 權限管理</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-container": "#00477f",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-tertiary-fixed": "#002113",
+                      "primary-fixed": "#d6e3ff",
+                      "surface-container-highest": "#e0e3e5",
+                      "secondary-fixed": "#d3e4ff",
+                      "on-primary-fixed": "#001b3c",
+                      "secondary": "#1960a3",
+                      "on-secondary-fixed": "#001c38",
+                      "primary-fixed-dim": "#aec7f5",
+                      "primary-container": "#002045",
+                      "tertiary-container": "#002617",
+                      "on-primary-fixed-variant": "#2e476e",
+                      "on-background": "#191c1e",
+                      "outline-variant": "#c4c6cf",
+                      "on-error-container": "#93000a",
+                      "outline": "#74777f",
+                      "inverse-surface": "#2d3133",
+                      "surface-container": "#eceef0",
+                      "secondary-fixed-dim": "#a2c9ff",
+                      "surface-tint": "#465f87",
+                      "surface-dim": "#d8dadc",
+                      "primary": "#00091b",
+                      "on-surface-variant": "#44474e",
+                      "on-primary-container": "#7089b3",
+                      "tertiary-fixed": "#b6efcf",
+                      "tertiary": "#000b05",
+                      "surface-container-low": "#f2f4f6",
+                      "on-secondary-fixed-variant": "#004881",
+                      "on-tertiary-fixed-variant": "#195039",
+                      "surface-container-high": "#e6e8ea",
+                      "surface": "#f7f9fb",
+                      "background": "#f7f9fb",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#00b47d",
+                      "on-secondary": "#ffffff",
+                      "secondary-container": "#7db6ff",
+                      "surface-bright": "#f7f9fb",
+                      "on-surface": "#191c1e",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-fixed-dim": "#9bd3b4",
+                      "error": "#ba1a1a",
+                      "surface-variant": "#e0e3e5",
+                      "on-error": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "inverse-primary": "#aec7f5",
+                      "error-container": "#ffdad6"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "xs": "8px",
+                      "sm": "12px",
+                      "xl": "32px",
+                      "touch-target-min": "44px",
+                      "md": "16px",
+                      "lg": "24px",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "display-price": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "label-md": ["JetBrains Mono"],
+                      "body-md": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["JetBrains Mono"],
+                      "headline-md": ["Inter"]
+              },
+              "fontSize": {
+                      "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-hidden">
+<!-- Main Background (Simulating a POS Dashboard Underneath) -->
+<div class="fixed inset-0 grid grid-cols-12 gap-lg p-lg opacity-40 grayscale pointer-events-none">
+<aside class="col-span-3 bg-surface-container-low rounded-xl p-md flex flex-col gap-md">
+<div class="h-10 w-3/4 bg-surface-container-highest rounded-full"></div>
+<div class="space-y-sm">
+<div class="h-12 bg-surface-variant rounded-lg"></div>
+<div class="h-12 bg-surface-variant rounded-lg"></div>
+<div class="h-12 bg-surface-variant rounded-lg"></div>
+</div>
+</aside>
+<main class="col-span-9 grid grid-cols-3 gap-md">
+<div class="aspect-square bg-surface-container-lowest rounded-xl shadow-sm"></div>
+<div class="aspect-square bg-surface-container-lowest rounded-xl shadow-sm"></div>
+<div class="aspect-square bg-surface-container-lowest rounded-xl shadow-sm"></div>
+<div class="aspect-square bg-surface-container-lowest rounded-xl shadow-sm"></div>
+<div class="aspect-square bg-surface-container-lowest rounded-xl shadow-sm"></div>
+<div class="aspect-square bg-surface-container-lowest rounded-xl shadow-sm"></div>
+</main>
+</div>
+<!-- Permission Denial Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-md bg-primary/20 glass-effect">
+<!-- Modal Container -->
+<div class="relative w-full max-w-lg bg-surface-container-lowest shadow-lg rounded-[32px] overflow-hidden flex flex-col items-center text-center p-xl border border-outline-variant/30">
+<!-- Close Button (Suppressing Global Nav but keeping local control) -->
+<button class="absolute top-md right-md w-touch-target-min h-touch-target-min flex items-center justify-center rounded-full hover:bg-surface-variant/50 transition-colors" onclick="window.history.back()">
+<span class="material-symbols-outlined text-on-surface-variant">close</span>
+</button>
+<!-- Animated Icon Section -->
+<div class="mb-xl relative">
+<div class="w-24 h-24 bg-error-container rounded-full flex items-center justify-center animate-float">
+<span class="material-symbols-outlined text-on-error-container text-[48px]" style="font-variation-settings: 'FILL' 1;">lock</span>
+</div>
+<!-- Pulsing Effect -->
+<div class="absolute inset-0 rounded-full bg-error/10 animate-ping -z-10 scale-125"></div>
+</div>
+<!-- Content -->
+<div class="space-y-md mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">存取權限受限</h2>
+<p class="text-on-surface-variant font-body-lg text-body-lg max-w-[80%] mx-auto">
+                    您目前無權訪問此模組。請聯繫您的系統管理員或主管以獲取訪問權限。
+                </p>
+<div class="flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-outline text-sm">info</span>
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Module ID: SALES_REPORTS_PREMIUM</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex flex-col gap-md">
+<button class="group relative w-full h-14 bg-primary text-on-primary rounded-xl font-bold flex items-center justify-center gap-sm overflow-hidden active:scale-95 transition-all" id="applyBtn">
+<!-- Glass Shine Effect -->
+<div class="absolute inset-0 w-1/2 h-full bg-white/10 -skew-x-12 -translate-x-full group-hover:translate-x-[300%] transition-transform duration-700"></div>
+<span class="material-symbols-outlined">send_to_mobile</span>
+<span class="text-body-lg">向主管申請即時授權</span>
+</button>
+<button class="w-full h-12 bg-surface-container-high text-on-surface-variant rounded-xl font-medium hover:bg-surface-variant transition-colors active:scale-95" onclick="window.history.back()">
+                    返回儀表板
+                </button>
+</div>
+<!-- Footer Meta -->
+<p class="mt-lg font-label-sm text-label-sm text-outline">
+                授權請求將即時推送至經理端 App
+            </p>
+</div>
+</div>
+<!-- Success Feedback (Hidden Initially) -->
+<div class="fixed top-8 left-1/2 -translate-x-1/2 z-[60] opacity-0 translate-y-[-20px] pointer-events-none transition-all duration-500" id="successToast">
+<div class="bg-on-tertiary-container text-tertiary-container px-lg py-sm rounded-full shadow-lg flex items-center gap-sm border border-on-tertiary-container/20">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-bold">申請已送出，等待主管審核中</span>
+</div>
+</div>
+<script>
+        const applyBtn = document.getElementById('applyBtn');
+        const successToast = document.getElementById('successToast');
+
+        applyBtn.addEventListener('click', () => {
+            // Disable button
+            applyBtn.disabled = true;
+            applyBtn.classList.add('opacity-70');
+            applyBtn.innerHTML = `
+                <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>處理中...</span>
+            `;
+
+            // Simulate Network Request
+            setTimeout(() => {
+                // Show Success
+                successToast.classList.remove('opacity-0', 'translate-y-[-20px]', 'pointer-events-none');
+                successToast.classList.add('opacity-100', 'translate-y-0');
+                
+                applyBtn.innerHTML = `
+                    <span class="material-symbols-outlined">done</span>
+                    <span>已發送申請</span>
+                `;
+                applyBtn.classList.remove('bg-primary');
+                applyBtn.classList.add('bg-on-tertiary-container', 'text-tertiary-container');
+
+                // Hide toast after 3s
+                setTimeout(() => {
+                    successToast.classList.add('opacity-0', 'translate-y-[-20px]');
+                }, 3000);
+            }, 1500);
+        });
+    </script>
+</body></html>

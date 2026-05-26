@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos System Hub | Enterprise Edition</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#002045",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#002045",
+                        "on-primary-container": "#7089b3",
+                        "secondary": "#1960a3",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#7db6ff",
+                        "on-secondary-container": "#00477f",
+                        "tertiary": "#000b05",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#002617",
+                        "on-tertiary-container": "#00b47d",
+                        "background": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "surface": "#f7f9fb",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface-variant": "#44474e",
+                        "outline": "#74777f",
+                        "outline-variant": "#c4c6cf",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container": "#eceef0",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container-highest": "#e0e3e5",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-tertiary-fixed": "#002113",
+                        "primary-fixed-dim": "#aec7f5"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "touch-target-min": "44px",
+                        "sm": "12px",
+                        "xs": "8px",
+                        "md": "16px",
+                        "base": "4px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "display-price": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen selection:bg-secondary-container selection:text-on-secondary-container pb-24">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim text-primary w-full top-0 sticky border-b border-outline-variant z-50 flex justify-between items-center px-lg py-md">
+<div class="flex items-center gap-sm cursor-pointer active:scale-95 transition-all">
+<img alt="Sav.pos Logo" class="h-8 w-8 object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujAKrMUG4JuUgaofYArl9-ydg-0lIKwBi6cb_Ngkzjy6heugzGiiUqwNLU6iqJkzKVsJGv1lOOM94sKCJz7urvnGzjpWCQ56x6lmoHaQaqEK_UZ9iEyfU2O4JlWfuOm1cA-yd3gxJfVcTIEP4HwB1lKvM1t8NwjCDf3_FyYwokAuyVhetFpb3gXQekkcg-J_hHep-DYSDgVS8BPIgmF7AT0ZYg94U17G9wMg7UCr1ExT9qey11noo8yXgA"/>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">System Hub</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-high transition-colors p-sm rounded-full cursor-pointer active:scale-95">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-7xl mx-auto p-md md:p-xl lg:px-24">
+<!-- Brand Hero Section -->
+<section class="mb-xl text-center flex flex-col items-center">
+<div class="w-24 h-24 mb-md animate-bounce">
+<img alt="Sav.pos Logo" class="w-full h-full object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ujAKrMUG4JuUgaofYArl9-ydg-0lIKwBi6cb_Ngkzjy6heugzGiiUqwNLU6iqJkzKVsJGv1lOOM94sKCJz7urvnGzjpWCQ56x6lmoHaQaqEK_UZ9iEyfU2O4JlWfuOm1cA-yd3gxJfVcTIEP4HwB1lKvM1t8NwjCDf3_FyYwokAuyVhetFpb3gXQekkcg-J_hHep-DYSDgVS8BPIgmF7AT0ZYg94U17G9wMg7UCr1ExT9qey11noo8yXgA"/>
+</div>
+<div class="inline-flex items-center gap-sm bg-tertiary-fixed text-on-tertiary-fixed px-md py-base rounded-full mb-md">
+<span class="material-symbols-outlined text-sm" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Enterprise Ready</span>
+</div>
+<h2 class="font-display-price text-display-price text-primary mb-sm leading-tight">Welcome to Sav.pos</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-xs">Congratulations! Your enterprise environment is fully synchronized.</p>
+<p class="font-label-md text-label-md text-primary font-bold tracking-wider">SAV.POS ENTERPRISE EDITION — ALL SYSTEMS ONLINE</p>
+</section>
+<!-- The "Big Four" Application Gateways -->
+<section class="mb-xl">
+<h3 class="font-headline-md text-headline-md text-primary mb-lg px-md">Application Portals</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- POS Cashier -->
+<a class="group relative bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant hover:border-primary transition-all duration-300 flex flex-col justify-between min-h-[160px]" href="#">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="text-4xl">🧖</span>
+<h4 class="font-headline-md text-headline-md text-primary mt-sm">POS Cashier</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Room control, billing &amp; service dispatch.</p>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="mt-md text-xs font-label-md text-outline">Ref: SCREEN_75</div>
+</a>
+<!-- Technician Portal -->
+<a class="group relative bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant hover:border-primary transition-all duration-300 flex flex-col justify-between min-h-[160px]" href="#">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="text-4xl">💆</span>
+<h4 class="font-headline-md text-headline-md text-primary mt-sm">Technician Portal</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Earnings, work notifications &amp; requests.</p>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="mt-md text-xs font-label-md text-outline">Ref: SCREEN_141</div>
+</a>
+<!-- Executive Admin -->
+<a class="group relative bg-primary text-on-primary rounded-xl p-lg shadow-md border border-primary hover:brightness-110 transition-all duration-300 flex flex-col justify-between min-h-[160px]" href="#">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="text-4xl">👔</span>
+<h4 class="font-headline-md text-headline-md text-white mt-sm">Executive Admin</h4>
+<p class="font-body-md text-body-md text-on-primary/80">Performance analytics, approvals &amp; staff management.</p>
+</div>
+<span class="material-symbols-outlined text-white group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="mt-md text-xs font-label-md text-on-primary/40">Ref: SCREEN_85</div>
+</a>
+<!-- Online Booking -->
+<a class="group relative bg-surface-container-lowest rounded-xl p-lg shadow-sm border border-outline-variant hover:border-primary transition-all duration-300 flex flex-col justify-between min-h-[160px]" href="#">
+<div class="flex justify-between items-start">
+<div class="flex flex-col gap-xs">
+<span class="text-4xl">🌐</span>
+<h4 class="font-headline-md text-headline-md text-primary mt-sm">Online Booking</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Professional website &amp; automated client booking.</p>
+</div>
+<span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</div>
+<div class="mt-md text-xs font-label-md text-outline">Ref: SCREEN_146</div>
+</a>
+</div>
+</section>
+<!-- Infrastructure & Health -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-lg mb-xl">
+<!-- System Health -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-lg border border-outline-variant shadow-sm relative overflow-hidden">
+<div class="flex justify-between items-start mb-lg relative z-10">
+<div>
+<h3 class="font-headline-md text-headline-md text-primary mb-xs">Infrastructure Health</h3>
+<p class="font-label-md text-label-md text-on-tertiary-container">Status: All Systems Nominal</p>
+</div>
+<button class="flex items-center gap-xs bg-surface-container-high px-md py-sm rounded-lg font-label-md text-label-md hover:bg-outline-variant transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="refresh">refresh</span>
+                        Re-run Scan
+                    </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-md relative z-10">
+<div class="p-md rounded-lg bg-background border border-outline-variant/20 text-center">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="speed">speed</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Latency</p>
+<p class="font-headline-md text-headline-md text-primary">24ms</p>
+</div>
+<div class="p-md rounded-lg bg-background border border-outline-variant/20 text-center">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="cloud_done">cloud_done</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Sync</p>
+<p class="font-headline-md text-headline-md text-primary">100%</p>
+</div>
+<div class="p-md rounded-lg bg-background border border-outline-variant/20 text-center">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="security">security</span>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase">Firewall</p>
+<p class="font-headline-md text-headline-md text-primary">Active</p>
+</div>
+</div>
+</div>
+<!-- Key Modules -->
+<div class="lg:col-span-4 bg-primary text-on-primary rounded-xl p-lg shadow-md flex flex-col">
+<h3 class="font-headline-md text-headline-md text-primary-fixed-dim mb-md">Operational Core</h3>
+<ul class="space-y-sm flex-grow">
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">POS Terminal Node</span>
+</li>
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">Staff Ledger (v3.2)</span>
+</li>
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">Admin Master Logic</span>
+</li>
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">Financial Reports Engine</span>
+</li>
+<li class="flex items-center gap-md">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed"></div>
+<span class="font-body-md text-body-md opacity-90">Secure Cloud DB Node</span>
+</li>
+</ul>
+</div>
+</section>
+<!-- Resource & Management Center -->
+<section class="mb-xl">
+<h3 class="font-headline-md text-headline-md text-primary mb-lg px-md">Resource Center</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-md">
+<!-- Documentation -->
+<a class="bg-surface-container-high rounded-lg p-md flex items-center gap-md hover:bg-surface-variant transition-colors" href="#">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="menu_book">menu_book</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Documentation</p>
+<p class="text-[10px] text-outline">Ref: SCREEN_116</p>
+</div>
+</a>
+<!-- Support Center -->
+<a class="bg-surface-container-high rounded-lg p-md flex items-center gap-md hover:bg-surface-variant transition-colors" href="#">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Support Center</p>
+<p class="text-[10px] text-outline">24/7 Concierge</p>
+</div>
+</a>
+<!-- Database Config -->
+<a class="bg-surface-container-high rounded-lg p-md flex items-center gap-md hover:bg-surface-variant transition-colors" href="#">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">System Config</p>
+<p class="text-[10px] text-outline">Ref: SCREEN_105</p>
+</div>
+</a>
+<!-- Integrations -->
+<a class="bg-surface-container-high rounded-lg p-md flex items-center gap-md hover:bg-surface-variant transition-colors" href="#">
+<div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">Integrations</p>
+<p class="text-[10px] text-outline">Ref: SCREEN_9</p>
+</div>
+</a>
+</div>
+</section>
+<!-- Final CTA/Footer View -->
+<section class="h-64 rounded-xl overflow-hidden relative shadow-lg mb-xl">
+<img alt="Professional Workspace" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvA9q9kgJNzpbbHcMp0SbovqYXJGTsJrj5QJvBm7kWCgqfxP4Q-faYkTKXlwHyUDe2-wMSVNiUhyZHiQclePMQQIQYxwSZVWeywW5TOTuEfnVg5o8C2kPBTa_1yqdXbGhmK_D1w1AX5xm8F3-wbUJfPj2SYBrroabq5OZFxNkPsrJ9JjrJQy4xkXkLf6lGGVd7wPJ2ZpgjtbAzbKx34pAC3y9-jAeoUpbYF83xfDp2rncyz7JkDp8Tf3NZZswy4-NVoq1pPZIPD08"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 to-transparent flex flex-col justify-end p-xl">
+<h3 class="text-white font-headline-lg text-headline-lg mb-xs">Your Empire. One Dashboard.</h3>
+<p class="text-white/70 font-body-lg text-body-lg">Scale with confidence using the Sav.pos enterprise suite.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant shadow-sm flex justify-around items-center h-16 px-4 md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-full px-4 py-1 active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="badge">badge</span>
+<span class="font-label-md text-label-md">Staff</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-md text-label-md">Catalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant active:scale-90 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</a>
+</nav>
+<script>
+        // Interactivity for the scan button
+        const scanBtn = document.querySelector('button:has(.material-symbols-outlined[data-icon="refresh"])');
+        if (scanBtn) {
+            scanBtn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                icon.classList.add('animate-spin');
+                this.disabled = true;
+                setTimeout(() => {
+                    icon.classList.remove('animate-spin');
+                    this.disabled = false;
+                    alert('Enterprise System Hub synchronized. All nodes operating at peak efficiency.');
+                }, 1500);
+            });
+        }
+    </script>
+</body></html>

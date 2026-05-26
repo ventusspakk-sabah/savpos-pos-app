@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#2e476e",
+                    "tertiary-container": "#002617",
+                    "on-tertiary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#00477f",
+                    "background": "#f7f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed-variant": "#004881",
+                    "on-secondary": "#ffffff",
+                    "secondary": "#1960a3",
+                    "on-tertiary-container": "#00b47d",
+                    "surface-tint": "#465f87",
+                    "on-secondary-fixed": "#001c38",
+                    "surface": "#f7f9fb",
+                    "tertiary-fixed": "#6ffbbe",
+                    "secondary-fixed": "#d3e4ff",
+                    "on-primary-container": "#7089b3",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "on-background": "#191c1e",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-fixed": "#001b3c",
+                    "error": "#ba1a1a",
+                    "on-surface": "#191c1e",
+                    "surface-container-high": "#e6e8ea",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "surface-bright": "#f7f9fb",
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2d3133",
+                    "on-tertiary-fixed": "#002113",
+                    "primary-fixed": "#d6e3ff",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container-low": "#f2f4f6",
+                    "outline-variant": "#c4c6cf",
+                    "surface-dim": "#d8dadc",
+                    "on-surface-variant": "#44474e",
+                    "primary-container": "#002045",
+                    "secondary-container": "#7db6ff",
+                    "surface-container": "#eceef0",
+                    "outline": "#74777f",
+                    "inverse-primary": "#aec7f5",
+                    "primary": "#00091b",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e0e3e5",
+                    "tertiary": "#000b05",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "primary-fixed-dim": "#aec7f5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "base": "4px",
+                    "xl": "32px",
+                    "md": "16px",
+                    "xs": "8px",
+                    "lg": "24px",
+                    "touch-target-min": "44px",
+                    "sm": "12px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "display-price": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+        }
+        input:focus, select:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #00091b;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface fixed top-0 w-full z-50">
+<div class="flex items-center justify-between px-md py-xs w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary" data-icon="spa">spa</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</span>
+</div>
+<div class="hidden md:flex items-center gap-lg">
+<span class="font-label-md text-label-md text-on-surface-variant cursor-pointer transition-colors hover:bg-surface-container-high px-4 py-2 rounded-lg">Help</span>
+<span class="font-label-md text-label-md text-on-surface-variant cursor-pointer transition-colors hover:bg-surface-container-high px-4 py-2 rounded-lg">Contact Support</span>
+</div>
+<button class="md:hidden p-2 rounded-full hover:bg-surface-variant transition-all scale-95 active:duration-100">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-grow flex items-center justify-center pt-24 pb-12 px-md">
+<div class="w-full max-w-4xl grid grid-cols-1 lg:grid-cols-12 gap-xl items-center">
+<!-- Left Side: Visual Content -->
+<div class="hidden lg:block lg:col-span-5 h-full min-h-[500px] relative rounded-3xl overflow-hidden shadow-lg">
+<img class="absolute inset-0 w-full h-full object-cover" data-alt="A luxurious high-end spa reception area with minimalist architecture, soft warm lighting, and neutral stone textures. The scene is professionally lit with soft morning sunlight streaming through large windows, creating a peaceful and sophisticated atmosphere. The color palette is dominated by creams, soft grays, and natural wood tones to emphasize a premium retail and wellness brand identity. High-resolution commercial photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkB_skVDm1-8960QJEr3ErQvgJJWyzB--UXrUbNR4NLH4wjDXNUAJiUnVg-Gims1m6pXPX_pbbi1PnTsmJu_2jEM-Uz3zHkGk4n7bI80mN7HbywniSUlvsYxMO1_yowxFJh_FjQaoHE3vC0LHmbXYswu5CqqT9syX4bPHJ4ayacLJYDdJN4hj1IQlODCpGx4WHcK9aDNyJUPPuIeTeZHy6Czuw3hkBXwrsgwc7GaG1yS2dZlkgxpT6YuQv3X6wb2bGiIWWs3NLWgM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col justify-end p-xl">
+<h2 class="font-headline-lg text-headline-lg text-white mb-xs">Elevate Your Boutique Experience</h2>
+<p class="text-white/80 font-body-md">Precise control for premium service environments. Start your journey with Sav.pos today.</p>
+</div>
+</div>
+<!-- Right Side: Onboarding Form -->
+<div class="lg:col-span-7 flex flex-col">
+<!-- Progress Indicator -->
+<div class="mb-xl">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-md text-label-md text-primary font-bold">Store Info</span>
+<span class="font-label-sm text-label-sm text-outline">Step 1 of 4</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/4 rounded-full transition-all duration-700 ease-out"></div>
+</div>
+</div>
+<!-- Registration Card -->
+<div class="bg-surface-container-lowest rounded-3xl p-lg md:p-xl shadow-sm border border-outline-variant/20">
+<header class="mb-lg">
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-xs">Register Store</h1>
+<p class="text-on-surface-variant">Let's set up the foundation of your digital storefront.</p>
+</header>
+<form class="space-y-lg">
+<!-- Store Name -->
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface mb-xs" for="store-name">Store Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors">storefront</span>
+<input class="w-full h-touch-target-min pl-[48px] pr-md bg-surface-container-low rounded-xl font-body-md transition-all placeholder:text-outline-variant" id="store-name" placeholder="e.g., Grand Zen Spa" type="text"/>
+</div>
+</div>
+<!-- Business Category -->
+<div>
+<label class="block font-label-md text-label-md text-on-surface mb-xs" for="category">Business Category</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant transition-colors pointer-events-none">category</span>
+<select class="w-full h-touch-target-min pl-[48px] pr-md bg-surface-container-low rounded-xl font-body-md appearance-none transition-all" id="category">
+<option disabled="" selected="" value="">Select a category</option>
+<option value="spa">Spa</option>
+<option value="massage">Massage</option>
+<option value="salon">Salon</option>
+<option value="boutique">Boutique</option>
+<option value="hospitality">Hospitality</option>
+</select>
+<span class="material-symbols-outlined absolute right-md top-1/2 -translate-y-1/2 text-outline-variant pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Contact Number -->
+<div class="group">
+<label class="block font-label-md text-label-md text-on-surface mb-xs" for="contact">Contact Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors">call</span>
+<input class="w-full h-touch-target-min pl-[48px] pr-md bg-surface-container-low rounded-xl font-body-md transition-all placeholder:text-outline-variant" id="contact" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-md">
+<button class="w-full h-touch-target-min bg-primary text-on-primary font-bold rounded-xl flex items-center justify-center gap-xs hover:bg-primary/90 transition-all scale-95 active:scale-90 active:duration-100 shadow-md" type="submit">
+                                Next
+                                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+<div class="mt-lg flex justify-center">
+<p class="text-label-md font-label-md text-on-surface-variant">
+                        Already have an account? <a class="text-secondary font-bold hover:underline" href="#">Log in</a>
+</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-lg py-sm pb-safe bg-surface-container-low shadow-md rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-all scale-95 active:opacity-80">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-md text-label-md">Help</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant transition-all scale-95 active:opacity-80">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+<span class="font-label-md text-label-md">Support</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for input fields
+        const inputs = document.querySelectorAll('input, select');
+        inputs.forEach(input => {
+            input.addEventListener('focus', () => {
+                input.parentElement.classList.add('ring-2', 'ring-primary/10');
+            });
+            input.addEventListener('blur', () => {
+                input.parentElement.classList.remove('ring-2', 'ring-primary/10');
+            });
+        });
+
+        // Simple form submission animation
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined animate-spin">progress_activity</span> Processing...';
+            btn.disabled = true;
+            
+            setTimeout(() => {
+                btn.innerHTML = '<span class="material-symbols-outlined">check_circle</span> Success';
+                btn.classList.replace('bg-primary', 'bg-on-tertiary-container');
+            }, 1500);
+        });
+    </script>
+</body></html>

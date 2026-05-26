@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Third-party Integrations</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container": "#eceef0",
+                        "on-secondary-container": "#00477f",
+                        "on-surface-variant": "#44474e",
+                        "on-secondary": "#ffffff",
+                        "surface-variant": "#e0e3e5",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001b3c",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-surface": "#2d3133",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-fixed-dim": "#a2c9ff",
+                        "on-secondary-fixed-variant": "#004881",
+                        "tertiary-fixed": "#b6efcf",
+                        "on-tertiary-container": "#00b47d",
+                        "on-tertiary-fixed-variant": "#195039",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-on-surface": "#eff1f3",
+                        "error": "#ba1a1a",
+                        "primary-fixed": "#d6e3ff",
+                        "on-primary-container": "#7089b3",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary": "#00091b",
+                        "on-primary-fixed-variant": "#2e476e",
+                        "outline-variant": "#c4c6cf",
+                        "surface-dim": "#d8dadc",
+                        "primary-fixed-dim": "#aec7f5",
+                        "surface": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "background": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "primary-container": "#002045",
+                        "tertiary-container": "#002617",
+                        "on-secondary-fixed": "#001c38",
+                        "on-tertiary-fixed": "#002113",
+                        "surface-tint": "#465f87",
+                        "tertiary": "#000b05",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#7db6ff",
+                        "tertiary-fixed-dim": "#9bd3b4",
+                        "secondary-fixed": "#d3e4ff",
+                        "on-primary": "#ffffff",
+                        "secondary": "#1960a3",
+                        "inverse-primary": "#aec7f5",
+                        "on-background": "#191c1e",
+                        "outline": "#74777f",
+                        "on-surface": "#191c1e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xs": "8px",
+                        "xl": "32px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "base": "4px",
+                        "touch-target-min": "44px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Inter"],
+                        "display-price": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"],
+                        "headline-md": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- Top Navigation Bar -->
+<header class="bg-surface-container-lowest shadow-sm dock full-width top-0 flex justify-between items-center px-lg w-full z-50 h-16 sticky">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-primary" data-icon="storefront">storefront</span>
+<h1 class="font-headline-lg text-headline-lg font-bold text-primary">Sav.pos</h1>
+</div>
+<div class="flex items-center gap-md">
+<nav class="hidden md:flex gap-lg items-center h-full">
+<a class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 rounded-lg" href="#">Sales</a>
+<a class="text-on-surface-variant hover:bg-surface-container-high transition-colors px-3 py-1 rounded-lg" href="#">Clients</a>
+<a class="text-primary font-bold border-b-2 border-primary px-3 py-1" href="#">Integrations</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container font-bold shadow-sm" title="Staff Profile">
+                SP
+            </div>
+</div>
+</header>
+<div class="flex min-h-[calc(100vh-64px)] overflow-hidden">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="fixed left-0 top-16 h-[calc(100vh-64px)] hidden md:flex flex-col p-md bg-surface-container-low shadow-md w-64 z-40 transition-all">
+<div class="flex flex-col gap-base">
+<div class="p-md mb-md">
+<h3 class="font-headline-md text-headline-md text-primary">Admin Portal</h3>
+<p class="text-on-surface-variant text-sm">Global Manager</p>
+</div>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">card_membership</span>
+<span class="font-label-md text-label-md">Memberships</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">campaign</span>
+<span class="font-label-md text-label-md">Marketing</span>
+</a>
+<a class="flex items-center gap-md p-md bg-secondary-container text-on-secondary-container rounded-full transition-all active:scale-[0.98] shadow-sm" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="font-label-md text-label-md">Integrations</span>
+</a>
+<a class="flex items-center gap-md p-md text-on-surface-variant hover:bg-surface-container-high rounded-lg transition-all active:scale-[0.98]" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-md text-label-md">Inventory</span>
+</a>
+</div>
+<div class="mt-auto p-md bg-surface-container-highest rounded-xl border border-outline-variant/20">
+<div class="flex items-center justify-between mb-xs">
+<span class="font-label-sm text-label-sm text-secondary">System Health</span>
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span>
+</div>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-wider">All systems operational</p>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-md md:p-lg lg:p-xl transition-all">
+<!-- Content Header -->
+<div class="max-w-6xl mx-auto mb-xl">
+<header class="flex flex-col md:flex-row md:items-end justify-between gap-md mb-lg">
+<div>
+<div class="flex items-center gap-sm mb-xs">
+<span class="px-2 py-1 bg-primary-fixed text-on-primary-fixed rounded text-[10px] font-bold tracking-widest uppercase">Admin</span>
+<span class="text-on-surface-variant text-sm">System Configuration</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg md:text-[36px] text-primary">Integrations</h2>
+</div>
+<div class="flex items-center gap-md">
+<button class="flex items-center gap-xs px-lg py-sm bg-surface-container-highest hover:bg-surface-variant rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined text-sm">refresh</span>
+<span class="font-label-md text-label-md">Sync All</span>
+</button>
+</div>
+</header>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mb-xl leading-relaxed">
+                    Connect Sav.pos with your favorite business tools to automate your workflow. Synchronize data across platforms for a unified management experience.
+                </p>
+<!-- Integration Sections - Asymmetric Bento Grid Pattern -->
+<div class="space-y-xl">
+<!-- Section: Google Workspace -->
+<section>
+<div class="flex items-center gap-md mb-lg border-b border-outline-variant/30 pb-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="work">work</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Google Workspace</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Google Calendar Card -->
+<div class="group bg-surface-container-lowest p-lg rounded-xl shadow-sm hover:shadow-md transition-all border border-transparent hover:border-secondary-container flex flex-col justify-between">
+<div class="mb-lg">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="calendar_month">calendar_month</span>
+</div>
+<div class="flex items-center gap-xs px-3 py-1 bg-tertiary-fixed/20 text-on-tertiary-fixed-variant rounded-full border border-tertiary-fixed/30">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm">Connected</span>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">Google Calendar</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Sync client appointments and staff rosters directly to your shared calendars.</p>
+</div>
+<div class="flex items-center justify-between pt-md mt-auto border-t border-outline-variant/10">
+<button class="text-on-surface-variant font-label-md text-label-md hover:text-error transition-colors" onclick="toggleConnection(this)">Disconnect</button>
+<button class="px-md py-base bg-secondary text-white rounded-lg font-label-md text-label-md active:scale-95 transition-transform">Configure</button>
+</div>
+</div>
+<!-- Google Drive Card -->
+<div class="group bg-surface-container-lowest p-lg rounded-xl shadow-sm hover:shadow-md transition-all border border-transparent hover:border-secondary-container flex flex-col justify-between">
+<div class="mb-lg">
+<div class="flex justify-between items-start mb-md">
+<div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl" data-icon="add_to_drive">add_to_drive</span>
+</div>
+<div class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant/30">
+<span class="font-label-sm text-label-sm">Not Linked</span>
+</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">Google Drive</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Automatic encrypted cloud backups for all your daily transaction logs and reports.</p>
+</div>
+<div class="flex items-center justify-end pt-md mt-auto border-t border-outline-variant/10">
+<button class="flex items-center gap-xs px-lg py-sm bg-tertiary-container text-tertiary-fixed rounded-lg font-label-md text-label-md active:scale-95 transition-all shadow-sm" onclick="toggleConnection(this)">
+<span class="material-symbols-outlined text-sm">link</span>
+                                        Connect
+                                    </button>
+</div>
+</div>
+<!-- Drive Stats (Bento Element) -->
+<div class="hidden lg:flex flex-col gap-md">
+<div class="bg-primary text-white p-lg rounded-xl flex-1 flex flex-col justify-between shadow-lg relative overflow-hidden">
+<div class="z-10">
+<p class="font-label-sm text-label-sm text-primary-fixed-dim uppercase tracking-widest mb-xs">Storage Health</p>
+<p class="font-headline-lg text-headline-lg">94% Safe</p>
+</div>
+<div class="z-10 bg-white/10 backdrop-blur-md p-md rounded-lg">
+<div class="flex justify-between text-[11px] mb-1">
+<span>Cloud Space</span>
+<span>2TB Used</span>
+</div>
+<div class="w-full bg-white/20 h-1 rounded-full">
+<div class="bg-tertiary-fixed h-full w-[65%]" style="box-shadow: 0 0 10px #b6efcf;"></div>
+</div>
+</div>
+<!-- Decoration -->
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined text-[120px]">cloud_done</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Marketing & Local -->
+<section>
+<div class="flex items-center gap-md mb-lg border-b border-outline-variant/30 pb-sm">
+<span class="material-symbols-outlined text-secondary" data-icon="location_on">location_on</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Marketing &amp; Local</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Google Business Profile -->
+<div class="group bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col md:flex-row border border-transparent hover:border-secondary-container">
+<div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden bg-surface-container">
+<img alt="Storefront" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A clean professional boutique storefront at golden hour with large glass windows and elegant interior lighting showcasing a premium retail environment. The mood is sophisticated and inviting, captured in a high-quality lifestyle photography style that aligns with a premium brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCeA9PJioahn-3eC2TzAyvubc7-G0NiN4JDpP61wnyVlC5adPP1b-DwhPvXGn-DSfrnSfs9Q5vxRKsEGXy-6Ylfvui9sE3_cMQBWdNoINvlzc8QrYwJ25F2Vp1-5zlNAd65sgiRuwmqi-jPdRNIyZzjYiF1JIo7aoZOy9zz-1erSk5Q0qqYB2MO2TZBNEMNqBnGwfEqSDeeY9_iYv-wLqACPahmvhSTPBT63dlcXtaJ1qFhxEsg1FCUMRZ1SQJjkzmuVKe0K_YgMMY"/>
+<div class="absolute top-md left-md bg-white/80 backdrop-blur-sm p-sm rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="reviews">reviews</span>
+</div>
+</div>
+<div class="p-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-xs px-3 py-1 bg-tertiary-fixed/20 text-on-tertiary-fixed-variant rounded-full border border-tertiary-fixed/30 w-fit mb-md">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container"></span>
+<span class="font-label-sm text-label-sm">Live Sync</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">Google Business Profile</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Manage reviews, update store hours, and push shop updates directly from your dashboard.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-lg py-sm bg-surface-container-highest text-on-surface rounded-lg font-label-md text-label-md hover:bg-surface-variant transition-colors active:scale-95">Settings</button>
+<button class="text-secondary font-label-md text-label-md hover:underline">View Public Page</button>
+</div>
+</div>
+</div>
+<!-- Google Maps -->
+<div class="group bg-surface-container-lowest rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden flex flex-col md:flex-row border border-transparent hover:border-secondary-container">
+<div class="md:w-1/3 h-48 md:h-auto relative overflow-hidden bg-surface-container">
+<img alt="Map integration" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A stylized aerial perspective of a modern city map with glowing navigation points and soft blue light paths. The visual style is clean, corporate, and minimalist with high contrast between deep navy foundations and bright neon information trails, emphasizing precision and global connectivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH18Vwst9RLGfupJAhQ4EXrtEGlKHp0jfEewD0IFc6YGxZdNbhrLJXX2hteBRhwB6TWFLVimIauGX5TsZMQpqTLQYlHPOBWv1WOHsp-vG6e3FEVXlaf33_M4QbPNizBKvFgvpm5dv3MYFHG5nGQtSts390LZ2SozTlCFHg_lh8sP-SAQxCcjj5LQzvlq5Uzcu-WRwjz6c28YkoC_TmSy14E5flaRiR9ssiG5d0V1jdKXPHITQCyryABEejWhbN9l5sJBQn55ofU-8"/>
+<div class="absolute top-md left-md bg-white/80 backdrop-blur-sm p-sm rounded-lg shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="map">map</span>
+</div>
+</div>
+<div class="p-lg flex-1 flex flex-col justify-between">
+<div>
+<div class="bg-surface-container text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant/30 w-fit mb-md">
+<span class="font-label-sm text-label-sm">Offline</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-primary mb-xs">Google Maps Sync</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-md">Sync store locations for delivery ranges and in-app navigation for staff fleets.</p>
+</div>
+<div class="flex items-center gap-md">
+<button class="px-lg py-sm bg-tertiary-container text-tertiary-fixed rounded-lg font-label-md text-label-md hover:opacity-90 transition-all active:scale-95 shadow-sm">Link Location</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+</div>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-md pb-xs h-touch-target-min bg-surface shadow-lg rounded-t-xl border-t border-outline-variant/10">
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors flex-1 py-1">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors flex-1 py-1">
+<span class="material-symbols-outlined">group</span>
+<span class="font-label-sm text-label-sm">Clients</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-2xl px-4 py-1 flex-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-sm text-label-sm">Integrations</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-container-highest transition-colors flex-1 py-1">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm text-label-sm">More</span>
+</div>
+</nav>
+<!-- Floating Action Button (Only relevant for core dashboard/home, but kept for UX pattern if adding new) -->
+<button class="fixed right-6 bottom-20 md:bottom-6 bg-primary text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg active:scale-95 transition-transform z-50 md:hidden">
+<span class="material-symbols-outlined">add</span>
+</button>
+<script>
+        function toggleConnection(btn) {
+            const card = btn.closest('.group');
+            const statusBadge = card.querySelector('.bg-tertiary-fixed\\/20, .bg-surface-container');
+            const isConnected = statusBadge.textContent.trim() === 'Connected';
+            
+            if (isConnected) {
+                // Change to Not Linked state
+                statusBadge.className = 'bg-surface-container text-on-surface-variant px-3 py-1 rounded-full border border-outline-variant/30';
+                statusBadge.innerHTML = '<span class="font-label-sm text-label-sm">Not Linked</span>';
+                
+                // Change button to Connect state
+                const actionContainer = btn.parentElement;
+                actionContainer.innerHTML = `
+                    <button onclick="toggleConnection(this)" class="flex items-center gap-xs px-lg py-sm bg-tertiary-container text-tertiary-fixed rounded-lg font-label-md text-label-md active:scale-95 transition-all shadow-sm">
+                        <span class="material-symbols-outlined text-sm">link</span>
+                        Connect
+                    </button>
+                `;
+            } else {
+                // Animate connecting
+                btn.innerHTML = '<span class="material-symbols-outlined animate-spin">refresh</span> Connecting...';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    // Change to Connected state
+                    statusBadge.className = 'flex items-center gap-xs px-3 py-1 bg-tertiary-fixed/20 text-on-tertiary-fixed-variant rounded-full border border-tertiary-fixed/30';
+                    statusBadge.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span><span class="font-label-sm text-label-sm">Connected</span>';
+                    
+                    const actionContainer = btn.parentElement;
+                    actionContainer.className = 'flex items-center justify-between pt-md mt-auto border-t border-outline-variant/10 w-full';
+                    actionContainer.innerHTML = `
+                        <button onclick="toggleConnection(this)" class="text-on-surface-variant font-label-md text-label-md hover:text-error transition-colors">Disconnect</button>
+                        <button class="px-md py-base bg-secondary text-white rounded-lg font-label-md text-label-md active:scale-95 transition-transform">Configure</button>
+                    `;
+                }, 1200);
+            }
+        }
+    </script>
+</body></html>

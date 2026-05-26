@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos Hub - Loading</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Playfair+Display:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Include Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#d6e3ff",
+                    "secondary-fixed": "#d3e4ff",
+                    "surface-container-low": "#f2f4f6",
+                    "outline-variant": "#c4c6cf",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#1960a3",
+                    "tertiary-fixed": "#6ffbbe",
+                    "on-tertiary": "#ffffff",
+                    "background": "#f7f9fb",
+                    "tertiary-fixed-dim": "#9bd3b4",
+                    "outline": "#74777f",
+                    "tertiary-container": "#002617",
+                    "on-tertiary-container": "#00b47d",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e0e3e5",
+                    "on-secondary-container": "#00477f",
+                    "inverse-primary": "#aec7f5",
+                    "surface-bright": "#f7f9fb",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-fixed": "#002113",
+                    "on-surface-variant": "#44474e",
+                    "tertiary": "#000b05",
+                    "on-error-container": "#93000a",
+                    "inverse-surface": "#2d3133",
+                    "surface": "#f7f9fb",
+                    "on-background": "#191c1e",
+                    "surface-variant": "#e0e3e5",
+                    "primary-fixed-dim": "#aec7f5",
+                    "surface-container": "#eceef0",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#191c1e",
+                    "on-secondary-fixed-variant": "#004881",
+                    "primary-container": "#002045",
+                    "secondary-fixed-dim": "#a2c9ff",
+                    "secondary-container": "#7db6ff",
+                    "on-tertiary-fixed-variant": "#195039",
+                    "surface-dim": "#d8dadc",
+                    "on-primary-container": "#7089b3",
+                    "primary": "#00091b",
+                    "on-secondary-fixed": "#001c38",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed-variant": "#2e476e",
+                    "on-primary-fixed": "#001b3c",
+                    "error-container": "#ffdad6",
+                    "surface-tint": "#465f87",
+                    "on-primary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xs": "8px",
+                    "lg": "24px",
+                    "sm": "12px",
+                    "xl": "32px",
+                    "touch-target-min": "44px",
+                    "md": "16px",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "label-md": ["JetBrains Mono"],
+                    "display-price": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "serif-premium": ["Playfair Display", "serif"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                    "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            text-transform: none;
+            letter-spacing: normal;
+            word-wrap: normal;
+            white-space: nowrap;
+            direction: ltr;
+        }
+
+        @keyframes subtle-bounce {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 1; }
+            50% { transform: translateY(-10px) scale(1.02); opacity: 0.95; }
+        }
+
+        @keyframes progress-shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .animate-subtle {
+            animation: subtle-bounce 6s ease-in-out infinite;
+        }
+
+        .loader-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            background: linear-gradient(90deg, transparent, #002045, transparent);
+            animation: progress-shimmer 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest text-on-surface antialiased overflow-hidden">
+<!-- Splash Screen Wrapper -->
+<main class="relative h-screen w-full flex flex-col items-center justify-center p-xl">
+<!-- Soft Ambient Background Glows -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+<div class="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-primary-fixed/20 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-secondary-fixed/30 blur-[120px] rounded-full"></div>
+</div>
+<!-- Central Identity Cluster -->
+<div class="relative z-10 flex flex-col items-center text-center">
+<!-- Logo Section -->
+<div class="animate-subtle mb-xl">
+<div class="relative group">
+<!-- Elegant ring behind logo -->
+<div class="absolute inset-0 bg-primary-fixed/10 scale-125 blur-2xl rounded-full transition-transform group-hover:scale-150 duration-1000"></div>
+<img alt="Sav.pos Hub Luxury Branding" class="w-32 h-32 md:w-48 md:h-48 object-contain drop-shadow-2xl relative z-10" src="https://lh3.googleusercontent.com/aida/ADBb0ujAKrMUG4JuUgaofYArl9-ydg-0lIKwBi6cb_Ngkzjy6heugzGiiUqwNLU6iqJkzKVsJGv1lOOM94sKCJz7urvnGzjpWCQ56x6lmoHaQaqEK_UZ9iEyfU2O4JlWfuOm1cA-yd3gxJfVcTIEP4HwB1lKvM1t8NwjCDf3_FyYwokAuyVhetFpb3gXQekkcg-J_hHep-DYSDgVS8BPIgmF7AT0ZYg94U17G9wMg7UCr1ExT9qey11noo8yXgA" style="filter: drop-shadow(0 20px 30px rgba(0,32,69,0.15));"/>
+</div>
+</div>
+<!-- Typography Section -->
+<div class="space-y-sm">
+<h1 class="font-serif-premium text-[48px] md:text-[64px] text-primary tracking-tight leading-none">
+                    Sav.pos
+                </h1>
+<p class="font-label-md text-label-md uppercase tracking-[0.25em] text-on-surface-variant/80">
+                    Front Desk Operations
+                </p>
+</div>
+</div>
+<!-- Footer / Loading Indicator -->
+<div class="absolute bottom-16 w-full max-w-xs px-md flex flex-col items-center gap-base">
+<div class="relative w-full h-[2px] bg-surface-container-highest overflow-hidden rounded-full loader-bar">
+<!-- Progress bar track (empty, handled by ::after shimmer) -->
+</div>
+<div class="flex items-center gap-xs mt-sm">
+<span class="material-symbols-outlined text-[14px] text-primary animate-spin" style="font-variation-settings: 'wght' 300;">sync</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-medium tracking-widest uppercase">
+                    Initializing Hub
+                </span>
+</div>
+</div>
+<!-- Subtle Branding Versioning -->
+<div class="absolute bottom-8 right-8 hidden md:block">
+<p class="font-label-sm text-[10px] text-outline opacity-40 uppercase tracking-widest">
+                v4.8.0 Premium Edition
+            </p>
+</div>
+</main>
+<!-- Interactive Micro-Interactions -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulate loading state transitions
+            const loader = document.querySelector('.loader-bar');
+            let progress = 0;
+            
+            const interval = setInterval(() => {
+                progress += Math.random() * 10;
+                if (progress >= 100) {
+                    progress = 100;
+                    clearInterval(interval);
+                    // Subtle hint that it's ready, could trigger a redirect here
+                    console.log('System ready.');
+                }
+            }, 300);
+
+            // Add a mouse-move parallax effect for the glow
+            document.addEventListener('mousemove', (e) => {
+                const x = e.clientX / window.innerWidth;
+                const y = e.clientY / window.innerHeight;
+                
+                const glows = document.querySelectorAll('.blur-3xl');
+                glows.forEach((glow, index) => {
+                    const factor = (index + 1) * 20;
+                    glow.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+                });
+            });
+        });
+    </script>
+</body></html>

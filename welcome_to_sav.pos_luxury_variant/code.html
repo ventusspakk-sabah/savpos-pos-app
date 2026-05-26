@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sav.pos | Luxury Onboarding</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "surface-container-low": "#f2f4f6",
+                "background": "#f7f9fb",
+                "on-secondary": "#ffffff",
+                "tertiary-fixed": "#6ffbbe",
+                "secondary-container": "#7db6ff",
+                "surface-dim": "#d8dadc",
+                "on-tertiary-fixed": "#002113",
+                "surface": "#f7f9fb",
+                "outline": "#74777f",
+                "on-secondary-fixed": "#001c38",
+                "secondary": "#1960a3",
+                "primary-fixed": "#d6e3ff",
+                "tertiary": "#000b05",
+                "surface-variant": "#e0e3e5",
+                "error-container": "#ffdad6",
+                "on-tertiary": "#ffffff",
+                "surface-tint": "#465f87",
+                "secondary-fixed": "#d3e4ff",
+                "tertiary-container": "#002617",
+                "surface-bright": "#f7f9fb",
+                "primary-container": "#002045",
+                "on-tertiary-fixed-variant": "#195039",
+                "inverse-on-surface": "#eff1f3",
+                "on-primary-fixed-variant": "#2e476e",
+                "on-primary": "#ffffff",
+                "on-error-container": "#93000a",
+                "tertiary-fixed-dim": "#9bd3b4",
+                "on-primary-container": "#7089b3",
+                "on-secondary-container": "#00477f",
+                "surface-container-high": "#e6e8ea",
+                "primary-fixed-dim": "#aec7f5",
+                "on-secondary-fixed-variant": "#004881",
+                "on-surface-variant": "#44474e",
+                "on-error": "#ffffff",
+                "on-surface": "#191c1e",
+                "surface-container": "#eceef0",
+                "surface-container-lowest": "#ffffff",
+                "secondary-fixed-dim": "#a2c9ff",
+                "surface-container-highest": "#e0e3e5",
+                "inverse-surface": "#2d3133",
+                "on-tertiary-container": "#00b47d",
+                "on-primary-fixed": "#001b3c",
+                "error": "#ba1a1a",
+                "inverse-primary": "#aec7f5",
+                "outline-variant": "#c4c6cf",
+                "primary": "#00091b",
+                "on-background": "#191c1e"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "xl": "32px",
+                "touch-target-min": "44px",
+                "sm": "12px",
+                "base": "4px",
+                "md": "16px",
+                "xs": "8px",
+                "lg": "24px"
+            },
+            "fontFamily": {
+                "body-md": ["Inter"],
+                "label-sm": ["JetBrains Mono"],
+                "headline-lg": ["Inter"],
+                "body-lg": ["Inter"],
+                "label-md": ["JetBrains Mono"],
+                "headline-lg-mobile": ["Inter"],
+                "display-price": ["Inter"],
+                "headline-md": ["Inter"],
+                "serif": ["Playfair Display", "serif"]
+            },
+            "fontSize": {
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                "headline-lg": ["30px", {"lineHeight": "36px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                "display-price": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            background-color: #f7f9fb;
+            color: #191c1e;
+            overflow-x: hidden;
+        }
+        .luxury-gradient {
+            background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(0,9,27,0.8) 100%);
+        }
+        .serif-title {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: -0.01em;
+        }
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface">
+<!-- Top Navigation Anchor (Manual Suppression of BottomNav/TopAppBar logic for Onboarding) -->
+<header class="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-lg py-md w-full max-w-7xl mx-auto">
+<div class="flex items-center gap-xs">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="spa">spa</span>
+<span class="font-headline-md text-headline-md font-bold text-primary">Sav.pos</span>
+</div>
+<div class="hidden md:flex gap-md">
+<button class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors px-md py-xs">The Experience</button>
+<button class="text-label-md font-label-md text-on-surface-variant hover:text-primary transition-colors px-md py-xs">Boutique Features</button>
+</div>
+</header>
+<main class="relative min-h-screen flex flex-col md:flex-row items-center overflow-hidden">
+<!-- Hero Section: Immersive Spa Visual -->
+<section class="relative w-full h-[530px] md:h-screen md:w-3/5 lg:w-2/3 overflow-hidden">
+<img alt="Luxury Spa Interior" class="absolute inset-0 w-full h-full object-cover scale-105" data-alt="A serene and minimalist luxury spa environment with soft, ambient lighting reflecting off a still indoor pool. The architecture features clean lines, natural stone walls in soft beige, and warm wood accents. The atmosphere is quiet and sophisticated, evoking a sense of calm and high-end wellness. The color palette is dominated by muted neutrals and deep navy shadows, perfectly aligned with a professional corporate-modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0rl2ARSDydXqXInlds08BtmImSyzvQHAqBmdH7CISJ3vUn2Udees9HbPeX8hwvqlKlGbBLMLW530fbEuPPm81eiuGPEvOtB9OUSwpYCYMcCTwmDHk5oQJ5onbnk3FNyVDuEFKmTz3-72Ex_UR72Dm8hQmJ3CFNdVYtiFrfJnzOMQl6o5PlPncCDJ7siMU3WY9mhiWWCPsqW4j11Mzx_CKOAUFmCTP1OwucXKMA3IutqPum3jTvGnOiLvPTFWzkmaKKW4xYhUXtws"/>
+<div class="absolute inset-0 luxury-gradient md:bg-none md:bg-gradient-to-r md:from-transparent md:to-surface"></div>
+<!-- Mobile Badge Overlay -->
+<div class="absolute bottom-lg left-lg md:hidden">
+<div class="backdrop-blur-md bg-white/10 border border-white/20 rounded-full px-md py-xs inline-flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-pulse"></span>
+<span class="text-white text-label-sm font-label-sm uppercase tracking-widest">Premium Collection</span>
+</div>
+</div>
+</section>
+<!-- Onboarding Content Canvas -->
+<section class="flex-1 w-full p-lg md:p-xl lg:p-[80px] bg-surface z-10 flex flex-col justify-center items-start fade-in">
+<div class="max-w-md">
+<!-- Status Chip -->
+<div class="mb-md">
+<span class="bg-secondary-fixed/30 text-on-secondary-fixed-variant px-md py-1 rounded-full text-label-sm font-label-sm uppercase tracking-widest">
+                        New Standard
+                    </span>
+</div>
+<!-- Headline -->
+<h1 class="serif-title text-[48px] md:text-[64px] leading-[1.1] font-bold text-primary mb-md">
+                    Welcome to <br/>Sav.pos <span class="text-secondary italic">Luxury</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl leading-relaxed">
+                    Designed for the world's most exclusive boutiques and high-end hospitality spaces. Experience precision and sophistication in every transaction.
+                </p>
+<!-- Actions -->
+<div class="flex flex-col sm:flex-row gap-md w-full mb-xl">
+<button class="flex-1 bg-primary text-on-primary font-headline-md text-headline-md px-xl py-md rounded-xl shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-95 transition-all flex items-center justify-center gap-xs group">
+                        Get Started
+                        <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform" data-icon="arrow_forward">arrow_forward</span>
+</button>
+<button class="flex-1 border-2 border-primary/10 bg-surface-container-lowest text-primary font-headline-md text-headline-md px-xl py-md rounded-xl hover:bg-surface-container-low transition-colors active:scale-95">
+                        Log In
+                    </button>
+</div>
+<!-- Bento Grid Style Feature Highlight -->
+<div class="grid grid-cols-2 gap-sm pt-xl border-t border-outline-variant">
+<div class="p-md rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-label-md text-label-md text-primary font-bold">Refined UI</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Clutter-free focus</p>
+</div>
+<div class="p-md rounded-xl bg-surface-container-low">
+<span class="material-symbols-outlined text-secondary mb-xs" data-icon="bolt">bolt</span>
+<h3 class="font-label-md text-label-md text-primary font-bold">Fast Lane</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">0.2s checkouts</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Support Navigation (BottomNavBar logic suppression) -->
+<footer class="fixed bottom-0 left-0 right-0 z-40 px-lg py-md md:px-xl flex justify-between items-center pointer-events-none">
+<div class="pointer-events-auto">
+<button class="flex items-center gap-xs text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-lg" data-icon="help_outline">help_outline</span>
+<span class="font-label-sm text-label-sm">Concierge Help</span>
+</button>
+</div>
+<div class="pointer-events-auto hidden md:block">
+<span class="text-outline-variant font-label-sm text-label-sm">© 2024 Sav.pos Precision Ecosystem</span>
+</div>
+</footer>
+<!-- Subtle Grain Overlay for Texture -->
+<div class="fixed inset-0 pointer-events-none opacity-[0.03] contrast-150" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDTDHlRr131nLYl-mGrAyv2D2abu_zreCsfBRfXBgBT9GNZiVx8fAORaG2PvuogvsVuF84wmWTgKT22XDdg_42P48E7awiHVPp9qrtLqJvA-bU6piVwVTsX-MqzsZXo2RWDn-EyVKzuRPsY-OQonhz5en64yP66WTyyU2mZhZMoJMzUm-E41cXuFEM5FpQ8nEGRfXZRiwygdAEkTVwITegRfpMNlVtCHM_AoHux55hZO2dzy6I1XDU997PzwuqvvZwjzCpNLPfRQH4');"></div>
+<script>
+        // Micro-interactions for button scale and hero movement
+        document.addEventListener('mousemove', (e) => {
+            const heroImg = document.querySelector('img[data-alt*="Spa"]');
+            if(window.innerWidth > 768 && heroImg) {
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
+                heroImg.style.transform = `scale(1.05) translate(${x}px, ${y}px)`;
+                heroImg.style.transition = 'transform 0.2s ease-out';
+            }
+        });
+
+        // Toggle focus state animation for buttons
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            });
+        });
+    </script>
+</body></html>

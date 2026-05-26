@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Sav.pos - Service Monitor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "error": "#ba1a1a",
+            "inverse-on-surface": "#eaf1ff",
+            "on-primary-fixed": "#001b3c",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "surface-container": "#e5eeff",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#a9c7ff",
+            "error-container": "#ffdad6",
+            "inverse-primary": "#aec7f5",
+            "on-tertiary-fixed-variant": "#43474a",
+            "on-background": "#0b1c30",
+            "on-primary-fixed-variant": "#2e476e",
+            "on-error": "#ffffff",
+            "inverse-surface": "#213145",
+            "on-secondary": "#ffffff",
+            "surface": "#f8f9ff",
+            "surface-container-low": "#eff4ff",
+            "outline": "#74777f",
+            "tertiary-fixed": "#e0e3e6",
+            "on-primary": "#ffffff",
+            "primary": "#00091b",
+            "secondary": "#005db6",
+            "on-secondary-fixed": "#001b3d",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#00468c",
+            "surface-tint": "#465f87",
+            "tertiary-container": "#1d2123",
+            "on-primary-container": "#7089b3",
+            "surface-variant": "#d3e4fe",
+            "on-tertiary-fixed": "#181c1e",
+            "surface-container-high": "#dce9ff",
+            "on-tertiary-container": "#85888b",
+            "surface-container-highest": "#d3e4fe",
+            "primary-fixed": "#d6e3ff",
+            "on-surface-variant": "#44474e",
+            "secondary-container": "#63a1ff",
+            "tertiary-fixed-dim": "#c3c7ca",
+            "primary-container": "#002045",
+            "background": "#f8f9ff",
+            "tertiary": "#06090c",
+            "primary-fixed-dim": "#aec7f5",
+            "secondary-fixed": "#d6e3ff",
+            "on-secondary-container": "#00376f",
+            "outline-variant": "#c4c6cf",
+            "surface-dim": "#cbdbf5",
+            "on-surface": "#0b1c30"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.125rem",
+            "lg": "0.25rem",
+            "xl": "0.5rem",
+            "full": "0.75rem"
+          },
+          "spacing": {
+            "lg": "24px",
+            "gutter": "12px",
+            "md": "16px",
+            "margin-desktop": "24px",
+            "margin-mobile": "16px",
+            "unit": "4px",
+            "xs": "4px",
+            "xl": "32px",
+            "sm": "8px"
+          },
+          "fontFamily": {
+            "body-sm": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-md-mobile": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-md": ["Inter"],
+            "body-md": ["Inter"],
+            "display-lg": ["Inter"],
+            "mono-md": ["jetbrainsMono"],
+            "headline-sm": ["Inter"]
+          },
+          "fontSize": {
+            "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+            "label-md": ["13px", {"lineHeight": "18px", "fontWeight": "600"}],
+            "headline-md-mobile": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+            "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+            "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "mono-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+            "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .progress-pulse {
+      animation: pulse-width 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    @keyframes pulse-width {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .status-green { background-color: #22c55e; }
+    .status-amber { background-color: #f59e0b; }
+    .status-red { background-color: #ef4444; }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface dark:bg-surface flex justify-between items-center px-md h-[64px]">
+<div class="flex items-center gap-md">
+<button class="hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all p-2 flex items-center justify-center active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary dark:text-on-primary-fixed">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-black tracking-tight text-primary dark:text-on-primary-fixed">Sav.pos</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex bg-surface-container-low border border-outline-variant px-4 py-2 rounded-xl items-center gap-3 w-64">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 p-0 text-body-md w-full" placeholder="Search rooms..." type="text"/>
+</div>
+<button class="hover:bg-surface-container-high dark:hover:bg-surface-container-highest rounded-full transition-all p-2 flex items-center justify-center active:scale-95 duration-150">
+<span class="material-symbols-outlined text-primary dark:text-on-primary-fixed">search</span>
+</button>
+</div>
+</header>
+<main class="pt-20 pb-24 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Hero / Stats Header -->
+<section class="mb-lg grid grid-cols-1 md:grid-cols-3 gap-md">
+<div class="md:col-span-2">
+<h2 class="font-headline-md text-headline-md mb-2">My Services</h2>
+<p class="text-on-surface-variant font-body-md">Monitor active sessions and track completion times for assigned tasks.</p>
+</div>
+<div class="flex justify-end items-start">
+<div class="bg-surface-container-high p-md rounded-xl flex items-center gap-md border border-outline-variant w-full md:w-auto">
+<div class="text-right">
+<span class="block text-on-surface-variant font-label-md">Technician ID</span>
+<span class="block font-mono-md text-mono-md">TECH-7742</span>
+</div>
+<div class="w-[48px] h-[48px] rounded-full overflow-hidden bg-primary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-fixed" style="font-variation-settings: 'FILL' 1;">person</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid of Services -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Service Card 1 - High Priority/Urgent -->
+<div class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-md shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1.5 h-full status-red"></div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div class="flex items-center gap-md">
+<div class="bg-primary text-on-primary px-4 py-2 rounded-xl font-headline-sm text-headline-sm">102</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm">Johnathan Wick</h3>
+<p class="text-on-surface-variant font-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">dry_cleaning</span>
+                Full Deep Clean &amp; Sanitization
+              </p>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="text-error font-mono-md text-headline-sm animate-pulse">-02:14</span>
+<span class="text-on-surface-variant font-label-md uppercase tracking-wider">Overtime</span>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="flex justify-between font-label-md text-on-surface-variant">
+<span>Progress: Critical</span>
+<span>110%</span>
+</div>
+<div class="w-full bg-surface-container-high h-4 rounded-full overflow-hidden">
+<div class="status-red h-full w-full progress-pulse"></div>
+</div>
+</div>
+<div class="flex flex-wrap gap-sm pt-2">
+<span class="px-3 py-1 bg-surface-container rounded-full text-on-surface-variant font-label-md border border-outline-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">local_fire_department</span> High Priority
+          </span>
+<span class="px-3 py-1 bg-surface-container rounded-full text-on-surface-variant font-label-md border border-outline-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> Started 09:00 AM
+          </span>
+</div>
+<button class="w-full mt-2 py-4 bg-primary text-on-primary font-label-md rounded-xl flex items-center justify-center gap-md hover:opacity-90 active:scale-[0.98] transition-all">
+          FINISH SERVICE &amp; TRIGGER CLEANING
+          <span class="material-symbols-outlined">check_circle</span>
+</button>
+</div>
+<!-- Service Card 2 - Standard -->
+<div class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-md shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1.5 h-full status-amber"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-lg font-headline-sm text-headline-sm">214</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-bold">Sarah Palmer</h3>
+<p class="text-on-surface-variant font-body-sm">Express Maintenance</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center py-4">
+<div class="text-center">
+<span class="font-mono-md text-display-lg block text-on-surface">04:45</span>
+<span class="text-on-surface-variant font-label-md">Remaining</span>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="status-amber h-full w-[85%]"></div>
+</div>
+</div>
+<div class="mt-auto flex gap-2">
+<button class="flex-1 py-3 border border-outline text-on-surface font-label-md rounded-xl hover:bg-surface-variant transition-colors">
+            Details
+          </button>
+<button class="flex-1 py-3 bg-secondary text-on-secondary font-label-md rounded-xl hover:opacity-90 active:scale-95 transition-all">
+            Finish
+          </button>
+</div>
+</div>
+<!-- Service Card 3 - Normal -->
+<div class="lg:col-span-4 bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-md shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1.5 h-full status-green"></div>
+<div class="flex justify-between items-start">
+<div class="flex items-center gap-3">
+<div class="bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-lg font-headline-sm text-headline-sm">305</div>
+<div>
+<h3 class="font-body-lg text-body-lg font-bold">Marcus Chen</h3>
+<p class="text-on-surface-variant font-body-sm">Room Inspection</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center py-4">
+<div class="text-center">
+<span class="font-mono-md text-display-lg block text-on-surface">18:22</span>
+<span class="text-on-surface-variant font-label-md">Active</span>
+</div>
+</div>
+<div class="space-y-sm">
+<div class="w-full bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="status-green h-full w-[35%]"></div>
+</div>
+</div>
+<div class="mt-auto">
+<button class="w-full py-3 bg-secondary text-on-secondary font-label-md rounded-xl hover:opacity-90 active:scale-95 transition-all">
+            Finish
+          </button>
+</div>
+</div>
+<!-- Service Card 4 - Large Layout for Next -->
+<div class="lg:col-span-8 bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex flex-col gap-md shadow-sm relative overflow-hidden group">
+<div class="absolute top-0 left-0 w-1.5 h-full bg-outline"></div>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-md">
+<div class="flex items-center gap-md">
+<div class="bg-surface-container-high text-on-surface-variant px-4 py-2 rounded-xl font-headline-sm text-headline-sm">000</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface-variant">Pending Queue</h3>
+<p class="text-on-surface-variant font-body-sm">Room 401, Room 402, Room 405</p>
+</div>
+</div>
+<button class="px-6 py-2 border-2 border-primary text-primary font-label-md rounded-full hover:bg-primary-fixed transition-colors">
+            Start Next Task
+          </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-sm mt-2 opacity-60">
+<div class="p-3 bg-surface border border-outline-variant rounded-lg">
+<span class="block font-label-md">Room 401</span>
+<span class="text-body-sm">Light Refresh</span>
+</div>
+<div class="p-3 bg-surface border border-outline-variant rounded-lg">
+<span class="block font-label-md">Room 402</span>
+<span class="text-body-sm">Checkout Clean</span>
+</div>
+<div class="p-3 bg-surface border border-outline-variant rounded-lg">
+<span class="block font-label-md">Room 405</span>
+<span class="text-body-sm">Towel Service</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Inventory / Barcode Section (High-Density Utility) -->
+<section class="mt-xl">
+<h3 class="font-headline-sm text-headline-sm mb-md">Equipment &amp; Inventory Scan</h3>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<div class="flex flex-col md:flex-row gap-md items-end">
+<div class="flex-1 w-full">
+<label class="block font-label-md text-on-surface-variant mb-2">Scan Barcode to Add Material Usage</label>
+<div class="relative flex items-center bg-surface-container-low border border-outline-variant rounded-xl h-[56px] px-md">
+<span class="material-symbols-outlined text-on-surface-variant mr-3">barcode_scanner</span>
+<input autofocus="" class="bg-transparent border-none focus:ring-0 p-0 text-mono-md w-full" placeholder="Scan item barcode..." type="text"/>
+</div>
+</div>
+<button class="bg-secondary-container text-on-secondary-container h-[56px] px-8 rounded-xl font-label-md hover:bg-secondary-container/80 transition-colors w-full md:w-auto">
+            Log Usage
+          </button>
+</div>
+<!-- Zebra Striped List -->
+<div class="mt-md border border-outline-variant rounded-lg overflow-hidden">
+<div class="flex justify-between p-3 bg-surface-container-high font-label-md text-on-surface-variant border-b border-outline-variant">
+<span>Logged Items Today</span>
+<span>Quantity</span>
+</div>
+<div class="flex justify-between p-3 bg-surface-container-lowest border-b border-outline-variant">
+<span class="font-body-md">Sanitizer Solution 5L</span>
+<span class="font-mono-md">x2</span>
+</div>
+<div class="flex justify-between p-3 bg-surface-container-low border-b border-outline-variant">
+<span class="font-body-md">Microfiber Cloth Set (Blue)</span>
+<span class="font-mono-md">x4</span>
+</div>
+<div class="flex justify-between p-3 bg-surface-container-lowest">
+<span class="font-body-md">All-Purpose Spray Refill</span>
+<span class="font-mono-md">x1</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-inverse-surface shadow-md rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-2 hover:bg-surface-variant/50 dark:hover:bg-surface-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-label-sm text-label-sm">Rooms</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-2 hover:bg-surface-variant/50 dark:hover:bg-surface-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="font-label-sm text-label-sm">Sales</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container dark:bg-secondary dark:text-on-secondary rounded-full px-5 py-1 active:scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline p-2 hover:bg-surface-variant/50 dark:hover:bg-surface-variant/20 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</nav>
+<script>
+    // Micro-interaction for Finish buttons
+    document.querySelectorAll('button').forEach(btn => {
+      if(btn.innerText.includes('Finish') || btn.innerText.includes('FINISH')) {
+        btn.addEventListener('click', function() {
+          const card = this.closest('.bg-surface-container-lowest');
+          card.style.transition = 'all 0.4s ease';
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(-20px)';
+          setTimeout(() => {
+            card.remove();
+          }, 400);
+        });
+      }
+    });
+
+    // Dummy dynamic timer update simulation
+    setInterval(() => {
+      // In a real app, logic would decrement time and update progress bars
+    }, 1000);
+  </script>
+</body></html>
