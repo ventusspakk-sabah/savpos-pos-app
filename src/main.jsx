@@ -1,23 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
-import './index.css'
 
+// 极简测试：不导入 App，直接显示文字
 const root = document.getElementById('root')
-if (!root) throw new Error('根元素 #root 不存在')
-
-try {
+if (root) {
   ReactDOM.createRoot(root).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  )
-} catch (err) {
-  root.innerHTML = `
-    <div style="padding: 20px; background: #fee; color: #c00; font-family: monospace;">
-      <h3>React 渲染错误：</h3>
-      <pre>${err.message}\n${err.stack?.slice(0, 500)}</pre>
+    <div style={{ padding: '2rem', textAlign: 'center', fontFamily: 'sans-serif' }}>
+      <h1 style={{ color: 'green' }}>✅ React 渲染成功！</h1>
+      <p>如果看到这个，说明基础环境正常，空白是 App 组件的问题。</p>
     </div>
-  `
-  console.error(err)
+  )
+} else {
+  root.innerHTML = '错误：找不到 #root 元素'
 }
